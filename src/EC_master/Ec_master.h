@@ -12,6 +12,9 @@ public:
 private:
     ec_master_t *master = nullptr;
     ec_master_state_t master_state = {};
+    
     ec_domain_t *domain1 = nullptr;
     ec_domain_state_t domain1_state = {};
+
+    uint8_t *domain1_pd = nullptr;
 };
