@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/etherlab/include
+CXX_INCLUDES = 
 
-CXX_FLAGS = 
+CXX_FLAGS = -std=c++17
 
