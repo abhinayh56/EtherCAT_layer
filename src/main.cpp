@@ -8,6 +8,7 @@ int main()
 {
     ec_master.start();
     ec_master.stop();
+    ec_master.config();
 
     std::cout << "Hi code" << std::endl;
 

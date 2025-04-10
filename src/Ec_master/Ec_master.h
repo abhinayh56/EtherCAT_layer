@@ -1,8 +1,14 @@
+#ifndef EC_MASTER_H
+#define EC_MASTER_H
+
 #include <ecrt.h>
 #include <vector>
 #include <iostream>
 #include "../Ec_slave/Ec_slave_base.h"
 #include "../Ec_logger/Ec_logger_console/Ec_logger_console.h"
+
+#define CYCLIC_SLAVE_CALL_PARALLEL
+// #define CYCLIC_SLAVE_CALL_SEQUENTIAL
 
 class Ec_master
 {
@@ -11,13 +17,13 @@ public:
     ~Ec_master();
 
     void add_slave(Ec_slave_base *new_slave);
-    int start();
+    bool start();
     bool stop();
     void config();
     void cyclic_task();
     bool is_running();
 
-// private:
+private:
     ec_master_t *master = nullptr;
     ec_master_state_t master_state = {};
 
@@ -26,6 +32,9 @@ public:
 
     uint8_t *domain_i_pd = nullptr;
     bool run = false;
+
+    unsigned int num_slaves = 0;
+    std::vector<Ec_slave_base *> slave_base_arr;
 
     void config_slaves_data_transfer();
     bool create_domain();
@@ -43,3 +52,5 @@ public:
     void process_rx_pdo();
     void transfer_rx_pdo();
 };
+
+#endif // EC_MASTER_H
