@@ -1,0 +1,2 @@
+/usr/bin/ar qc libEC_master.a CMakeFiles/EC_master.dir/Ec_master.cpp.o
+/usr/bin/ranlib libEC_master.a
