@@ -10,6 +10,6 @@ include_directories(
 set(EtherCAT_LIB_PATH /usr/local/etherlab/lib/libethercat.a)
 
 # Create the executable from the source code
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
 
 target_link_libraries(${PROJECT_NAME} ${EtherCAT_LIB_PATH})

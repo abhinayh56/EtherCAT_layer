@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ethercat_layer.dir/main.cpp.o"
-  "CMakeFiles/ethercat_layer.dir/main.cpp.o.d"
+  "CMakeFiles/ethercat_layer.dir/src/main.cpp.o"
+  "CMakeFiles/ethercat_layer.dir/src/main.cpp.o.d"
   "ethercat_layer"
   "ethercat_layer.pdb"
 )

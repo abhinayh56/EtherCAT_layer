@@ -69,28 +69,28 @@ include CMakeFiles/ethercat_layer.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ethercat_layer.dir/flags.make
 
-CMakeFiles/ethercat_layer.dir/main.cpp.o: CMakeFiles/ethercat_layer.dir/flags.make
-CMakeFiles/ethercat_layer.dir/main.cpp.o: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/main.cpp
-CMakeFiles/ethercat_layer.dir/main.cpp.o: CMakeFiles/ethercat_layer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ethercat_layer.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ethercat_layer.dir/main.cpp.o -MF CMakeFiles/ethercat_layer.dir/main.cpp.o.d -o CMakeFiles/ethercat_layer.dir/main.cpp.o -c /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/main.cpp
+CMakeFiles/ethercat_layer.dir/src/main.cpp.o: CMakeFiles/ethercat_layer.dir/flags.make
+CMakeFiles/ethercat_layer.dir/src/main.cpp.o: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/main.cpp
+CMakeFiles/ethercat_layer.dir/src/main.cpp.o: CMakeFiles/ethercat_layer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ethercat_layer.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ethercat_layer.dir/src/main.cpp.o -MF CMakeFiles/ethercat_layer.dir/src/main.cpp.o.d -o CMakeFiles/ethercat_layer.dir/src/main.cpp.o -c /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/main.cpp
 
-CMakeFiles/ethercat_layer.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ethercat_layer.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/main.cpp > CMakeFiles/ethercat_layer.dir/main.cpp.i
+CMakeFiles/ethercat_layer.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ethercat_layer.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/main.cpp > CMakeFiles/ethercat_layer.dir/src/main.cpp.i
 
-CMakeFiles/ethercat_layer.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ethercat_layer.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/main.cpp -o CMakeFiles/ethercat_layer.dir/main.cpp.s
+CMakeFiles/ethercat_layer.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ethercat_layer.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/main.cpp -o CMakeFiles/ethercat_layer.dir/src/main.cpp.s
 
 # Object files for target ethercat_layer
 ethercat_layer_OBJECTS = \
-"CMakeFiles/ethercat_layer.dir/main.cpp.o"
+"CMakeFiles/ethercat_layer.dir/src/main.cpp.o"
 
 # External object files for target ethercat_layer
 ethercat_layer_EXTERNAL_OBJECTS =
 
-ethercat_layer: CMakeFiles/ethercat_layer.dir/main.cpp.o
+ethercat_layer: CMakeFiles/ethercat_layer.dir/src/main.cpp.o
 ethercat_layer: CMakeFiles/ethercat_layer.dir/build.make
 ethercat_layer: /usr/local/etherlab/lib/libethercat.a
 ethercat_layer: CMakeFiles/ethercat_layer.dir/link.txt
