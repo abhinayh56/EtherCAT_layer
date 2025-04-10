@@ -14,6 +14,7 @@ set(EtherCAT_LIB_PATH /usr/local/etherlab/lib/libethercat.a)
 # Add EC_master sources
 add_subdirectory(
     src/Ec_master
+    src/Ec_slave
 )
 
 # Main executable

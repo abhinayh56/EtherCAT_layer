@@ -41,11 +41,11 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/Ec_master/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Ec_slave/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ethercat_layer.dir/DependInfo.cmake"
-  "src/Ec_master/CMakeFiles/Ec_master.dir/DependInfo.cmake"
+  "src/Ec_slave/CMakeFiles/Ec_master.dir/DependInfo.cmake"
   )

@@ -64,38 +64,38 @@ CMAKE_BINARY_DIR = /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build
 
 # The main recursive "all" target.
 all: CMakeFiles/ethercat_layer.dir/all
-all: src/Ec_master/all
+all: src/Ec_slave/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: src/Ec_master/preinstall
+preinstall: src/Ec_slave/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/ethercat_layer.dir/clean
-clean: src/Ec_master/clean
+clean: src/Ec_slave/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory src/Ec_master
+# Directory level rules for directory src/Ec_slave
 
 # Recursive "all" directory target.
-src/Ec_master/all: src/Ec_master/CMakeFiles/Ec_master.dir/all
-.PHONY : src/Ec_master/all
+src/Ec_slave/all: src/Ec_slave/CMakeFiles/Ec_master.dir/all
+.PHONY : src/Ec_slave/all
 
 # Recursive "preinstall" directory target.
-src/Ec_master/preinstall:
-.PHONY : src/Ec_master/preinstall
+src/Ec_slave/preinstall:
+.PHONY : src/Ec_slave/preinstall
 
 # Recursive "clean" directory target.
-src/Ec_master/clean: src/Ec_master/CMakeFiles/Ec_master.dir/clean
-.PHONY : src/Ec_master/clean
+src/Ec_slave/clean: src/Ec_slave/CMakeFiles/Ec_master.dir/clean
+.PHONY : src/Ec_slave/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ethercat_layer.dir
 
 # All Build rule for target.
-CMakeFiles/ethercat_layer.dir/all: src/Ec_master/CMakeFiles/Ec_master.dir/all
+CMakeFiles/ethercat_layer.dir/all: src/Ec_slave/CMakeFiles/Ec_master.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=3,4 "Built target ethercat_layer"
@@ -118,30 +118,30 @@ CMakeFiles/ethercat_layer.dir/clean:
 .PHONY : CMakeFiles/ethercat_layer.dir/clean
 
 #=============================================================================
-# Target rules for target src/Ec_master/CMakeFiles/Ec_master.dir
+# Target rules for target src/Ec_slave/CMakeFiles/Ec_master.dir
 
 # All Build rule for target.
-src/Ec_master/CMakeFiles/Ec_master.dir/all:
-	$(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/depend
-	$(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/build
+src/Ec_slave/CMakeFiles/Ec_master.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_master.dir/build.make src/Ec_slave/CMakeFiles/Ec_master.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_master.dir/build.make src/Ec_slave/CMakeFiles/Ec_master.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=1,2 "Built target Ec_master"
-.PHONY : src/Ec_master/CMakeFiles/Ec_master.dir/all
+.PHONY : src/Ec_slave/CMakeFiles/Ec_master.dir/all
 
 # Build rule for subdir invocation for target.
-src/Ec_master/CMakeFiles/Ec_master.dir/rule: cmake_check_build_system
+src/Ec_slave/CMakeFiles/Ec_master.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/CMakeFiles/Ec_master.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave/CMakeFiles/Ec_master.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
-.PHONY : src/Ec_master/CMakeFiles/Ec_master.dir/rule
+.PHONY : src/Ec_slave/CMakeFiles/Ec_master.dir/rule
 
 # Convenience name for target.
-Ec_master: src/Ec_master/CMakeFiles/Ec_master.dir/rule
+Ec_master: src/Ec_slave/CMakeFiles/Ec_master.dir/rule
 .PHONY : Ec_master
 
 # clean rule for target.
-src/Ec_master/CMakeFiles/Ec_master.dir/clean:
-	$(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/clean
-.PHONY : src/Ec_master/CMakeFiles/Ec_master.dir/clean
+src/Ec_slave/CMakeFiles/Ec_master.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_master.dir/build.make src/Ec_slave/CMakeFiles/Ec_master.dir/clean
+.PHONY : src/Ec_slave/CMakeFiles/Ec_master.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

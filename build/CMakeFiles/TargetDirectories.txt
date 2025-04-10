@@ -1,6 +1,6 @@
 /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles/ethercat_layer.dir
 /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles/edit_cache.dir
 /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles/rebuild_cache.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_master/CMakeFiles/Ec_master.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_master/CMakeFiles/edit_cache.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_master/CMakeFiles/rebuild_cache.dir
+/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave/CMakeFiles/Ec_master.dir
+/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave/CMakeFiles/edit_cache.dir
+/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave/CMakeFiles/rebuild_cache.dir
