@@ -1,4 +1,4 @@
-CMakeFiles/main.dir/main.cpp.o: \
+CMakeFiles/ethercat_layer.dir/main.cpp.o: \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/bits/requires_hosted.h \

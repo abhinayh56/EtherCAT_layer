@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/myproject.dir/main.cpp.o -o myproject  /usr/local/etherlab/lib/libethercat.so 
+/usr/bin/c++ CMakeFiles/myproject.dir/main.cpp.o -o myproject  /usr/local/etherlab/lib/libethercat.a 

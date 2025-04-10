@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28.3)
-project(myproject)
+project(ethercat_layer)
 
 # Set include directories for EtherCAT headers
 include_directories(
@@ -10,6 +10,6 @@ include_directories(
 set(EtherCAT_LIB_PATH /usr/local/etherlab/lib/libethercat.a)
 
 # Create the executable from the source code
-add_executable(main main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
-target_link_libraries(main ${EtherCAT_LIB_PATH})
+target_link_libraries(${PROJECT_NAME} ${EtherCAT_LIB_PATH})
