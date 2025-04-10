@@ -1,1 +1,1 @@
-add_subdirectory(EC_master)
+add_subdirectory(Ec_master)

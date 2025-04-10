@@ -92,7 +92,7 @@ ethercat_layer_EXTERNAL_OBJECTS =
 
 ethercat_layer: CMakeFiles/ethercat_layer.dir/src/main.cpp.o
 ethercat_layer: CMakeFiles/ethercat_layer.dir/build.make
-ethercat_layer: src/EC_master/libEC_master.a
+ethercat_layer: src/Ec_master/libEc_master.a
 ethercat_layer: /usr/local/etherlab/lib/libethercat.a
 ethercat_layer: CMakeFiles/ethercat_layer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ethercat_layer"

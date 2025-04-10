@@ -13,12 +13,12 @@ set(EtherCAT_LIB_PATH /usr/local/etherlab/lib/libethercat.a)
 
 # Add EC_master sources
 add_subdirectory(
-    src/EC_master
+    src/Ec_master
 )
 
 # Main executable
 add_executable(${PROJECT_NAME} src/main.cpp)
 
 target_link_libraries(${PROJECT_NAME}
-    PRIVATE EC_master
+    PRIVATE Ec_master
 )

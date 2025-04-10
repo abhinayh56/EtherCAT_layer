@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_master//CMakeFiles/progress.marks
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,68 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named ethercat_layer
+# Convenience name for target.
+src/Ec_master/CMakeFiles/Ec_master.dir/rule:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/CMakeFiles/Ec_master.dir/rule
+.PHONY : src/Ec_master/CMakeFiles/Ec_master.dir/rule
 
-# Build rule for target.
-ethercat_layer: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ethercat_layer
-.PHONY : ethercat_layer
-
-# fast build rule for target.
-ethercat_layer/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/build
-.PHONY : ethercat_layer/fast
-
-#=============================================================================
-# Target rules for targets named Ec_master
-
-# Build rule for target.
-Ec_master: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_master
+# Convenience name for target.
+Ec_master: src/Ec_master/CMakeFiles/Ec_master.dir/rule
 .PHONY : Ec_master
 
 # fast build rule for target.
 Ec_master/fast:
-	$(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/build
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/build
 .PHONY : Ec_master/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+Ec_master.o: Ec_master.cpp.o
+.PHONY : Ec_master.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+Ec_master.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/Ec_master.cpp.o
+.PHONY : Ec_master.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+Ec_master.i: Ec_master.cpp.i
+.PHONY : Ec_master.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+Ec_master.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/Ec_master.cpp.i
+.PHONY : Ec_master.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+Ec_master.s: Ec_master.cpp.s
+.PHONY : Ec_master.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+Ec_master.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/Ec_master.cpp.s
+.PHONY : Ec_master.cpp.s
 
 # Help Target
 help:
@@ -175,10 +163,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Ec_master"
-	@echo "... ethercat_layer"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... Ec_master.o"
+	@echo "... Ec_master.i"
+	@echo "... Ec_master.s"
 .PHONY : help
 
 
@@ -190,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
