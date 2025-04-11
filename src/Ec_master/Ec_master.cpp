@@ -57,9 +57,9 @@ void Ec_master::config()
     set_slave_info();
     config_slaves();
     register_slaves_pdo_to_domain();
-    activate();
-    get_domain_process_data();
-    set_domain_process_data();
+    // activate();
+    // get_domain_process_data();
+    // set_domain_process_data();
     LOG_CONSOLE_INFO("Configurating all slaves done", 1);
 
     run = true;
@@ -165,7 +165,7 @@ void Ec_master::set_slave_info()
 
 void Ec_master::config_slaves()
 {
-    LOG_CONSOLE_INFO("Configuring slaves...", 1);
+    LOG_CONSOLE_INFO("Configuring slave---", 1);
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_INFO("Configuring slave ", 0);
@@ -174,7 +174,7 @@ void Ec_master::config_slaves()
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->config_slave(master);
     }
-    LOG_CONSOLE_INFO("Configured all slaves", 1);
+    LOG_CONSOLE_INFO("Configured slaves---", 1);
 }
 
 void Ec_master::register_slaves_pdo_to_domain()

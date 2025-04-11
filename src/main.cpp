@@ -14,9 +14,9 @@ int main()
     ec_master.add_slave(&el_2008);
     ec_master.add_slave(&el_1008);
 
-    // ec_master.start();
+    ec_master.start();
 
-    // ec_master.config();
+    ec_master.config();
 
     // while (ec_master.is_running())
     // {
