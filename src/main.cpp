@@ -4,12 +4,14 @@
 #include  "Ec_slave/Ec_slave_1.h"
 #include  "Ec_slave/Ec_slave_2.h"
 #include  "Ec_slave/Ec_slave_3.h"
+#include  "Ec_slave/Ec_slave_4.h"
 
 Ec_master ec_master;
 
 Ec_slave_1 el_2008(1, "EL_2008");
 Ec_slave_2 el_1008(2, "EL_1008");
 Ec_slave_3 rfid(3, "RFID");
+Ec_slave_4 mact_1(4, "MACT_1");
 
 int main()
 {

@@ -192,4 +192,5 @@ CMakeFiles/ethercat_layer.dir/src/main.cpp.o: \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_1.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_base.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_2.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_3.h
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_3.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_4.h
