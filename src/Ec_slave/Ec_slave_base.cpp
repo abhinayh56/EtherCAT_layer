@@ -49,14 +49,31 @@ void Ec_slave_base::config_slave(ec_master_t *master)
     }
 }
 
-void Ec_slave_base::config_data_transfer()
+void Ec_slave_base::set_slave_pdo() {}
+
+void Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
 {
+    if (ecrt_domain_reg_pdo_entry_list(domain_i, domain_i_regs))
+    {
+        fprintf(stderr, "PDO entry registration failed!\n");
+    }
+    else
+    {
+        std::cout << "PDO entry in domain successful" << std::endl;
+    }
 }
 
-void Ec_slave_base::publish_data()
+void Ec_slave_base::set_domain(uint8_t *domain_i_pd_)
 {
+    domain_i_pd = domain_i_pd_;
 }
 
-void Ec_slave_base::subscribe_data()
-{
-}
+void Ec_slave_base::monitor_status() {}
+void Ec_slave_base::transfer_tx_pdo() {}
+void Ec_slave_base::transfer_rx_pdo() {}
+void Ec_slave_base::process_tx_pdo() {}
+void Ec_slave_base::process_rx_pdo() {}
+
+void Ec_slave_base::config_data_transfer() {}
+void Ec_slave_base::publish_data() {}
+void Ec_slave_base::subscribe_data() {}

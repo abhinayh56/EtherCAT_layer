@@ -19,10 +19,19 @@ public:
     uint16_t get_slave_address();
 
     void config_slave(ec_master_t *master);
+    virtual void set_slave_pdo();
+    void register_pdo_to_domain(ec_domain_t *domain_i);
+    void set_domain(uint8_t *domain_i_pd_);
 
-    void config_data_transfer();
-    void publish_data();
-    void subscribe_data();
+    virtual void monitor_status();
+    virtual void transfer_tx_pdo();
+    virtual void transfer_rx_pdo();
+    virtual void process_tx_pdo();
+    virtual void process_rx_pdo();
+
+    virtual void config_data_transfer();
+    virtual void publish_data();
+    virtual void subscribe_data();
 
 protected:
     std::string slave_name;
