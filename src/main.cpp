@@ -18,6 +18,7 @@ int main()
     ec_master.add_slave(&el_2008);
     ec_master.add_slave(&el_1008);
     ec_master.add_slave(&rfid);
+    ec_master.add_slave(&mact_1);
 
     ec_master.start();
 
