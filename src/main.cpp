@@ -15,11 +15,11 @@ int main()
 
     ec_master.config();
 
-    // while (ec_master.is_running())
-    // {
-    //     ec_master.cyclic_task();
-    //     usleep(4000);
-    // }
+    while (ec_master.is_running())
+    {
+        ec_master.cyclic_task();
+        usleep(4000);
+    }
 
     return 0;
 }
