@@ -28,6 +28,27 @@ uint16_t Ec_slave_base::get_slave_address()
     return slave_address;
 }
 
+void Ec_slave_base::config_slave(ec_master_t *master)
+{
+    if (!(sc = ecrt_master_slave_config(master, slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code)))
+    {
+        std::cout << "configuring failed for slaves " << std::endl;
+    }
+    else
+    {
+        std::cout << "configuring done for slaves " << std::endl;
+    }
+
+    if (ecrt_slave_config_pdos(sc, EC_END, slave_info.slave_syncs))
+    {
+        std::cout << "configuring pdo failed for slave " << std::endl;
+    }
+    else
+    {
+        std::cout << "configuring pdo done for slave " << std::endl;
+    }
+}
+
 void Ec_slave_base::config_data_transfer()
 {
 }

@@ -1,7 +1,9 @@
 #ifndef EC_SLAVE_BASE_H
 #define EC_SLAVE_BASE_H
 
+#include <ecrt.h>
 #include <stdint.h>
+#include "../Ec_utils/Ec_utils.h"
 #include "../Common/Data_transfer.h"
 #include "../Ec_logger/Ec_logger_console/Ec_logger_console.h"
 
@@ -16,6 +18,8 @@ public:
     void set_slave_address(uint16_t slave_address_);
     uint16_t get_slave_address();
 
+    void config_slave(ec_master_t *master);
+
     void config_data_transfer();
     void publish_data();
     void subscribe_data();
@@ -23,6 +27,13 @@ public:
 protected:
     std::string slave_name;
     uint16_t slave_address;
+    Slave_info slave_info;
+
+    ec_slave_config_t *sc;
+    ec_slave_config_state_t sc_state;
+    uint8_t *domain_i_pd = NULL;
+
+    ec_pdo_entry_reg_t *domain_i_regs;
 };
 
 #endif // EC_SLAVE_BASE_H
