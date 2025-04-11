@@ -40,9 +40,7 @@ public:
         // std::cout << "dig_input: " << dig_input << std::endl;
     }
 
-    virtual void transfer_rx_pdo() {}
-
-    virtual void process_tx_pdo()
+    virtual void transfer_rx_pdo()
     {
         uint16_t Device_ID = EC_READ_U16(domain_i_pd + off_tx_pdo_1);
         uint16_t Second = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
@@ -69,6 +67,7 @@ public:
         std::cout << "RFID_TXPDO: " << Device_ID << ", " << Second << ", " << Minute << ", " << Hour << ", " << Day << ", " << Month << ", " << Year << ", " << Roll_Offset << ", " << Pitch_Offset << ", " << Yaw_Offset << ", " << Grip_Offset << ", " << No_of_Usages << ", " << Max_Usages << ", " << Digital_Inputs << ", " << Grip_Counts << ", " << System_Number << ", " << Device_UID << ", " << Spare_Bytes << ", " << MFG_Day << ", " << MFG_Month << ", " << MFG_Year << std::endl;
     }
 
+    virtual void process_tx_pdo() {}
     virtual void process_rx_pdo() {}
     virtual void config_data_transfer() {}
     virtual void publish_data() {}
