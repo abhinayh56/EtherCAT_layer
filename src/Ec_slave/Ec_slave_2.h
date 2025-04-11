@@ -33,7 +33,13 @@ public:
     }
 
     virtual void monitor_status() {}
-    virtual void transfer_tx_pdo() {}
+    
+    virtual void transfer_tx_pdo()
+    {
+        uint16_t dig_input = EC_READ_U8(domain_i_pd + off_1);
+        std::cout << "dig_input: " << dig_input <<  std::endl;
+    }
+
     virtual void transfer_rx_pdo() {}
     virtual void process_tx_pdo() {}
     virtual void process_rx_pdo() {}

@@ -57,9 +57,9 @@ void Ec_master::config()
     set_slave_info();
     config_slaves();
     register_slaves_pdo_to_domain();
-    // activate();
-    // get_domain_process_data();
-    // set_domain_process_data();
+    activate();
+    get_domain_process_data();
+    set_domain_process_data();
     LOG_CONSOLE_INFO("Configurating all slaves done", 1);
 
     run = true;
