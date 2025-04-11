@@ -40,7 +40,10 @@ bool Ec_master::start()
 bool Ec_master::stop()
 {
     LOG_CONSOLE_INFO("Stopping master...", 1);
-    ecrt_release_master(master);
+    if(run)
+    {
+        ecrt_release_master(master);
+    }
     LOG_CONSOLE_INFO("Master stopped", 1);
     run = false;
     return true;
@@ -48,7 +51,7 @@ bool Ec_master::stop()
 
 void Ec_master::config()
 {
-    LOG_CONSOLE_ERROR("Configuring all slaves starts...", 1);
+    LOG_CONSOLE_INFO("Configuring all slaves starts...", 1);
     config_slaves_data_transfer();
     create_domain();
     set_slave_info();
@@ -57,7 +60,7 @@ void Ec_master::config()
     activate();
     get_domain_process_data();
     set_domain_process_data();
-    LOG_CONSOLE_ERROR("Configurating all slaves done", 1);
+    LOG_CONSOLE_INFO("Configurating all slaves done", 1);
 
     run = true;
 }
@@ -122,10 +125,10 @@ void Ec_master::config_slaves_data_transfer()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_INFO("Configuring data transfer of slave ", 0);
-        LOG_CONSOLE_INFO(i, 0);
-        LOG_CONSOLE_INFO(" of ", 0);
-        LOG_CONSOLE_INFO(num_slaves, 1);
-        // slave_base_arr[i]->config_data_transfer();
+        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE(" of ", 0);
+        LOG_CONSOLE(num_slaves, 1);
+        slave_base_arr[i]->config_data_transfer();
     }
     LOG_CONSOLE_INFO("Configured data transfer of all slave ", 1);
 }
@@ -152,9 +155,9 @@ void Ec_master::set_slave_info()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_INFO("Setting slave info ", 0);
-        LOG_CONSOLE_INFO(i, 0);
-        LOG_CONSOLE_INFO(" of ", 0);
-        LOG_CONSOLE_INFO(num_slaves, 1);
+        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE(" of ", 0);
+        LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->set_info();
     }
     LOG_CONSOLE_INFO("Configured all slaves", 1);
@@ -166,9 +169,9 @@ void Ec_master::config_slaves()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_INFO("Configuring slave ", 0);
-        LOG_CONSOLE_INFO(i, 0);
-        LOG_CONSOLE_INFO(" of ", 0);
-        LOG_CONSOLE_INFO(num_slaves, 1);
+        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE(" of ", 0);
+        LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->config_slave(master);
     }
     LOG_CONSOLE_INFO("Configured all slaves", 1);
@@ -180,9 +183,9 @@ void Ec_master::register_slaves_pdo_to_domain()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_INFO("Registering pdos for slave ", 0);
-        LOG_CONSOLE_INFO(i, 0);
-        LOG_CONSOLE_INFO(" of ", 0);
-        LOG_CONSOLE_INFO(num_slaves, 1);
+        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE(" of ", 0);
+        LOG_CONSOLE(num_slaves, 1);
         LOG_CONSOLE_INFO("Setting slave pdos", 1);
         slave_base_arr[i]->set_pdo();
         LOG_CONSOLE_INFO("Pdo list is set", 1);
@@ -229,10 +232,10 @@ void Ec_master::set_domain_process_data()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_INFO("Providing pointer to domain process data to slave ", 0);
-        LOG_CONSOLE_INFO(i, 0);
-        LOG_CONSOLE_INFO(" of ", 0);
-        LOG_CONSOLE_INFO(num_slaves, 1);
-        // slave_base_arr[i]->set_domain(domain_i_pd);
+        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE(" of ", 0);
+        LOG_CONSOLE(num_slaves, 1);
+        slave_base_arr[i]->set_domain(domain_i_pd);
     }
 }
 
@@ -240,7 +243,7 @@ void Ec_master::monitor_status()
 {
     for (int i = 0; i < num_slaves; i++)
     {
-        // slave_base_arr[i]->monitor_status();
+        slave_base_arr[i]->monitor_status();
     }
 }
 
@@ -248,7 +251,7 @@ void Ec_master::transfer_tx_pdo()
 {
     for (int i = 0; i < num_slaves; i++)
     {
-        // slave_base_arr[i]->transfer_tx_pdo();
+        slave_base_arr[i]->transfer_tx_pdo();
     }
 }
 
@@ -256,7 +259,7 @@ void Ec_master::process_tx_pdo()
 {
     for (int i = 0; i < num_slaves; i++)
     {
-        // slave_base_arr[i]->process_tx_pdo();
+        slave_base_arr[i]->process_tx_pdo();
     }
 }
 
@@ -264,7 +267,7 @@ void Ec_master::publish_data()
 {
     for (int i = 0; i < num_slaves; i++)
     {
-        // slave_base_arr[i]->publish_data();
+        slave_base_arr[i]->publish_data();
     }
 }
 
@@ -272,7 +275,7 @@ void Ec_master::subscribe_data()
 {
     for (int i = 0; i < num_slaves; i++)
     {
-        // slave_base_arr[i]->subscribe_data();
+        slave_base_arr[i]->subscribe_data();
     }
 }
 
@@ -280,7 +283,7 @@ void Ec_master::process_rx_pdo()
 {
     for (int i = 0; i < num_slaves; i++)
     {
-        // slave_base_arr[i]->process_rx_pdo();
+        slave_base_arr[i]->process_rx_pdo();
     }
 }
 
@@ -288,6 +291,6 @@ void Ec_master::transfer_rx_pdo()
 {
     for (int i = 0; i < num_slaves; i++)
     {
-        // slave_base_arr[i]->transfer_rx_pdo();
+        slave_base_arr[i]->transfer_rx_pdo();
     }
 }

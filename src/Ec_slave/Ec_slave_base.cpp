@@ -34,20 +34,20 @@ void Ec_slave_base::config_slave(ec_master_t *master)
 {
     if (!(sc = ecrt_master_slave_config(master, slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code)))
     {
-        std::cout << "configuring failed for slaves " << std::endl;
+        LOG_CONSOLE_ERROR("Configuration failed", 1);
     }
     else
     {
-        std::cout << "configuring done for slaves " << std::endl;
+        LOG_CONSOLE_INFO("Configuration done", 1);
     }
 
     if (ecrt_slave_config_pdos(sc, EC_END, slave_info.slave_syncs))
     {
-        std::cout << "configuring pdo failed for slave " << std::endl;
+        LOG_CONSOLE_ERROR("Configuration of pdo failed", 1);
     }
     else
     {
-        std::cout << "configuring pdo done for slave " << std::endl;
+        LOG_CONSOLE_INFO("Configuration of pdo done", 1);
     }
 }
 
@@ -57,11 +57,11 @@ void Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
 {
     if (ecrt_domain_reg_pdo_entry_list(domain_i, domain_i_regs))
     {
-        fprintf(stderr, "PDO entry registration failed!\n");
+        LOG_CONSOLE_ERROR("PDO entry registration failed", 1);
     }
     else
     {
-        std::cout << "PDO entry in domain successful" << std::endl;
+        LOG_CONSOLE_INFO("PDO entry registration done", 1);
     }
 }
 
