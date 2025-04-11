@@ -63,26 +63,68 @@ public:
 
     virtual void transfer_rx_pdo()
     {
-        // uint16_t dig_input = EC_READ_U8(domain_i_pd + off_1);
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x01, &off_rx_pdo_1},  /* Acknowledge */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x02, &off_rx_pdo_2},  /* Second */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x03, &off_rx_pdo_3},  /* Minute */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x04, &off_rx_pdo_4},  /* Hour */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x05, &off_rx_pdo_5},  /* Day */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x06, &off_rx_pdo_6},  /* Month */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x07, &off_rx_pdo_7},  /* Year */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x08, &off_rx_pdo_8},  /* No_of_Usages */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x09, &off_rx_pdo_9},  /* Digital_Outputs */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0a, &off_rx_pdo_10}, /* Grip_Counts */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0b, &off_rx_pdo_11}, /* System_Number */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0c, &off_rx_pdo_12}, /* Led_Red */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0d, &off_rx_pdo_13}, /* Led_Green */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0e, &off_rx_pdo_14}, /* Led_Blue */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0f, &off_rx_pdo_15}, /* Spare_Bytes */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x10, &off_rx_pdo_16}, /* Roll_Offset */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x11, &off_rx_pdo_17}, /* Pitch_Offset */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x12, &off_rx_pdo_18}, /* Yaw_Offset */
-        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x13, &off_rx_pdo_19}, /* Grip_Offset */
+        uint16_t Led_Red = 0;
+        uint16_t Led_Green = 0;
+        uint16_t Led_Blue = 1;
+
+        t_stamp += 4;
+        if(t_stamp>=8000)
+        {
+            t_stamp = 0;
+        }
+
+        if(t_stamp <= 1000)
+        {
+            Led_Red = 1;
+            Led_Green = 0;
+            Led_Blue = 0;
+        }
+        else if((1000 <= t_stamp) && (t_stamp <= 2000))
+        {
+            Led_Red = 0;
+            Led_Green = 1;
+            Led_Blue = 0;
+        }
+        else if((2000 <= t_stamp) && (t_stamp <= 3000))
+        {
+            Led_Red = 0;
+            Led_Green = 0;
+            Led_Blue = 1;
+        }
+        else if((3000 <= t_stamp) && (t_stamp <= 4000))
+        {
+            Led_Red = 1;
+            Led_Green = 1;
+            Led_Blue = 0;
+        }
+        else if((4000 <= t_stamp) && (t_stamp <= 5000))
+        {
+            Led_Red = 1;
+            Led_Green = 0;
+            Led_Blue = 1;
+        }
+        else if((5000 <= t_stamp) && (t_stamp <= 6000))
+        {
+            Led_Red = 0;
+            Led_Green = 1;
+            Led_Blue = 1;
+        }
+        else if((6000 <= t_stamp) && (t_stamp <= 7000))
+        {
+            Led_Red = 1;
+            Led_Green = 1;
+            Led_Blue = 1;
+        }
+        else if(7000 <= t_stamp)
+        {
+            Led_Red = 0;
+            Led_Green = 0;
+            Led_Blue = 0;
+        }
+
+        EC_WRITE_U16(domain_i_pd + off_rx_pdo_12, Led_Red);
+        EC_WRITE_U16(domain_i_pd + off_rx_pdo_13, Led_Green);
+        EC_WRITE_U16(domain_i_pd + off_rx_pdo_14, Led_Blue);
     }
 
     virtual void process_tx_pdo() {}
@@ -233,6 +275,8 @@ private:
         {0, 7, 0x00006000, 0x00004000, 0x0006, 0x14, &off_tx_pdo_20}, /* MFG_Month */
         {0, 7, 0x00006000, 0x00004000, 0x0006, 0x15, &off_tx_pdo_21}, /* MFG_Year */
         {}};
+
+        unsigned long t_stamp = 0;
 };
 
 #endif // EC_SLAVE_3_H
