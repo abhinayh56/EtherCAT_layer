@@ -113,16 +113,6 @@ bool Ec_master::is_running()
 
 void Ec_master::config_slaves_data_transfer()
 {
-    LOG_CONSOLE_INFO("Configuring data transfer of slaves...", 1);
-    for (int i = 0; i < num_slaves; i++)
-    {
-        LOG_CONSOLE_INFO("Configuring data transfer of slave ", 0);
-        LOG_CONSOLE_INFO(i, 0);
-        LOG_CONSOLE_INFO(" of ", 0);
-        LOG_CONSOLE_INFO(num_slaves, 1);
-        slave_base_arr[i]->config_data_transfer();
-    }
-    LOG_CONSOLE_INFO("Configured data transfer of all slave ", 1);
 }
 
 bool Ec_master::create_domain()
