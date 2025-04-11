@@ -12,7 +12,7 @@ public:
     ~Ec_slave_base();
 
     void set_slave_name(const std::string &slave_name_);
-    const std::string &get_slave_name() const;
+    const std::string &get_slave_name();
     void set_slave_address(uint16_t slave_address_);
     uint16_t get_slave_address();
 

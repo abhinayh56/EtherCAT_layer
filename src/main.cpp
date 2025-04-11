@@ -10,12 +10,14 @@ int main()
 {
     ec_master.start();
     ec_master.stop();
-    ec_master.config();
 
     std::cout << "Hi code" << std::endl;
 
     ec_slave_base.set_slave_address(12345);
-    std::cout << "slave_addr: " << ec_slave_base.get_slave_address();
+    std::cout << "slave_addr: " << ec_slave_base.get_slave_address() << std::endl;
+
+    ec_slave_base.set_slave_name("THIS_is_slave_name");
+    std::cout << "slave_name: " << ec_slave_base.get_slave_name() << std::endl;
 
     return 0;
 }
