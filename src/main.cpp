@@ -13,7 +13,7 @@ int main()
 
     ec_master.start();
 
-    // ec_master.config();
+    ec_master.config();
 
     // while (ec_master.is_running())
     // {
