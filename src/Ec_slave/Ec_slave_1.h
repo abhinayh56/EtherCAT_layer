@@ -34,7 +34,27 @@ public:
 
     virtual void monitor_status() {}
     virtual void transfer_tx_pdo() {}
-    virtual void transfer_rx_pdo() {}
+
+    virtual void transfer_rx_pdo()
+    {
+        time_stamp += 4;
+        if(time_stamp>=2000)
+        {
+            time_stamp = 0;
+        }
+
+        if(time_stamp <=1000)
+        {
+            // led on
+            EC_WRITE_U8(domain_i_pd + off_1, 0xAA);
+        }
+        else
+        {
+            // led off
+            EC_WRITE_U8(domain_i_pd + off_1, 0x55);
+        }
+    }
+
     virtual void process_tx_pdo() {}
     virtual void process_rx_pdo() {}
     virtual void config_data_transfer() {}
@@ -77,6 +97,8 @@ private:
     ec_pdo_entry_reg_t domain_regs[2] = {
         {0, 1, 0x00000002, 0x07d83052, 0x7000, 0x01, &off_1},
         {}};
+    
+    unsigned long time_stamp = 0;
 };
 
 #endif // EC_SLAVE_1_H
