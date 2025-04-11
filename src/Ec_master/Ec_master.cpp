@@ -39,6 +39,9 @@ bool Ec_master::start()
 
 bool Ec_master::stop()
 {
+    LOG_CONSOLE_INFO("Stopping master...", 1);
+    ecrt_release_master(master);
+    LOG_CONSOLE_INFO("Master stopped", 1);
     return true;
 }
 
@@ -113,59 +116,163 @@ bool Ec_master::is_running()
 
 void Ec_master::config_slaves_data_transfer()
 {
+    LOG_CONSOLE_INFO("Configuring data transfer of slaves...", 1);
+    for (int i = 0; i < num_slaves; i++)
+    {
+        LOG_CONSOLE_INFO("Configuring data transfer of slave ", 0);
+        LOG_CONSOLE_INFO(i, 0);
+        LOG_CONSOLE_INFO(" of ", 0);
+        LOG_CONSOLE_INFO(num_slaves, 1);
+        // slave_base_arr[i]->config_data_transfer();
+    }
+    LOG_CONSOLE_INFO("Configured data transfer of all slave ", 1);
 }
 
 bool Ec_master::create_domain()
 {
-    return true;
+    LOG_CONSOLE_INFO("Creating domain...", 1);
+    domain_i = ecrt_master_create_domain(master);
+    if (domain_i)
+    {
+        LOG_CONSOLE_INFO("Domain creation successful", 1);
+        return true;
+    }
+    else
+    {
+        LOG_CONSOLE_ERROR("Domain creation failed", 1);
+        return false;
+    }
 }
 
 void Ec_master::config_slaves()
 {
+    LOG_CONSOLE_INFO("Configuring slaves...", 1);
+    for (int i = 0; i < num_slaves; i++)
+    {
+        LOG_CONSOLE_INFO("Configuring slave ", 0);
+        LOG_CONSOLE_INFO(i, 0);
+        LOG_CONSOLE_INFO(" of ", 0);
+        LOG_CONSOLE_INFO(num_slaves, 1);
+        // slave_base_arr[i]->config_slave(master);
+    }
+    LOG_CONSOLE_INFO("Configured all slaves", 1);
 }
 
 void Ec_master::register_slaves_pdo_to_domain()
 {
+    LOG_CONSOLE_INFO("Registering pdos", 1);
+    for (int i = 0; i < num_slaves; i++)
+    {
+        LOG_CONSOLE_INFO("Registering pdos for slave ", 0);
+        LOG_CONSOLE_INFO(i, 0);
+        LOG_CONSOLE_INFO(" of ", 0);
+        LOG_CONSOLE_INFO(num_slaves, 1);
+        LOG_CONSOLE_INFO("Registering tx_pdos", 1);
+        // slave_base_arr[i]->register_tx_pdo();
+        LOG_CONSOLE_INFO("Registering rx_pdos", 1);
+        // slave_base_arr[i]->register_rx_pdo();
+        LOG_CONSOLE_INFO("Registering tx,rx_pdos to domain", 1);
+        // slave_base_arr[i]->register_pdo_to_domain(domain_i);
+    }
+    LOG_CONSOLE_INFO("Registered all pdos", 1);
 }
 
 bool Ec_master::activate()
 {
-    return true;
+    LOG_CONSOLE_INFO("Activating master...", 1);
+    if (!ecrt_master_activate(master))
+    {
+        LOG_CONSOLE_INFO("Master activated successfully", 1);
+        return true;
+    }
+    else
+    {
+        LOG_CONSOLE_ERROR("Failed to activate master", 1);
+        return false;
+    }
 }
 
 bool Ec_master::get_domain_process_data()
 {
-    return true;
+    LOG_CONSOLE_INFO("Getting pointer to domain process data...", 1);
+    domain_i_pd = ecrt_domain_data(domain_i);
+    if (domain_i_pd)
+    {
+        LOG_CONSOLE_INFO("Domain process data pointer get successful", 1);
+        return true;
+    }
+    else
+    {
+        LOG_CONSOLE_ERROR("Failed to get domain process data pointer", 1);
+        return false;
+    }
 }
 
 void Ec_master::set_domain_process_data()
 {
+    LOG_CONSOLE_INFO("Providing pointer to domain process data...", 1);
+    for (int i = 0; i < num_slaves; i++)
+    {
+        LOG_CONSOLE_INFO("Providing pointer to domain process data to slave ", 0);
+        LOG_CONSOLE_INFO(i, 0);
+        LOG_CONSOLE_INFO(" of ", 0);
+        LOG_CONSOLE_INFO(num_slaves, 1);
+        // slave_base_arr[i]->set_domain(domain_i_pd);
+    }
 }
 
 void Ec_master::monitor_status()
 {
+    for (int i = 0; i < num_slaves; i++)
+    {
+        // slave_base_arr[i]->monitor_status();
+    }
 }
 
 void Ec_master::transfer_tx_pdo()
 {
+    for (int i = 0; i < num_slaves; i++)
+    {
+        // slave_base_arr[i]->transfer_tx_pdo();
+    }
 }
 
 void Ec_master::process_tx_pdo()
 {
+    for (int i = 0; i < num_slaves; i++)
+    {
+        // slave_base_arr[i]->process_tx_pdo();
+    }
 }
 
 void Ec_master::publish_data()
 {
+    for (int i = 0; i < num_slaves; i++)
+    {
+        // slave_base_arr[i]->publish_data();
+    }
 }
 
 void Ec_master::subscribe_data()
 {
+    for (int i = 0; i < num_slaves; i++)
+    {
+        // slave_base_arr[i]->subscribe_data();
+    }
 }
 
 void Ec_master::process_rx_pdo()
 {
+    for (int i = 0; i < num_slaves; i++)
+    {
+        // slave_base_arr[i]->process_rx_pdo();
+    }
 }
 
 void Ec_master::transfer_rx_pdo()
 {
+    for (int i = 0; i < num_slaves; i++)
+    {
+        // slave_base_arr[i]->transfer_rx_pdo();
+    }
 }
