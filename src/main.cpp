@@ -5,11 +5,11 @@
 
 Ec_master ec_master;
 
-Ec_slave_1 ec_slave_1(1001, "SLAVE_1_ADDR");
+Ec_slave_1 el_2008(1, "SLAVE_1_ADDR");
 
 int main()
 {
-    ec_master.add_slave(&ec_slave_1);
+    ec_master.add_slave(&el_2008);
 
     ec_master.start();
 
