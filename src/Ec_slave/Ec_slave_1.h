@@ -44,14 +44,14 @@ private:
     unsigned int off_8;
 
     ec_pdo_entry_reg_t domain_regs[9] = {
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6064, 0x00, &off_1},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6041, 0x00, &off_2},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6077, 0x00, &off_3},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6061, 0x00, &off_4},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x603f, 0x00, &off_5},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x3002, 0x00, &off_6},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x606c, 0x00, &off_7},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x3007, 0x00, &off_8},
+        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x7000, 0x01, &off_1},
+        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x7010, 0x01, &off_2},
+        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x7020, 0x01, &off_3},
+        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x7030, 0x01, &off_4},
+        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x7040, 0x01, &off_5},
+        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x7050, 0x01, &off_6},
+        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x7060, 0x01, &off_7},
+        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x7070, 0x01, &off_8},
         {}};
 
 public:
