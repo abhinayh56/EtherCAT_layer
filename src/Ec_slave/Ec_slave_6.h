@@ -147,21 +147,21 @@ private:
     unsigned int off_tx_pdo_8;
 
     ec_pdo_entry_reg_t domain_regs[41] = {
-        {0, 8, 0x00113322, 0x00001022, 0x607a, 0x00, &off_rx_pdo_1}, /* TARGET_POS */
-        {0, 8, 0x00113322, 0x00001022, 0x6040, 0x00, &off_rx_pdo_2}, /* CONTROL_WD */
-        {0, 8, 0x00113322, 0x00001022, 0x6071, 0x00, &off_rx_pdo_3}, /* TARGET_TORQ */
-        {0, 8, 0x00113322, 0x00001022, 0x6060, 0x00, &off_rx_pdo_4}, /* OP_MODE */
-        {0, 8, 0x00113322, 0x00001022, 0x3004, 0x00, &off_rx_pdo_5}, /* ERROR_CLEAR */
-        {0, 8, 0x00113322, 0x00001022, 0x3001, 0x00, &off_rx_pdo_6}, /* DIG_OUT */
-        {0, 8, 0x00113322, 0x00001022, 0x60ff, 0x00, &off_rx_pdo_7}, /* TARGET_VEL */
-        {0, 8, 0x00113322, 0x00001022, 0x6064, 0x00, &off_tx_pdo_1}, /* ACT_POS */
-        {0, 8, 0x00113322, 0x00001022, 0x6041, 0x00, &off_tx_pdo_2}, /* STATUS_WD */
-        {0, 8, 0x00113322, 0x00001022, 0x6077, 0x00, &off_tx_pdo_3}, /* ACT_TOR */
-        {0, 8, 0x00113322, 0x00001022, 0x6061, 0x00, &off_tx_pdo_4}, /* OPMODE_DISP */
-        {0, 8, 0x00113322, 0x00001022, 0x603f, 0x00, &off_tx_pdo_5}, /* ERROR_CODE */
-        {0, 8, 0x00113322, 0x00001022, 0x3002, 0x00, &off_tx_pdo_6}, /* DIG_IN */
-        {0, 8, 0x00113322, 0x00001022, 0x606c, 0x00, &off_tx_pdo_7}, /* ACT_VEL */
-        {0, 8, 0x00113322, 0x00001022, 0x3007, 0x00, &off_tx_pdo_8}, /* ADC_VAL */
+        {0, 10, 0x00113322, 0x00001022, 0x607a, 0x00, &off_rx_pdo_1}, /* TARGET_POS */
+        {0, 10, 0x00113322, 0x00001022, 0x6040, 0x00, &off_rx_pdo_2}, /* CONTROL_WD */
+        {0, 10, 0x00113322, 0x00001022, 0x6071, 0x00, &off_rx_pdo_3}, /* TARGET_TORQ */
+        {0, 10, 0x00113322, 0x00001022, 0x6060, 0x00, &off_rx_pdo_4}, /* OP_MODE */
+        {0, 10, 0x00113322, 0x00001022, 0x3004, 0x00, &off_rx_pdo_5}, /* ERROR_CLEAR */
+        {0, 10, 0x00113322, 0x00001022, 0x3001, 0x00, &off_rx_pdo_6}, /* DIG_OUT */
+        {0, 10, 0x00113322, 0x00001022, 0x60ff, 0x00, &off_rx_pdo_7}, /* TARGET_VEL */
+        {0, 10, 0x00113322, 0x00001022, 0x6064, 0x00, &off_tx_pdo_1}, /* ACT_POS */
+        {0, 10, 0x00113322, 0x00001022, 0x6041, 0x00, &off_tx_pdo_2}, /* STATUS_WD */
+        {0, 10, 0x00113322, 0x00001022, 0x6077, 0x00, &off_tx_pdo_3}, /* ACT_TOR */
+        {0, 10, 0x00113322, 0x00001022, 0x6061, 0x00, &off_tx_pdo_4}, /* OPMODE_DISP */
+        {0, 10, 0x00113322, 0x00001022, 0x603f, 0x00, &off_tx_pdo_5}, /* ERROR_CODE */
+        {0, 10, 0x00113322, 0x00001022, 0x3002, 0x00, &off_tx_pdo_6}, /* DIG_IN */
+        {0, 10, 0x00113322, 0x00001022, 0x606c, 0x00, &off_tx_pdo_7}, /* ACT_VEL */
+        {0, 10, 0x00113322, 0x00001022, 0x3007, 0x00, &off_tx_pdo_8}, /* ADC_VAL */
         {}};
 
     unsigned long t_stamp = 0;
