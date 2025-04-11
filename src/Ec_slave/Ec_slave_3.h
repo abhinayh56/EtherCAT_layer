@@ -36,12 +36,6 @@ public:
 
     virtual void transfer_tx_pdo()
     {
-        // uint16_t dig_input = EC_READ_U8(domain_i_pd + off_1);
-        // std::cout << "dig_input: " << dig_input << std::endl;
-    }
-
-    virtual void transfer_rx_pdo()
-    {
         uint16_t Device_ID = EC_READ_U16(domain_i_pd + off_tx_pdo_1);
         uint16_t Second = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
         uint16_t Minute = EC_READ_U16(domain_i_pd + off_tx_pdo_3);
@@ -65,6 +59,30 @@ public:
         uint16_t MFG_Year = EC_READ_U16(domain_i_pd + off_tx_pdo_21);
 
         std::cout << "RFID_TXPDO: " << Device_ID << ", " << Second << ", " << Minute << ", " << Hour << ", " << Day << ", " << Month << ", " << Year << ", " << Roll_Offset << ", " << Pitch_Offset << ", " << Yaw_Offset << ", " << Grip_Offset << ", " << No_of_Usages << ", " << Max_Usages << ", " << Digital_Inputs << ", " << Grip_Counts << ", " << System_Number << ", " << Device_UID << ", " << Spare_Bytes << ", " << MFG_Day << ", " << MFG_Month << ", " << MFG_Year << std::endl;
+    }
+
+    virtual void transfer_rx_pdo()
+    {
+        // uint16_t dig_input = EC_READ_U8(domain_i_pd + off_1);
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x01, &off_rx_pdo_1},  /* Acknowledge */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x02, &off_rx_pdo_2},  /* Second */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x03, &off_rx_pdo_3},  /* Minute */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x04, &off_rx_pdo_4},  /* Hour */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x05, &off_rx_pdo_5},  /* Day */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x06, &off_rx_pdo_6},  /* Month */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x07, &off_rx_pdo_7},  /* Year */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x08, &off_rx_pdo_8},  /* No_of_Usages */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x09, &off_rx_pdo_9},  /* Digital_Outputs */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0a, &off_rx_pdo_10}, /* Grip_Counts */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0b, &off_rx_pdo_11}, /* System_Number */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0c, &off_rx_pdo_12}, /* Led_Red */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0d, &off_rx_pdo_13}, /* Led_Green */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0e, &off_rx_pdo_14}, /* Led_Blue */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x0f, &off_rx_pdo_15}, /* Spare_Bytes */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x10, &off_rx_pdo_16}, /* Roll_Offset */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x11, &off_rx_pdo_17}, /* Pitch_Offset */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x12, &off_rx_pdo_18}, /* Yaw_Offset */
+        // {0, 7, 0x00006000, 0x00004000, 0x0005, 0x13, &off_rx_pdo_19}, /* Grip_Offset */
     }
 
     virtual void process_tx_pdo() {}
