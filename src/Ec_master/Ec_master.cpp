@@ -16,8 +16,8 @@ void Ec_master::add_slave(Ec_slave_base *new_slave)
     LOG_CONSOLE_INFO("Assigning new slave to master", 1);
     slave_base_arr.push_back(new_slave);
     num_slaves = slave_base_arr.size();
-    LOG_CONSOLE_INFO("Total number of slaves assigned to master are ", 0);
-    LOG_CONSOLE_INFO(num_slaves, 1);
+    LOG_CONSOLE_INFO("Total number of slaves assigned to master: ", 0);
+    LOG_CONSOLE(num_slaves, 1);
 }
 
 bool Ec_master::start()
