@@ -42,6 +42,7 @@ bool Ec_master::stop()
     LOG_CONSOLE_INFO("Stopping master...", 1);
     ecrt_release_master(master);
     LOG_CONSOLE_INFO("Master stopped", 1);
+    run = false;
     return true;
 }
 
