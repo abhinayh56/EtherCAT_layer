@@ -15,13 +15,17 @@ public:
 
     ~Ec_slave_1() {}
 
-    void set_slave_info()
-    {
-    }
-
-    void set_slave_pdo()
-    {
-    }
+    virtual void set_info() {}
+    virtual void config_slave(ec_master_t *master) {}
+    virtual void set_pdo() {}
+    virtual void monitor_status() {}
+    virtual void transfer_tx_pdo() {}
+    virtual void transfer_rx_pdo() {}
+    virtual void process_tx_pdo() {}
+    virtual void process_rx_pdo() {}
+    virtual void config_data_transfer() {}
+    virtual void publish_data() {}
+    virtual void subscribe_data() {}
 };
 
 #endif // EC_SLAVE_1_H

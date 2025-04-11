@@ -13,9 +13,6 @@ int main()
 
     ec_master.start();
 
-    std::cout << "slave_address :" << ec_slave_1.get_slave_address() << std::endl;
-    std::cout << "slave_name    :" << ec_slave_1.get_slave_name() << std::endl;
-
     // ec_master.config();
 
     // while (ec_master.is_running())

@@ -169,7 +169,7 @@ void Ec_master::config_slaves()
         LOG_CONSOLE_INFO(i, 0);
         LOG_CONSOLE_INFO(" of ", 0);
         LOG_CONSOLE_INFO(num_slaves, 1);
-        // slave_base_arr[i]->config_slave(master);
+        slave_base_arr[i]->config_slave(master);
     }
     LOG_CONSOLE_INFO("Configured all slaves", 1);
 }
