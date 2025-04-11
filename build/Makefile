@@ -139,8 +139,21 @@ Ec_master: cmake_check_build_system
 
 # fast build rule for target.
 Ec_master/fast:
-	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_master.dir/build.make src/Ec_slave/CMakeFiles/Ec_master.dir/build
+	$(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/build
 .PHONY : Ec_master/fast
+
+#=============================================================================
+# Target rules for targets named Ec_slave
+
+# Build rule for target.
+Ec_slave: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave
+.PHONY : Ec_slave
+
+# fast build rule for target.
+Ec_slave/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
+.PHONY : Ec_slave/fast
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -175,6 +188,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Ec_master"
+	@echo "... Ec_slave"
 	@echo "... ethercat_layer"
 	@echo "... src/main.o"
 	@echo "... src/main.i"

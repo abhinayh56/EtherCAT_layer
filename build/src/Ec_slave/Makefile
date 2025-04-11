@@ -117,42 +117,42 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/Ec_slave/CMakeFiles/Ec_master.dir/rule:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave/CMakeFiles/Ec_master.dir/rule
-.PHONY : src/Ec_slave/CMakeFiles/Ec_master.dir/rule
+src/Ec_slave/CMakeFiles/Ec_slave.dir/rule:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave/CMakeFiles/Ec_slave.dir/rule
+.PHONY : src/Ec_slave/CMakeFiles/Ec_slave.dir/rule
 
 # Convenience name for target.
-Ec_master: src/Ec_slave/CMakeFiles/Ec_master.dir/rule
-.PHONY : Ec_master
+Ec_slave: src/Ec_slave/CMakeFiles/Ec_slave.dir/rule
+.PHONY : Ec_slave
 
 # fast build rule for target.
-Ec_master/fast:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_master.dir/build.make src/Ec_slave/CMakeFiles/Ec_master.dir/build
-.PHONY : Ec_master/fast
+Ec_slave/fast:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
+.PHONY : Ec_slave/fast
 
-Ec_master.o: Ec_master.cpp.o
-.PHONY : Ec_master.o
+Ec_slave_base.o: Ec_slave_base.cpp.o
+.PHONY : Ec_slave_base.o
 
 # target to build an object file
-Ec_master.cpp.o:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_master.dir/build.make src/Ec_slave/CMakeFiles/Ec_master.dir/Ec_master.cpp.o
-.PHONY : Ec_master.cpp.o
+Ec_slave_base.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_base.cpp.o
+.PHONY : Ec_slave_base.cpp.o
 
-Ec_master.i: Ec_master.cpp.i
-.PHONY : Ec_master.i
+Ec_slave_base.i: Ec_slave_base.cpp.i
+.PHONY : Ec_slave_base.i
 
 # target to preprocess a source file
-Ec_master.cpp.i:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_master.dir/build.make src/Ec_slave/CMakeFiles/Ec_master.dir/Ec_master.cpp.i
-.PHONY : Ec_master.cpp.i
+Ec_slave_base.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_base.cpp.i
+.PHONY : Ec_slave_base.cpp.i
 
-Ec_master.s: Ec_master.cpp.s
-.PHONY : Ec_master.s
+Ec_slave_base.s: Ec_slave_base.cpp.s
+.PHONY : Ec_slave_base.s
 
 # target to generate assembly for a file
-Ec_master.cpp.s:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_master.dir/build.make src/Ec_slave/CMakeFiles/Ec_master.dir/Ec_master.cpp.s
-.PHONY : Ec_master.cpp.s
+Ec_slave_base.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_base.cpp.s
+.PHONY : Ec_slave_base.cpp.s
 
 # Help Target
 help:
@@ -162,10 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Ec_master"
-	@echo "... Ec_master.o"
-	@echo "... Ec_master.i"
-	@echo "... Ec_master.s"
+	@echo "... Ec_slave"
+	@echo "... Ec_slave_base.o"
+	@echo "... Ec_slave_base.i"
+	@echo "... Ec_slave_base.s"
 .PHONY : help
 
 

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave
+CXX_INCLUDES = -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave
 
 CXX_FLAGS = -std=c++17
 

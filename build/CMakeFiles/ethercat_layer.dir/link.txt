@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/ethercat_layer.dir/src/main.cpp.o -o ethercat_layer  src/Ec_slave/libEc_master.a /usr/local/etherlab/lib/libethercat.a 
+/usr/bin/c++ CMakeFiles/ethercat_layer.dir/src/main.cpp.o -o ethercat_layer  src/Ec_master/libEc_master.a src/Ec_slave/libEc_slave.a /usr/local/etherlab/lib/libethercat.a 

@@ -12,14 +12,12 @@ set(CMAKE_CXX_EXTENSIONS        OFF)
 set(EtherCAT_LIB_PATH /usr/local/etherlab/lib/libethercat.a)
 
 # Add EC_master sources
-add_subdirectory(
-    src/Ec_master
-    src/Ec_slave
-)
+add_subdirectory(src/Ec_master)
+add_subdirectory(src/Ec_slave)
 
 # Main executable
 add_executable(${PROJECT_NAME} src/main.cpp)
 
 target_link_libraries(${PROJECT_NAME}
-    PRIVATE Ec_master
+    PRIVATE Ec_master Ec_slave
 )
