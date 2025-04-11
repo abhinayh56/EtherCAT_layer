@@ -6,7 +6,47 @@
 
 class Ec_slave_2 : public Ec_slave_base
 {
+public:
+    Ec_slave_2(uint16_t slave_address_, const std::string &slave_name_)
+    {
+        slave_address = slave_address_;
+        slave_name = slave_name_;
+    }
+
+    ~Ec_slave_2() {}
+
+    virtual void set_info()
+    {
+        slave_info.alias = alias;
+        slave_info.position = position;
+        slave_info.vendor_id = vendor_id;
+        slave_info.product_code = product_code;
+
+        slave_info.slave_pdo_entries = slave_2_pdo_entries;
+        slave_info.slave_pdos = slave_2_pdos;
+        slave_info.slave_syncs = slave_2_syncs;
+    }
+
+    virtual void set_pdo()
+    {
+        domain_i_regs = domain_regs;
+    }
+
+    virtual void monitor_status() {}
+    virtual void transfer_tx_pdo() {}
+    virtual void transfer_rx_pdo() {}
+    virtual void process_tx_pdo() {}
+    virtual void process_rx_pdo() {}
+    virtual void config_data_transfer() {}
+    virtual void publish_data() {}
+    virtual void subscribe_data() {}
+
 private:
+    uint16_t alias = 0;
+    uint16_t position = 2;
+    uint32_t vendor_id = 0x00000002;
+    uint32_t product_code = 0x03f03052;
+
     ec_pdo_entry_info_t slave_2_pdo_entries[8] = {
         {0x6000, 0x01, 1}, /* Input */
         {0x6010, 0x01, 1}, /* Input */
@@ -28,65 +68,16 @@ private:
         {0x1a06, 1, slave_2_pdo_entries + 6}, /* Channel 7 */
         {0x1a07, 1, slave_2_pdo_entries + 7}, /* Channel 8 */
     };
-
+    
     ec_sync_info_t slave_2_syncs[2] = {
         {0, EC_DIR_INPUT, 8, slave_2_pdos + 0, EC_WD_DISABLE},
-        {0xff}};
+        {0xff}
+    };
 
     unsigned int off_1;
-    unsigned int off_2;
-    unsigned int off_3;
-    unsigned int off_4;
-    unsigned int off_5;
-    unsigned int off_6;
-    unsigned int off_7;
-    unsigned int off_8;
-
-    ec_pdo_entry_reg_t domain_regs[9] = {
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6000, 0x01, &off_1},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6010, 0x01, &off_2},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6020, 0x01, &off_3},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6030, 0x01, &off_4},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6040, 0x01, &off_5},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6050, 0x01, &off_6},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6060, 0x01, &off_7},
-        {slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code, 0x6070, 0x01, &off_8},
+    ec_pdo_entry_reg_t domain_regs[2] = {
+        {0, 2, 0x00000002, 0x03f03052, 0x6000, 0x01, &off_1},
         {}};
-
-public:
-    Ec_slave_2(uint16_t slave_address_, const std::string &slave_name_)
-    {
-        slave_address = slave_address_;
-        slave_name = slave_name_;
-    }
-
-    ~Ec_slave_2() {}
-
-    virtual void set_info()
-    {
-        slave_info.alias = 0;
-        slave_info.position = 2;
-        slave_info.vendor_id = 0x00000002;
-        slave_info.product_code = 0x03f03052;
-
-        slave_info.slave_pdo_entries = slave_2_pdo_entries;
-        slave_info.slave_pdos = slave_2_pdos;
-        slave_info.slave_syncs = slave_2_syncs;
-    }
-
-    virtual void set_pdo()
-    {
-        domain_i_regs = domain_regs;
-    }
-
-    virtual void monitor_status() {}
-    virtual void transfer_tx_pdo() {}
-    virtual void transfer_rx_pdo() {}
-    virtual void process_tx_pdo() {}
-    virtual void process_rx_pdo() {}
-    virtual void config_data_transfer() {}
-    virtual void publish_data() {}
-    virtual void subscribe_data() {}
 };
 
 #endif // EC_SLAVE_2_H
