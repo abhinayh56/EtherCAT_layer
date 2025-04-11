@@ -14,3 +14,7 @@ target_include_directories(Ec_slave
 target_link_libraries(Ec_slave
     PRIVATE ${EtherCAT_LIB_PATH}
 )
+
+
+# install(TARGETS Ec_slave DESTINATION lib)
+# install(FILES Ec_slave_base.h DESTINATION include/ethercat_layer)

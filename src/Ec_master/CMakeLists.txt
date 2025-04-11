@@ -14,3 +14,6 @@ target_include_directories(Ec_master
 target_link_libraries(Ec_master
     PRIVATE ${EtherCAT_LIB_PATH}
 )
+
+# install(TARGETS Ec_master DESTINATION lib)
+# install(FILES Ec_master.h DESTINATION include/ethercat_layer)
