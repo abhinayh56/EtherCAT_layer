@@ -2,9 +2,10 @@
 #define EC_SLAVE_BASE_H
 
 #include <stdint.h>
+#include "../Common/Data_transfer.h"
 #include "../Ec_logger/Ec_logger_console/Ec_logger_console.h"
 
-class Ec_slave_base
+class Ec_slave_base : public Data_transfer
 {
 public:
     Ec_slave_base();
@@ -14,6 +15,10 @@ public:
     const std::string &get_slave_name() const;
     void set_slave_address(uint16_t slave_address_);
     uint16_t get_slave_address();
+
+    void config_data_transfer();
+    void publish_data();
+    void subscribe_data();
 
 protected:
     std::string slave_name;

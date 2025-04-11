@@ -27,3 +27,15 @@ uint16_t Ec_slave_base::get_slave_address()
 {
     return slave_address;
 }
+
+void Ec_slave_base::config_data_transfer()
+{
+}
+
+void Ec_slave_base::publish_data()
+{
+}
+
+void Ec_slave_base::subscribe_data()
+{
+}
