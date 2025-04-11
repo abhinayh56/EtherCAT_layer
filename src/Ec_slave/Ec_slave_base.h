@@ -18,9 +18,12 @@ public:
     void set_slave_address(uint16_t slave_address_);
     uint16_t get_slave_address();
 
-    void config_slave(ec_master_t *master);
-    virtual void set_slave_pdo();
+    virtual void set_info();
+    virtual void config_slave(ec_master_t *master);
+    
+    virtual void set_pdo();
     void register_pdo_to_domain(ec_domain_t *domain_i);
+    
     void set_domain(uint8_t *domain_i_pd_);
 
     virtual void monitor_status();

@@ -28,6 +28,8 @@ uint16_t Ec_slave_base::get_slave_address()
     return slave_address;
 }
 
+void Ec_slave_base::set_info() {}
+
 void Ec_slave_base::config_slave(ec_master_t *master)
 {
     if (!(sc = ecrt_master_slave_config(master, slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code)))
@@ -49,7 +51,7 @@ void Ec_slave_base::config_slave(ec_master_t *master)
     }
 }
 
-void Ec_slave_base::set_slave_pdo() {}
+void Ec_slave_base::set_pdo() {}
 
 void Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
 {

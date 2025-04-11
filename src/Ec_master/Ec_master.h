@@ -38,6 +38,7 @@ private:
 
     void config_slaves_data_transfer();
     bool create_domain();
+    void set_slave_info();
     void config_slaves();
     void register_slaves_pdo_to_domain();
     bool activate();

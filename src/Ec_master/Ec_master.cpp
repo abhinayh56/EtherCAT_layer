@@ -51,6 +51,7 @@ void Ec_master::config()
     LOG_CONSOLE_ERROR("Configuring all slaves starts...", 1);
     config_slaves_data_transfer();
     create_domain();
+    set_slave_info();
     config_slaves();
     register_slaves_pdo_to_domain();
     activate();
@@ -145,6 +146,20 @@ bool Ec_master::create_domain()
     }
 }
 
+void Ec_master::set_slave_info()
+{
+    LOG_CONSOLE_INFO("Setting slaves info...", 1);
+    for (int i = 0; i < num_slaves; i++)
+    {
+        LOG_CONSOLE_INFO("Setting slave info ", 0);
+        LOG_CONSOLE_INFO(i, 0);
+        LOG_CONSOLE_INFO(" of ", 0);
+        LOG_CONSOLE_INFO(num_slaves, 1);
+        slave_base_arr[i]->set_info();
+    }
+    LOG_CONSOLE_INFO("Configured all slaves", 1);
+}
+
 void Ec_master::config_slaves()
 {
     LOG_CONSOLE_INFO("Configuring slaves...", 1);
@@ -169,7 +184,8 @@ void Ec_master::register_slaves_pdo_to_domain()
         LOG_CONSOLE_INFO(" of ", 0);
         LOG_CONSOLE_INFO(num_slaves, 1);
         LOG_CONSOLE_INFO("Setting slave pdos", 1);
-        slave_base_arr[i]->set_slave_pdo();
+        slave_base_arr[i]->set_pdo();
+        LOG_CONSOLE_INFO("Pdo list is set", 1);
         LOG_CONSOLE_INFO("Registering tx,rx_pdos to domain", 1);
         slave_base_arr[i]->register_pdo_to_domain(domain_i);
     }

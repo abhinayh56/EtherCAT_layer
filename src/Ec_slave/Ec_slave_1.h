@@ -14,6 +14,14 @@ public:
     }
 
     ~Ec_slave_1() {}
+
+    void set_slave_info()
+    {
+    }
+
+    void set_slave_pdo()
+    {
+    }
 };
 
 #endif // EC_SLAVE_1_H
