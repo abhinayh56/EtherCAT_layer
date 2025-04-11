@@ -16,7 +16,6 @@ public:
     ~Ec_slave_1() {}
 
     virtual void set_info() {}
-    virtual void config_slave(ec_master_t *master) {}
     virtual void set_pdo() {}
     virtual void monitor_status() {}
     virtual void transfer_tx_pdo() {}
