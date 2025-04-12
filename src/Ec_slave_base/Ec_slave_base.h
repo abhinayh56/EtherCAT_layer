@@ -38,9 +38,8 @@ public:
 
 protected:
     std::string slave_ns;
-    uint16_t slave_address = 0;
+    uint16_t slave_address;
     Slave_info slave_info;
-    uint16_t *ptr_slave_address = &slave_address;
 
     ec_slave_config_t *sc;
     ec_slave_config_state_t sc_state;
