@@ -4,7 +4,7 @@
 #include <ecrt.h>
 #include <vector>
 #include <iostream>
-#include "../Ec_slave/Ec_slave_base.h"
+#include "../Ec_slave_base/Ec_slave_base.h"
 #include "../Ec_logger/Ec_logger_console/Ec_logger_console.h"
 
 #define CYCLIC_SLAVE_CALL_PARALLEL

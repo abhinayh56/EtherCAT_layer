@@ -178,8 +178,8 @@ src/Ec_master/CMakeFiles/Ec_master.dir/Ec_master.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave/Ec_slave_base.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave/../Ec_utils/Ec_utils.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave/../Common/Data_transfer.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave/../Ec_logger/Ec_logger_console/Ec_logger_console.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/Ec_slave_base.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/../Ec_utils/Ec_utils.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/../Common/Data_transfer.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/../Ec_logger/Ec_logger_console/Ec_logger_console.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_logger/Ec_logger_console/Ec_logger_console.h
