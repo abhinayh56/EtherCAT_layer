@@ -52,6 +52,7 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "*.h__": "cpp"
     }
 }

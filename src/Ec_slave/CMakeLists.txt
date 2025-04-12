@@ -2,6 +2,7 @@
 add_library(Ec_slave
     Ec_slave_base.cpp
     Ec_slave_base.h
+    Ec_slave_7.cpp
 )
 
 # Include directories
