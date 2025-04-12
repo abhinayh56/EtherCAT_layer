@@ -25,7 +25,6 @@ void Ec_slave_rfid::set_info()
 void Ec_slave_rfid::set_pdo()
 {
     domain_i_regs = domain_regs;
-    // std::cout << "domain_i_regs: " << domain_regs[0].position << std::endl;
 }
 
 void Ec_slave_rfid::monitor_status()
@@ -60,7 +59,7 @@ void Ec_slave_rfid::transfer_tx_pdo()
     //  std::cout << "-----" << domain_regs[1].position << std::endl;
     //  std::cout << "-----" << domain_regs[2].position << std::endl;
 
-    //  std::cout << "RFID_TXPDO: " << Device_ID << ", " << Second << ", " << Minute << ", " << Hour << ", " << Day << ", " << Month << ", " << Year << ", " << Roll_Offset << ", " << Pitch_Offset << ", " << Yaw_Offset << ", " << Grip_Offset << ", " << No_of_Usages << ", " << Max_Usages << ", " << Digital_Inputs << ", " << Grip_Counts << ", " << System_Number << ", " << Device_UID << ", " << Spare_Bytes << ", " << MFG_Day << ", " << MFG_Month << ", " << MFG_Year << std::endl;
+     std::cout << "RFID_TXPDO: " << Device_ID << ", " << Second << ", " << Minute << ", " << Hour << ", " << Day << ", " << Month << ", " << Year << ", " << Roll_Offset << ", " << Pitch_Offset << ", " << Yaw_Offset << ", " << Grip_Offset << ", " << No_of_Usages << ", " << Max_Usages << ", " << Digital_Inputs << ", " << Grip_Counts << ", " << System_Number << ", " << Device_UID << ", " << Spare_Bytes << ", " << MFG_Day << ", " << MFG_Month << ", " << MFG_Year << std::endl;
 }
 
 void Ec_slave_rfid::transfer_rx_pdo()
