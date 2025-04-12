@@ -1,7 +1,7 @@
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o: \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_1.cpp \
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o: \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_2008.cpp \
  /usr/include/stdc-predef.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_1.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_2008.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

@@ -1,16 +1,16 @@
-#include "Ec_slave_1.h"
+#include "Ec_slave_el_2008.h"
 
-Ec_slave_1::Ec_slave_1(uint16_t slave_address_, const std::string &slave_name_)
+Ec_slave_el_2008::Ec_slave_el_2008(uint16_t slave_address_, const std::string &slave_name_)
 {
     slave_address = slave_address_;
     slave_name = slave_name_;
 }
 
-Ec_slave_1::~Ec_slave_1()
+Ec_slave_el_2008::~Ec_slave_el_2008()
 {
 }
 
-void Ec_slave_1::set_info()
+void Ec_slave_el_2008::set_info()
 {
     slave_info.alias = alias;
     slave_info.position = position;
@@ -22,20 +22,20 @@ void Ec_slave_1::set_info()
     slave_info.slave_syncs = slave_1_syncs;
 }
 
-void Ec_slave_1::set_pdo()
+void Ec_slave_el_2008::set_pdo()
 {
     domain_i_regs = domain_regs;
 }
 
-void Ec_slave_1::monitor_status()
+void Ec_slave_el_2008::monitor_status()
 {
 }
 
-void Ec_slave_1::transfer_tx_pdo()
+void Ec_slave_el_2008::transfer_tx_pdo()
 {
 }
 
-void Ec_slave_1::transfer_rx_pdo()
+void Ec_slave_el_2008::transfer_rx_pdo()
 {
     time_stamp += 4;
     if (time_stamp >= 2000)
@@ -55,22 +55,22 @@ void Ec_slave_1::transfer_rx_pdo()
     }
 }
 
-void Ec_slave_1::process_tx_pdo()
+void Ec_slave_el_2008::process_tx_pdo()
 {
 }
 
-void Ec_slave_1::process_rx_pdo()
+void Ec_slave_el_2008::process_rx_pdo()
 {
 }
 
-void Ec_slave_1::config_data_transfer()
+void Ec_slave_el_2008::config_data_transfer()
 {
 }
 
-void Ec_slave_1::publish_data()
+void Ec_slave_el_2008::publish_data()
 {
 }
 
-void Ec_slave_1::subscribe_data()
+void Ec_slave_el_2008::subscribe_data()
 {
 }

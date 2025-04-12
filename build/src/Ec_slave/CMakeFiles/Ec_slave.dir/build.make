@@ -83,33 +83,33 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.s"
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base/Ec_slave_base.cpp -o CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.s
 
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/flags.make
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_1.cpp
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o"
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o -MF CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o.d -o CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o -c /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_1.cpp
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/flags.make
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_2008.cpp
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o"
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o -MF CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o.d -o CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o -c /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_2008.cpp
 
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.i"
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_1.cpp > CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.i
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.i"
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_2008.cpp > CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.i
 
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.s"
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_1.cpp -o CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.s
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.s"
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_2008.cpp -o CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.s
 
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/flags.make
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_2.cpp
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o"
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o -MF CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o.d -o CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o -c /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_2.cpp
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/flags.make
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_1008.cpp
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o"
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o -MF CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o.d -o CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o -c /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_1008.cpp
 
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.i"
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_2.cpp > CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.i
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.i"
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_1008.cpp > CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.i
 
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.s"
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_2.cpp -o CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.s
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.s"
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_el_1008.cpp -o CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.s
 
 src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o: src/Ec_slave/CMakeFiles/Ec_slave.dir/flags.make
 src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_3.cpp
@@ -184,8 +184,8 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_7.cpp.s: cmake_force
 # Object files for target Ec_slave
 Ec_slave_OBJECTS = \
 "CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.o" \
-"CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o" \
-"CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o" \
+"CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o" \
+"CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o" \
 "CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o" \
 "CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.o" \
 "CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.o" \
@@ -196,8 +196,8 @@ Ec_slave_OBJECTS = \
 Ec_slave_EXTERNAL_OBJECTS =
 
 src/Ec_slave/libEc_slave.a: src/Ec_slave/CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.o
-src/Ec_slave/libEc_slave.a: src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o
-src/Ec_slave/libEc_slave.a: src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o
+src/Ec_slave/libEc_slave.a: src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o
+src/Ec_slave/libEc_slave.a: src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o
 src/Ec_slave/libEc_slave.a: src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o
 src/Ec_slave/libEc_slave.a: src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.o
 src/Ec_slave/libEc_slave.a: src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.o

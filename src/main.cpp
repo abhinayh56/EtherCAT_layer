@@ -1,8 +1,8 @@
 #include <unistd.h>
 #include <iostream>
 #include "Ec_master/Ec_master.h"
-#include  "Ec_slave/Ec_slave_1.h"
-#include  "Ec_slave/Ec_slave_2.h"
+#include  "Ec_slave/Ec_slave_el_2008.h"
+#include  "Ec_slave/Ec_slave_el_1008.h"
 #include  "Ec_slave/Ec_slave_3.h"
 #include  "Ec_slave/Ec_slave_4.h"
 #include  "Ec_slave/Ec_slave_5.h"
@@ -11,8 +11,8 @@
 
 Ec_master ec_master;
 
-Ec_slave_1 el_2008(1, "EL_2008");
-Ec_slave_2 el_1008(2, "EL_1008");
+Ec_slave_el_2008 el_2008(1, "EL_2008");
+Ec_slave_el_1008 el_1008(2, "EL_1008");
 Ec_slave_3 rfid(3, "RFID");
 Ec_slave_4 mact_1(4, "MACT_1");
 Ec_slave_5 mact_2(5, "MACT_2");

@@ -1,14 +1,14 @@
-#ifndef EC_SLAVE_2_H
-#define EC_SLAVE_2_H
+#ifndef EC_SLAVE_EL_1008_H
+#define EC_SLAVE_EL_1008_H
 
 #include <stdint.h>
 #include "Ec_slave_base.h"
 
-class Ec_slave_2 : public Ec_slave_base
+class Ec_slave_el_1008 : public Ec_slave_base
 {
 public:
-    Ec_slave_2(uint16_t slave_address_, const std::string &slave_name_);
-    ~Ec_slave_2();
+    Ec_slave_el_1008(uint16_t slave_address_, const std::string &slave_name_);
+    ~Ec_slave_el_1008();
 
     virtual void set_info();
     virtual void set_pdo();
@@ -59,4 +59,4 @@ private:
         {}};
 };
 
-#endif // EC_SLAVE_2_H
+#endif // EC_SLAVE_EL_1008_H
