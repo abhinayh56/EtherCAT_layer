@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o"
-  "CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.o"
   "CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.o"
@@ -13,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o"
   "CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o.d"
+  "CMakeFiles/Ec_slave.dir/Ec_slave_rfid.cpp.o"
+  "CMakeFiles/Ec_slave.dir/Ec_slave_rfid.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.o"
   "CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.o.d"
   "libEc_slave.a"

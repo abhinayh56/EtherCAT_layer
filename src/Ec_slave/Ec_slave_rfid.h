@@ -1,14 +1,14 @@
-#ifndef EC_SLAVE_3_H
-#define EC_SLAVE_3_H
+#ifndef EC_SLAVE_RFID_H
+#define EC_SLAVE_RFID_H
 
 #include <stdint.h>
 #include "Ec_slave_base.h"
 
-class Ec_slave_3 : public Ec_slave_base
+class Ec_slave_rfid : public Ec_slave_base
 {
 public:
-    Ec_slave_3(uint16_t slave_address_, const std::string &slave_name_);
-    ~Ec_slave_3();
+    Ec_slave_rfid(uint16_t slave_address_, const std::string &slave_name_);
+    ~Ec_slave_rfid();
 
     virtual void set_info();
     virtual void set_pdo();
@@ -167,4 +167,4 @@ private:
     unsigned long t_stamp = 0;
 };
 
-#endif // EC_SLAVE_3_H
+#endif // EC_SLAVE_RFID_H

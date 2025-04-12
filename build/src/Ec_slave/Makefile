@@ -175,30 +175,6 @@ Ec_slave/fast:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
 .PHONY : Ec_slave/fast
 
-Ec_slave_3.o: Ec_slave_3.cpp.o
-.PHONY : Ec_slave_3.o
-
-# target to build an object file
-Ec_slave_3.cpp.o:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o
-.PHONY : Ec_slave_3.cpp.o
-
-Ec_slave_3.i: Ec_slave_3.cpp.i
-.PHONY : Ec_slave_3.i
-
-# target to preprocess a source file
-Ec_slave_3.cpp.i:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.i
-.PHONY : Ec_slave_3.cpp.i
-
-Ec_slave_3.s: Ec_slave_3.cpp.s
-.PHONY : Ec_slave_3.s
-
-# target to generate assembly for a file
-Ec_slave_3.cpp.s:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.s
-.PHONY : Ec_slave_3.cpp.s
-
 Ec_slave_4.o: Ec_slave_4.cpp.o
 .PHONY : Ec_slave_4.o
 
@@ -343,6 +319,30 @@ Ec_slave_el_2008.cpp.s:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.s
 .PHONY : Ec_slave_el_2008.cpp.s
 
+Ec_slave_rfid.o: Ec_slave_rfid.cpp.o
+.PHONY : Ec_slave_rfid.o
+
+# target to build an object file
+Ec_slave_rfid.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_rfid.cpp.o
+.PHONY : Ec_slave_rfid.cpp.o
+
+Ec_slave_rfid.i: Ec_slave_rfid.cpp.i
+.PHONY : Ec_slave_rfid.i
+
+# target to preprocess a source file
+Ec_slave_rfid.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_rfid.cpp.i
+.PHONY : Ec_slave_rfid.cpp.i
+
+Ec_slave_rfid.s: Ec_slave_rfid.cpp.s
+.PHONY : Ec_slave_rfid.s
+
+# target to generate assembly for a file
+Ec_slave_rfid.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_rfid.cpp.s
+.PHONY : Ec_slave_rfid.cpp.s
+
 __/Ec_slave_base/Ec_slave_base.o: __/Ec_slave_base/Ec_slave_base.cpp.o
 .PHONY : __/Ec_slave_base/Ec_slave_base.o
 
@@ -380,9 +380,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... Ec_slave"
-	@echo "... Ec_slave_3.o"
-	@echo "... Ec_slave_3.i"
-	@echo "... Ec_slave_3.s"
 	@echo "... Ec_slave_4.o"
 	@echo "... Ec_slave_4.i"
 	@echo "... Ec_slave_4.s"
@@ -401,6 +398,9 @@ help:
 	@echo "... Ec_slave_el_2008.o"
 	@echo "... Ec_slave_el_2008.i"
 	@echo "... Ec_slave_el_2008.s"
+	@echo "... Ec_slave_rfid.o"
+	@echo "... Ec_slave_rfid.i"
+	@echo "... Ec_slave_rfid.s"
 	@echo "... __/Ec_slave_base/Ec_slave_base.o"
 	@echo "... __/Ec_slave_base/Ec_slave_base.i"
 	@echo "... __/Ec_slave_base/Ec_slave_base.s"
