@@ -13,8 +13,8 @@ public:
     Ec_slave_base();
     ~Ec_slave_base();
 
-    void set_slave_name(const std::string &slave_name_);
-    const std::string &get_slave_name();
+    void set_slave_ns(const std::string &slave_name_);
+    const std::string &get_slave_ns();
     void set_slave_address(uint16_t slave_address_);
     uint16_t get_slave_address();
 
@@ -37,7 +37,7 @@ public:
     virtual void subscribe_data();
 
 protected:
-    std::string slave_name;
+    std::string slave_ns;
     uint16_t slave_address;
     Slave_info slave_info;
 
