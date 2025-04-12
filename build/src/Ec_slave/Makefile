@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Development\" \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave//CMakeFiles/progress.marks
@@ -129,6 +174,78 @@ Ec_slave: src/Ec_slave/CMakeFiles/Ec_slave.dir/rule
 Ec_slave/fast:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
 .PHONY : Ec_slave/fast
+
+Ec_slave_4.o: Ec_slave_4.cpp.o
+.PHONY : Ec_slave_4.o
+
+# target to build an object file
+Ec_slave_4.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.o
+.PHONY : Ec_slave_4.cpp.o
+
+Ec_slave_4.i: Ec_slave_4.cpp.i
+.PHONY : Ec_slave_4.i
+
+# target to preprocess a source file
+Ec_slave_4.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.i
+.PHONY : Ec_slave_4.cpp.i
+
+Ec_slave_4.s: Ec_slave_4.cpp.s
+.PHONY : Ec_slave_4.s
+
+# target to generate assembly for a file
+Ec_slave_4.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.s
+.PHONY : Ec_slave_4.cpp.s
+
+Ec_slave_5.o: Ec_slave_5.cpp.o
+.PHONY : Ec_slave_5.o
+
+# target to build an object file
+Ec_slave_5.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.o
+.PHONY : Ec_slave_5.cpp.o
+
+Ec_slave_5.i: Ec_slave_5.cpp.i
+.PHONY : Ec_slave_5.i
+
+# target to preprocess a source file
+Ec_slave_5.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.i
+.PHONY : Ec_slave_5.cpp.i
+
+Ec_slave_5.s: Ec_slave_5.cpp.s
+.PHONY : Ec_slave_5.s
+
+# target to generate assembly for a file
+Ec_slave_5.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.s
+.PHONY : Ec_slave_5.cpp.s
+
+Ec_slave_6.o: Ec_slave_6.cpp.o
+.PHONY : Ec_slave_6.o
+
+# target to build an object file
+Ec_slave_6.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_6.cpp.o
+.PHONY : Ec_slave_6.cpp.o
+
+Ec_slave_6.i: Ec_slave_6.cpp.i
+.PHONY : Ec_slave_6.i
+
+# target to preprocess a source file
+Ec_slave_6.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_6.cpp.i
+.PHONY : Ec_slave_6.cpp.i
+
+Ec_slave_6.s: Ec_slave_6.cpp.s
+.PHONY : Ec_slave_6.s
+
+# target to generate assembly for a file
+Ec_slave_6.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_6.cpp.s
+.PHONY : Ec_slave_6.cpp.s
 
 Ec_slave_7.o: Ec_slave_7.cpp.o
 .PHONY : Ec_slave_7.o
@@ -185,8 +302,21 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... Ec_slave"
+	@echo "... Ec_slave_4.o"
+	@echo "... Ec_slave_4.i"
+	@echo "... Ec_slave_4.s"
+	@echo "... Ec_slave_5.o"
+	@echo "... Ec_slave_5.i"
+	@echo "... Ec_slave_5.s"
+	@echo "... Ec_slave_6.o"
+	@echo "... Ec_slave_6.i"
+	@echo "... Ec_slave_6.s"
 	@echo "... Ec_slave_7.o"
 	@echo "... Ec_slave_7.i"
 	@echo "... Ec_slave_7.s"

@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_master//CMakeFiles/progress.marks
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/all
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_base//CMakeFiles/progress.marks
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/clean
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,56 +148,18 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/preinstall
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/preinstall
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-# Convenience name for target.
-src/Ec_master/CMakeFiles/Ec_master.dir/rule:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_master/CMakeFiles/Ec_master.dir/rule
-.PHONY : src/Ec_master/CMakeFiles/Ec_master.dir/rule
-
-# Convenience name for target.
-Ec_master: src/Ec_master/CMakeFiles/Ec_master.dir/rule
-.PHONY : Ec_master
-
-# fast build rule for target.
-Ec_master/fast:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/build
-.PHONY : Ec_master/fast
-
-Ec_master.o: Ec_master.cpp.o
-.PHONY : Ec_master.o
-
-# target to build an object file
-Ec_master.cpp.o:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/Ec_master.cpp.o
-.PHONY : Ec_master.cpp.o
-
-Ec_master.i: Ec_master.cpp.i
-.PHONY : Ec_master.i
-
-# target to preprocess a source file
-Ec_master.cpp.i:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/Ec_master.cpp.i
-.PHONY : Ec_master.cpp.i
-
-Ec_master.s: Ec_master.cpp.s
-.PHONY : Ec_master.s
-
-# target to generate assembly for a file
-Ec_master.cpp.s:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/Ec_master.cpp.s
-.PHONY : Ec_master.cpp.s
 
 # Help Target
 help:
@@ -211,10 +173,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... Ec_master"
-	@echo "... Ec_master.o"
-	@echo "... Ec_master.i"
-	@echo "... Ec_master.s"
 .PHONY : help
 
 
