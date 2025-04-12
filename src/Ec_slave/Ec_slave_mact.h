@@ -1,15 +1,15 @@
-#ifndef EC_SLAVE_4_H
-#define EC_SLAVE_4_H
+#ifndef EC_SLAVE_MACT_H
+#define EC_SLAVE_MACT_H
 
 #include <cmath>
 #include <stdint.h>
 #include "Ec_slave_base.h"
 
-class Ec_slave_4 : public Ec_slave_base
+class Ec_slave_mact : public Ec_slave_base
 {
 public:
-    Ec_slave_4(uint16_t slave_address_, const std::string &slave_name_);
-    ~Ec_slave_4();
+    Ec_slave_mact(uint16_t slave_address_, const std::string &slave_name_);
+    ~Ec_slave_mact();
 
     virtual void set_info();
     virtual void set_pdo();
@@ -98,4 +98,4 @@ private:
     uint8_t OP_MODE = 0;     // off_rx_pdo_4
 };
 
-#endif // EC_SLAVE_4_H
+#endif // EC_SLAVE_MACT_H

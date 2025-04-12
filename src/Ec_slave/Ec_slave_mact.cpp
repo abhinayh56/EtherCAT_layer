@@ -1,16 +1,16 @@
-#include "Ec_slave_4.h"
+#include "Ec_slave_mact.h"
 
-Ec_slave_4::Ec_slave_4(uint16_t slave_address_, const std::string &slave_name_)
+Ec_slave_mact::Ec_slave_mact(uint16_t slave_address_, const std::string &slave_name_)
 {
     slave_address = slave_address_;
     slave_name = slave_name_;
 }
 
-Ec_slave_4::~Ec_slave_4()
+Ec_slave_mact::~Ec_slave_mact()
 {
 }
 
-void Ec_slave_4::set_info()
+void Ec_slave_mact::set_info()
 {
     slave_info.alias = alias;
     slave_info.position = position;
@@ -22,16 +22,16 @@ void Ec_slave_4::set_info()
     slave_info.slave_syncs = slave_4_syncs;
 }
 
-void Ec_slave_4::set_pdo()
+void Ec_slave_mact::set_pdo()
 {
     domain_i_regs = domain_regs;
 }
 
-void Ec_slave_4::monitor_status()
+void Ec_slave_mact::monitor_status()
 {
 }
 
-void Ec_slave_4::transfer_tx_pdo()
+void Ec_slave_mact::transfer_tx_pdo()
 {
     int32_t ACT_POS = EC_READ_S32(domain_i_pd + off_tx_pdo_1);
     uint16_t STATUS_WD = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
@@ -45,7 +45,7 @@ void Ec_slave_4::transfer_tx_pdo()
     // std::cout << "MACT_TXPDO: " << ACT_POS << ", " << STATUS_WD << ", " << ACT_TOR << ", " << uint16_t(OPMODE_DISP) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << ACT_VEL << ", " << ADC_VAL << std::endl;
 }
 
-void Ec_slave_4::transfer_rx_pdo()
+void Ec_slave_mact::transfer_rx_pdo()
 {
     t_stamp += 4;
 
@@ -85,22 +85,22 @@ void Ec_slave_4::transfer_rx_pdo()
     EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, OP_MODE);
 }
 
-void Ec_slave_4::process_tx_pdo()
+void Ec_slave_mact::process_tx_pdo()
 {
 }
 
-void Ec_slave_4::process_rx_pdo()
+void Ec_slave_mact::process_rx_pdo()
 {
 }
 
-void Ec_slave_4::config_data_transfer()
+void Ec_slave_mact::config_data_transfer()
 {
 }
 
-void Ec_slave_4::publish_data()
+void Ec_slave_mact::publish_data()
 {
 }
 
-void Ec_slave_4::subscribe_data()
+void Ec_slave_mact::subscribe_data()
 {
 }
