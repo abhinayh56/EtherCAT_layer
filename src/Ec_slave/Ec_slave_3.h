@@ -7,131 +7,19 @@
 class Ec_slave_3 : public Ec_slave_base
 {
 public:
-    Ec_slave_3(uint16_t slave_address_, const std::string &slave_name_)
-    {
-        slave_address = slave_address_;
-        slave_name = slave_name_;
-    }
+    Ec_slave_3(uint16_t slave_address_, const std::string &slave_name_);
+    ~Ec_slave_3();
 
-    ~Ec_slave_3() {}
-
-    virtual void set_info()
-    {
-        slave_info.alias = alias;
-        slave_info.position = position;
-        slave_info.vendor_id = vendor_id;
-        slave_info.product_code = product_code;
-
-        slave_info.slave_pdo_entries = slave_3_pdo_entries;
-        slave_info.slave_pdos = slave_3_pdos;
-        slave_info.slave_syncs = slave_3_syncs;
-    }
-
-    virtual void set_pdo()
-    {
-        domain_i_regs = domain_regs;
-    }
-
-    virtual void monitor_status() {}
-
-    virtual void transfer_tx_pdo()
-    {
-        uint16_t Device_ID = EC_READ_U16(domain_i_pd + off_tx_pdo_1);
-        uint16_t Second = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
-        uint16_t Minute = EC_READ_U16(domain_i_pd + off_tx_pdo_3);
-        uint16_t Hour = EC_READ_U16(domain_i_pd + off_tx_pdo_4);
-        uint16_t Day = EC_READ_U16(domain_i_pd + off_tx_pdo_5);
-        uint16_t Month = EC_READ_U16(domain_i_pd + off_tx_pdo_6);
-        uint16_t Year = EC_READ_U16(domain_i_pd + off_tx_pdo_7);
-        uint16_t Roll_Offset = EC_READ_U16(domain_i_pd + off_tx_pdo_8);
-        uint16_t Pitch_Offset = EC_READ_U16(domain_i_pd + off_tx_pdo_9);
-        uint16_t Yaw_Offset = EC_READ_U16(domain_i_pd + off_tx_pdo_10);
-        uint16_t Grip_Offset = EC_READ_U16(domain_i_pd + off_tx_pdo_11);
-        uint16_t No_of_Usages = EC_READ_U16(domain_i_pd + off_tx_pdo_12);
-        uint16_t Max_Usages = EC_READ_U16(domain_i_pd + off_tx_pdo_13);
-        uint16_t Digital_Inputs = EC_READ_U16(domain_i_pd + off_tx_pdo_14);
-        uint16_t Grip_Counts = EC_READ_U16(domain_i_pd + off_tx_pdo_15);
-        uint16_t System_Number = EC_READ_U16(domain_i_pd + off_tx_pdo_16);
-        uint16_t Device_UID = EC_READ_U16(domain_i_pd + off_tx_pdo_17);
-        uint16_t Spare_Bytes = EC_READ_U16(domain_i_pd + off_tx_pdo_18);
-        uint16_t MFG_Day = EC_READ_U16(domain_i_pd + off_tx_pdo_19);
-        uint16_t MFG_Month = EC_READ_U16(domain_i_pd + off_tx_pdo_20);
-        uint16_t MFG_Year = EC_READ_U16(domain_i_pd + off_tx_pdo_21);
-
-        // std::cout << "RFID_TXPDO: " << Device_ID << ", " << Second << ", " << Minute << ", " << Hour << ", " << Day << ", " << Month << ", " << Year << ", " << Roll_Offset << ", " << Pitch_Offset << ", " << Yaw_Offset << ", " << Grip_Offset << ", " << No_of_Usages << ", " << Max_Usages << ", " << Digital_Inputs << ", " << Grip_Counts << ", " << System_Number << ", " << Device_UID << ", " << Spare_Bytes << ", " << MFG_Day << ", " << MFG_Month << ", " << MFG_Year << std::endl;
-    }
-
-    virtual void transfer_rx_pdo()
-    {
-        uint16_t Led_Red = 0;
-        uint16_t Led_Green = 0;
-        uint16_t Led_Blue = 1;
-
-        t_stamp += 4;
-        if(t_stamp>=8000)
-        {
-            t_stamp = 0;
-        }
-
-        if(t_stamp <= 1000)
-        {
-            Led_Red = 1;
-            Led_Green = 0;
-            Led_Blue = 0;
-        }
-        else if((1000 <= t_stamp) && (t_stamp <= 2000))
-        {
-            Led_Red = 0;
-            Led_Green = 1;
-            Led_Blue = 0;
-        }
-        else if((2000 <= t_stamp) && (t_stamp <= 3000))
-        {
-            Led_Red = 0;
-            Led_Green = 0;
-            Led_Blue = 1;
-        }
-        else if((3000 <= t_stamp) && (t_stamp <= 4000))
-        {
-            Led_Red = 1;
-            Led_Green = 1;
-            Led_Blue = 0;
-        }
-        else if((4000 <= t_stamp) && (t_stamp <= 5000))
-        {
-            Led_Red = 1;
-            Led_Green = 0;
-            Led_Blue = 1;
-        }
-        else if((5000 <= t_stamp) && (t_stamp <= 6000))
-        {
-            Led_Red = 0;
-            Led_Green = 1;
-            Led_Blue = 1;
-        }
-        else if((6000 <= t_stamp) && (t_stamp <= 7000))
-        {
-            Led_Red = 1;
-            Led_Green = 1;
-            Led_Blue = 1;
-        }
-        else if(7000 <= t_stamp)
-        {
-            Led_Red = 0;
-            Led_Green = 0;
-            Led_Blue = 0;
-        }
-
-        EC_WRITE_U16(domain_i_pd + off_rx_pdo_12, Led_Red);
-        EC_WRITE_U16(domain_i_pd + off_rx_pdo_13, Led_Green);
-        EC_WRITE_U16(domain_i_pd + off_rx_pdo_14, Led_Blue);
-    }
-
-    virtual void process_tx_pdo() {}
-    virtual void process_rx_pdo() {}
-    virtual void config_data_transfer() {}
-    virtual void publish_data() {}
-    virtual void subscribe_data() {}
+    virtual void set_info();
+    virtual void set_pdo();
+    virtual void monitor_status();
+    virtual void transfer_tx_pdo();
+    virtual void transfer_rx_pdo();
+    virtual void process_tx_pdo();
+    virtual void process_rx_pdo();
+    virtual void config_data_transfer();
+    virtual void publish_data();
+    virtual void subscribe_data();
 
 private:
     uint16_t alias = 0;
@@ -276,7 +164,7 @@ private:
         {0, 7, 0x00006000, 0x00004000, 0x0006, 0x15, &off_tx_pdo_21}, /* MFG_Year */
         {}};
 
-        unsigned long t_stamp = 0;
+    unsigned long t_stamp = 0;
 };
 
 #endif // EC_SLAVE_3_H

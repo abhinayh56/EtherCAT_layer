@@ -1,4 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o"
+  "CMakeFiles/Ec_slave.dir/Ec_slave_1.cpp.o.d"
+  "CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o"
+  "CMakeFiles/Ec_slave.dir/Ec_slave_2.cpp.o.d"
+  "CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o"
+  "CMakeFiles/Ec_slave.dir/Ec_slave_3.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.o"
   "CMakeFiles/Ec_slave.dir/Ec_slave_4.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.o"

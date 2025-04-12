@@ -7,45 +7,19 @@
 class Ec_slave_2 : public Ec_slave_base
 {
 public:
-    Ec_slave_2(uint16_t slave_address_, const std::string &slave_name_)
-    {
-        slave_address = slave_address_;
-        slave_name = slave_name_;
-    }
+    Ec_slave_2(uint16_t slave_address_, const std::string &slave_name_);
+    ~Ec_slave_2();
 
-    ~Ec_slave_2() {}
-
-    virtual void set_info()
-    {
-        slave_info.alias = alias;
-        slave_info.position = position;
-        slave_info.vendor_id = vendor_id;
-        slave_info.product_code = product_code;
-
-        slave_info.slave_pdo_entries = slave_2_pdo_entries;
-        slave_info.slave_pdos = slave_2_pdos;
-        slave_info.slave_syncs = slave_2_syncs;
-    }
-
-    virtual void set_pdo()
-    {
-        domain_i_regs = domain_regs;
-    }
-
-    virtual void monitor_status() {}
-    
-    virtual void transfer_tx_pdo()
-    {
-        uint16_t dig_input = EC_READ_U8(domain_i_pd + off_1);
-        // std::cout << "dig_input: " << dig_input <<  ",     |               ";
-    }
-
-    virtual void transfer_rx_pdo() {}
-    virtual void process_tx_pdo() {}
-    virtual void process_rx_pdo() {}
-    virtual void config_data_transfer() {}
-    virtual void publish_data() {}
-    virtual void subscribe_data() {}
+    virtual void set_info();
+    virtual void set_pdo();
+    virtual void monitor_status();
+    virtual void transfer_tx_pdo();
+    virtual void transfer_rx_pdo();
+    virtual void process_tx_pdo();
+    virtual void process_rx_pdo();
+    virtual void config_data_transfer();
+    virtual void publish_data();
+    virtual void subscribe_data();
 
 private:
     uint16_t alias = 0;
@@ -74,11 +48,10 @@ private:
         {0x1a06, 1, slave_2_pdo_entries + 6}, /* Channel 7 */
         {0x1a07, 1, slave_2_pdo_entries + 7}, /* Channel 8 */
     };
-    
+
     ec_sync_info_t slave_2_syncs[2] = {
         {0, EC_DIR_INPUT, 8, slave_2_pdos + 0, EC_WD_DISABLE},
-        {0xff}
-    };
+        {0xff}};
 
     unsigned int off_1;
     ec_pdo_entry_reg_t domain_regs[2] = {

@@ -2,6 +2,9 @@
 add_library(Ec_slave
     ../Ec_slave_base/Ec_slave_base.cpp
     ../Ec_slave_base/Ec_slave_base.h
+    Ec_slave_1.cpp
+    Ec_slave_2.cpp
+    Ec_slave_3.cpp
     Ec_slave_4.cpp
     Ec_slave_5.cpp
     Ec_slave_6.cpp

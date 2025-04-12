@@ -7,59 +7,19 @@
 class Ec_slave_1 : public Ec_slave_base
 {
 public:
-    Ec_slave_1(uint16_t slave_address_, const std::string &slave_name_)
-    {
-        slave_address = slave_address_;
-        slave_name = slave_name_;
-    }
+    Ec_slave_1(uint16_t slave_address_, const std::string &slave_name_);
+    ~Ec_slave_1();
 
-    ~Ec_slave_1() {}
-
-    virtual void set_info()
-    {
-        slave_info.alias = alias;
-        slave_info.position = position;
-        slave_info.vendor_id = vendor_id;
-        slave_info.product_code = product_code;
-
-        slave_info.slave_pdo_entries = slave_1_pdo_entries;
-        slave_info.slave_pdos = slave_1_pdos;
-        slave_info.slave_syncs = slave_1_syncs;
-    }
-
-    virtual void set_pdo()
-    {
-        domain_i_regs = domain_regs;
-    }
-
-    virtual void monitor_status() {}
-    virtual void transfer_tx_pdo() {}
-
-    virtual void transfer_rx_pdo()
-    {
-        time_stamp += 4;
-        if(time_stamp>=2000)
-        {
-            time_stamp = 0;
-        }
-
-        if(time_stamp <=1000)
-        {
-            // led on
-            EC_WRITE_U8(domain_i_pd + off_1, 0xAA);
-        }
-        else
-        {
-            // led off
-            EC_WRITE_U8(domain_i_pd + off_1, 0x55);
-        }
-    }
-
-    virtual void process_tx_pdo() {}
-    virtual void process_rx_pdo() {}
-    virtual void config_data_transfer() {}
-    virtual void publish_data() {}
-    virtual void subscribe_data() {}
+    virtual void set_info();
+    virtual void set_pdo();
+    virtual void monitor_status();
+    virtual void transfer_tx_pdo();
+    virtual void transfer_rx_pdo();
+    virtual void process_tx_pdo();
+    virtual void process_rx_pdo();
+    virtual void config_data_transfer();
+    virtual void publish_data();
+    virtual void subscribe_data();
 
 private:
     uint16_t alias = 0;
@@ -97,7 +57,7 @@ private:
     ec_pdo_entry_reg_t domain_regs[2] = {
         {0, 1, 0x00000002, 0x07d83052, 0x7000, 0x01, &off_1},
         {}};
-    
+
     unsigned long time_stamp = 0;
 };
 
