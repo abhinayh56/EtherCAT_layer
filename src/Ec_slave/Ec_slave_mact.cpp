@@ -1,9 +1,9 @@
 #include "Ec_slave_mact.h"
 
-Ec_slave_mact::Ec_slave_mact(uint16_t slave_address_, const std::string &slave_name_)
+Ec_slave_mact::Ec_slave_mact(uint16_t slave_address_, const std::string &slave_ns_)
 {
     slave_address = slave_address_;
-    slave_name = slave_name_;
+    slave_ns = slave_ns_;
 }
 
 Ec_slave_mact::~Ec_slave_mact()

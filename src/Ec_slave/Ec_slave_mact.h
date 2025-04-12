@@ -8,7 +8,7 @@
 class Ec_slave_mact : public Ec_slave_base
 {
 public:
-    Ec_slave_mact(uint16_t slave_address_, const std::string &slave_name_);
+    Ec_slave_mact(uint16_t slave_address_, const std::string &slave_ns_);
     ~Ec_slave_mact();
 
     virtual void set_info();

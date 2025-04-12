@@ -7,7 +7,7 @@
 class Ec_slave_rfid : public Ec_slave_base
 {
 public:
-    Ec_slave_rfid(uint16_t slave_address_, const std::string &slave_name_);
+    Ec_slave_rfid(uint16_t slave_address_, const std::string &slave_ns_);
     ~Ec_slave_rfid();
 
     virtual void set_info();
