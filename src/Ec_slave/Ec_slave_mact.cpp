@@ -24,6 +24,10 @@ void Ec_slave_mact::set_info()
 
 void Ec_slave_mact::set_pdo()
 {
+    for (uint8_t i = 0; i < 15; i++)
+    {
+        domain_regs[i].position = slave_address;
+    }
     domain_i_regs = domain_regs;
 }
 
@@ -42,7 +46,7 @@ void Ec_slave_mact::transfer_tx_pdo()
     int32_t ACT_VEL = EC_READ_S32(domain_i_pd + off_tx_pdo_7);
     int16_t ADC_VAL = EC_READ_S16(domain_i_pd + off_tx_pdo_8);
 
-    // std::cout << "MACT_TXPDO: " << ACT_POS << ", " << STATUS_WD << ", " << ACT_TOR << ", " << uint16_t(OPMODE_DISP) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << ACT_VEL << ", " << ADC_VAL << std::endl;
+    std::cout << "MACT_TXPDO (addr): " << slave_address << ",  |  " << ACT_POS << ", " << STATUS_WD << ", " << ACT_TOR << ", " << uint16_t(OPMODE_DISP) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << ACT_VEL << ", " << ADC_VAL << std::endl;
 }
 
 void Ec_slave_mact::transfer_rx_pdo()

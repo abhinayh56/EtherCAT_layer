@@ -175,78 +175,6 @@ Ec_slave/fast:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
 .PHONY : Ec_slave/fast
 
-Ec_slave_5.o: Ec_slave_5.cpp.o
-.PHONY : Ec_slave_5.o
-
-# target to build an object file
-Ec_slave_5.cpp.o:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.o
-.PHONY : Ec_slave_5.cpp.o
-
-Ec_slave_5.i: Ec_slave_5.cpp.i
-.PHONY : Ec_slave_5.i
-
-# target to preprocess a source file
-Ec_slave_5.cpp.i:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.i
-.PHONY : Ec_slave_5.cpp.i
-
-Ec_slave_5.s: Ec_slave_5.cpp.s
-.PHONY : Ec_slave_5.s
-
-# target to generate assembly for a file
-Ec_slave_5.cpp.s:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_5.cpp.s
-.PHONY : Ec_slave_5.cpp.s
-
-Ec_slave_6.o: Ec_slave_6.cpp.o
-.PHONY : Ec_slave_6.o
-
-# target to build an object file
-Ec_slave_6.cpp.o:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_6.cpp.o
-.PHONY : Ec_slave_6.cpp.o
-
-Ec_slave_6.i: Ec_slave_6.cpp.i
-.PHONY : Ec_slave_6.i
-
-# target to preprocess a source file
-Ec_slave_6.cpp.i:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_6.cpp.i
-.PHONY : Ec_slave_6.cpp.i
-
-Ec_slave_6.s: Ec_slave_6.cpp.s
-.PHONY : Ec_slave_6.s
-
-# target to generate assembly for a file
-Ec_slave_6.cpp.s:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_6.cpp.s
-.PHONY : Ec_slave_6.cpp.s
-
-Ec_slave_7.o: Ec_slave_7.cpp.o
-.PHONY : Ec_slave_7.o
-
-# target to build an object file
-Ec_slave_7.cpp.o:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_7.cpp.o
-.PHONY : Ec_slave_7.cpp.o
-
-Ec_slave_7.i: Ec_slave_7.cpp.i
-.PHONY : Ec_slave_7.i
-
-# target to preprocess a source file
-Ec_slave_7.cpp.i:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_7.cpp.i
-.PHONY : Ec_slave_7.cpp.i
-
-Ec_slave_7.s: Ec_slave_7.cpp.s
-.PHONY : Ec_slave_7.s
-
-# target to generate assembly for a file
-Ec_slave_7.cpp.s:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_7.cpp.s
-.PHONY : Ec_slave_7.cpp.s
-
 Ec_slave_el_1008.o: Ec_slave_el_1008.cpp.o
 .PHONY : Ec_slave_el_1008.o
 
@@ -380,15 +308,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... Ec_slave"
-	@echo "... Ec_slave_5.o"
-	@echo "... Ec_slave_5.i"
-	@echo "... Ec_slave_5.s"
-	@echo "... Ec_slave_6.o"
-	@echo "... Ec_slave_6.i"
-	@echo "... Ec_slave_6.s"
-	@echo "... Ec_slave_7.o"
-	@echo "... Ec_slave_7.i"
-	@echo "... Ec_slave_7.s"
 	@echo "... Ec_slave_el_1008.o"
 	@echo "... Ec_slave_el_1008.i"
 	@echo "... Ec_slave_el_1008.s"
