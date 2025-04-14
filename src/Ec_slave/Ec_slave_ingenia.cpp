@@ -42,7 +42,7 @@ void Ec_slave_ingenia::transfer_tx_pdo()
     int32_t Actual_velocity = EC_READ_S32(domain_i_pd + off_tx_pdo_3);
     uint8_t Operation_mode_display = EC_READ_U8(domain_i_pd + off_tx_pdo_4);
 
-    std::cout << "INGENIA_TXPDO: " << slave_ns << " | " << Status_Word << ", " << Actual_position << ", " << Actual_velocity << ", " << uint16_t(Operation_mode_display) << std::endl;
+    // std::cout << "INGENIA_TXPDO: " << slave_ns << " | " << Status_Word << ", " << Actual_position << ", " << Actual_velocity << ", " << uint16_t(Operation_mode_display) << std::endl;
 }
 
 void Ec_slave_ingenia::transfer_rx_pdo()
@@ -51,7 +51,6 @@ void Ec_slave_ingenia::transfer_rx_pdo()
 
     if (t_stamp <= 2500)
     {
-        TARGET_POS = 0;
         OP_MODE = 8;
         CONTROL_WD = 128;
     }
