@@ -51,7 +51,7 @@ void Ec_slave_ingenia::transfer_rx_pdo()
 
     if (t_stamp <= 2500)
     {
-        OP_MODE = 8;
+        OP_MODE = 0;
         CONTROL_WD = 128;
     }
     else if ((2500 <= t_stamp) && (t_stamp <= 5000))

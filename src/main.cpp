@@ -50,7 +50,7 @@ int main()
     while (ec_master.is_running())
     {
         ec_master.cyclic_task();
-        usleep(4000);
+        usleep(2000);
     }
 
     return 0;
