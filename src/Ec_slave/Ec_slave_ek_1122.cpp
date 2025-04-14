@@ -17,8 +17,8 @@ void Ec_slave_ek_1122::set_info()
     slave_info.vendor_id = vendor_id;
     slave_info.product_code = product_code;
 
-    // slave_info.slave_pdo_entries;
-    // slave_info.slave_pdos;
+    slave_info.slave_pdo_entries;
+    slave_info.slave_pdos;
     slave_info.slave_syncs = slave_2_syncs;
 }
 
@@ -31,6 +31,11 @@ void Ec_slave_ek_1122::monitor_status() {}
 
 void Ec_slave_ek_1122::transfer_tx_pdo()
 {
+    time_stamp += 4;
+    if (time_stamp >= 2000)
+    {
+        time_stamp = 0;
+    }
 }
 
 void Ec_slave_ek_1122::transfer_rx_pdo()

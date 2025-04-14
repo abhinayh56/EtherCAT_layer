@@ -199,6 +199,30 @@ Ec_slave_ek_1100.cpp.s:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ek_1100.cpp.s
 .PHONY : Ec_slave_ek_1100.cpp.s
 
+Ec_slave_ek_1122.o: Ec_slave_ek_1122.cpp.o
+.PHONY : Ec_slave_ek_1122.o
+
+# target to build an object file
+Ec_slave_ek_1122.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ek_1122.cpp.o
+.PHONY : Ec_slave_ek_1122.cpp.o
+
+Ec_slave_ek_1122.i: Ec_slave_ek_1122.cpp.i
+.PHONY : Ec_slave_ek_1122.i
+
+# target to preprocess a source file
+Ec_slave_ek_1122.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ek_1122.cpp.i
+.PHONY : Ec_slave_ek_1122.cpp.i
+
+Ec_slave_ek_1122.s: Ec_slave_ek_1122.cpp.s
+.PHONY : Ec_slave_ek_1122.s
+
+# target to generate assembly for a file
+Ec_slave_ek_1122.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ek_1122.cpp.s
+.PHONY : Ec_slave_ek_1122.cpp.s
+
 Ec_slave_el_1008.o: Ec_slave_el_1008.cpp.o
 .PHONY : Ec_slave_el_1008.o
 
@@ -246,6 +270,30 @@ Ec_slave_el_2008.s: Ec_slave_el_2008.cpp.s
 Ec_slave_el_2008.cpp.s:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.s
 .PHONY : Ec_slave_el_2008.cpp.s
+
+Ec_slave_ingenia.o: Ec_slave_ingenia.cpp.o
+.PHONY : Ec_slave_ingenia.o
+
+# target to build an object file
+Ec_slave_ingenia.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ingenia.cpp.o
+.PHONY : Ec_slave_ingenia.cpp.o
+
+Ec_slave_ingenia.i: Ec_slave_ingenia.cpp.i
+.PHONY : Ec_slave_ingenia.i
+
+# target to preprocess a source file
+Ec_slave_ingenia.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ingenia.cpp.i
+.PHONY : Ec_slave_ingenia.cpp.i
+
+Ec_slave_ingenia.s: Ec_slave_ingenia.cpp.s
+.PHONY : Ec_slave_ingenia.s
+
+# target to generate assembly for a file
+Ec_slave_ingenia.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ingenia.cpp.s
+.PHONY : Ec_slave_ingenia.cpp.s
 
 Ec_slave_mact.o: Ec_slave_mact.cpp.o
 .PHONY : Ec_slave_mact.o
@@ -335,12 +383,18 @@ help:
 	@echo "... Ec_slave_ek_1100.o"
 	@echo "... Ec_slave_ek_1100.i"
 	@echo "... Ec_slave_ek_1100.s"
+	@echo "... Ec_slave_ek_1122.o"
+	@echo "... Ec_slave_ek_1122.i"
+	@echo "... Ec_slave_ek_1122.s"
 	@echo "... Ec_slave_el_1008.o"
 	@echo "... Ec_slave_el_1008.i"
 	@echo "... Ec_slave_el_1008.s"
 	@echo "... Ec_slave_el_2008.o"
 	@echo "... Ec_slave_el_2008.i"
 	@echo "... Ec_slave_el_2008.s"
+	@echo "... Ec_slave_ingenia.o"
+	@echo "... Ec_slave_ingenia.i"
+	@echo "... Ec_slave_ingenia.s"
 	@echo "... Ec_slave_mact.o"
 	@echo "... Ec_slave_mact.i"
 	@echo "... Ec_slave_mact.s"

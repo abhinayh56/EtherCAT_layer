@@ -1,2 +1,2 @@
-/usr/bin/ar qc libEc_slave.a CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_ek_1100.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_rfid.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o
+/usr/bin/ar qc libEc_slave.a CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_ek_1100.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_ek_1122.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_rfid.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o CMakeFiles/Ec_slave.dir/Ec_slave_ingenia.cpp.o
 /usr/bin/ranlib libEc_slave.a

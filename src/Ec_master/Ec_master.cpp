@@ -51,6 +51,12 @@ bool Ec_master::stop()
 
 void Ec_master::config()
 {
+    uint16_t alias = 0;
+    uint16_t position = 12;
+    uint32_t vendor_id = 668;
+    uint32_t product_code = 0x03811002;
+    ecrt_master_slave_config(master, alias, position, vendor_id, product_code);
+
     LOG_CONSOLE_INFO("Configuring all slaves starts...", 1);
     config_slaves_data_transfer();
     create_domain();
