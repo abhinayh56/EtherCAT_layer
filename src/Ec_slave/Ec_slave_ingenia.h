@@ -61,22 +61,23 @@ private:
     unsigned int off_tx_pdo_3;
     unsigned int off_tx_pdo_4;
 
-    ec_pdo_entry_reg_t domain_regs[41] = {
-        {0, 12, 0x0000029c, 0x03811002, 0x6040, 0x00, &off_rx_pdo_1}, // UINT16
-        {0, 12, 0x0000029c, 0x03811002, 0x607a, 0x00, &off_rx_pdo_2}, // UINT32
-        {0, 12, 0x0000029c, 0x03811002, 0x60ff, 0x00, &off_rx_pdo_3}, // UINT32
-        {0, 12, 0x0000029c, 0x03811002, 0x6060, 0x00, &off_rx_pdo_4}, // UINT8
+    ec_pdo_entry_reg_t domain_regs[9] = {
+        {0, 12, 0x0000029c, 0x03811002, 0x6040, 0x00, &off_rx_pdo_1}, /* CONTROL_WD */  // UINT16
+        {0, 12, 0x0000029c, 0x03811002, 0x607a, 0x00, &off_rx_pdo_2}, /* TARGET_POS */  // SINT32
+        {0, 12, 0x0000029c, 0x03811002, 0x60ff, 0x00, &off_rx_pdo_3}, /* TARGET_VEL */  // SINT32
+        {0, 12, 0x0000029c, 0x03811002, 0x6060, 0x00, &off_rx_pdo_4}, /* OP_MODE */     // UIN8T
         {0, 12, 0x0000029c, 0x03811002, 0x6041, 0x00, &off_tx_pdo_1}, /* Status Word */ // UINT16
-        {0, 12, 0x0000029c, 0x03811002, 0x6064, 0x00, &off_tx_pdo_2}, /* Actual position */ // UINT32
-        {0, 12, 0x0000029c, 0x03811002, 0x606c, 0x00, &off_tx_pdo_3}, /* Actual velocity */ // UINT32
+        {0, 12, 0x0000029c, 0x03811002, 0x6064, 0x00, &off_tx_pdo_2}, /* Actual position */ // SINT32
+        {0, 12, 0x0000029c, 0x03811002, 0x606c, 0x00, &off_tx_pdo_3}, /* Actual velocity */ // SINT32
         {0, 12, 0x0000029c, 0x03811002, 0x6061, 0x00, &off_tx_pdo_4}, /* Operation mode display */ // UINT8
         {}};
 
     unsigned long t_stamp = 0;
 
-    // int32_t TARGET_POS = 0;  // off_rx_pdo_1
-    uint16_t CONTROL_WD = 0; // off_rx_pdo_2
-    uint8_t OP_MODE = 0;     // off_rx_pdo_4
+    uint16_t CONTROL_WD = 0; //off_rx_pdo_1
+    int32_t TARGET_POS = 0; //off_rx_pdo_2
+    int32_t TARGET_VEL = 0; //off_rx_pdo_3
+    uint8_t OP_MODE = 0; //off_rx_pdo_4
 };
 
 #endif // EC_SLAVE_INGENIA_H
