@@ -175,6 +175,30 @@ Ec_slave/fast:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
 .PHONY : Ec_slave/fast
 
+Ec_slave_ek_1100.o: Ec_slave_ek_1100.cpp.o
+.PHONY : Ec_slave_ek_1100.o
+
+# target to build an object file
+Ec_slave_ek_1100.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ek_1100.cpp.o
+.PHONY : Ec_slave_ek_1100.cpp.o
+
+Ec_slave_ek_1100.i: Ec_slave_ek_1100.cpp.i
+.PHONY : Ec_slave_ek_1100.i
+
+# target to preprocess a source file
+Ec_slave_ek_1100.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ek_1100.cpp.i
+.PHONY : Ec_slave_ek_1100.cpp.i
+
+Ec_slave_ek_1100.s: Ec_slave_ek_1100.cpp.s
+.PHONY : Ec_slave_ek_1100.s
+
+# target to generate assembly for a file
+Ec_slave_ek_1100.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ek_1100.cpp.s
+.PHONY : Ec_slave_ek_1100.cpp.s
+
 Ec_slave_el_1008.o: Ec_slave_el_1008.cpp.o
 .PHONY : Ec_slave_el_1008.o
 
@@ -308,6 +332,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... Ec_slave"
+	@echo "... Ec_slave_ek_1100.o"
+	@echo "... Ec_slave_ek_1100.i"
+	@echo "... Ec_slave_ek_1100.s"
 	@echo "... Ec_slave_el_1008.o"
 	@echo "... Ec_slave_el_1008.i"
 	@echo "... Ec_slave_el_1008.s"
