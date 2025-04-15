@@ -61,16 +61,16 @@ public:
     virtual void publish_data();
     virtual void subscribe_data();
 
-    void init();
-    void e_stop();
-    void enable();
-    void disable();
-    void set_operating_mode(Motor_drive::Mode mode_);
-    void check_fault();
-    void clear_fault();
-    void set_position(double th_0);
-    void set_velocity(double v_0);
-    void set_torque(double tau_0);
+    virtual void init();
+    virtual void e_stop();
+    virtual void enable();
+    virtual void disable();
+    virtual void set_operating_mode(Motor_drive::Mode mode_);
+    virtual void check_fault();
+    virtual void clear_fault();
+    virtual void set_position(double th_0);
+    virtual void set_velocity(double v_0);
+    virtual void set_torque(double tau_0);
 
 protected:
     Motor_drive::OP_status state = Motor_drive::OP_status::DISABLE;
