@@ -7,7 +7,7 @@
 
 namespace Motor
 {
-    enum class State
+    enum class OP_status
     {
         ENABLE = 0,
         DISABLE = 1
@@ -17,11 +17,30 @@ namespace Motor
     {
         POSITION = 0,
         VELOCITY = 1,
-        TORQUE = 0
+        TORQUE = 2
+    };
+
+    struct Mode_supported
+    {
+        bool position = false;
+        bool velocity = false;
+        bool torque = false;
     };
 
     enum class Fault
     {
+        OVER_CURRENT = 0,
+        OVER_TEMPERATURE = 1,
+        OVER_VOLTAGE = 2,
+        UNKOWN = 3,
+        NO_FAULT = 4
+    };
+
+    struct Pose
+    {
+        double position = 0;
+        double velocity = 0;
+        double torque = 0;
     };
 }
 
@@ -54,10 +73,14 @@ public:
     void set_torque(double tau_0);
 
 protected:
-    Motor::State state = Motor::State::DISABLE;
+    Motor::OP_status state = Motor::OP_status::DISABLE;
     Motor::Mode mode = Motor::Mode::TORQUE;
+    Motor::Mode_supported mode_supported;
+    Motor::Fault fault = Motor::Fault::NO_FAULT;
     bool e_stop_flag = false;
-    uint16_t fault_type;
+
+    Motor::Pose pose_current;
+    Motor::Pose pose_setpoint;
 };
 
 #endif // EC_SLAVE_MOTOR_SALVE_H

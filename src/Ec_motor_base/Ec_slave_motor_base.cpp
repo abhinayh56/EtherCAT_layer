@@ -75,3 +75,15 @@ void Ec_slave_motor_base::check_fault()
 void Ec_slave_motor_base::clear_fault()
 {
 }
+
+void Ec_slave_motor_base::set_position(double th_0)
+{
+}
+
+void Ec_slave_motor_base::set_velocity(double v_0)
+{
+}
+
+void Ec_slave_motor_base::set_torque(double tau_0)
+{
+}
