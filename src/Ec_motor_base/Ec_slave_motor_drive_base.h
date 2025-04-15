@@ -73,7 +73,7 @@ public:
     virtual void set_torque(double tau_0);
 
 protected:
-    Motor_drive::OP_status state = Motor_drive::OP_status::DISABLE;
+    Motor_drive::OP_status op_status = Motor_drive::OP_status::DISABLE;
     Motor_drive::Mode mode = Motor_drive::Mode::TORQUE;
     Motor_drive::Mode_supported mode_supported;
     Motor_drive::Fault fault = Motor_drive::Fault::NO_FAULT;
