@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include "../Ec_slave_base/Ec_slave_base.h"
 
-namespace Motor
+namespace Motor_drive
 {
     enum class OP_status
     {
@@ -44,11 +44,11 @@ namespace Motor
     };
 }
 
-class Ec_slave_motor_base : public Ec_slave_base
+class Ec_slave_motor_drive_base : public Ec_slave_base
 {
 public:
-    Ec_slave_motor_base();
-    ~Ec_slave_motor_base();
+    Ec_slave_motor_drive_base();
+    ~Ec_slave_motor_drive_base();
 
     virtual void set_info();
     virtual void set_pdo();
@@ -65,7 +65,7 @@ public:
     void e_stop();
     void enable();
     void disable();
-    void set_operating_mode(Motor::Mode mode_);
+    void set_operating_mode(Motor_drive::Mode mode_);
     void check_fault();
     void clear_fault();
     void set_position(double th_0);
@@ -73,14 +73,14 @@ public:
     void set_torque(double tau_0);
 
 protected:
-    Motor::OP_status state = Motor::OP_status::DISABLE;
-    Motor::Mode mode = Motor::Mode::TORQUE;
-    Motor::Mode_supported mode_supported;
-    Motor::Fault fault = Motor::Fault::NO_FAULT;
+    Motor_drive::OP_status state = Motor_drive::OP_status::DISABLE;
+    Motor_drive::Mode mode = Motor_drive::Mode::TORQUE;
+    Motor_drive::Mode_supported mode_supported;
+    Motor_drive::Fault fault = Motor_drive::Fault::NO_FAULT;
     bool e_stop_flag = false;
 
-    Motor::Pose pose_current;
-    Motor::Pose pose_setpoint;
+    Motor_drive::Pose pose_current;
+    Motor_drive::Pose pose_setpoint;
 };
 
 #endif // EC_SLAVE_MOTOR_SALVE_H
