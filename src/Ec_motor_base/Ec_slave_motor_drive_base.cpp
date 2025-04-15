@@ -64,7 +64,7 @@ void Ec_slave_motor_drive_base::disable()
 {
 }
 
-void Ec_slave_motor_drive_base::set_operating_mode(Motor::Mode mode_)
+void Ec_slave_motor_drive_base::set_operating_mode(Motor_drive::Mode mode_)
 {
 }
 
