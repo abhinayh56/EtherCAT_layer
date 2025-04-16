@@ -88,16 +88,16 @@ protected:
     int8_t mode_of_operation;
     int8_t mode_of_operation_display;
 
-private:
-    uint16_t *ptr_control_word = &control_word;
-    uint16_t *ptr_status_word = &status_word;
-    int8_t *ptr_mode_of_operation = &mode_of_operation;
-    int8_t *ptr_mode_of_operation_display = &mode_of_operation_display;
+// private:
+//     uint16_t *ptr_control_word = &control_word;
+//     uint16_t *ptr_status_word = &status_word;
+//     int8_t *ptr_mode_of_operation = &mode_of_operation;
+//     int8_t *ptr_mode_of_operation_display = &mode_of_operation_display;
 
-    uint16_t &ref_control_word = control_word;
-    uint16_t &ref_status_word = status_word;
-    int8_t &ref_mode_of_operation = mode_of_operation;
-    int8_t &ref_mode_of_operation_display = mode_of_operation_display;
+//     uint16_t &ref_control_word = control_word;
+//     uint16_t &ref_status_word = status_word;
+//     int8_t &ref_mode_of_operation = mode_of_operation;
+//     int8_t &ref_mode_of_operation_display = mode_of_operation_display;
 };
 
 #endif // EC_SLAVE_MOTOR_SALVE_H
