@@ -36,13 +36,111 @@ namespace Motor_drive
         UNKOWN = 3,
         NO_FAULT = 4
     };
+}
 
-    struct Pose
+namespace Pdo_object
+{
+    namespace Control_word
     {
-        double position = 0;
-        double velocity = 0;
-        double torque = 0;
-    };
+        uint16_t index = 0x1600;
+        uint8_t sub_index = 0x01;
+        uint16_t pdo_index = 0x6040;
+        uint8_t pdo_sub_index = 0x00;
+
+        enum Bit_flags : uint16_t
+        {
+            SHUTDOWN = (1 << 2) | (1 << 1),
+            SWITCH_ON = (1 << 2) | (1 << 1) | (1 << 0),
+            SWITCH_ON_AND_ENABLE_OPERATION = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
+            DISABLE_VOLTAGE = 0x00,
+            QUICK_STOP = 1 << 1,
+            DISABLE_OPERATION = (1 << 2) | (1 << 1) | (1 << 0),
+            ENABLE_OPERATION = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
+            FAULT_RESET = 1 << 7
+        };
+    }
+
+    namespace Status_word
+    {
+        uint16_t index = 0x1A00;
+        uint8_t sub_index = 0x01;
+        uint16_t pdo_index = 0x6041;
+        uint8_t pdo_sub_index = 0x00;
+
+        enum Bit_flags : uint16_t
+        {
+            NOT_READY_TO_SWITCH_ON = 0x00,
+            SWITCH_ON_DISABLED = 1 << 6,
+            READY_TO_SWITCH_ON = (1 << 5) | (1 << 0),
+            SWITCHED_ON = (1 << 5) | (1 << 1) | (1 << 0),
+            OPERATION_ENABLED = (1 << 5) | (1 << 2) | (1 << 1) | (1 << 0),
+            QUICK_STOP_ACTIVE = (1 << 2) | (1 << 1) | (1 << 0),
+            FAULT_REACTION_ACTIVE = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
+            FAULT = 1 << 3,
+
+            // Values provided beow are operation mode specific
+            // CSP: Cyclic Synchronous Position
+            // CSV: Cyclic Synchronous Velocity
+            // CST: Cyclic Synchronous Torque
+            // PPM: Profile Position Mode
+            // PVM: Profile Velocity Mode
+            // HM: Homing Mode
+            CSP_FOLLOWING_ERROR_BIT = 1 << 13,
+            CSP_TARGET_POSITION_IGNORED = 1 << 12,
+            CSV_TARGET_VELOCITY_IGNORED = 1 << 12,
+            CST_TARGET_TORQUE_IGNORED = 1 << 12,
+            PPM_FOLLOWING_ERROR_BIT = 1 << 13,
+            PPM_SET_PPINT_ACKNOWLEDGE_BIT = 1 << 12,
+            PVM_SPEED_BIT = 1 << 12,
+            HM_HOMING_ERROR_BIT = 1 << 13,
+            HM_HOMING_ATTAINED_BIT = 1 << 12
+        };
+    }
+
+    namespace Modes_of_operation
+    {
+        uint16_t index = 0x1600;
+        uint8_t sub_index = 0x02;
+        uint16_t pdo_index = 0x6060;
+        uint8_t pdo_sub_index = 0x00;
+
+        enum Bit_flags : int8_t
+        {
+            OPEN_LOOP_FIELD_MODE = -3,
+            DIAGNOSTICS_MODE = -2,
+            COGGING_COMPENSATION_RECORDING_MODE = -1,
+            PROFILE_POSITION_MODE = 1,
+            PROFILE_VELOCITY_MODE = 3,
+            TORQUE_PROFILE_MODE = 4,
+            HOMING_MODE = 6,
+            CYCLIC_SYNC_POSITION_MODE = 8,
+            CYCLIC_SYNC_VELOCITY_MODE = 9,
+            CYCLIC_SYNC_TORQUE_MODE = 10
+        };
+    }
+
+    namespace Modes_of_operation_display
+    {
+        uint16_t index = 0x1A00;
+        uint8_t sub_index = 0x02;
+        uint16_t pdo_index = 0x6061;
+        uint8_t pdo_sub_index = 0x00;
+
+        enum Bit_flags : int8_t
+        {
+            OPEN_LOOP_FIELD_MODE = -3,
+            DIAGNOSTICS_MODE = -2,
+            COGGING_COMPENSATION_RECORDING_MODE = -1,
+            NO_MODE_SELECTED = 0,
+            PROFILE_POSITION_MODE = 1,
+            PROFILE_VELOCITY_MODE = 3,
+            TORQUE_PROFILE_MODE = 4,
+            HOMING_MODE = 6,
+            CYCLIC_SYNC_POSITION_MODE = 8,
+            CYCLIC_SYNC_VELOCITY_MODE = 9,
+            CYCLIC_SYNC_TORQUE_MODE = 10
+        };
+    }
 }
 
 class Ec_slave_motor_drive_base : public Ec_slave_base
@@ -83,32 +181,25 @@ protected:
     Motor_drive::Fault fault = Motor_drive::Fault::NO_FAULT;
     bool e_stop_flag = false;
 
-    Motor_drive::Pose pose_current;
-    Motor_drive::Pose pose_setpoint;
-
     uint16_t status_word;
     int8_t mode_of_operation_display;
-    int32_t position_actual_value;
-    int32_t velocity_actual_value;
-    int16_t torque_actual_value;
-    
+    int32_t position_actual_value = 0;
+    int32_t velocity_actual_value = 0;
+    int16_t torque_actual_value = 0;
+
     uint16_t control_word;
     int8_t mode_of_operation;
-    int32_t target_position;
-    int32_t target_velocity;
-    int16_t target_torque;
-    
+    int32_t target_position = 0;
+    int32_t target_velocity = 0;
+    int16_t target_torque = 0;
 
-    // private:
-    //     uint16_t *ptr_control_word = &control_word;
-    //     uint16_t *ptr_status_word = &status_word;
-    //     int8_t *ptr_mode_of_operation = &mode_of_operation;
-    //     int8_t *ptr_mode_of_operation_display = &mode_of_operation_display;
+    double position_actual = 0;
+    double velocity_actual = 0;
+    double torque_actual = 0;
 
-    //     uint16_t &ref_control_word = control_word;
-    //     uint16_t &ref_status_word = status_word;
-    //     int8_t &ref_mode_of_operation = mode_of_operation;
-    //     int8_t &ref_mode_of_operation_display = mode_of_operation_display;
+    double position_command = 0;
+    double velocity_command = 0;
+    double torque_command = 0;
 };
 
 #endif // EC_SLAVE_MOTOR_SALVE_H

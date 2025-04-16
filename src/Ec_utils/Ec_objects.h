@@ -5,6 +5,40 @@
 
 namespace Object
 {
+    enum class Pdo_object_index : uint16_t
+    {
+        TX_PDO_STATUSWORD = 0x6041,
+        TX_PDO_MODES_OF_OPERATION_DISPLAY = 0x6061,
+        TX_PDO_POSITION_ACTUAL_VALUE = 0x6064,
+        TX_PDO_VELOCITY_ACTUAL_VALUE = 0x606C,
+        TX_PDO_TORQUE_ACTUAL_VALUE = 0x6077,
+
+        RX_PDO_CONTROLWORD = 0x6040,
+        RX_PDO_MODES_OF_OPERATION = 0x6060,
+        RX_PDO_TARGET_POSITION = 0x607A,
+        RX_PDO_TARGET_VELOCITY = 0x60FF,
+        RX_PDO_TARGET_TORQUE = 0x6071
+    };
+
+    template<Pdo_object_index pdo_object_index, uint8_t object_sub_index, typename T_value>
+    struct Pdo_object_variable
+    {
+        Pdo_object_index object_index = pdo_object_index;
+        uint8_t object_subindex = object_sub_index;
+        T_value value = 0;
+        bool is_supported = 0;
+        uint32_t offset;
+    };
+
+    template<uint16_t object_index, uint8_t object_sub_index, typename T_value>
+    struct Pdo_object
+    {
+        uint16_t index = object_index;
+        uint8_t sub_index = object_sub_index;
+        T_value value = 0;
+        bool is_supported = false;
+    };
+
     namespace Control_word
     {
         uint16_t index = 0x1600;
