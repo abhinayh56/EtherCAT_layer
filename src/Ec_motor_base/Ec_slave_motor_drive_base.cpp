@@ -59,6 +59,9 @@ void Ec_slave_motor_drive_base::stop()
 
 void Ec_slave_motor_drive_base::enable()
 {
+    if(status_word & CiA_402::Pdo_object::Status_word::NOT_READY_TO_SWITCH_ON)
+    {
+    }
 }
 
 void Ec_slave_motor_drive_base::disable()
