@@ -87,3 +87,7 @@ void Ec_slave_motor_drive_base::set_velocity(double v_0)
 void Ec_slave_motor_drive_base::set_torque(double tau_0)
 {
 }
+
+void Ec_slave_motor_drive_base::sync_pvt()
+{
+}
