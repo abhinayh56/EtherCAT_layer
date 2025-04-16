@@ -54,38 +54,35 @@ void Ec_slave_motor_drive_base::init()
 
 void Ec_slave_motor_drive_base::stop()
 {
+    disable();
 }
 
 void Ec_slave_motor_drive_base::enable()
 {
-    if (status_word == Pdo_object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
-    {
-        control_word = Pdo_object::Control_word::Bit_flags::
-    }
 }
 
 void Ec_slave_motor_drive_base::disable()
 {
-    control_word = Pdo_object::Control_word::Bit_flags::DISABLE_VOLTAGE;
+    control_word = CiA_402::Pdo_object::Control_word::Bit_flags::DISABLE_VOLTAGE;
 }
 
 void Ec_slave_motor_drive_base::set_operating_mode(Motor_drive::Mode mode_)
 {
     if (mode_ == Motor_drive::Mode::POSITION)
     {
-        mode_of_operation = 8;
+        mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_POSITION_MODE;
     }
     else if (mode_ == Motor_drive::Mode::VELOCITY)
     {
-        mode_of_operation = 9;
+        mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_VELOCITY_MODE;
     }
     else if (mode_ == Motor_drive::Mode::TORQUE)
     {
-        mode_of_operation = 10;
+        mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
     }
     else
     {
-        mode_of_operation = 0;
+        mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
     }
 }
 
@@ -95,7 +92,7 @@ void Ec_slave_motor_drive_base::check_fault()
 
 void Ec_slave_motor_drive_base::clear_fault()
 {
-    mode_of_operation = Pdo_object::Control_word::Bit_flags::FAULT_RESET;
+    mode_of_operation = CiA_402::Pdo_object::Control_word::Bit_flags::FAULT_RESET;
 }
 
 void Ec_slave_motor_drive_base::set_position(double th_0)

@@ -83,7 +83,7 @@ protected:
     int16_t torque_actual_value = 0;
 
     uint16_t control_word;
-    int8_t mode_of_operation;
+    int8_t mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
     int32_t target_position = 0;
     int32_t target_velocity = 0;
     int16_t target_torque = 0;
