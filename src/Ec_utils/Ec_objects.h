@@ -8,7 +8,7 @@ namespace Object
     namespace Control_word
     {
         uint16_t index = 0x1600;
-        uint8_t sub_index = 0x00;
+        uint8_t sub_index = 0x01;
         uint16_t pdo_index = 0x6040;
         uint8_t pdo_sub_index = 0x00;
 
@@ -16,12 +16,12 @@ namespace Object
         {
             SHUTDOWN = (1 << 2) | (1 << 1),
             SWITCH_ON = (1 << 2) | (1 << 1) | (1 << 0),
-            SWITCH_ON_ENABLE_OPERATION = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
-            DISABLE_VOLTAGE = 0,
-            QUICK_STOP = 0,
-            DISABLE_OPERATION = 0,
-            ENABLE_OPERATION = 0,
-            FAULT_RESET = 0
+            SWITCH_ON_AND_ENABLE_OPERATION = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
+            DISABLE_VOLTAGE = 0x00,
+            QUICK_STOP = 1 << 1,
+            DISABLE_OPERATION = (1 << 2) | (1 << 1) | (1 << 0),
+            ENABLE_OPERATION = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
+            FAULT_RESET = 1 << 7
         };
     }
 
@@ -41,7 +41,24 @@ namespace Object
             OPERATION_ENABLED = (1 << 5) | (1 << 2) | (1 << 1) | (1 << 0),
             QUICK_STOP_ACTIVE = (1 << 2) | (1 << 1) | (1 << 0),
             FAULT_REACTION_ACTIVE = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
-            FAULT = 1 << 3
+            FAULT = 1 << 3,
+
+            // Values provided beow are operation mode specific
+            // CSP: Cyclic Synchronous Position
+            // CSV: Cyclic Synchronous Velocity
+            // CST: Cyclic Synchronous Torque
+            // PPM: Profile Position Mode
+            // PVM: Profile Velocity Mode
+            // HM: Homing Mode
+            CSP_FOLLOWING_ERROR_BIT = 1 << 13,
+            CSP_TARGET_POSITION_IGNORED = 1 << 12,
+            CSV_TARGET_VELOCITY_IGNORED = 1 << 12,
+            CST_TARGET_TORQUE_IGNORED = 1 << 12,
+            PPM_FOLLOWING_ERROR_BIT = 1 << 13,
+            PPM_SET_PPINT_ACKNOWLEDGE_BIT = 1 << 12,
+            PVM_SPEED_BIT = 1 << 12,
+            HM_HOMING_ERROR_BIT = 1 << 13,
+            HM_HOMING_ATTAINED_BIT = 1 << 12
         };
     }
 
