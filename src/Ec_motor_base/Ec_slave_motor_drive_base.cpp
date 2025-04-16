@@ -52,7 +52,7 @@ void Ec_slave_motor_drive_base::init()
 {
 }
 
-void Ec_slave_motor_drive_base::e_stop()
+void Ec_slave_motor_drive_base::stop()
 {
 }
 

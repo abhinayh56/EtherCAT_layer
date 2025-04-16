@@ -161,7 +161,7 @@ public:
     virtual void subscribe_data();
 
     virtual void init();
-    virtual void e_stop();
+    virtual void stop();
     virtual void enable();
     virtual void disable();
     virtual void set_operating_mode(Motor_drive::Mode mode_);
