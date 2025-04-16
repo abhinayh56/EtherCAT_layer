@@ -72,7 +72,9 @@ public:
     virtual void set_position(double th_0);
     virtual void set_velocity(double v_0);
     virtual void set_torque(double tau_0);
-    virtual void sync_pvt();
+    virtual void sync_position();
+    virtual void sync_velocity();
+    virtual void sync_torque();
 
 protected:
     Motor_drive::OP_status op_status = Motor_drive::OP_status::DISABLE;
