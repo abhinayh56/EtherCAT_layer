@@ -36,6 +36,18 @@ namespace Motor_drive
         UNKOWN = 3,
         NO_FAULT = 4
     };
+
+    enum class Enable_states
+    {
+        NOT_READY_TO_SWITCH_ON = 0,
+        SWITCH_ON_DISABLED = 1,
+        READY_TO_SWITCH_ON = 2,
+        SWITCHED_ON = 3,
+        OPERATION_ENABLED = 4,
+        FAULT_REACTION_ACTIVE = 5,
+        FAULT = 6,
+        QUICK_STOP_ACTIVE = 7
+    };
 }
 
 namespace Pdo_object
