@@ -59,7 +59,36 @@ void Ec_slave_motor_drive_base::stop()
 
 void Ec_slave_motor_drive_base::enable()
 {
-    if(status_word & CiA_402::Pdo_object::Status_word::NOT_READY_TO_SWITCH_ON)
+    uint16_t current_status = status_word & 0b1101111;
+
+    if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
+    {
+    }
+    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
+    {
+    }
+    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::SWITCH_ON_DISABLED)
+    {
+        control_word = CiA_402::Pdo_object::Control_word::Bit_flags::SHUTDOWN;
+    }
+    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::READY_TO_SWITCH_ON)
+    {
+        control_word = CiA_402::Pdo_object::Control_word::Bit_flags::SWITCH_ON;
+    }
+    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::SWITCHED_ON)
+    {
+        control_word = CiA_402::Pdo_object::Control_word::Bit_flags::ENABLE_OPERATION;
+    }
+    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::OPERATION_ENABLED)
+    {
+    }
+    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::QUICK_STOP_ACTIVE)
+    {
+    }
+    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
+    {
+    }
+    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::FAULT)
     {
     }
 }
@@ -89,7 +118,7 @@ void Ec_slave_motor_drive_base::set_operating_mode(Motor_drive::Mode mode_)
     }
 }
 
-void Ec_slave_motor_drive_base::check_fault()
+void Ec_slave_motor_drive_base::check_status()
 {
 }
 

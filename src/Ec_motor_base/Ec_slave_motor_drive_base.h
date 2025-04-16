@@ -60,7 +60,7 @@ public:
     virtual void enable();
     virtual void disable();
     virtual void set_operating_mode(Motor_drive::Mode mode_);
-    virtual void check_fault();
+    virtual void check_status();
     virtual void clear_fault();
     virtual void set_position(double th_0);
     virtual void set_velocity(double v_0);
