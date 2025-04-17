@@ -79,3 +79,5 @@ void Ec_slave_base::process_rx_pdo() {}
 void Ec_slave_base::config_data_transfer() {}
 void Ec_slave_base::publish_data() {}
 void Ec_slave_base::subscribe_data() {}
+
+void Ec_slave_base::main_process() {}

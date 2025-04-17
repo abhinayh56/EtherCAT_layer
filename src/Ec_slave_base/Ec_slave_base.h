@@ -36,6 +36,8 @@ public:
     virtual void publish_data();
     virtual void subscribe_data();
 
+    virtual void main_process();
+
 protected:
     std::string slave_ns;
     uint16_t slave_address;
