@@ -40,7 +40,7 @@ bool Ec_master::start()
 bool Ec_master::stop()
 {
     LOG_CONSOLE_INFO("Stopping master...", 1);
-    if(run)
+    if (run)
     {
         ecrt_release_master(master);
     }
@@ -84,6 +84,7 @@ void Ec_master::cyclic_task()
         process_tx_pdo();
         publish_data();
         subscribe_data();
+        main_process();
         process_rx_pdo();
         transfer_rx_pdo();
 #endif // CYCLIC_SLAVE_CALL_PARALLEL
@@ -96,6 +97,7 @@ void Ec_master::cyclic_task()
             slave_base_arr[i]->process_tx_pdo();
             slave_base_arr[i]->publish_data();
             slave_base_arr[i]->subscribe_data();
+            slave_base_arr[i]->main_process();
             slave_base_arr[i]->process_rx_pdo();
             slave_base_arr[i]->transfer_rx_pdo();
         }
@@ -276,6 +278,14 @@ void Ec_master::subscribe_data()
     for (int i = 0; i < num_slaves; i++)
     {
         slave_base_arr[i]->subscribe_data();
+    }
+}
+
+void Ec_master::main_process()
+{
+    for (int i = 0; i < num_slaves; i++)
+    {
+        slave_base_arr[i]->main_process();
     }
 }
 

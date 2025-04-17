@@ -50,6 +50,7 @@ private:
     void process_tx_pdo();
     void publish_data();
     void subscribe_data();
+    void main_process();
     void process_rx_pdo();
     void transfer_rx_pdo();
 };
