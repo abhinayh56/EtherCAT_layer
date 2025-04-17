@@ -53,6 +53,7 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "numbers": "cpp",
-        "*.h__": "cpp"
+        "*.h__": "cpp",
+        "core": "cpp"
     }
 }

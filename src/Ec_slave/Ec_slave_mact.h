@@ -5,6 +5,53 @@
 #include <stdint.h>
 #include "Ec_slave_base.h"
 
+namespace Control_word
+{
+    enum Bit_flags : uint16_t
+    {
+        SHUTDOWN = (1 << 2) | (1 << 1),
+        SWITCH_ON = (1 << 2) | (1 << 1) | (1 << 0),
+        SWITCH_ON_AND_ENABLE_OPERATION = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
+        DISABLE_VOLTAGE = 0x00,
+        QUICK_STOP = 1 << 1,
+        DISABLE_OPERATION = (1 << 2) | (1 << 1) | (1 << 0),
+        ENABLE_OPERATION = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
+        FAULT_RESET = 1 << 7
+    };
+}
+
+namespace Status_word
+{
+    enum Bit_flags : uint16_t
+    {
+        NOT_READY_TO_SWITCH_ON = 0x00,
+        SWITCH_ON_DISABLED = 1 << 6,
+        READY_TO_SWITCH_ON = (1 << 5) | (1 << 0),
+        SWITCHED_ON = (1 << 5) | (1 << 1) | (1 << 0),
+        OPERATION_ENABLED = (1 << 5) | (1 << 2) | (1 << 1) | (1 << 0),
+        QUICK_STOP_ACTIVE = (1 << 2) | (1 << 1) | (1 << 0),
+        FAULT_REACTION_ACTIVE = (1 << 3) | (1 << 2) | (1 << 1) | (1 << 0),
+        FAULT = 1 << 3,
+
+        // Values provided beow are operation mode specific
+        // CSP: Cyclic Synchronous Position
+        // CSV: Cyclic Synchronous Velocity
+        // CST: Cyclic Synchronous Torque
+        // PPM: Profile Position Mode
+        // PVM: Profile Velocity Mode
+        // HM: Homing Mode
+        CSP_FOLLOWING_ERROR_BIT = 1 << 13,
+        CSP_TARGET_POSITION_IGNORED = 1 << 12,
+        CSV_TARGET_VELOCITY_IGNORED = 1 << 12,
+        CST_TARGET_TORQUE_IGNORED = 1 << 12,
+        PPM_FOLLOWING_ERROR_BIT = 1 << 13,
+        PPM_SET_PPINT_ACKNOWLEDGE_BIT = 1 << 12,
+        PVM_SPEED_BIT = 1 << 12,
+        HM_HOMING_ERROR_BIT = 1 << 13,
+        HM_HOMING_ATTAINED_BIT = 1 << 12
+    };
+}
+
 class Ec_slave_mact : public Ec_slave_base
 {
 public:
@@ -21,6 +68,8 @@ public:
     virtual void config_data_transfer();
     virtual void publish_data();
     virtual void subscribe_data();
+
+    void enable();
 
 private:
     uint16_t alias = 0;
@@ -96,6 +145,19 @@ private:
     int32_t TARGET_POS = 0;  // off_rx_pdo_1
     uint16_t CONTROL_WD = 0; // off_rx_pdo_2
     uint8_t OP_MODE = 0;     // off_rx_pdo_4
+
+    bool enable_status = false;
+
+    uint8_t mode_of_operation = 0;
+    uint16_t control_word = 0;
+
+    uint8_t mode_of_operation_disp = 0;
+    uint16_t status_word = 0;
+
+    uint16_t current_status;
+    uint16_t desired_control;
+
+    bool log_complete = false;
 };
 
 #endif // EC_SLAVE_MACT_H
