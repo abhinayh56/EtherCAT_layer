@@ -181,6 +181,10 @@ void Ec_slave_mact::subscribe_data()
 {
 }
 
+void Ec_slave_mact::main_process()
+{
+}
+
 void Ec_slave_mact::enable()
 {
     if (current_status == Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)

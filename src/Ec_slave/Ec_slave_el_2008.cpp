@@ -74,3 +74,7 @@ void Ec_slave_el_2008::publish_data()
 void Ec_slave_el_2008::subscribe_data()
 {
 }
+
+void Ec_slave_el_2008::main_process()
+{
+}

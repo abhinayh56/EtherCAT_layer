@@ -68,6 +68,7 @@ public:
     virtual void config_data_transfer();
     virtual void publish_data();
     virtual void subscribe_data();
+    virtual void main_process();
 
     void enable();
 

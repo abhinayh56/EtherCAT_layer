@@ -48,6 +48,10 @@ void Ec_slave_motor_drive_base::subscribe_data()
 {
 }
 
+void Ec_slave_motor_drive_base::main_process()
+{
+}
+
 void Ec_slave_motor_drive_base::init()
 {
 }

@@ -61,3 +61,7 @@ void Ec_slave_ek_1122::publish_data()
 void Ec_slave_ek_1122::subscribe_data()
 {
 }
+
+void Ec_slave_ek_1122::main_process()
+{
+}

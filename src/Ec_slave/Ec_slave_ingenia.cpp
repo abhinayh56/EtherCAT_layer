@@ -109,3 +109,7 @@ void Ec_slave_ingenia::publish_data()
 void Ec_slave_ingenia::subscribe_data()
 {
 }
+
+void Ec_slave_ingenia::main_process()
+{
+}

@@ -147,3 +147,7 @@ void Ec_slave_rfid::publish_data()
 void Ec_slave_rfid::subscribe_data()
 {
 }
+
+void Ec_slave_rfid::main_process()
+{
+}
