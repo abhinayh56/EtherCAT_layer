@@ -3,9 +3,9 @@
 
 #include <cmath>
 #include <stdint.h>
-#include "Ec_slave_base.h"
+#include "../Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.h"
 
-class Ec_slave_ingenia : public Ec_slave_base
+class Ec_slave_ingenia : public Ec_slave_motor_drive_base
 {
 public:
     Ec_slave_ingenia(uint16_t slave_address_, const std::string &slave_ns_);
@@ -75,10 +75,10 @@ private:
 
     unsigned long t_stamp = 0;
 
-    uint16_t CONTROL_WD = 0; //off_rx_pdo_1
-    int32_t TARGET_POS = 0; //off_rx_pdo_2
-    int32_t TARGET_VEL = 0; //off_rx_pdo_3
-    uint8_t OP_MODE = 0; //off_rx_pdo_4
+    // uint16_t CONTROL_WD = 0; //off_rx_pdo_1
+    // int32_t TARGET_POS = 0; //off_rx_pdo_2
+    // int32_t TARGET_VEL = 0; //off_rx_pdo_3
+    // uint8_t OP_MODE = 0; //off_rx_pdo_4
 };
 
 #endif // EC_SLAVE_INGENIA_H
