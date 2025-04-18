@@ -33,21 +33,21 @@ void Ec_slave_mact_2::set_pdo()
 
 void Ec_slave_mact_2::monitor_status()
 {
-    check_status();
 }
 
 void Ec_slave_mact_2::transfer_tx_pdo()
 {
-    int32_t ACT_POS = EC_READ_S32(domain_i_pd + off_tx_pdo_1);
-    uint16_t status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
-    int16_t ACT_TOR = EC_READ_S16(domain_i_pd + off_tx_pdo_3);
-    uint8_t mode_of_operation_display = EC_READ_U8(domain_i_pd + off_tx_pdo_4);
+    position_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_1);
+    status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
+    torque_actual_value = EC_READ_S16(domain_i_pd + off_tx_pdo_3);
+    mode_of_operation_display = EC_READ_U8(domain_i_pd + off_tx_pdo_4);
     uint16_t ERROR_CODE = EC_READ_U16(domain_i_pd + off_tx_pdo_5);
     uint8_t DIG_IN = EC_READ_U8(domain_i_pd + off_tx_pdo_6);
-    int32_t ACT_VEL = EC_READ_S32(domain_i_pd + off_tx_pdo_7);
+    velocity_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_7);
     int16_t ADC_VAL = EC_READ_S16(domain_i_pd + off_tx_pdo_8);
+    check_status();
 
-    // std::cout << "MACT_TXPDO: " << slave_ns << " | " << ACT_POS << ", " << status_word << ", " << ACT_TOR << ", " << uint16_t(mode_of_operation_display) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << ACT_VEL << ", " << ADC_VAL << std::endl;
+    // std::cout << "MACT_TXPDO: " << slave_ns << " | " << position_actual_value << ", " << status_word << ", " << torque_actual_value << ", " << uint16_t(mode_of_operation_display) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << velocity_actual_value << ", " << ADC_VAL << std::endl;
 }
 
 void Ec_slave_mact_2::transfer_rx_pdo()
@@ -80,16 +80,20 @@ void Ec_slave_mact_2::subscribe_data()
 void Ec_slave_mact_2::main_process()
 {
     t_stamp += 4;
+    Motor_drive::Enable_status enable_status = Motor_drive::Enable_status::DISABLE;
+    // std::cout << ": " << t_stamp << " | " << enable_status;
     if (t_stamp <= 10000)
     {
         if (enable_status == Motor_drive::Enable_status::DISABLE)
         {
             mode_of_operation = 8;
             enable();
+            // std::cout << ", " << "inside enable" << std::endl;
         }
     }
     else
     {
+        // std::cout << ", " << "outside enable" << std::endl;
         mode_of_operation = 8;
         double A = 8192.0;
         double T = 2.0;

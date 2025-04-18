@@ -5,6 +5,9 @@
 #include <stdint.h>
 #include "Ec_slave_base.h"
 
+#ifndef AAAAA
+#define AAAAA
+
 namespace Control_word
 {
     enum Bit_flags : uint16_t
@@ -51,6 +54,7 @@ namespace Status_word
         HM_HOMING_ATTAINED_BIT = 1 << 12
     };
 }
+#endif
 
 class Ec_slave_mact : public Ec_slave_base
 {
