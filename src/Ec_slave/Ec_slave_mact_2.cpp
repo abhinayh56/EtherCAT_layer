@@ -82,7 +82,7 @@ void Ec_slave_mact_2::main_process()
     t_stamp += 4;
     if (t_stamp <= 10000)
     {
-        if (enable_status == false)
+        if (enable_status == Motor_drive::Enable_status::DISABLE)
         {
             mode_of_operation = 8;
             enable();
