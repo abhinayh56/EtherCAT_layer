@@ -49,7 +49,7 @@ void Ec_slave_ingenia::transfer_tx_pdo()
 
 void Ec_slave_ingenia::transfer_rx_pdo()
 {
-    t_stamp += 4;
+    t_stamp += 2;
 
     if (t_stamp <= 10000)
     {
