@@ -84,6 +84,7 @@ void Ec_slave_motor_drive_base::enable()
     }
     else if (current_status == Object::Status_word::Bit_flags::OPERATION_ENABLED)
     {
+        enable_status = true;
     }
     else if (current_status == Object::Status_word::Bit_flags::QUICK_STOP_ACTIVE)
     {

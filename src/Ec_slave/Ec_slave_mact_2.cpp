@@ -84,6 +84,7 @@ void Ec_slave_mact_2::main_process()
     {
         if (enable_status == false)
         {
+            mode_of_operation = 8;
             enable();
         }
     }

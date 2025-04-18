@@ -54,43 +54,43 @@ void Ec_slave_mact::transfer_tx_pdo()
         if ((status_word & 0b1001111) == Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
         {
             current_status = Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON;
-            std::cout << slave_ns << ": NOT_READY_TO_SWITCH_ON" << std::endl;
+            // std::cout << slave_ns << ": NOT_READY_TO_SWITCH_ON" << std::endl;
         }
         else if ((status_word & 0b1001111) == Status_word::Bit_flags::SWITCH_ON_DISABLED)
         {
             current_status = Status_word::Bit_flags::SWITCH_ON_DISABLED;
-            std::cout <<slave_ns << ": SWITCH_ON_DISABLED" << std::endl;
+            // std::cout <<slave_ns << ": SWITCH_ON_DISABLED" << std::endl;
         }
         else if ((status_word & 0b1101111) == Status_word::Bit_flags::READY_TO_SWITCH_ON)
         {
             current_status = Status_word::Bit_flags::READY_TO_SWITCH_ON;
-            std::cout << slave_ns << ": READY_TO_SWITCH_ON" << std::endl;
+            // std::cout << slave_ns << ": READY_TO_SWITCH_ON" << std::endl;
         }
         else if ((status_word & 0b1101111) == Status_word::Bit_flags::SWITCHED_ON)
         {
             current_status = Status_word::Bit_flags::SWITCHED_ON;
-            std::cout << slave_ns << ": SWITCHED_ON" << std::endl;
+            // std::cout << slave_ns << ": SWITCHED_ON" << std::endl;
         }
         else if ((status_word & 0b1101111) == Status_word::Bit_flags::OPERATION_ENABLED)
         {
             current_status = Status_word::Bit_flags::OPERATION_ENABLED;
-            std::cout << slave_ns << ": OPERATION_ENABLED" << std::endl;
+            // std::cout << slave_ns << ": OPERATION_ENABLED" << std::endl;
             log_complete = true;
         }
         else if ((status_word & 0b1101111) == Status_word::Bit_flags::QUICK_STOP_ACTIVE)
         {
             current_status = Status_word::Bit_flags::QUICK_STOP_ACTIVE;
-            std::cout << slave_ns << ": QUICK_STOP_ACTIVE" << std::endl;
+            // std::cout << slave_ns << ": QUICK_STOP_ACTIVE" << std::endl;
         }
         else if ((status_word & 0b1001111) == Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
         {
             current_status = Status_word::Bit_flags::FAULT_REACTION_ACTIVE;
-            std::cout << slave_ns << ": FAULT_REACTION_ACTIVE" << std::endl;
+            // std::cout << slave_ns << ": FAULT_REACTION_ACTIVE" << std::endl;
         }
         else if ((status_word & 0b1001111) == Status_word::Bit_flags::FAULT)
         {
             current_status = Status_word::Bit_flags::FAULT;
-            std::cout << slave_ns << ": FAULT" << std::endl;
+            // std::cout << slave_ns << ": FAULT" << std::endl;
         }
     }
 
