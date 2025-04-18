@@ -1,0 +1,2 @@
+/usr/bin/ar qc libEc_slave_motor_drive_base.a CMakeFiles/Ec_slave_motor_drive_base.dir/Ec_slave_motor_drive_base.cpp.o
+/usr/bin/ranlib libEc_slave_motor_drive_base.a

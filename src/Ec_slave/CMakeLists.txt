@@ -9,6 +9,7 @@ add_library(Ec_slave
     Ec_slave_rfid.cpp
     Ec_slave_mact.cpp
     Ec_slave_ingenia.cpp
+    Ec_slave_mact_2.cpp
 )
 
 # Include directories
@@ -21,4 +22,5 @@ target_include_directories(Ec_slave
 # Link dependencies
 target_link_libraries(Ec_slave
     PRIVATE ${EtherCAT_LIB_PATH}
+    PRIVATE Ec_slave_motor_drive_base
 )

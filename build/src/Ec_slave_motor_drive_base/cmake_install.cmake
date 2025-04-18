@@ -42,10 +42,3 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-if(CMAKE_INSTALL_COMPONENT STREQUAL "Development" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ethercat_layer" TYPE FILE FILES
-    "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.h"
-    "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp"
-    )
-endif()
-

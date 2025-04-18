@@ -200,6 +200,19 @@ Ec_slave/fast:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
 .PHONY : Ec_slave/fast
 
+#=============================================================================
+# Target rules for targets named Ec_slave_motor_drive_base
+
+# Build rule for target.
+Ec_slave_motor_drive_base: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave_motor_drive_base
+.PHONY : Ec_slave_motor_drive_base
+
+# fast build rule for target.
+Ec_slave_motor_drive_base/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/build.make src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/build
+.PHONY : Ec_slave_motor_drive_base/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -238,6 +251,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Ec_master"
 	@echo "... Ec_slave"
+	@echo "... Ec_slave_motor_drive_base"
 	@echo "... ethercat_layer"
 	@echo "... src/main.o"
 	@echo "... src/main.i"

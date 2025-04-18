@@ -319,6 +319,30 @@ Ec_slave_mact.cpp.s:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.s
 .PHONY : Ec_slave_mact.cpp.s
 
+Ec_slave_mact_2.o: Ec_slave_mact_2.cpp.o
+.PHONY : Ec_slave_mact_2.o
+
+# target to build an object file
+Ec_slave_mact_2.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.o
+.PHONY : Ec_slave_mact_2.cpp.o
+
+Ec_slave_mact_2.i: Ec_slave_mact_2.cpp.i
+.PHONY : Ec_slave_mact_2.i
+
+# target to preprocess a source file
+Ec_slave_mact_2.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.i
+.PHONY : Ec_slave_mact_2.cpp.i
+
+Ec_slave_mact_2.s: Ec_slave_mact_2.cpp.s
+.PHONY : Ec_slave_mact_2.s
+
+# target to generate assembly for a file
+Ec_slave_mact_2.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.s
+.PHONY : Ec_slave_mact_2.cpp.s
+
 Ec_slave_rfid.o: Ec_slave_rfid.cpp.o
 .PHONY : Ec_slave_rfid.o
 
@@ -367,30 +391,6 @@ __/Ec_slave_base/Ec_slave_base.cpp.s:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/__/Ec_slave_base/Ec_slave_base.cpp.s
 .PHONY : __/Ec_slave_base/Ec_slave_base.cpp.s
 
-__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.o: __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.o
-.PHONY : __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.o
-
-# target to build an object file
-__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.o:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.o
-.PHONY : __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.o
-
-__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.i: __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.i
-.PHONY : __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.i
-
-# target to preprocess a source file
-__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.i:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.i
-.PHONY : __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.i
-
-__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.s: __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.s
-.PHONY : __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.s
-
-# target to generate assembly for a file
-__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.s:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/__/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.s
-.PHONY : __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -422,15 +422,15 @@ help:
 	@echo "... Ec_slave_mact.o"
 	@echo "... Ec_slave_mact.i"
 	@echo "... Ec_slave_mact.s"
+	@echo "... Ec_slave_mact_2.o"
+	@echo "... Ec_slave_mact_2.i"
+	@echo "... Ec_slave_mact_2.s"
 	@echo "... Ec_slave_rfid.o"
 	@echo "... Ec_slave_rfid.i"
 	@echo "... Ec_slave_rfid.s"
 	@echo "... __/Ec_slave_base/Ec_slave_base.o"
 	@echo "... __/Ec_slave_base/Ec_slave_base.i"
 	@echo "... __/Ec_slave_base/Ec_slave_base.s"
-	@echo "... __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.o"
-	@echo "... __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.i"
-	@echo "... __/Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.s"
 .PHONY : help
 
 
