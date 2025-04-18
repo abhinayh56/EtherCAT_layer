@@ -54,43 +54,43 @@ void Ec_slave_mact::transfer_tx_pdo()
         if ((status_word & 0b1001111) == Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
         {
             current_status = Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON;
-            std::cout << "NOT_READY_TO_SWITCH_ON" << std::endl;
+            std::cout << slave_ns << ": NOT_READY_TO_SWITCH_ON" << std::endl;
         }
         else if ((status_word & 0b1001111) == Status_word::Bit_flags::SWITCH_ON_DISABLED)
         {
             current_status = Status_word::Bit_flags::SWITCH_ON_DISABLED;
-            std::cout << "SWITCH_ON_DISABLED" << std::endl;
+            std::cout <<slave_ns << ": SWITCH_ON_DISABLED" << std::endl;
         }
         else if ((status_word & 0b1101111) == Status_word::Bit_flags::READY_TO_SWITCH_ON)
         {
             current_status = Status_word::Bit_flags::READY_TO_SWITCH_ON;
-            std::cout << "READY_TO_SWITCH_ON" << std::endl;
+            std::cout << slave_ns << ": READY_TO_SWITCH_ON" << std::endl;
         }
         else if ((status_word & 0b1101111) == Status_word::Bit_flags::SWITCHED_ON)
         {
             current_status = Status_word::Bit_flags::SWITCHED_ON;
-            std::cout << "SWITCHED_ON" << std::endl;
+            std::cout << slave_ns << ": SWITCHED_ON" << std::endl;
         }
         else if ((status_word & 0b1101111) == Status_word::Bit_flags::OPERATION_ENABLED)
         {
             current_status = Status_word::Bit_flags::OPERATION_ENABLED;
-            std::cout << "OPERATION_ENABLED" << std::endl;
+            std::cout << slave_ns << ": OPERATION_ENABLED" << std::endl;
             log_complete = true;
         }
         else if ((status_word & 0b1101111) == Status_word::Bit_flags::QUICK_STOP_ACTIVE)
         {
             current_status = Status_word::Bit_flags::QUICK_STOP_ACTIVE;
-            std::cout << "QUICK_STOP_ACTIVE" << std::endl;
+            std::cout << slave_ns << ": QUICK_STOP_ACTIVE" << std::endl;
         }
         else if ((status_word & 0b1001111) == Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
         {
             current_status = Status_word::Bit_flags::FAULT_REACTION_ACTIVE;
-            std::cout << "FAULT_REACTION_ACTIVE" << std::endl;
+            std::cout << slave_ns << ": FAULT_REACTION_ACTIVE" << std::endl;
         }
         else if ((status_word & 0b1001111) == Status_word::Bit_flags::FAULT)
         {
             current_status = Status_word::Bit_flags::FAULT;
-            std::cout << "FAULT" << std::endl;
+            std::cout << slave_ns << ": FAULT" << std::endl;
         }
     }
 
@@ -98,6 +98,37 @@ void Ec_slave_mact::transfer_tx_pdo()
 }
 
 void Ec_slave_mact::transfer_rx_pdo()
+{
+    EC_WRITE_S32(domain_i_pd + off_rx_pdo_1, TARGET_POS);
+    EC_WRITE_U16(domain_i_pd + off_rx_pdo_2, desired_control);
+    EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, OP_MODE);
+
+    // EC_WRITE_S32(domain_i_pd + off_rx_pdo_1, TARGET_POS);
+    // EC_WRITE_U16(domain_i_pd + off_rx_pdo_2, CONTROL_WD);
+    // EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, OP_MODE);
+}
+
+void Ec_slave_mact::process_tx_pdo()
+{
+}
+
+void Ec_slave_mact::process_rx_pdo()
+{
+}
+
+void Ec_slave_mact::config_data_transfer()
+{
+}
+
+void Ec_slave_mact::publish_data()
+{
+}
+
+void Ec_slave_mact::subscribe_data()
+{
+}
+
+void Ec_slave_mact::main_process()
 {
     t_stamp += 4;
     if ((2500 <= t_stamp) && (t_stamp <= 8000))
@@ -120,10 +151,6 @@ void Ec_slave_mact::transfer_rx_pdo()
         double t = ((double)t_stamp - 15000.0) * 0.001;
         TARGET_POS = A * std::sin(w * t);
     }
-
-    EC_WRITE_S32(domain_i_pd + off_rx_pdo_1, TARGET_POS);
-    EC_WRITE_U16(domain_i_pd + off_rx_pdo_2, desired_control);
-    EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, OP_MODE);
 
     // if ((2500 <= t_stamp) && (t_stamp <= 5000))
     // {
@@ -155,34 +182,6 @@ void Ec_slave_mact::transfer_rx_pdo()
     //     double t = ((double)t_stamp - 15000.0) * 0.001;
     //     TARGET_POS = A * std::sin(w * t);
     // }
-
-    // EC_WRITE_S32(domain_i_pd + off_rx_pdo_1, TARGET_POS);
-    // EC_WRITE_U16(domain_i_pd + off_rx_pdo_2, CONTROL_WD);
-    // EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, OP_MODE);
-}
-
-void Ec_slave_mact::process_tx_pdo()
-{
-}
-
-void Ec_slave_mact::process_rx_pdo()
-{
-}
-
-void Ec_slave_mact::config_data_transfer()
-{
-}
-
-void Ec_slave_mact::publish_data()
-{
-}
-
-void Ec_slave_mact::subscribe_data()
-{
-}
-
-void Ec_slave_mact::main_process()
-{
 }
 
 void Ec_slave_mact::enable()
