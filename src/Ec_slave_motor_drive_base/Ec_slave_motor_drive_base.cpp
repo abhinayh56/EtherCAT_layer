@@ -180,6 +180,16 @@ void Ec_slave_motor_drive_base::check_status()
         current_status = Status_word::Bit_flags::FAULT;
         if(previoius_status != current_status) {std::cout << slave_ns << ": FAULT" << std::endl;}
     }
+    else if ((status_word & (1<<13)) == Status_word::Bit_flags::CSP_FOLLOWING_ERROR_BIT)
+    {
+        current_status = Status_word::Bit_flags::CSP_FOLLOWING_ERROR_BIT;
+        if(previoius_status != current_status) {std::cout << slave_ns << ": CSP_FOLLOWING_ERROR_BIT" << std::endl;}
+    }
+    else if ((status_word & (1<<12)) == Status_word::Bit_flags::CSP_TARGET_POSITION_IGNORED)
+    {
+        current_status = Status_word::Bit_flags::CSP_TARGET_POSITION_IGNORED;
+        if(previoius_status != current_status) {std::cout << slave_ns << ": CSP_TARGET_POSITION_IGNORED" << std::endl;}
+    }
     else
     {
         std::cout << "none\n";
