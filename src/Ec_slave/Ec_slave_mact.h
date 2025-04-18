@@ -1,9 +1,9 @@
 #ifndef EC_SLAVE_MACT_H
 #define EC_SLAVE_MACT_H
 
-#include "../Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.h"
+#include "../Ec_slave_base_motor_drive/Ec_slave_base_motor_drive.h"
 
-class Ec_slave_mact : public Ec_slave_motor_drive_base
+class Ec_slave_mact : public Ec_slave_base_motor_drive
 {
 public:
     Ec_slave_mact(uint16_t slave_address_, const std::string &slave_ns_);

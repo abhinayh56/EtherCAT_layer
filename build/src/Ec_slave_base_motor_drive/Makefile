@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_base_motor_drive//CMakeFiles/progress.marks
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_motor_drive/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_motor_drive/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,94 +148,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_motor_drive/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_motor_drive/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named ethercat_layer
+# Convenience name for target.
+src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/rule:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/rule
+.PHONY : src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/rule
 
-# Build rule for target.
-ethercat_layer: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ethercat_layer
-.PHONY : ethercat_layer
-
-# fast build rule for target.
-ethercat_layer/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/build
-.PHONY : ethercat_layer/fast
-
-#=============================================================================
-# Target rules for targets named Ec_master
-
-# Build rule for target.
-Ec_master: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_master
-.PHONY : Ec_master
-
-# fast build rule for target.
-Ec_master/fast:
-	$(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/build
-.PHONY : Ec_master/fast
-
-#=============================================================================
-# Target rules for targets named Ec_slave
-
-# Build rule for target.
-Ec_slave: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave
-.PHONY : Ec_slave
-
-# fast build rule for target.
-Ec_slave/fast:
-	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
-.PHONY : Ec_slave/fast
-
-#=============================================================================
-# Target rules for targets named Ec_slave_base_motor_drive
-
-# Build rule for target.
-Ec_slave_base_motor_drive: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave_base_motor_drive
+# Convenience name for target.
+Ec_slave_base_motor_drive: src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/rule
 .PHONY : Ec_slave_base_motor_drive
 
 # fast build rule for target.
 Ec_slave_base_motor_drive/fast:
-	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build
 .PHONY : Ec_slave_base_motor_drive/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+Ec_slave_base_motor_drive.o: Ec_slave_base_motor_drive.cpp.o
+.PHONY : Ec_slave_base_motor_drive.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+Ec_slave_base_motor_drive.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/Ec_slave_base_motor_drive.cpp.o
+.PHONY : Ec_slave_base_motor_drive.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+Ec_slave_base_motor_drive.i: Ec_slave_base_motor_drive.cpp.i
+.PHONY : Ec_slave_base_motor_drive.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+Ec_slave_base_motor_drive.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/Ec_slave_base_motor_drive.cpp.i
+.PHONY : Ec_slave_base_motor_drive.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+Ec_slave_base_motor_drive.s: Ec_slave_base_motor_drive.cpp.s
+.PHONY : Ec_slave_base_motor_drive.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+Ec_slave_base_motor_drive.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/Ec_slave_base_motor_drive.cpp.s
+.PHONY : Ec_slave_base_motor_drive.cpp.s
 
 # Help Target
 help:
@@ -249,13 +211,10 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... Ec_master"
-	@echo "... Ec_slave"
 	@echo "... Ec_slave_base_motor_drive"
-	@echo "... ethercat_layer"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... Ec_slave_base_motor_drive.o"
+	@echo "... Ec_slave_base_motor_drive.i"
+	@echo "... Ec_slave_base_motor_drive.s"
 .PHONY : help
 
 
@@ -267,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

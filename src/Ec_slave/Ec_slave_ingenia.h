@@ -3,9 +3,9 @@
 
 #include <cmath>
 #include <stdint.h>
-#include "../Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.h"
+#include "../Ec_slave_base_motor_drive/Ec_slave_base_motor_drive.h"
 
-class Ec_slave_ingenia : public Ec_slave_motor_drive_base
+class Ec_slave_ingenia : public Ec_slave_base_motor_drive
 {
 public:
     Ec_slave_ingenia(uint16_t slave_address_, const std::string &slave_ns_);

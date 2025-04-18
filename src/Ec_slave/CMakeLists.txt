@@ -21,5 +21,5 @@ target_include_directories(Ec_slave
 # Link dependencies
 target_link_libraries(Ec_slave
     PRIVATE ${EtherCAT_LIB_PATH}
-    PRIVATE Ec_slave_motor_drive_base
+    PRIVATE Ec_slave_base_motor_drive
 )

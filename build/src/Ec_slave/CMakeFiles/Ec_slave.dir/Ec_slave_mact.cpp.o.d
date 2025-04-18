@@ -2,7 +2,7 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o: \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_mact.cpp \
  /usr/include/stdc-predef.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_mact.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_motor_drive/Ec_slave_base_motor_drive.h \
  /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -91,7 +91,7 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_motor_drive_base/../Ec_slave_base/Ec_slave_base.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_motor_drive/../Ec_slave_base/Ec_slave_base.h \
  /usr/local/etherlab/include/ecrt.h /usr/include/c++/13/stdlib.h \
  /usr/include/c++/13/cstdlib /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -111,9 +111,9 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_motor_drive_base/../Ec_slave_base/../Ec_utils/Ec_utils.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_motor_drive_base/../Ec_slave_base/../Common/Data_transfer.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_motor_drive_base/../Ec_slave_base/../Ec_logger/Ec_logger_console/Ec_logger_console.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_motor_drive/../Ec_slave_base/../Ec_utils/Ec_utils.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_motor_drive/../Ec_slave_base/../Common/Data_transfer.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_motor_drive/../Ec_slave_base/../Ec_logger/Ec_logger_console/Ec_logger_console.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/iosfwd \
  /usr/include/c++/13/bits/stringfwd.h \
@@ -200,4 +200,4 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_motor_drive_base/../Ec_utils/Ec_objects.h
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_motor_drive/../Ec_utils/Ec_objects.h

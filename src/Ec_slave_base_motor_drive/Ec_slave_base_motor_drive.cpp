@@ -1,67 +1,67 @@
-#include "Ec_slave_motor_drive_base.h"
+#include "Ec_slave_base_motor_drive.h"
 
-Ec_slave_motor_drive_base::Ec_slave_motor_drive_base()
+Ec_slave_base_motor_drive::Ec_slave_base_motor_drive()
 {
 }
 
-Ec_slave_motor_drive_base::~Ec_slave_motor_drive_base()
+Ec_slave_base_motor_drive::~Ec_slave_base_motor_drive()
 {
 }
 
-void Ec_slave_motor_drive_base::set_info()
+void Ec_slave_base_motor_drive::set_info()
 {
 }
 
-void Ec_slave_motor_drive_base::set_pdo()
+void Ec_slave_base_motor_drive::set_pdo()
 {
 }
 
-void Ec_slave_motor_drive_base::monitor_status()
+void Ec_slave_base_motor_drive::monitor_status()
 {
 }
 
-void Ec_slave_motor_drive_base::transfer_tx_pdo()
+void Ec_slave_base_motor_drive::transfer_tx_pdo()
 {
 }
 
-void Ec_slave_motor_drive_base::transfer_rx_pdo()
+void Ec_slave_base_motor_drive::transfer_rx_pdo()
 {
 }
 
-void Ec_slave_motor_drive_base::process_tx_pdo()
+void Ec_slave_base_motor_drive::process_tx_pdo()
 {
 }
 
-void Ec_slave_motor_drive_base::process_rx_pdo()
+void Ec_slave_base_motor_drive::process_rx_pdo()
 {
 }
 
-void Ec_slave_motor_drive_base::config_data_transfer()
+void Ec_slave_base_motor_drive::config_data_transfer()
 {
 }
 
-void Ec_slave_motor_drive_base::publish_data()
+void Ec_slave_base_motor_drive::publish_data()
 {
 }
 
-void Ec_slave_motor_drive_base::subscribe_data()
+void Ec_slave_base_motor_drive::subscribe_data()
 {
 }
 
-void Ec_slave_motor_drive_base::main_process()
+void Ec_slave_base_motor_drive::main_process()
 {
 }
 
-void Ec_slave_motor_drive_base::init()
+void Ec_slave_base_motor_drive::init()
 {
 }
 
-void Ec_slave_motor_drive_base::stop()
+void Ec_slave_base_motor_drive::stop()
 {
     disable();
 }
 
-void Ec_slave_motor_drive_base::enable()
+void Ec_slave_base_motor_drive::enable()
 {
     // std::cout << "enable called " ;
     if (current_status == Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
@@ -112,12 +112,12 @@ void Ec_slave_motor_drive_base::enable()
     }
 }
 
-void Ec_slave_motor_drive_base::disable()
+void Ec_slave_base_motor_drive::disable()
 {
     control_word = Object::Control_word::Bit_flags::DISABLE_VOLTAGE;
 }
 
-void Ec_slave_motor_drive_base::set_operating_mode(Motor_drive::OP_mode mode_)
+void Ec_slave_base_motor_drive::set_operating_mode(Motor_drive::OP_mode mode_)
 {
     if (mode_ == Motor_drive::OP_mode::POSITION)
     {
@@ -137,7 +137,7 @@ void Ec_slave_motor_drive_base::set_operating_mode(Motor_drive::OP_mode mode_)
     }
 }
 
-void Ec_slave_motor_drive_base::check_status()
+void Ec_slave_base_motor_drive::check_status()
 {
     uint16_t previoius_status = current_status;
     if ((status_word & 0b1001111) == Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
@@ -196,52 +196,52 @@ void Ec_slave_motor_drive_base::check_status()
     }
 }
 
-void Ec_slave_motor_drive_base::clear_fault()
+void Ec_slave_base_motor_drive::clear_fault()
 {
     mode_of_operation = Object::Control_word::Bit_flags::FAULT_RESET;
 }
 
-void Ec_slave_motor_drive_base::set_position(double position_command_)
+void Ec_slave_base_motor_drive::set_position(double position_command_)
 {
     position_command = position_command_;
 }
 
-void Ec_slave_motor_drive_base::set_velocity(double velocity_comman_)
+void Ec_slave_base_motor_drive::set_velocity(double velocity_comman_)
 {
     velocity_command = velocity_comman_;
 }
 
-void Ec_slave_motor_drive_base::set_torque(double torque_command_)
+void Ec_slave_base_motor_drive::set_torque(double torque_command_)
 {
     torque_command = torque_command_;
 }
 
-double Ec_slave_motor_drive_base::get_position()
+double Ec_slave_base_motor_drive::get_position()
 {
     return position_actual;
 }
 
-double Ec_slave_motor_drive_base::get_velocity()
+double Ec_slave_base_motor_drive::get_velocity()
 {
     return velocity_actual;
 }
 
-double Ec_slave_motor_drive_base::get_torque()
+double Ec_slave_base_motor_drive::get_torque()
 {
     return torque_actual;
 }
 
-void Ec_slave_motor_drive_base::sync_position()
+void Ec_slave_base_motor_drive::sync_position()
 {
     position_command = position_actual;
 }
 
-void Ec_slave_motor_drive_base::sync_velocity()
+void Ec_slave_base_motor_drive::sync_velocity()
 {
     velocity_command = velocity_actual;
 }
 
-void Ec_slave_motor_drive_base::sync_torque()
+void Ec_slave_base_motor_drive::sync_torque()
 {
     torque_command = torque_actual;
 }

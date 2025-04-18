@@ -15,7 +15,7 @@ set(EtherCAT_LIB_PATH /usr/local/etherlab/lib/libethercat.a)
 add_subdirectory(src/Ec_master)
 add_subdirectory(src/Ec_slave)
 add_subdirectory(src/Ec_slave_base)
-add_subdirectory(src/Ec_slave_motor_drive_base)
+add_subdirectory(src/Ec_slave_base_motor_drive)
 
 # Main executable
 add_executable(${PROJECT_NAME} src/main.cpp)
@@ -25,7 +25,7 @@ target_link_libraries(${PROJECT_NAME}
     Ec_master
     Ec_slave
     Ec_slave_base
-    Ec_slave_motor_drive_base
+    Ec_slave_base_motor_drive
 )
 
 # Installation targets

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_motor_drive_base -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_motor_drive_base/../Ec_slave_base -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_motor_drive_base/../Ec_utils
+CXX_INCLUDES = -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_motor_drive -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_motor_drive/../Ec_slave_base -I/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_motor_drive/../Ec_utils
 
 CXX_FLAGS = -std=c++17
 

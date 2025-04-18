@@ -1,5 +1,5 @@
-#ifndef EC_SLAVE_MOTOR_DRIVE_BASE_H
-#define EC_SLAVE_MOTOR_DRIVE_BASE_H
+#ifndef EC_SLAVE_BASE_MOTOR_DRIVE_H
+#define EC_SLAVE_BASE_MOTOR_DRIVE_H
 
 #include <cmath>
 #include <stdint.h>
@@ -88,11 +88,11 @@ namespace Status_word
 }
 #endif
 
-class Ec_slave_motor_drive_base : public Ec_slave_base
+class Ec_slave_base_motor_drive : public Ec_slave_base
 {
 public:
-    Ec_slave_motor_drive_base();
-    ~Ec_slave_motor_drive_base();
+    Ec_slave_base_motor_drive();
+    ~Ec_slave_base_motor_drive();
 
     virtual void set_info();
     virtual void set_pdo();
