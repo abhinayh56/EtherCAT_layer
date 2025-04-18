@@ -25,9 +25,3 @@
 /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_base/CMakeFiles/install.dir
 /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_base/CMakeFiles/install/local.dir
 /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_base/CMakeFiles/install/strip.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_motor_drive_base/CMakeFiles/edit_cache.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_motor_drive_base/CMakeFiles/rebuild_cache.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_motor_drive_base/CMakeFiles/list_install_components.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_motor_drive_base/CMakeFiles/install.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_motor_drive_base/CMakeFiles/install/local.dir
-/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_motor_drive_base/CMakeFiles/install/strip.dir

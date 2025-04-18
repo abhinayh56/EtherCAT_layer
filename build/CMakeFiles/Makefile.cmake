@@ -13,7 +13,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base/CMakeLists.txt"
-  "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_motor_drive_base/CMakeLists.txt"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake"
@@ -43,7 +42,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/Ec_master/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave_base/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/Ec_slave_motor_drive_base/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:

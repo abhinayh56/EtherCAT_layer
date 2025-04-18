@@ -67,14 +67,12 @@ all: CMakeFiles/ethercat_layer.dir/all
 all: src/Ec_master/all
 all: src/Ec_slave/all
 all: src/Ec_slave_base/all
-all: src/Ec_slave_motor_drive_base/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: src/Ec_master/preinstall
 preinstall: src/Ec_slave/preinstall
 preinstall: src/Ec_slave_base/preinstall
-preinstall: src/Ec_slave_motor_drive_base/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -82,7 +80,6 @@ clean: CMakeFiles/ethercat_layer.dir/clean
 clean: src/Ec_master/clean
 clean: src/Ec_slave/clean
 clean: src/Ec_slave_base/clean
-clean: src/Ec_slave_motor_drive_base/clean
 .PHONY : clean
 
 #=============================================================================
@@ -129,21 +126,6 @@ src/Ec_slave_base/preinstall:
 # Recursive "clean" directory target.
 src/Ec_slave_base/clean:
 .PHONY : src/Ec_slave_base/clean
-
-#=============================================================================
-# Directory level rules for directory src/Ec_slave_motor_drive_base
-
-# Recursive "all" directory target.
-src/Ec_slave_motor_drive_base/all:
-.PHONY : src/Ec_slave_motor_drive_base/all
-
-# Recursive "preinstall" directory target.
-src/Ec_slave_motor_drive_base/preinstall:
-.PHONY : src/Ec_slave_motor_drive_base/preinstall
-
-# Recursive "clean" directory target.
-src/Ec_slave_motor_drive_base/clean:
-.PHONY : src/Ec_slave_motor_drive_base/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ethercat_layer.dir
