@@ -1,5 +1,5 @@
-#ifndef EC_SLAVE_MOTOR_SALVE_H
-#define EC_SLAVE_MOTOR_SALVE_H
+#ifndef EC_SLAVE_MOTOR_DRIVE_BASE_H
+#define EC_SLAVE_MOTOR_DRIVE_BASE_H
 
 #include <cmath>
 #include <stdint.h>
@@ -8,7 +8,7 @@
 
 namespace Motor_drive
 {
-    enum OP_status : uint16_t
+    enum Enable_status : uint16_t
     {
         ENABLE = 0,
         DISABLE = 1
@@ -56,25 +56,25 @@ public:
     virtual void subscribe_data();
     virtual void main_process();
 
-    virtual void init();
-    virtual void stop();
-    virtual void enable();
-    virtual void disable();
-    virtual void set_operating_mode(Motor_drive::OP_mode mode_);
-    virtual void check_status();
-    virtual void clear_fault();
-    virtual void set_position(double position_command_);
-    virtual void set_velocity(double velocity_comman_);
-    virtual void set_torque(double torque_command_);
-    virtual double get_position();
-    virtual double get_velocity();
-    virtual double get_torque();
-    virtual void sync_position();
-    virtual void sync_velocity();
-    virtual void sync_torque();
+    void init();
+    void stop();
+    void enable();
+    void disable();
+    void set_operating_mode(Motor_drive::OP_mode mode_);
+    void check_status();
+    void clear_fault();
+    void set_position(double position_command_);
+    void set_velocity(double velocity_comman_);
+    void set_torque(double torque_command_);
+    double get_position();
+    double get_velocity();
+    double get_torque();
+    void sync_position();
+    void sync_velocity();
+    void sync_torque();
 
 protected:
-    Motor_drive::OP_status op_status = Motor_drive::OP_status::DISABLE;
+    Motor_drive::Enable_status enable_status = Motor_drive::Enable_status::DISABLE;
     Motor_drive::OP_mode op_mode = Motor_drive::OP_mode::TORQUE;
     Motor_drive::OP_mode_supported mode_supported;
 
@@ -89,13 +89,13 @@ protected:
     double torque_command = 0;
 
     uint16_t status_word;
-    int8_t mode_of_operation_display;
+    uint8_t mode_of_operation_display;
     int32_t position_actual_value = 0;
     int32_t velocity_actual_value = 0;
     int16_t torque_actual_value = 0;
 
     uint16_t control_word;
-    int8_t mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
+    uint8_t mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
     int32_t target_position = 0;
     int32_t target_velocity = 0;
     int16_t target_torque = 0;
@@ -104,4 +104,4 @@ private:
     uint16_t current_status = Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON;
 };
 
-#endif // EC_SLAVE_MOTOR_SALVE_H
+#endif // EC_SLAVE_MOTOR_DRIVE_BASE_H

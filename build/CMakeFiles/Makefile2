@@ -67,12 +67,14 @@ all: CMakeFiles/ethercat_layer.dir/all
 all: src/Ec_master/all
 all: src/Ec_slave/all
 all: src/Ec_slave_base/all
+all: src/Ec_slave_motor_drive_base/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: src/Ec_master/preinstall
 preinstall: src/Ec_slave/preinstall
 preinstall: src/Ec_slave_base/preinstall
+preinstall: src/Ec_slave_motor_drive_base/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -80,6 +82,7 @@ clean: CMakeFiles/ethercat_layer.dir/clean
 clean: src/Ec_master/clean
 clean: src/Ec_slave/clean
 clean: src/Ec_slave_base/clean
+clean: src/Ec_slave_motor_drive_base/clean
 .PHONY : clean
 
 #=============================================================================
@@ -128,6 +131,21 @@ src/Ec_slave_base/clean:
 .PHONY : src/Ec_slave_base/clean
 
 #=============================================================================
+# Directory level rules for directory src/Ec_slave_motor_drive_base
+
+# Recursive "all" directory target.
+src/Ec_slave_motor_drive_base/all:
+.PHONY : src/Ec_slave_motor_drive_base/all
+
+# Recursive "preinstall" directory target.
+src/Ec_slave_motor_drive_base/preinstall:
+.PHONY : src/Ec_slave_motor_drive_base/preinstall
+
+# Recursive "clean" directory target.
+src/Ec_slave_motor_drive_base/clean:
+.PHONY : src/Ec_slave_motor_drive_base/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ethercat_layer.dir
 
 # All Build rule for target.
@@ -135,12 +153,12 @@ CMakeFiles/ethercat_layer.dir/all: src/Ec_master/CMakeFiles/Ec_master.dir/all
 CMakeFiles/ethercat_layer.dir/all: src/Ec_slave/CMakeFiles/Ec_slave.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=12,13 "Built target ethercat_layer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=13,14 "Built target ethercat_layer"
 .PHONY : CMakeFiles/ethercat_layer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ethercat_layer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ethercat_layer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : CMakeFiles/ethercat_layer.dir/rule
@@ -187,12 +205,12 @@ src/Ec_master/CMakeFiles/Ec_master.dir/clean:
 src/Ec_slave/CMakeFiles/Ec_slave.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11 "Built target Ec_slave"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12 "Built target Ec_slave"
 .PHONY : src/Ec_slave/CMakeFiles/Ec_slave.dir/all
 
 # Build rule for subdir invocation for target.
 src/Ec_slave/CMakeFiles/Ec_slave.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave/CMakeFiles/Ec_slave.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : src/Ec_slave/CMakeFiles/Ec_slave.dir/rule
