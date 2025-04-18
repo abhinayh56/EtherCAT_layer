@@ -146,6 +146,21 @@ void Ec_slave_motor_drive_base::set_torque(double tau_0)
     torque_command = tau_0;
 }
 
+double Ec_slave_motor_drive_base::get_position()
+{
+    return position_actual;
+}
+
+double Ec_slave_motor_drive_base::get_velocity()
+{
+    return velocity_actual;
+}
+
+double Ec_slave_motor_drive_base::get_torque()
+{
+    return torque_actual;
+}
+
 void Ec_slave_motor_drive_base::sync_position()
 {
     position_command = position_actual;

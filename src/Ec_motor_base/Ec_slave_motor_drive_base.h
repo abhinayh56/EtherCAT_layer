@@ -66,6 +66,9 @@ public:
     virtual void set_position(double th_0);
     virtual void set_velocity(double v_0);
     virtual void set_torque(double tau_0);
+    virtual double get_position();
+    virtual double get_velocity();
+    virtual double get_torque();
     virtual void sync_position();
     virtual void sync_velocity();
     virtual void sync_torque();
