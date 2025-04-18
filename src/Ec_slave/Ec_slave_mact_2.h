@@ -91,6 +91,7 @@ private:
         {}};
 
     unsigned long t_stamp = 0;
+    uint32_t offset = 0;
 };
 
 #endif // EC_SLAVE_MACT_2_H

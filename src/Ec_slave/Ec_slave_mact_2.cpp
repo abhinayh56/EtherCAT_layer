@@ -47,6 +47,11 @@ void Ec_slave_mact_2::transfer_tx_pdo()
     int16_t ADC_VAL = EC_READ_S16(domain_i_pd + off_tx_pdo_8);
     check_status();
 
+    if (enable_status == Motor_drive::Enable_status::DISABLE)
+    {
+        offset = position_actual_value;
+    }
+
     // std::cout << "MACT_TXPDO: " << slave_ns << " | " << position_actual_value << ", " << status_word << ", " << torque_actual_value << ", " << uint16_t(mode_of_operation_display) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << velocity_actual_value << ", " << ADC_VAL << std::endl;
 }
 
@@ -82,12 +87,13 @@ void Ec_slave_mact_2::main_process()
     t_stamp += 4;
     Motor_drive::Enable_status enable_status = Motor_drive::Enable_status::DISABLE;
     // std::cout << ": " << t_stamp << " | " << enable_status;
-    if (t_stamp <= 10000)
+    if (t_stamp <= 5000)
     {
         if (enable_status == Motor_drive::Enable_status::DISABLE)
         {
             mode_of_operation = 8;
             enable();
+            target_position = offset;
             // std::cout << ", " << "inside enable" << std::endl;
         }
     }
@@ -100,6 +106,6 @@ void Ec_slave_mact_2::main_process()
         double f = 1.0 / T;
         double w = 2.0 * 3.1417 * f;
         double t = ((double)t_stamp - 10000.0) * 0.001;
-        target_position = A * std::sin(w * t);
+        target_position = A * std::sin(w * t) - offset;
     }
 }
