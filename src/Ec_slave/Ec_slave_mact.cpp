@@ -84,7 +84,7 @@ void Ec_slave_mact::subscribe_data()
 
 void Ec_slave_mact::main_process()
 {
-    t_stamp += 4;
+    t_stamp += 1000/500;
     Motor_drive::Enable_status enable_status = Motor_drive::Enable_status::DISABLE;
     // std::cout << ": " << t_stamp << " | " << enable_status;
     if (t_stamp <= 5000)

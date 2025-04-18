@@ -37,7 +37,7 @@ void Ec_slave_el_2008::transfer_tx_pdo()
 
 void Ec_slave_el_2008::transfer_rx_pdo()
 {
-    time_stamp += 4;
+    time_stamp += 2;
     if (time_stamp >= 2000)
     {
         time_stamp = 0;

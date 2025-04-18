@@ -8,9 +8,12 @@
 #include "Ec_slave/Ec_slave_rfid.h"
 #include "Ec_slave/Ec_slave_mact.h"
 #include "Ec_slave/Ec_slave_ingenia.h"
+#include <chrono>
 
 int main()
 {
+    using namespace std::chrono;
+
     Ec_master ec_master;
 
     Ec_slave_ek_1100 ek_1100(0, "EK_1100");
@@ -47,8 +50,18 @@ int main()
 
     while (ec_master.is_running())
     {
+        auto start = high_resolution_clock::now();
+
         ec_master.cyclic_task();
-        usleep(4000);
+        
+
+        auto end = high_resolution_clock::now();
+
+        auto duration = duration_cast<microseconds>(end - start);
+
+        std::cout <<"took " << duration.count() << " µs" << std::endl;
+
+        usleep(1000000/500);
     }
 
     return 0;
