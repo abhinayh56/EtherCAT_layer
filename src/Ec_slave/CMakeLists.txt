@@ -7,8 +7,8 @@ add_library(Ec_slave
     Ec_slave_el_2008.cpp
     Ec_slave_el_1008.cpp
     Ec_slave_rfid.cpp
+    Ec_slave_mact.cpp
     Ec_slave_ingenia.cpp
-    Ec_slave_mact_2.cpp
 )
 
 # Include directories

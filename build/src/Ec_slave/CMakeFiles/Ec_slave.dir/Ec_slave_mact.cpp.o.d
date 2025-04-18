@@ -1,7 +1,7 @@
-src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.o: \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_mact_2.cpp \
+src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o: \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_mact.cpp \
  /usr/include/stdc-predef.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_mact_2.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_mact.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.h \
  /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \

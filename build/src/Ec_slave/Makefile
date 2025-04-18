@@ -295,29 +295,29 @@ Ec_slave_ingenia.cpp.s:
 	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_ingenia.cpp.s
 .PHONY : Ec_slave_ingenia.cpp.s
 
-Ec_slave_mact_2.o: Ec_slave_mact_2.cpp.o
-.PHONY : Ec_slave_mact_2.o
+Ec_slave_mact.o: Ec_slave_mact.cpp.o
+.PHONY : Ec_slave_mact.o
 
 # target to build an object file
-Ec_slave_mact_2.cpp.o:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.o
-.PHONY : Ec_slave_mact_2.cpp.o
+Ec_slave_mact.cpp.o:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o
+.PHONY : Ec_slave_mact.cpp.o
 
-Ec_slave_mact_2.i: Ec_slave_mact_2.cpp.i
-.PHONY : Ec_slave_mact_2.i
+Ec_slave_mact.i: Ec_slave_mact.cpp.i
+.PHONY : Ec_slave_mact.i
 
 # target to preprocess a source file
-Ec_slave_mact_2.cpp.i:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.i
-.PHONY : Ec_slave_mact_2.cpp.i
+Ec_slave_mact.cpp.i:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.i
+.PHONY : Ec_slave_mact.cpp.i
 
-Ec_slave_mact_2.s: Ec_slave_mact_2.cpp.s
-.PHONY : Ec_slave_mact_2.s
+Ec_slave_mact.s: Ec_slave_mact.cpp.s
+.PHONY : Ec_slave_mact.s
 
 # target to generate assembly for a file
-Ec_slave_mact_2.cpp.s:
-	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.s
-.PHONY : Ec_slave_mact_2.cpp.s
+Ec_slave_mact.cpp.s:
+	cd /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build && $(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.s
+.PHONY : Ec_slave_mact.cpp.s
 
 Ec_slave_rfid.o: Ec_slave_rfid.cpp.o
 .PHONY : Ec_slave_rfid.o
@@ -395,9 +395,9 @@ help:
 	@echo "... Ec_slave_ingenia.o"
 	@echo "... Ec_slave_ingenia.i"
 	@echo "... Ec_slave_ingenia.s"
-	@echo "... Ec_slave_mact_2.o"
-	@echo "... Ec_slave_mact_2.i"
-	@echo "... Ec_slave_mact_2.s"
+	@echo "... Ec_slave_mact.o"
+	@echo "... Ec_slave_mact.i"
+	@echo "... Ec_slave_mact.s"
 	@echo "... Ec_slave_rfid.o"
 	@echo "... Ec_slave_rfid.i"
 	@echo "... Ec_slave_rfid.s"

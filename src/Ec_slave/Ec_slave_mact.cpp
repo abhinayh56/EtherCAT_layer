@@ -1,16 +1,16 @@
-#include "Ec_slave_mact_2.h"
+#include "Ec_slave_mact.h"
 
-Ec_slave_mact_2::Ec_slave_mact_2(uint16_t slave_address_, const std::string &slave_ns_)
+Ec_slave_mact::Ec_slave_mact(uint16_t slave_address_, const std::string &slave_ns_)
 {
     slave_address = slave_address_;
     slave_ns = slave_ns_;
 }
 
-Ec_slave_mact_2::~Ec_slave_mact_2()
+Ec_slave_mact::~Ec_slave_mact()
 {
 }
 
-void Ec_slave_mact_2::set_info()
+void Ec_slave_mact::set_info()
 {
     slave_info.alias = alias;
     slave_info.position = position;
@@ -22,7 +22,7 @@ void Ec_slave_mact_2::set_info()
     slave_info.slave_syncs = slave_4_syncs;
 }
 
-void Ec_slave_mact_2::set_pdo()
+void Ec_slave_mact::set_pdo()
 {
     for (uint8_t i = 0; i < 15; i++)
     {
@@ -31,11 +31,11 @@ void Ec_slave_mact_2::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-void Ec_slave_mact_2::monitor_status()
+void Ec_slave_mact::monitor_status()
 {
 }
 
-void Ec_slave_mact_2::transfer_tx_pdo()
+void Ec_slave_mact::transfer_tx_pdo()
 {
     position_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_1);
     status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
@@ -55,34 +55,34 @@ void Ec_slave_mact_2::transfer_tx_pdo()
     // std::cout << "MACT_TXPDO: " << slave_ns << " | " << position_actual_value << ", " << status_word << ", " << torque_actual_value << ", " << uint16_t(mode_of_operation_display) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << velocity_actual_value << ", " << ADC_VAL << std::endl;
 }
 
-void Ec_slave_mact_2::transfer_rx_pdo()
+void Ec_slave_mact::transfer_rx_pdo()
 {
     EC_WRITE_S32(domain_i_pd + off_rx_pdo_1, target_position);
     EC_WRITE_U16(domain_i_pd + off_rx_pdo_2, control_word);
     EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, mode_of_operation);
 }
 
-void Ec_slave_mact_2::process_tx_pdo()
+void Ec_slave_mact::process_tx_pdo()
 {
 }
 
-void Ec_slave_mact_2::process_rx_pdo()
+void Ec_slave_mact::process_rx_pdo()
 {
 }
 
-void Ec_slave_mact_2::config_data_transfer()
+void Ec_slave_mact::config_data_transfer()
 {
 }
 
-void Ec_slave_mact_2::publish_data()
+void Ec_slave_mact::publish_data()
 {
 }
 
-void Ec_slave_mact_2::subscribe_data()
+void Ec_slave_mact::subscribe_data()
 {
 }
 
-void Ec_slave_mact_2::main_process()
+void Ec_slave_mact::main_process()
 {
     t_stamp += 4;
     Motor_drive::Enable_status enable_status = Motor_drive::Enable_status::DISABLE;

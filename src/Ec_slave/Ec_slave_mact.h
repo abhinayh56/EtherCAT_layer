@@ -1,13 +1,13 @@
-#ifndef EC_SLAVE_MACT_2_H
-#define EC_SLAVE_MACT_2_H
+#ifndef EC_SLAVE_MACT_H
+#define EC_SLAVE_MACT_H
 
 #include "../Ec_slave_motor_drive_base/Ec_slave_motor_drive_base.h"
 
-class Ec_slave_mact_2 : public Ec_slave_motor_drive_base
+class Ec_slave_mact : public Ec_slave_motor_drive_base
 {
 public:
-    Ec_slave_mact_2(uint16_t slave_address_, const std::string &slave_ns_);
-    ~Ec_slave_mact_2();
+    Ec_slave_mact(uint16_t slave_address_, const std::string &slave_ns_);
+    ~Ec_slave_mact();
 
     virtual void set_info();
     virtual void set_pdo();
@@ -94,4 +94,4 @@ private:
     uint32_t offset = 0;
 };
 
-#endif // EC_SLAVE_MACT_2_H
+#endif // EC_SLAVE_MACT_H
