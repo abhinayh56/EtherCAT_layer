@@ -6,7 +6,6 @@
 #include "Ec_slave/Ec_slave_el_2008.h"
 #include "Ec_slave/Ec_slave_el_1008.h"
 #include "Ec_slave/Ec_slave_rfid.h"
-// #include "Ec_slave/Ec_slave_mact.h"
 #include "Ec_slave/Ec_slave_mact_2.h"
 #include "Ec_slave/Ec_slave_ingenia.h"
 
@@ -22,13 +21,9 @@ int main()
     Ec_slave_el_2008 el_2008(1, "EL_2008");
     Ec_slave_el_1008 el_1008(2, "EL_1008");
     Ec_slave_rfid rfid(7, "RFID");
-    // Ec_slave_mact mact_1(8, "MACT_1");
     Ec_slave_mact_2 mact_1(8, "MACT_1");
-    // Ec_slave_mact mact_2(9, "MACT_2");
     Ec_slave_mact_2 mact_2(9, "MACT_2");
-    // Ec_slave_mact mact_3(10, "MACT_3");
     Ec_slave_mact_2 mact_3(10, "MACT_3");
-    // Ec_slave_mact mact_4(11, "MACT_4");
     Ec_slave_mact_2 mact_4(11, "MACT_4");
     Ec_slave_ingenia ingenia(12, "INGENIA");
 

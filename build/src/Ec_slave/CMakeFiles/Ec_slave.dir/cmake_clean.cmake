@@ -9,8 +9,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ec_slave.dir/Ec_slave_el_2008.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/Ec_slave_ingenia.cpp.o"
   "CMakeFiles/Ec_slave.dir/Ec_slave_ingenia.cpp.o.d"
-  "CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o"
-  "CMakeFiles/Ec_slave.dir/Ec_slave_mact.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.o"
   "CMakeFiles/Ec_slave.dir/Ec_slave_mact_2.cpp.o.d"
   "CMakeFiles/Ec_slave.dir/Ec_slave_rfid.cpp.o"

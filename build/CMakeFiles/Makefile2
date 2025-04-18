@@ -154,12 +154,12 @@ CMakeFiles/ethercat_layer.dir/all: src/Ec_slave/CMakeFiles/Ec_slave.dir/all
 CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=15,16 "Built target ethercat_layer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=14,15 "Built target ethercat_layer"
 .PHONY : CMakeFiles/ethercat_layer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ethercat_layer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ethercat_layer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : CMakeFiles/ethercat_layer.dir/rule
@@ -206,12 +206,12 @@ src/Ec_master/CMakeFiles/Ec_master.dir/clean:
 src/Ec_slave/CMakeFiles/Ec_slave.dir/all: src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/all
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave/CMakeFiles/Ec_slave.dir/build.make src/Ec_slave/CMakeFiles/Ec_slave.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12 "Built target Ec_slave"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11 "Built target Ec_slave"
 .PHONY : src/Ec_slave/CMakeFiles/Ec_slave.dir/all
 
 # Build rule for subdir invocation for target.
 src/Ec_slave/CMakeFiles/Ec_slave.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave/CMakeFiles/Ec_slave.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : src/Ec_slave/CMakeFiles/Ec_slave.dir/rule
@@ -232,7 +232,7 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/clean:
 src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/build.make src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/build.make src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=13,14 "Built target Ec_slave_motor_drive_base"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=12,13 "Built target Ec_slave_motor_drive_base"
 .PHONY : src/Ec_slave_motor_drive_base/CMakeFiles/Ec_slave_motor_drive_base.dir/all
 
 # Build rule for subdir invocation for target.
