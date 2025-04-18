@@ -103,4 +103,70 @@ namespace CiA_402
     }
 }
 
+class Ec_cia_402
+{
+public:
+    Ec_cia_402()
+    {
+    }
+    ~Ec_cia_402()
+    {
+    }
+
+    uint16_t check_status(uint16_t status_word)
+    {
+        if ((status_word & 0b1001111) == CiA_402::Pdo_object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
+        {
+            current_status = CiA_402::Pdo_object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON;
+        }
+        else if ((status_word & 0b1001111) == CiA_402::Pdo_object::Status_word::Bit_flags::SWITCH_ON_DISABLED)
+        {
+            current_status = CiA_402::Pdo_object::Status_word::Bit_flags::SWITCH_ON_DISABLED;
+        }
+        else if ((status_word & 0b1101111) == CiA_402::Pdo_object::Status_word::Bit_flags::READY_TO_SWITCH_ON)
+        {
+            current_status = CiA_402::Pdo_object::Status_word::Bit_flags::READY_TO_SWITCH_ON;
+        }
+        else if ((status_word & 0b1101111) == CiA_402::Pdo_object::Status_word::Bit_flags::SWITCHED_ON)
+        {
+            current_status = CiA_402::Pdo_object::Status_word::Bit_flags::SWITCHED_ON;
+        }
+        else if ((status_word & 0b1101111) == CiA_402::Pdo_object::Status_word::Bit_flags::OPERATION_ENABLED)
+        {
+            current_status = CiA_402::Pdo_object::Status_word::Bit_flags::OPERATION_ENABLED;
+        }
+        else if ((status_word & 0b1101111) == CiA_402::Pdo_object::Status_word::Bit_flags::QUICK_STOP_ACTIVE)
+        {
+            current_status = CiA_402::Pdo_object::Status_word::Bit_flags::QUICK_STOP_ACTIVE;
+        }
+        else if ((status_word & 0b1001111) == CiA_402::Pdo_object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
+        {
+            current_status = CiA_402::Pdo_object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE;
+        }
+        else if ((status_word & 0b1001111) == CiA_402::Pdo_object::Status_word::Bit_flags::FAULT)
+        {
+            current_status = CiA_402::Pdo_object::Status_word::Bit_flags::FAULT;
+        }
+    }
+
+    void clear_fault()
+    {
+    }
+
+private:
+    uint16_t status_word;
+    int8_t mode_of_operation_display;
+    int32_t position_actual_value = 0;
+    int32_t velocity_actual_value = 0;
+    int16_t torque_actual_value = 0;
+
+    uint16_t control_word;
+    int8_t mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
+    int32_t target_position = 0;
+    int32_t target_velocity = 0;
+    int16_t target_torque = 0;
+
+    uint16_t current_status = CiA_402::Pdo_object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON;
+};
+
 #endif // EC_CIA_402_H

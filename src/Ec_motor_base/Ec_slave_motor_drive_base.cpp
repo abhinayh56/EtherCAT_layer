@@ -63,87 +63,124 @@ void Ec_slave_motor_drive_base::stop()
 
 void Ec_slave_motor_drive_base::enable()
 {
-    uint16_t current_status = status_word & 0b1101111;
-
-    if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
+    if (current_status == Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
+    {
+        // transition 1
+    }
+    else if (current_status == Object::Status_word::Bit_flags::SWITCH_ON_DISABLED)
+    {
+        // transition 2
+        control_word = Object::Control_word::Bit_flags::SHUTDOWN;
+    }
+    else if (current_status == Object::Status_word::Bit_flags::READY_TO_SWITCH_ON)
+    {
+        // transition 3
+        control_word = Object::Control_word::Bit_flags::SWITCH_ON;
+    }
+    else if (current_status == Object::Status_word::Bit_flags::SWITCHED_ON)
+    {
+        // transition 4
+        control_word = Object::Control_word::Bit_flags::ENABLE_OPERATION;
+    }
+    else if (current_status == Object::Status_word::Bit_flags::OPERATION_ENABLED)
     {
     }
-    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
+    else if (current_status == Object::Status_word::Bit_flags::QUICK_STOP_ACTIVE)
     {
+        // transition 16 or 12
+        // control_word = Object::Control_word::Bit_flags::ENABLE_OPERATION;
+        control_word = Object::Control_word::Bit_flags::DISABLE_VOLTAGE;
     }
-    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::SWITCH_ON_DISABLED)
+    else if (current_status == Object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
     {
-        control_word = CiA_402::Pdo_object::Control_word::Bit_flags::SHUTDOWN;
+        // transition 14
     }
-    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::READY_TO_SWITCH_ON)
+    else if (current_status == Object::Status_word::Bit_flags::FAULT)
     {
-        control_word = CiA_402::Pdo_object::Control_word::Bit_flags::SWITCH_ON;
-    }
-    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::SWITCHED_ON)
-    {
-        control_word = CiA_402::Pdo_object::Control_word::Bit_flags::ENABLE_OPERATION;
-    }
-    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::OPERATION_ENABLED)
-    {
-    }
-    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::QUICK_STOP_ACTIVE)
-    {
-    }
-    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
-    {
-    }
-    else if (current_status == CiA_402::Pdo_object::Status_word::Bit_flags::FAULT)
-    {
+        // transition 15
+        control_word = Object::Control_word::Bit_flags::FAULT_RESET;
     }
 }
 
 void Ec_slave_motor_drive_base::disable()
 {
-    control_word = CiA_402::Pdo_object::Control_word::Bit_flags::DISABLE_VOLTAGE;
+    control_word = Object::Control_word::Bit_flags::DISABLE_VOLTAGE;
 }
 
-void Ec_slave_motor_drive_base::set_operating_mode(Motor_drive::Mode mode_)
+void Ec_slave_motor_drive_base::set_operating_mode(Motor_drive::OP_mode mode_)
 {
-    if (mode_ == Motor_drive::Mode::POSITION)
+    if (mode_ == Motor_drive::OP_mode::POSITION)
     {
-        mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_POSITION_MODE;
+        mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_POSITION_MODE;
     }
-    else if (mode_ == Motor_drive::Mode::VELOCITY)
+    else if (mode_ == Motor_drive::OP_mode::VELOCITY)
     {
-        mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_VELOCITY_MODE;
+        mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_VELOCITY_MODE;
     }
-    else if (mode_ == Motor_drive::Mode::TORQUE)
+    else if (mode_ == Motor_drive::OP_mode::TORQUE)
     {
-        mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
+        mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
     }
     else
     {
-        mode_of_operation = CiA_402::Pdo_object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
+        mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
     }
 }
 
 void Ec_slave_motor_drive_base::check_status()
 {
+    if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
+    {
+        current_status = Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON;
+    }
+    else if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::SWITCH_ON_DISABLED)
+    {
+        current_status = Object::Status_word::Bit_flags::SWITCH_ON_DISABLED;
+    }
+    else if ((status_word & 0b1101111) == Object::Status_word::Bit_flags::READY_TO_SWITCH_ON)
+    {
+        current_status = Object::Status_word::Bit_flags::READY_TO_SWITCH_ON;
+    }
+    else if ((status_word & 0b1101111) == Object::Status_word::Bit_flags::SWITCHED_ON)
+    {
+        current_status = Object::Status_word::Bit_flags::SWITCHED_ON;
+    }
+    else if ((status_word & 0b1101111) == Object::Status_word::Bit_flags::OPERATION_ENABLED)
+    {
+        current_status = Object::Status_word::Bit_flags::OPERATION_ENABLED;
+    }
+    else if ((status_word & 0b1101111) == Object::Status_word::Bit_flags::QUICK_STOP_ACTIVE)
+    {
+        current_status = Object::Status_word::Bit_flags::QUICK_STOP_ACTIVE;
+    }
+    else if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
+    {
+        current_status = Object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE;
+    }
+    else if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::FAULT)
+    {
+        current_status = Object::Status_word::Bit_flags::FAULT;
+    }
 }
 
 void Ec_slave_motor_drive_base::clear_fault()
 {
-    mode_of_operation = CiA_402::Pdo_object::Control_word::Bit_flags::FAULT_RESET;
+    mode_of_operation = Object::Control_word::Bit_flags::FAULT_RESET;
 }
 
-void Ec_slave_motor_drive_base::set_position(double th_0)
+void Ec_slave_motor_drive_base::set_position(double position_command_)
 {
-    position_command = th_0;
+    position_command = position_command_;
 }
 
-void Ec_slave_motor_drive_base::set_velocity(double v_0)
+void Ec_slave_motor_drive_base::set_velocity(double velocity_comman_)
 {
-    velocity_command = v_0;
+    velocity_command = velocity_comman_;
 }
 
-void Ec_slave_motor_drive_base::set_torque(double tau_0)
+void Ec_slave_motor_drive_base::set_torque(double torque_command_)
 {
-    torque_command = tau_0;
+    torque_command = torque_command_;
 }
 
 double Ec_slave_motor_drive_base::get_position()
