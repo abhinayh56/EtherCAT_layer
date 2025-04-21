@@ -19,7 +19,7 @@ void Ec_slave_ek_1122::set_info()
 
     slave_info.slave_pdo_entries;
     slave_info.slave_pdos;
-    slave_info.slave_syncs = slave_2_syncs;
+    slave_info.slave_syncs = slave_syncs;
 }
 
 void Ec_slave_ek_1122::set_pdo()

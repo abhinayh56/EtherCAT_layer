@@ -9,7 +9,7 @@ uint16_t position = 7;
 uint32_t vendor_id = 0x00006000;
 uint32_t product_code = 0x00004000;
 
-ec_pdo_entry_info_t slave_3_pdo_entries[40] = {
+ec_pdo_entry_info_t slave_pdo_entries[40] = {
     {0x0005, 0x01, 16}, /* Acknowledge */
     {0x0005, 0x02, 16}, /* Second */
     {0x0005, 0x03, 16}, /* Minute */
@@ -52,14 +52,14 @@ ec_pdo_entry_info_t slave_3_pdo_entries[40] = {
     {0x0006, 0x15, 16}, /* MFG_Year */
 };
 
-ec_pdo_info_t slave_3_pdos[2] = {
-    {0x1600, 19, slave_3_pdo_entries + 0},  /* Outputs */
-    {0x1a00, 21, slave_3_pdo_entries + 19}, /* Inputs */
+ec_pdo_info_t slave_pdos[2] = {
+    {0x1600, 19, slave_pdo_entries + 0},  /* Outputs */
+    {0x1a00, 21, slave_pdo_entries + 19}, /* Inputs */
 };
 
-ec_sync_info_t slave_3_syncs[3] = {
-    {0, EC_DIR_OUTPUT, 1, slave_3_pdos + 0, EC_WD_ENABLE},
-    {1, EC_DIR_INPUT, 1, slave_3_pdos + 1, EC_WD_DISABLE},
+ec_sync_info_t slave_syncs[3] = {
+    {0, EC_DIR_OUTPUT, 1, slave_pdos + 0, EC_WD_ENABLE},
+    {1, EC_DIR_INPUT, 1, slave_pdos + 1, EC_WD_DISABLE},
     {0xff}};
 
 #endif // EC_SLAVE_RFID_INFO_H

@@ -9,7 +9,7 @@ uint16_t position = 100;
 uint32_t vendor_id = 0x00000002;
 uint32_t product_code = 0x044c2c52;
 
-ec_sync_info_t slave_2_syncs[1] = {
+ec_sync_info_t slave_syncs[1] = {
     {0xff}};
 
 #endif // EC_SLAVE_EK_1100_INFO_H

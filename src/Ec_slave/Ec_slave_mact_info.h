@@ -9,7 +9,7 @@ uint16_t position = 8;
 uint32_t vendor_id = 0x00113322;
 uint32_t product_code = 0x00001022;
 
-ec_pdo_entry_info_t slave_4_pdo_entries[15] = {
+ec_pdo_entry_info_t slave_pdo_entries[15] = {
     {0x607a, 0x00, 32}, /* TARGET_POS */
     {0x6040, 0x00, 16}, /* CONTROL_WD */
     {0x6071, 0x00, 16}, /* TARGET_TORQ */
@@ -27,14 +27,14 @@ ec_pdo_entry_info_t slave_4_pdo_entries[15] = {
     {0x3007, 0x00, 16}, /* ADC_VAL */
 };
 
-ec_pdo_info_t slave_4_pdos[2] = {
-    {0x1600, 7, slave_4_pdo_entries + 0}, /* Outputs */
-    {0x1a00, 8, slave_4_pdo_entries + 7}, /* Inputs */
+ec_pdo_info_t slave_pdos[2] = {
+    {0x1600, 7, slave_pdo_entries + 0}, /* Outputs */
+    {0x1a00, 8, slave_pdo_entries + 7}, /* Inputs */
 };
 
-ec_sync_info_t slave_4_syncs[3] = {
-    {0, EC_DIR_OUTPUT, 1, slave_4_pdos + 0, EC_WD_ENABLE},
-    {1, EC_DIR_INPUT, 1, slave_4_pdos + 1, EC_WD_DISABLE},
+ec_sync_info_t slave_syncs[3] = {
+    {0, EC_DIR_OUTPUT, 1, slave_pdos + 0, EC_WD_ENABLE},
+    {1, EC_DIR_INPUT, 1, slave_pdos + 1, EC_WD_DISABLE},
     {0xff}};
 
 #endif // EC_MACT_INFO_H

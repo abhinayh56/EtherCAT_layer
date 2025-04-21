@@ -17,9 +17,9 @@ void Ec_slave_el_1008::set_info()
     slave_info.vendor_id = vendor_id;
     slave_info.product_code = product_code;
 
-    slave_info.slave_pdo_entries = slave_2_pdo_entries;
-    slave_info.slave_pdos = slave_2_pdos;
-    slave_info.slave_syncs = slave_2_syncs;
+    slave_info.slave_pdo_entries = slave_pdo_entries;
+    slave_info.slave_pdos = slave_pdos;
+    slave_info.slave_syncs = slave_syncs;
 }
 
 void Ec_slave_el_1008::set_pdo()
