@@ -14,7 +14,7 @@ int main()
 {
     using namespace std::chrono;
 
-    Ec_master ec_master;
+    Ec_master ec_master("Master");
 
     Ec_slave_ek_1100 ek_1100(0, "EK_1100");
     Ec_slave_el_2008 el_2008(1, "EL_2008");

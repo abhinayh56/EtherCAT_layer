@@ -2,6 +2,7 @@
 #define EC_MASTER_H
 
 #include <ecrt.h>
+#include <string>
 #include <vector>
 #include <iostream>
 #include "../Ec_slave_base/Ec_slave_base.h"
@@ -13,7 +14,7 @@
 class Ec_master
 {
 public:
-    Ec_master();
+    Ec_master(const std::string &master_ns_);
     ~Ec_master();
 
     void add_slave(Ec_slave_base *new_slave);
@@ -25,6 +26,7 @@ public:
     uint16_t get_num_slaves();
 
 private:
+    std::string master_ns;
     ec_master_t *master = nullptr;
     ec_master_state_t master_state = {};
 

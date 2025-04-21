@@ -1,57 +1,66 @@
 #include "Ec_master.h"
 
-Ec_master::Ec_master()
+Ec_master::Ec_master(const std::string &master_ns_)
 {
-    LOG_CONSOLE_INFO("Object of master created", 1);
+    master_ns = master_ns_;
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "EtherCAT master: IGH v", 0);
+    LOG_CONSOLE(ECRT_VER_MAJOR, 0);
+    LOG_CONSOLE(".", 0);
+    LOG_CONSOLE(ECRT_VER_MINOR, 1);
+
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Object of master created", 1);
 }
 
 Ec_master::~Ec_master()
 {
-    LOG_CONSOLE_INFO("Object of master destroyed", 1);
     stop();
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Object of master destroyed", 1);
 }
 
 void Ec_master::add_slave(Ec_slave_base *new_slave)
 {
-    LOG_CONSOLE_INFO("Assigning new slave to master", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Assigning new slave to master", 1);
     slave_base_arr.push_back(new_slave);
     num_slaves = slave_base_arr.size();
-    LOG_CONSOLE_INFO("Total number of slaves assigned to master: ", 0);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Total number of slaves assigned to master: ", 0);
     LOG_CONSOLE(num_slaves, 1);
 }
 
 bool Ec_master::start()
 {
-    LOG_CONSOLE_INFO("Creating master...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Starting master ...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Requesting master for realtime operation...", 1);
 
     master = ecrt_request_master(0);
     if (master)
     {
-        LOG_CONSOLE_INFO("Master creation successful", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master realtime operation started", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started successfully", 1);
         return true;
     }
     else
     {
-        LOG_CONSOLE_ERROR("Master creation failed", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master realtime operation failed", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Master failed to start", 1);
         return false;
     }
 }
 
 bool Ec_master::stop()
 {
-    LOG_CONSOLE_INFO("Stopping master...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
     if (run)
     {
         ecrt_release_master(master);
     }
-    LOG_CONSOLE_INFO("Master stopped", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Master stopped", 1);
     run = false;
     return true;
 }
 
 void Ec_master::config()
 {
-    LOG_CONSOLE_INFO("Configuring all slaves starts...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves ...", 1);
     config_slaves_data_transfer();
     create_domain();
     set_slave_info();
@@ -60,7 +69,7 @@ void Ec_master::config()
     activate();
     get_domain_process_data();
     set_domain_process_data();
-    LOG_CONSOLE_INFO("Configurating all slaves done", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Slave configuration completed successfully", 1);
 
     run = true;
 }
@@ -128,122 +137,123 @@ uint16_t Ec_master::get_num_slaves()
 
 void Ec_master::config_slaves_data_transfer()
 {
-    LOG_CONSOLE_INFO("Configuring data transfer of slaves...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring data transfer of slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
     {
-        LOG_CONSOLE_INFO("Configuring data transfer of slave ", 0);
-        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring data transfer of slave ", 0);
+        LOG_CONSOLE(i+1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->config_data_transfer();
     }
-    LOG_CONSOLE_INFO("Configured data transfer of all slave ", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured data transfer of all slave ", 1);
 }
 
 bool Ec_master::create_domain()
 {
-    LOG_CONSOLE_INFO("Creating domain...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Creating domain...", 1);
     domain_i = ecrt_master_create_domain(master);
     if (domain_i)
     {
-        LOG_CONSOLE_INFO("Domain creation successful", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Domain creation successful", 1);
         return true;
     }
     else
     {
-        LOG_CONSOLE_ERROR("Domain creation failed", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Domain creation failed", 1);
         return false;
     }
 }
 
 void Ec_master::set_slave_info()
 {
-    LOG_CONSOLE_INFO("Setting slaves info...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slaves info...", 1);
     for (int i = 0; i < num_slaves; i++)
     {
-        LOG_CONSOLE_INFO("Setting slave info ", 0);
-        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave info ", 0);
+        LOG_CONSOLE(i+1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->set_info();
     }
-    LOG_CONSOLE_INFO("Configured all slaves", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured all slaves", 1);
 }
 
 void Ec_master::config_slaves()
 {
-    LOG_CONSOLE_INFO("Configuring slave---", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slave---", 1);
     for (int i = 0; i < num_slaves; i++)
     {
-        LOG_CONSOLE_INFO("Configuring slave ", 0);
-        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slave ", 0);
+        LOG_CONSOLE(i+1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->config_slave(master);
     }
-    LOG_CONSOLE_INFO("Configured slaves---", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured slaves---", 1);
 }
 
 void Ec_master::register_slaves_pdo_to_domain()
 {
-    LOG_CONSOLE_INFO("Registering pdos", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering pdos", 1);
     for (int i = 0; i < num_slaves; i++)
     {
-        LOG_CONSOLE_INFO("Registering pdos for slave ", 0);
-        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering pdos for slave ", 0);
+        LOG_CONSOLE(i+1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
-        LOG_CONSOLE_INFO("Setting slave pdos", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave pdos", 1);
         slave_base_arr[i]->set_pdo();
-        LOG_CONSOLE_INFO("Pdo list is set", 1);
-        LOG_CONSOLE_INFO("Registering tx,rx_pdos to domain", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Pdo list is set", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering tx,rx_pdos to domain", 1);
         slave_base_arr[i]->register_pdo_to_domain(domain_i);
     }
-    LOG_CONSOLE_INFO("Registered all pdos", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Registered all pdos", 1);
 }
 
 bool Ec_master::activate()
 {
-    LOG_CONSOLE_INFO("Activating master...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Activating master...", 1);
     if (!ecrt_master_activate(master))
     {
-        LOG_CONSOLE_INFO("Master activated successfully", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master activation successful", 1);
         return true;
     }
     else
     {
-        LOG_CONSOLE_ERROR("Failed to activate master", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to activate master", 1);
         return false;
     }
 }
 
 bool Ec_master::get_domain_process_data()
 {
-    LOG_CONSOLE_INFO("Getting pointer to domain process data...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Getting domain process data address ...", 1);
     domain_i_pd = ecrt_domain_data(domain_i);
     if (domain_i_pd)
     {
-        LOG_CONSOLE_INFO("Domain process data pointer get successful", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Domain process data address fetch successful", 1);
         return true;
     }
     else
     {
-        LOG_CONSOLE_ERROR("Failed to get domain process data pointer", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to get domain process data address", 1);
         return false;
     }
 }
 
 void Ec_master::set_domain_process_data()
 {
-    LOG_CONSOLE_INFO("Providing pointer to domain process data...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain process data address to slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
     {
-        LOG_CONSOLE_INFO("Providing pointer to domain process data to slave ", 0);
-        LOG_CONSOLE(i, 0);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Providing domain process data address to slave ", 0);
+        LOG_CONSOLE(i+1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->set_domain(domain_i_pd);
     }
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain process data address to slaves successful", 1);
 }
 
 void Ec_master::monitor_status()
