@@ -4,7 +4,6 @@
 #include <cmath>
 #include <stdint.h>
 #include "../Ec_slave_base/Ec_slave_base.h"
-// #include "../Ec_utils/Ec_objects.h"
 
 namespace Motor_drive
 {
