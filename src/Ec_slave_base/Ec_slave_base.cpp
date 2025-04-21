@@ -71,13 +71,19 @@ void Ec_slave_base::set_domain(uint8_t *domain_i_pd_)
 }
 
 void Ec_slave_base::monitor_status() {}
+
 void Ec_slave_base::transfer_tx_pdo() {}
+
 void Ec_slave_base::transfer_rx_pdo() {}
+
 void Ec_slave_base::process_tx_pdo() {}
+
 void Ec_slave_base::process_rx_pdo() {}
 
 void Ec_slave_base::config_data_transfer() {}
+
 void Ec_slave_base::publish_data() {}
+
 void Ec_slave_base::subscribe_data() {}
 
 void Ec_slave_base::main_process() {}
