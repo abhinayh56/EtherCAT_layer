@@ -13,7 +13,7 @@ Ec_slave_ek_1122::~Ec_slave_ek_1122()
 void Ec_slave_ek_1122::set_info()
 {
     slave_info.alias = alias;
-    slave_info.position = position;
+    slave_info.position = slave_address;
     slave_info.vendor_id = vendor_id;
     slave_info.product_code = product_code;
 

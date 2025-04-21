@@ -13,7 +13,7 @@ Ec_slave_rfid::~Ec_slave_rfid()
 void Ec_slave_rfid::set_info()
 {
     slave_info.alias = alias;
-    slave_info.position = position;
+    slave_info.position = slave_address;
     slave_info.vendor_id = vendor_id;
     slave_info.product_code = product_code;
 
