@@ -49,27 +49,9 @@ void Ec_slave_ingenia::transfer_tx_pdo()
 
 void Ec_slave_ingenia::transfer_rx_pdo()
 {
-    t_stamp += 2;
-
-    if (t_stamp <= 10000)
-    {
-        mode_of_operation = 8;
-        enable();
-    }
-    else
-    {
-        enable();
-        double A = 200000.0;
-        double T = 10.0;
-        double f = 1.0 / T;
-        double w = 2.0 * 3.1417 * f;
-        double t = ((double)t_stamp - 15000.0) * 0.001;
-        target_position = A * std::sin(w * t);
-    }
-
-    EC_WRITE_U16(domain_i_pd + off_rx_pdo_1, control_word); // UINT16
-    EC_WRITE_S32(domain_i_pd + off_rx_pdo_2, target_position); // SINT32
-    EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, mode_of_operation);     // UIN8T
+    EC_WRITE_U16(domain_i_pd + off_rx_pdo_1, control_word);     // UINT16
+    EC_WRITE_S32(domain_i_pd + off_rx_pdo_2, target_position);  // SINT32
+    EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, mode_of_operation); // UIN8T
 }
 
 void Ec_slave_ingenia::process_tx_pdo()
@@ -94,4 +76,21 @@ void Ec_slave_ingenia::subscribe_data()
 
 void Ec_slave_ingenia::main_process()
 {
+    t_stamp += 2;
+
+    if (t_stamp <= 10000)
+    {
+        mode_of_operation = 10;
+        enable();
+    }
+    else
+    {
+        enable();
+        double A = 200000.0;
+        double T = 10.0;
+        double f = 1.0 / T;
+        double w = 2.0 * 3.1417 * f;
+        double t = ((double)t_stamp - 15000.0) * 0.001;
+        target_position = A * std::sin(w * t);
+    }
 }
