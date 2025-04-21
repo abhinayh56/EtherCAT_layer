@@ -53,7 +53,7 @@ void Ec_slave_ingenia::transfer_rx_pdo()
 
     if (t_stamp <= 10000)
     {
-        mode_of_operation = 10;
+        mode_of_operation = 8;
         enable();
     }
     else

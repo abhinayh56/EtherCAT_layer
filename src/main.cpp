@@ -31,6 +31,12 @@ int main()
     Ec_slave_mact mact_2(10, "MACT_2");
     Ec_slave_mact mact_3(11, "MACT_3");
     Ec_slave_mact mact_4(12, "MACT_4");
+
+    Ec_slave_rfid rfid_2(13, "RFID");
+    Ec_slave_mact mact_5(14, "MACT_4");
+    Ec_slave_mact mact_6(15, "MACT_4");
+    Ec_slave_mact mact_7(16, "MACT_4");
+    Ec_slave_mact mact_8(17, "MACT_4");
     
 
     ec_master.add_slave(&ek_1100);
@@ -42,10 +48,15 @@ int main()
     ec_master.add_slave(&el_1008);
     ec_master.add_slave(&rfid);
     ec_master.add_slave(&mact_1);
-    // ec_master.add_slave(&mact_2);
-    // ec_master.add_slave(&mact_3);
-    // ec_master.add_slave(&mact_4);
+    ec_master.add_slave(&mact_2);
+    ec_master.add_slave(&mact_3);
+    ec_master.add_slave(&mact_4);
     ec_master.add_slave(&ingenia);
+    ec_master.add_slave(&rfid_2);
+    ec_master.add_slave(&mact_5);
+    ec_master.add_slave(&mact_6);
+    ec_master.add_slave(&mact_7);
+    ec_master.add_slave(&mact_8);
 
     ec_master.start();
 
@@ -64,7 +75,7 @@ int main()
 
         // std::cout <<"took " << duration.count() << " µs" << std::endl;
 
-        usleep(1000000/500);
+        usleep(1000000/1000);
     }
 
     return 0;
