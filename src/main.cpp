@@ -72,7 +72,8 @@ int main()
         auto end = high_resolution_clock::now();
 
         auto duration = duration_cast<microseconds>(end - start);
-
+        
+        // std::cout << "Num_slaves: " << ec_master.get_num_slaves() << std::endl;
         // std::cout <<"took " << duration.count() << " µs" << std::endl;
 
         usleep(1000000/1000);

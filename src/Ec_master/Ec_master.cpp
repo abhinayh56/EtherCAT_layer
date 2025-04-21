@@ -121,6 +121,11 @@ bool Ec_master::is_running()
     return run;
 }
 
+uint16_t Ec_master::get_num_slaves()
+{
+    return num_slaves;
+}
+
 void Ec_master::config_slaves_data_transfer()
 {
     LOG_CONSOLE_INFO("Configuring data transfer of slaves...", 1);

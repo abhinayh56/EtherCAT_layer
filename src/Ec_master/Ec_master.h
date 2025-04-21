@@ -22,6 +22,7 @@ public:
     void config();
     void cyclic_task();
     bool is_running();
+    uint16_t get_num_slaves();
 
 private:
     ec_master_t *master = nullptr;
@@ -33,7 +34,7 @@ private:
     uint8_t *domain_i_pd = nullptr;
     bool run = false;
 
-    unsigned int num_slaves = 0;
+    uint16_t num_slaves = 0;
     std::vector<Ec_slave_base *> slave_base_arr;
 
     void config_slaves_data_transfer();
