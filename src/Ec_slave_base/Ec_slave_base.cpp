@@ -61,7 +61,7 @@ void Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
     }
     else
     {
-        LOG_CONSOLE_SOURCE_INFO(slave_ns, "PDO entry registration done", 1);
+        LOG_CONSOLE_SOURCE_INFO(slave_ns, "PDO entry registration successful", 1);
     }
 }
 
