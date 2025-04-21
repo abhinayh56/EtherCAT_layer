@@ -74,11 +74,6 @@ private:
         {}};
 
     unsigned long t_stamp = 0;
-
-    // uint16_t CONTROL_WD = 0; //off_rx_pdo_1
-    // int32_t TARGET_POS = 0; //off_rx_pdo_2
-    // int32_t TARGET_VEL = 0; //off_rx_pdo_3
-    // uint8_t OP_MODE = 0; //off_rx_pdo_4
 };
 
 #endif // EC_SLAVE_INGENIA_H
