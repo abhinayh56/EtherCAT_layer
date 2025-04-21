@@ -41,7 +41,7 @@ private:
     unsigned int off_tx_pdo_7;
     unsigned int off_tx_pdo_8;
 
-    ec_pdo_entry_reg_t domain_regs[41] = {
+    ec_pdo_entry_reg_t domain_regs[16] = {
         {0, 11, 0x00113322, 0x00001022, 0x607a, 0x00, &off_rx_pdo_1}, /* TARGET_POS */
         {0, 11, 0x00113322, 0x00001022, 0x6040, 0x00, &off_rx_pdo_2}, /* CONTROL_WD */
         {0, 11, 0x00113322, 0x00001022, 0x6071, 0x00, &off_rx_pdo_3}, /* TARGET_TORQ */
