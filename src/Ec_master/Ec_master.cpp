@@ -3,7 +3,7 @@
 Ec_master::Ec_master(const std::string &master_ns_)
 {
     master_ns = master_ns_;
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "EtherCAT master: IGH v", 0);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Using EtherCAT master IGH v", 0);
     LOG_CONSOLE(ECRT_VER_MAJOR, 0);
     LOG_CONSOLE(".", 0);
     LOG_CONSOLE(ECRT_VER_MINOR, 1);
