@@ -38,8 +38,6 @@ namespace Motor_drive
     };
 }
 
-#ifndef AAAAA
-#define AAAAA
 namespace Control_word
 {
     enum Bit_flags : uint16_t
@@ -86,7 +84,6 @@ namespace Status_word
         HM_HOMING_ATTAINED_BIT = 1 << 12
     };
 }
-#endif
 
 class Ec_slave_base_motor_drive : public Ec_slave_base
 {
