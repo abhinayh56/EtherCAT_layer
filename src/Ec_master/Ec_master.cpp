@@ -170,18 +170,18 @@ void Ec_master::set_slave_info()
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slaves info...", 1);
     for (int i = 0; i < num_slaves; i++)
     {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave info ", 0);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting info of slave ", 0);
         LOG_CONSOLE(i+1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->set_info();
     }
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured all slaves", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured info of all slaves", 1);
 }
 
 void Ec_master::config_slaves()
 {
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slave---", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slave ", 0);
@@ -190,15 +190,15 @@ void Ec_master::config_slaves()
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->config_slave(master);
     }
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured slaves---", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured all slaves", 1);
 }
 
 void Ec_master::register_slaves_pdo_to_domain()
 {
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering pdos", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering pdo of slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
     {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering pdos for slave ", 0);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering pdo for slave ", 0);
         LOG_CONSOLE(i+1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
