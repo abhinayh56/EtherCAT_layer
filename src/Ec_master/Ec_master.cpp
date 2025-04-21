@@ -52,9 +52,20 @@ bool Ec_master::stop()
     if (run)
     {
         ecrt_release_master(master);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
     }
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Master stopped", 1);
+
+    if(ecrt_master_deactivate(master) == 0)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master deactivated", 1);
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Unable to stop master", 1);
+    }
+
     run = false;
+
     return true;
 }
 
