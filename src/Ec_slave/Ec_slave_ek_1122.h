@@ -23,25 +23,13 @@ public:
     virtual void main_process();
 
 private:
-    unsigned long time_stamp = 0;
-
-    uint16_t alias = 0;
-    uint16_t position = 0;
-    uint32_t vendor_id = 0x00000002;
-    uint32_t product_code = 0x04622c52;
-
-    ec_pdo_entry_info_t slave_2_pdo_entries[0] = {
-    };
-
-    ec_pdo_info_t slave_2_pdos[0] = {
-    };
-
-    ec_sync_info_t slave_2_syncs[1] = {
-        {0xff}};
+    #include "Ec_slave_ek_1122_info.h"
 
     unsigned int off_1;
     ec_pdo_entry_reg_t domain_regs[1] = {
         {}};
+    
+    unsigned long time_stamp = 0;
 };
 
 #endif // EC_SLAVE_EK_1122_H

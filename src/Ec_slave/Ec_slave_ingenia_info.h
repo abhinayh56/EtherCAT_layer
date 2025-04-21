@@ -1,5 +1,5 @@
-#ifndef EC_INGENIA_INFO_H
-#define EC_INGENIA_INFO_H
+#ifndef EC_SLAVE_INGENIA_INFO_H
+#define EC_SLAVE_INGENIA_INFO_H
 
 #include <stdint.h>
 #include <ecrt.h>
@@ -32,4 +32,4 @@ ec_sync_info_t slave_12_syncs[5] = {
     {3, EC_DIR_INPUT, 1, slave_12_pdos + 1, EC_WD_DISABLE},
     {0xff}};
 
-#endif // EC_INGENIA_INFO_H
+#endif // EC_SLAVE_INGENIA_INFO_H
