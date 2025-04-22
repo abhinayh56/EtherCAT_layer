@@ -21,6 +21,7 @@ struct Slave_status
     bool is_connected = false;
     bool is_configured = false;
     bool is_operational = false;
+    bool is_pdo_registered = false;
 };
 
 #endif // EC_UTILS_H
