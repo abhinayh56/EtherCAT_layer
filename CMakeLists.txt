@@ -16,6 +16,10 @@ add_subdirectory(src/Ec_master)
 add_subdirectory(src/Ec_slave)
 add_subdirectory(src/Ec_slave_base)
 add_subdirectory(src/Ec_slave_base_motor_drive)
+add_subdirectory(src/Ec_slave_base_digital_in)
+add_subdirectory(src/Ec_slave_base_digital_out)
+add_subdirectory(src/Ec_slave_base_analog_in)
+add_subdirectory(src/Ec_slave_base_rs232)
 
 # Main executable
 add_executable(${PROJECT_NAME} src/main.cpp)
@@ -26,7 +30,11 @@ target_link_libraries(${PROJECT_NAME}
     Ec_slave
     Ec_slave_base
     Ec_slave_base_motor_drive
-)
+    Ec_slave_base_digital_in
+    Ec_slave_base_digital_out
+    Ec_slave_base_analog_in
+    Ec_slave_base_rs232
+    )
 
 # Installation targets
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)

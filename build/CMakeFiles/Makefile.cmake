@@ -13,7 +13,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base/CMakeLists.txt"
+  "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_analog_in/CMakeLists.txt"
+  "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_digital_in/CMakeLists.txt"
+  "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_digital_out/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_motor_drive/CMakeLists.txt"
+  "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_rs232/CMakeLists.txt"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake"
@@ -44,6 +48,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/Ec_slave/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave_base/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave_base_motor_drive/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Ec_slave_base_digital_in/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Ec_slave_base_digital_out/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Ec_slave_base_analog_in/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Ec_slave_base_rs232/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -52,4 +60,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/Ec_master/CMakeFiles/Ec_master.dir/DependInfo.cmake"
   "src/Ec_slave/CMakeFiles/Ec_slave.dir/DependInfo.cmake"
   "src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/DependInfo.cmake"
+  "src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/DependInfo.cmake"
+  "src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/DependInfo.cmake"
+  "src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/DependInfo.cmake"
+  "src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/DependInfo.cmake"
   )

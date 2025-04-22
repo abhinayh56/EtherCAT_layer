@@ -213,6 +213,58 @@ Ec_slave_base_motor_drive/fast:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build
 .PHONY : Ec_slave_base_motor_drive/fast
 
+#=============================================================================
+# Target rules for targets named Ec_slave_base_digital_in
+
+# Build rule for target.
+Ec_slave_base_digital_in: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave_base_digital_in
+.PHONY : Ec_slave_base_digital_in
+
+# fast build rule for target.
+Ec_slave_base_digital_in/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/build.make src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/build
+.PHONY : Ec_slave_base_digital_in/fast
+
+#=============================================================================
+# Target rules for targets named Ec_slave_base_digital_out
+
+# Build rule for target.
+Ec_slave_base_digital_out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave_base_digital_out
+.PHONY : Ec_slave_base_digital_out
+
+# fast build rule for target.
+Ec_slave_base_digital_out/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/build.make src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/build
+.PHONY : Ec_slave_base_digital_out/fast
+
+#=============================================================================
+# Target rules for targets named Ec_slave_base_analog_in
+
+# Build rule for target.
+Ec_slave_base_analog_in: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave_base_analog_in
+.PHONY : Ec_slave_base_analog_in
+
+# fast build rule for target.
+Ec_slave_base_analog_in/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/build.make src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/build
+.PHONY : Ec_slave_base_analog_in/fast
+
+#=============================================================================
+# Target rules for targets named Ec_slave_base_rs232
+
+# Build rule for target.
+Ec_slave_base_rs232: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave_base_rs232
+.PHONY : Ec_slave_base_rs232
+
+# fast build rule for target.
+Ec_slave_base_rs232/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/build.make src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/build
+.PHONY : Ec_slave_base_rs232/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -251,7 +303,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Ec_master"
 	@echo "... Ec_slave"
+	@echo "... Ec_slave_base_analog_in"
+	@echo "... Ec_slave_base_digital_in"
+	@echo "... Ec_slave_base_digital_out"
 	@echo "... Ec_slave_base_motor_drive"
+	@echo "... Ec_slave_base_rs232"
 	@echo "... ethercat_layer"
 	@echo "... src/main.o"
 	@echo "... src/main.i"

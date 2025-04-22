@@ -68,6 +68,10 @@ all: src/Ec_master/all
 all: src/Ec_slave/all
 all: src/Ec_slave_base/all
 all: src/Ec_slave_base_motor_drive/all
+all: src/Ec_slave_base_digital_in/all
+all: src/Ec_slave_base_digital_out/all
+all: src/Ec_slave_base_analog_in/all
+all: src/Ec_slave_base_rs232/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -75,6 +79,10 @@ preinstall: src/Ec_master/preinstall
 preinstall: src/Ec_slave/preinstall
 preinstall: src/Ec_slave_base/preinstall
 preinstall: src/Ec_slave_base_motor_drive/preinstall
+preinstall: src/Ec_slave_base_digital_in/preinstall
+preinstall: src/Ec_slave_base_digital_out/preinstall
+preinstall: src/Ec_slave_base_analog_in/preinstall
+preinstall: src/Ec_slave_base_rs232/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -83,6 +91,10 @@ clean: src/Ec_master/clean
 clean: src/Ec_slave/clean
 clean: src/Ec_slave_base/clean
 clean: src/Ec_slave_base_motor_drive/clean
+clean: src/Ec_slave_base_digital_in/clean
+clean: src/Ec_slave_base_digital_out/clean
+clean: src/Ec_slave_base_analog_in/clean
+clean: src/Ec_slave_base_rs232/clean
 .PHONY : clean
 
 #=============================================================================
@@ -131,6 +143,51 @@ src/Ec_slave_base/clean:
 .PHONY : src/Ec_slave_base/clean
 
 #=============================================================================
+# Directory level rules for directory src/Ec_slave_base_analog_in
+
+# Recursive "all" directory target.
+src/Ec_slave_base_analog_in/all: src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/all
+.PHONY : src/Ec_slave_base_analog_in/all
+
+# Recursive "preinstall" directory target.
+src/Ec_slave_base_analog_in/preinstall:
+.PHONY : src/Ec_slave_base_analog_in/preinstall
+
+# Recursive "clean" directory target.
+src/Ec_slave_base_analog_in/clean: src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/clean
+.PHONY : src/Ec_slave_base_analog_in/clean
+
+#=============================================================================
+# Directory level rules for directory src/Ec_slave_base_digital_in
+
+# Recursive "all" directory target.
+src/Ec_slave_base_digital_in/all: src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/all
+.PHONY : src/Ec_slave_base_digital_in/all
+
+# Recursive "preinstall" directory target.
+src/Ec_slave_base_digital_in/preinstall:
+.PHONY : src/Ec_slave_base_digital_in/preinstall
+
+# Recursive "clean" directory target.
+src/Ec_slave_base_digital_in/clean: src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/clean
+.PHONY : src/Ec_slave_base_digital_in/clean
+
+#=============================================================================
+# Directory level rules for directory src/Ec_slave_base_digital_out
+
+# Recursive "all" directory target.
+src/Ec_slave_base_digital_out/all: src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/all
+.PHONY : src/Ec_slave_base_digital_out/all
+
+# Recursive "preinstall" directory target.
+src/Ec_slave_base_digital_out/preinstall:
+.PHONY : src/Ec_slave_base_digital_out/preinstall
+
+# Recursive "clean" directory target.
+src/Ec_slave_base_digital_out/clean: src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/clean
+.PHONY : src/Ec_slave_base_digital_out/clean
+
+#=============================================================================
 # Directory level rules for directory src/Ec_slave_base_motor_drive
 
 # Recursive "all" directory target.
@@ -146,20 +203,39 @@ src/Ec_slave_base_motor_drive/clean: src/Ec_slave_base_motor_drive/CMakeFiles/Ec
 .PHONY : src/Ec_slave_base_motor_drive/clean
 
 #=============================================================================
+# Directory level rules for directory src/Ec_slave_base_rs232
+
+# Recursive "all" directory target.
+src/Ec_slave_base_rs232/all: src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/all
+.PHONY : src/Ec_slave_base_rs232/all
+
+# Recursive "preinstall" directory target.
+src/Ec_slave_base_rs232/preinstall:
+.PHONY : src/Ec_slave_base_rs232/preinstall
+
+# Recursive "clean" directory target.
+src/Ec_slave_base_rs232/clean: src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/clean
+.PHONY : src/Ec_slave_base_rs232/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ethercat_layer.dir
 
 # All Build rule for target.
 CMakeFiles/ethercat_layer.dir/all: src/Ec_master/CMakeFiles/Ec_master.dir/all
 CMakeFiles/ethercat_layer.dir/all: src/Ec_slave/CMakeFiles/Ec_slave.dir/all
 CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/all
+CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/all
+CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/all
+CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/all
+CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=14,15 "Built target ethercat_layer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=22,23 "Built target ethercat_layer"
 .PHONY : CMakeFiles/ethercat_layer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ethercat_layer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ethercat_layer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : CMakeFiles/ethercat_layer.dir/rule
@@ -232,7 +308,7 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/clean:
 src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=12,13 "Built target Ec_slave_base_motor_drive"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=18,19 "Built target Ec_slave_base_motor_drive"
 .PHONY : src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/all
 
 # Build rule for subdir invocation for target.
@@ -250,6 +326,110 @@ Ec_slave_base_motor_drive: src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_bas
 src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/build.make src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/clean
 .PHONY : src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/clean
+
+#=============================================================================
+# Target rules for target src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir
+
+# All Build rule for target.
+src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/build.make src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/build.make src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=14,15 "Built target Ec_slave_base_digital_in"
+.PHONY : src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/all
+
+# Build rule for subdir invocation for target.
+src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
+.PHONY : src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/rule
+
+# Convenience name for target.
+Ec_slave_base_digital_in: src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/rule
+.PHONY : Ec_slave_base_digital_in
+
+# clean rule for target.
+src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/build.make src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/clean
+.PHONY : src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/clean
+
+#=============================================================================
+# Target rules for target src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir
+
+# All Build rule for target.
+src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/build.make src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/build.make src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=16,17 "Built target Ec_slave_base_digital_out"
+.PHONY : src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/all
+
+# Build rule for subdir invocation for target.
+src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
+.PHONY : src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/rule
+
+# Convenience name for target.
+Ec_slave_base_digital_out: src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/rule
+.PHONY : Ec_slave_base_digital_out
+
+# clean rule for target.
+src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/build.make src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/clean
+.PHONY : src/Ec_slave_base_digital_out/CMakeFiles/Ec_slave_base_digital_out.dir/clean
+
+#=============================================================================
+# Target rules for target src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir
+
+# All Build rule for target.
+src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/build.make src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/build.make src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=12,13 "Built target Ec_slave_base_analog_in"
+.PHONY : src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/all
+
+# Build rule for subdir invocation for target.
+src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
+.PHONY : src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/rule
+
+# Convenience name for target.
+Ec_slave_base_analog_in: src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/rule
+.PHONY : Ec_slave_base_analog_in
+
+# clean rule for target.
+src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/build.make src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/clean
+.PHONY : src/Ec_slave_base_analog_in/CMakeFiles/Ec_slave_base_analog_in.dir/clean
+
+#=============================================================================
+# Target rules for target src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir
+
+# All Build rule for target.
+src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/build.make src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/build.make src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=20,21 "Built target Ec_slave_base_rs232"
+.PHONY : src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/all
+
+# Build rule for subdir invocation for target.
+src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
+.PHONY : src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/rule
+
+# Convenience name for target.
+Ec_slave_base_rs232: src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/rule
+.PHONY : Ec_slave_base_rs232
+
+# clean rule for target.
+src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/build.make src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/clean
+.PHONY : src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

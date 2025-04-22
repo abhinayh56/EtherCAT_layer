@@ -3,4 +3,8 @@ add_subdirectory(
     Ec_slave
     Ec_slave_base
     Ec_slave_base_motor_drive
+    Ec_slave_base_digital_in
+    Ec_slave_base_digital_out
+    Ec_slave_base_analog_in
+    Ec_slave_base_rs232
     )
