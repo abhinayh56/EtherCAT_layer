@@ -42,6 +42,7 @@ protected:
     std::string slave_ns;
     uint16_t slave_address;
     Slave_info slave_info;
+    Slave_status slave_status;
 
     ec_slave_config_t *sc;
     ec_slave_config_state_t sc_state;

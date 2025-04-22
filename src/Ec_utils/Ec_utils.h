@@ -16,4 +16,11 @@ struct Slave_info
     ec_sync_info_t *slave_syncs;
 };
 
+struct Slave_status
+{
+    bool is_connected = false;
+    bool is_configured = false;
+    bool is_operational = false;
+};
+
 #endif // EC_UTILS_H
