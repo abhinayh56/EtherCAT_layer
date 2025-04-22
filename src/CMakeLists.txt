@@ -7,4 +7,6 @@ add_subdirectory(
     Ec_slave_base_digital_out
     Ec_slave_base_analog_in
     Ec_slave_base_rs232
+    Ec_slave_base_coupler
+    Ec_slave_base_junction
     )

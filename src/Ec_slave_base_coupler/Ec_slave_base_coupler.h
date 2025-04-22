@@ -1,0 +1,6 @@
+#ifndef EC_SLAVE_BASE_COUPLER_H
+#define EC_SLAVE_BASE_COUPLER_H
+
+
+
+#endif // EC_SLAVE_BASE_COUPLER_H

@@ -265,6 +265,32 @@ Ec_slave_base_rs232/fast:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/build.make src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/build
 .PHONY : Ec_slave_base_rs232/fast
 
+#=============================================================================
+# Target rules for targets named Ec_slave_base_coupler
+
+# Build rule for target.
+Ec_slave_base_coupler: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave_base_coupler
+.PHONY : Ec_slave_base_coupler
+
+# fast build rule for target.
+Ec_slave_base_coupler/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_coupler/CMakeFiles/Ec_slave_base_coupler.dir/build.make src/Ec_slave_base_coupler/CMakeFiles/Ec_slave_base_coupler.dir/build
+.PHONY : Ec_slave_base_coupler/fast
+
+#=============================================================================
+# Target rules for targets named Ec_slave_base_junction
+
+# Build rule for target.
+Ec_slave_base_junction: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_slave_base_junction
+.PHONY : Ec_slave_base_junction
+
+# fast build rule for target.
+Ec_slave_base_junction/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/build.make src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/build
+.PHONY : Ec_slave_base_junction/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -304,8 +330,10 @@ help:
 	@echo "... Ec_master"
 	@echo "... Ec_slave"
 	@echo "... Ec_slave_base_analog_in"
+	@echo "... Ec_slave_base_coupler"
 	@echo "... Ec_slave_base_digital_in"
 	@echo "... Ec_slave_base_digital_out"
+	@echo "... Ec_slave_base_junction"
 	@echo "... Ec_slave_base_motor_drive"
 	@echo "... Ec_slave_base_rs232"
 	@echo "... ethercat_layer"
