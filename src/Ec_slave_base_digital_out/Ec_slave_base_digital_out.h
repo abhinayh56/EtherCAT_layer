@@ -2,8 +2,9 @@
 #define EC_SLAVE_BASE_DIGITAL_OUT_H
 
 #include <stdint.h>
+#include "../Ec_slave_base/Ec_slave_base.h"
 
-namespace Digital_input
+namespace digital_output
 {
     enum Bit_flags : uint32_t
     {
@@ -41,5 +42,24 @@ namespace Digital_input
         DOUT_31 = 1u << 31
     };
 }
+
+class Ec_slave_base_digital_out : public Ec_slave_base
+{
+public:
+    Ec_slave_base_digital_out();
+    ~Ec_slave_base_digital_out();
+
+    virtual void set_info();
+    virtual void set_pdo();
+    virtual void monitor_status();
+    virtual void transfer_tx_pdo();
+    virtual void transfer_rx_pdo();
+    virtual void process_tx_pdo();
+    virtual void process_rx_pdo();
+    virtual void config_data_transfer();
+    virtual void publish_data();
+    virtual void subscribe_data();
+    virtual void main_process();
+};
 
 #endif // EC_SLAVE_BASE_DIGITAL_OUT_H
