@@ -2,9 +2,9 @@
 #define EC_SLAVE_EL_2008_H
 
 #include <stdint.h>
-#include "Ec_slave_base.h"
+#include "../Ec_slave_base_digital_out/Ec_slave_base_digital_out.h"
 
-class Ec_slave_el_2008 : public Ec_slave_base
+class Ec_slave_el_2008 : public Ec_slave_base_digital_out
 {
 public:
     Ec_slave_el_2008(uint16_t slave_address_, const std::string &slave_ns_);

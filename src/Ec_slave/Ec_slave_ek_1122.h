@@ -2,9 +2,9 @@
 #define EC_SLAVE_EK_1122_H
 
 #include <stdint.h>
-#include "Ec_slave_base.h"
+#include "../Ec_slave_base_junction/Ec_slave_base_junction.h"
 
-class Ec_slave_ek_1122 : public Ec_slave_base
+class Ec_slave_ek_1122 : public Ec_slave_base_junction
 {
 public:
     Ec_slave_ek_1122(uint16_t slave_address_, const std::string &slave_ns_);

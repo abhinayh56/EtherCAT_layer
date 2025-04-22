@@ -18,7 +18,8 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base/Ec_slave_base.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_digital_in/Ec_slave_base_digital_in.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_digital_in/../Ec_slave_base/Ec_slave_base.h \
  /usr/local/etherlab/include/ecrt.h /usr/include/c++/13/stdlib.h \
  /usr/include/c++/13/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -73,9 +74,9 @@ src/Ec_slave/CMakeFiles/Ec_slave.dir/Ec_slave_el_1008.cpp.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base/../Ec_utils/Ec_utils.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base/../Common/Data_transfer.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base/../Ec_logger/Ec_logger_console/Ec_logger_console.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_digital_in/../Ec_slave_base/../Ec_utils/Ec_utils.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_digital_in/../Ec_slave_base/../Common/Data_transfer.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_digital_in/../Ec_slave_base/../Ec_logger/Ec_logger_console/Ec_logger_console.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/ostream /usr/include/c++/13/ios \
  /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/stringfwd.h \

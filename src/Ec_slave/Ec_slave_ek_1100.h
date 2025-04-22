@@ -2,9 +2,9 @@
 #define EC_SLAVE_EK_1100_H
 
 #include <stdint.h>
-#include "Ec_slave_base.h"
+#include "../Ec_slave_base_coupler/Ec_slave_base_coupler.h"
 
-class Ec_slave_ek_1100 : public Ec_slave_base
+class Ec_slave_ek_1100 : public Ec_slave_base_coupler
 {
 public:
     Ec_slave_ek_1100(uint16_t slave_address_, const std::string &slave_ns_);
