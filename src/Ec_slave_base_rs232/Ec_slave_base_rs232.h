@@ -1,0 +1,4 @@
+#ifndef EC_SLAVE_BASE_RS232_H
+#define EC_SLAVE_BASE_RS232_H
+
+#endif // EC_SLAVE_BASE_RS232_H
