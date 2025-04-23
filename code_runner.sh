@@ -27,7 +27,7 @@ then
     ./ethercat_layer
 elif [[ $usr_input -eq 3 ]]
 then
-    sudo /etc/init.d/ethercat restart
+    # sudo /etc/init.d/ethercat restart
     ./ethercat_layer
 elif [[ $usr_input -eq 4 ]]
 then

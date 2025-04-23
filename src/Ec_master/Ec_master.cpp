@@ -29,6 +29,17 @@ void Ec_master::add_slave(Ec_slave_base *new_slave)
 bool Ec_master::start()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Starting master ...", 1);
+    
+    int result = system("sudo /etc/init.d/ethercat start");
+    if (result == 0)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started", 1);
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to start master", 1);
+    }
+
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Requesting master for realtime operation...", 1);
 
     master = ecrt_request_master(0);
