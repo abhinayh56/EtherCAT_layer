@@ -55,7 +55,7 @@ bool Ec_master::stop()
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
     }
 
-    if(ecrt_master_deactivate(master) == 0)
+    if (ecrt_master_deactivate(master) == 0)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master deactivated", 1);
     }
@@ -81,6 +81,7 @@ void Ec_master::config()
     get_domain_process_data();
     set_domain_process_data();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Slave configuration completed successfully", 1);
+    monitor();
 
     run = true;
 }
@@ -146,13 +147,37 @@ uint16_t Ec_master::get_num_slaves()
     return num_slaves;
 }
 
+void Ec_master::monitor()
+{
+    if (ecrt_master_state(master, &master_state) == 0)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master state read successfully", 1);
+        
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Number of slaves responding: ", 0);
+        LOG_CONSOLE(master_state.slaves_responding, 1);
+
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "AL states: ", 0);
+        if(master_state.al_states==0) {LOG_CONSOLE("INIT", 1);}
+        if(master_state.al_states==1) {LOG_CONSOLE("PREOP", 1);}
+        if(master_state.al_states==2) {LOG_CONSOLE("SAFEOP", 1);}
+        if(master_state.al_states==3) {LOG_CONSOLE("OP", 1);}
+
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Link up status: ", 0);
+        LOG_CONSOLE(master_state.link_up, 1);
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to read master state", 1);
+    }
+}
+
 void Ec_master::config_slaves_data_transfer()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring data transfer of slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring data transfer of slave ", 0);
-        LOG_CONSOLE(i+1, 0);
+        LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->config_data_transfer();
@@ -182,7 +207,7 @@ void Ec_master::set_slave_info()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting info of slave ", 0);
-        LOG_CONSOLE(i+1, 0);
+        LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->set_info();
@@ -196,7 +221,7 @@ void Ec_master::config_slaves()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slave ", 0);
-        LOG_CONSOLE(i+1, 0);
+        LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->config_slave(master);
@@ -210,7 +235,7 @@ void Ec_master::register_slaves_pdo_to_domain()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering pdo for slave ", 0);
-        LOG_CONSOLE(i+1, 0);
+        LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave pdos", 1);
@@ -259,7 +284,7 @@ void Ec_master::set_domain_process_data()
     for (int i = 0; i < num_slaves; i++)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Providing domain process data address to slave ", 0);
-        LOG_CONSOLE(i+1, 0);
+        LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->set_domain(domain_i_pd);

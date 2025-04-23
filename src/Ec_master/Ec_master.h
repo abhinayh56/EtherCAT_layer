@@ -24,6 +24,7 @@ public:
     void cyclic_task();
     bool is_running();
     uint16_t get_num_slaves();
+    void monitor();
 
 private:
     std::string master_ns;
