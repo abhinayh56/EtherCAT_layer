@@ -8,7 +8,6 @@ read usr_input
 
 cd ~/Abhinay/Ethercat_IGH/EtherCAT_layer/build
 
-
 if [[ $usr_input -eq 1 ]]
 then
     make clean
@@ -16,12 +15,14 @@ then
     make
 elif [[ $usr_input -eq 2 ]]
 then
+    sudo /etc/init.d/ethercat restart
     make clean
     cmake ..
     make
     ./ethercat_layer
 elif [[ $usr_input -eq 3 ]]
 then
+    sudo /etc/init.d/ethercat restart
     ./ethercat_layer
 else
   echo "Invalid option selected"
