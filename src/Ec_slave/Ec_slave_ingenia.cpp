@@ -31,9 +31,9 @@ void Ec_slave_ingenia::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-void Ec_slave_ingenia::monitor_status()
-{
-}
+// void Ec_slave_ingenia::monitor_status()
+// {
+// }
 
 void Ec_slave_ingenia::transfer_tx_pdo()
 {

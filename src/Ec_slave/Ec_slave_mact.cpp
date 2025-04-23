@@ -31,24 +31,9 @@ void Ec_slave_mact::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-void Ec_slave_mact::monitor_status()
-{
-    if (ecrt_slave_config_state(sc, &sc_state) == 0)
-    {
-        LOG_CONSOLE_SOURCE_INFO(slave_ns, "Status -> online: ", 0);
-        LOG_CONSOLE(sc_state.online, 0);
-
-        LOG_CONSOLE(", operational: ", 0);
-        LOG_CONSOLE(sc_state.operational, 0);
-
-        LOG_CONSOLE(", al_state: ", 0);
-        LOG_CONSOLE(sc_state.al_state, 1);
-    }
-    else
-    {
-        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to read slave configuration", 1);
-    }
-}
+// void Ec_slave_mact::monitor_status()
+// {
+// }
 
 void Ec_slave_mact::transfer_tx_pdo()
 {

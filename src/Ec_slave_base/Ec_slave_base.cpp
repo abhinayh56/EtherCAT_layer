@@ -76,7 +76,68 @@ void Ec_slave_base::set_domain(uint8_t *domain_i_pd_)
     domain_i_pd = domain_i_pd_;
 }
 
-void Ec_slave_base::monitor_status() {}
+void Ec_slave_base::monitor_status()
+{
+    if (ecrt_slave_config_state(sc, &sc_state) == 0)
+    {
+        std::cout << slave_ns;
+        if (slave_address <= 9)
+        {
+            for (int i = slave_ns.length(); i <= 10; i++)
+            {
+                std::cout << " ";
+            }
+        }
+        else if ((10 <= slave_address) && (slave_address <= 99))
+        {
+            for (int i = slave_ns.length(); i <= 9; i++)
+            {
+                std::cout << " ";
+            }
+        }
+        else
+        {
+            for (int i = slave_ns.length(); i <= 8; i++)
+            {
+                std::cout << " ";
+            }
+        }
+
+        std::cout << slave_address;
+
+        LOG_CONSOLE(" : Status -> online: ", 0);
+        LOG_CONSOLE(sc_state.online, 0);
+
+        LOG_CONSOLE(", operational: ", 0);
+        LOG_CONSOLE(sc_state.operational, 0);
+
+        LOG_CONSOLE(", al_state: ", 0);
+        if (sc_state.al_state == 0)
+        {
+            LOG_CONSOLE("UNKNOWN", 1);
+        }
+        if (sc_state.al_state == 1)
+        {
+            LOG_CONSOLE("INIT", 1);
+        }
+        if (sc_state.al_state == 2)
+        {
+            LOG_CONSOLE("PREOP", 1);
+        }
+        if (sc_state.al_state == 4)
+        {
+            LOG_CONSOLE("SAFEOP", 1);
+        }
+        if (sc_state.al_state == 8)
+        {
+            LOG_CONSOLE("OP", 1);
+        }
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to read slave configuration", 1);
+    }
+}
 
 void Ec_slave_base::transfer_tx_pdo() {}
 

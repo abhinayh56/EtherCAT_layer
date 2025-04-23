@@ -26,7 +26,7 @@ public:
     
     void set_domain(uint8_t *domain_i_pd_);
 
-    virtual void monitor_status();
+    void monitor_status();
     virtual void transfer_tx_pdo();
     virtual void transfer_rx_pdo();
     virtual void process_tx_pdo();

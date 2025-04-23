@@ -31,9 +31,9 @@ void Ec_slave_rfid::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-void Ec_slave_rfid::monitor_status()
-{
-}
+// void Ec_slave_rfid::monitor_status()
+// {
+// }
 
 void Ec_slave_rfid::transfer_tx_pdo()
 {

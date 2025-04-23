@@ -33,18 +33,18 @@ int main()
     Ec_slave_mact mact_8(17, "MACT_8");
 
     ec_master.add_slave(&ek_1100);
+    ec_master.add_slave(&el_2008);
+    ec_master.add_slave(&el_1008);
     ec_master.add_slave(&ek_1122_1);
     ec_master.add_slave(&ek_1122_2);
     ec_master.add_slave(&ek_1122_3);
+    ec_master.add_slave(&ingenia);
     ec_master.add_slave(&ek_1122_4);
-    ec_master.add_slave(&el_2008);
-    ec_master.add_slave(&el_1008);
     ec_master.add_slave(&rfid);
     ec_master.add_slave(&mact_1);
     ec_master.add_slave(&mact_2);
     ec_master.add_slave(&mact_3);
     ec_master.add_slave(&mact_4);
-    ec_master.add_slave(&ingenia);
     ec_master.add_slave(&rfid_2);
     ec_master.add_slave(&mact_5);
     ec_master.add_slave(&mact_6);
