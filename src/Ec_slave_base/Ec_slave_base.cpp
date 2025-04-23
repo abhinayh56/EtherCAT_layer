@@ -83,41 +83,68 @@ void Ec_slave_base::monitor_status()
 {
     if (ecrt_slave_config_state(sc, &sc_state) == 0)
     {
-        slave_status.is_online = sc_state.online == 1;
-        slave_status.is_operational = sc_state.operational == 1;
-        slave_status.slave_state = sc_state.al_state;
+        Slave_status slave_status_temp;
+        slave_status_temp.is_online = sc_state.online == 1;
+        slave_status_temp.is_operational = sc_state.operational == 1;
+        slave_status_temp.slave_state = sc_state.al_state;
 
-        if (!slave_status.is_online)
+        if(slave_status.is_online != slave_status_temp.is_online)
         {
-            LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave not online", 1);
-        }
-        else
-        {
-            if (!slave_status.is_operational)
+            slave_status.is_online = slave_status_temp.is_online;
+
+            if (slave_status.is_online)
             {
-                LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave not operational. Currently in ", 0);
-                if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_INIT)
-                {
-                    LOG_CONSOLE("INIT", 1);
-                }
-                else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_PREOP)
-                {
-                    LOG_CONSOLE("PREOP", 1);
-                }
-                else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_SAFEOP)
-                {
-                    LOG_CONSOLE("SAFEOP", 1);
-                }
-                else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_OP)
-                {
-                    LOG_CONSOLE("OP", 1);
-                }
-                else
-                {
-                    LOG_CONSOLE("UNKNOWN", 1);
-                }
+                LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave online", 1);
+            }
+            else
+            {
+                LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave not online", 1);
             }
         }
+
+        if(slave_status.is_operational != slave_status_temp.is_operational)
+        {
+            slave_status.is_operational = slave_status_temp.is_operational;
+            if (slave_status.is_operational)
+            {
+                LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave operational", 1);
+            }
+            else
+            {
+                LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave not operational", 1);
+            }
+        }
+
+        if(slave_status.slave_state != slave_status_temp.slave_state)
+        {
+            slave_status.slave_state = slave_status_temp.slave_state;
+
+            LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave not operational. Currently in ", 0);
+            if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_INIT)
+            {
+                LOG_CONSOLE("INIT", 1);
+            }
+            else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_PREOP)
+            {
+                LOG_CONSOLE("PREOP", 1);
+            }
+            else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_SAFEOP)
+            {
+                LOG_CONSOLE("SAFEOP", 1);
+            }
+            else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_OP)
+            {
+                LOG_CONSOLE("OP", 1);
+            }
+            else
+            {
+                LOG_CONSOLE("UNKNOWN", 1);
+            }
+        }
+
+        slave_status.is_online = slave_status_temp.is_online;
+        slave_status.is_operational = slave_status_temp.is_operational;
+        slave_status.slave_state = slave_status_temp.slave_state;
     }
     else
     {
