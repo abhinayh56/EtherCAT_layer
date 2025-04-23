@@ -7,7 +7,9 @@ echo "3. Execute"
 echo "4. Start EtherCAT master"
 echo "5. Restart EtherCAT master"
 echo "6. Stop EtherCAT master"
-read usr_input
+echo "---"
+read -p "Enter your option: " usr_input
+echo "---"
 
 cd ~/Abhinay/Ethercat_IGH/EtherCAT_layer/build
 

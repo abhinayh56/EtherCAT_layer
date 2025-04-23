@@ -217,7 +217,7 @@ void Ec_master::set_slave_info()
         LOG_CONSOLE(num_slaves, 1);
         slave_base_arr[i]->set_info();
     }
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured info of all slaves", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Info of all slaves set", 1);
 }
 
 void Ec_master::config_slaves()

@@ -32,26 +32,29 @@ void Ec_slave_base::set_info() {}
 
 void Ec_slave_base::config_slave(ec_master_t *master)
 {
-    if (!(sc = ecrt_master_slave_config(master, slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code)))
-    {
-        slave_status.is_connected = false;
-        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to fetch slave configuration", 1);
-    }
-    else
+    sc = ecrt_master_slave_config(master, slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code);
+
+    if (sc)
     {
         slave_status.is_connected = true;
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave configuration fetch successful", 1);
     }
-
-    if (ecrt_slave_config_pdos(sc, EC_END, slave_info.slave_syncs))
-    {
-        slave_status.is_configured = false;
-        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to configure slave sync manager", 1);
-    }
     else
+    {
+        slave_status.is_connected = false;
+        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to fetch slave configuration", 1);
+    }
+
+    int32_t slave_config_pdo = ecrt_slave_config_pdos(sc, EC_END, slave_info.slave_syncs);
+    if (slave_config_pdo == 0)
     {
         slave_status.is_configured = true;
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave sync manager configuration successful", 1);
+    }
+    else
+    {
+        slave_status.is_configured = false;
+        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to configure slave sync manager", 1);
     }
 }
 
@@ -80,58 +83,63 @@ void Ec_slave_base::monitor_status()
 {
     if (ecrt_slave_config_state(sc, &sc_state) == 0)
     {
-        std::cout << slave_ns;
-        if (slave_address <= 9)
-        {
-            for (int i = slave_ns.length(); i <= 10; i++)
-            {
-                std::cout << " ";
-            }
-        }
-        else if ((10 <= slave_address) && (slave_address <= 99))
-        {
-            for (int i = slave_ns.length(); i <= 9; i++)
-            {
-                std::cout << " ";
-            }
-        }
-        else
-        {
-            for (int i = slave_ns.length(); i <= 8; i++)
-            {
-                std::cout << " ";
-            }
-        }
+        slave_status.is_online = sc_state.online == 1;
+        slave_status.is_operational = sc_state.operational == 1;
 
-        std::cout << slave_address;
+        slave_status.slave_state = sc_state.al_state;
 
-        LOG_CONSOLE(" : Status -> online: ", 0);
-        LOG_CONSOLE(sc_state.online, 0);
+        // std::cout << slave_ns;
+        // if (slave_address <= 9)
+        // {
+        //     for (int i = slave_ns.length(); i <= 10; i++)
+        //     {
+        //         std::cout << " ";
+        //     }
+        // }
+        // else if ((10 <= slave_address) && (slave_address <= 99))
+        // {
+        //     for (int i = slave_ns.length(); i <= 9; i++)
+        //     {
+        //         std::cout << " ";
+        //     }
+        // }
+        // else
+        // {
+        //     for (int i = slave_ns.length(); i <= 8; i++)
+        //     {
+        //         std::cout << " ";
+        //     }
+        // }
 
-        LOG_CONSOLE(", operational: ", 0);
-        LOG_CONSOLE(sc_state.operational, 0);
+        // std::cout << slave_address;
 
-        LOG_CONSOLE(", al_state: ", 0);
-        if (sc_state.al_state == 0)
-        {
-            LOG_CONSOLE("UNKNOWN", 1);
-        }
-        if (sc_state.al_state == 1)
-        {
-            LOG_CONSOLE("INIT", 1);
-        }
-        if (sc_state.al_state == 2)
-        {
-            LOG_CONSOLE("PREOP", 1);
-        }
-        if (sc_state.al_state == 4)
-        {
-            LOG_CONSOLE("SAFEOP", 1);
-        }
-        if (sc_state.al_state == 8)
-        {
-            LOG_CONSOLE("OP", 1);
-        }
+        // LOG_CONSOLE(" : Status -> online: ", 0);
+        // LOG_CONSOLE(sc_state.online, 0);
+
+        // LOG_CONSOLE(", operational: ", 0);
+        // LOG_CONSOLE(sc_state.operational, 0);
+
+        // LOG_CONSOLE(", al_state: ", 0);
+        // if (sc_state.al_state == 0)
+        // {
+        //     LOG_CONSOLE("UNKNOWN", 1);
+        // }
+        // if (sc_state.al_state == 1)
+        // {
+        //     LOG_CONSOLE("INIT", 1);
+        // }
+        // if (sc_state.al_state == 2)
+        // {
+        //     LOG_CONSOLE("PREOP", 1);
+        // }
+        // if (sc_state.al_state == 4)
+        // {
+        //     LOG_CONSOLE("SAFEOP", 1);
+        // }
+        // if (sc_state.al_state == 8)
+        // {
+        //     LOG_CONSOLE("OP", 1);
+        // }
     }
     else
     {

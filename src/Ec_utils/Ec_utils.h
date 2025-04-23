@@ -19,8 +19,10 @@ struct Slave_info
 struct Slave_status
 {
     bool is_connected = false;
+    bool is_online = false;
     bool is_configured = false;
     bool is_operational = false;
+    uint16_t slave_state = 0;
     bool is_pdo_registered = false;
 };
 
