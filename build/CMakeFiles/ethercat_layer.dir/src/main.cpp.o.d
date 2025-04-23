@@ -236,7 +236,4 @@ CMakeFiles/ethercat_layer.dir/src/main.cpp.o: \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/../Ec_slave_base_motor_drive/../Ec_slave_base/Ec_slave_base.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_mact_info.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_ingenia.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_ingenia_info.h \
- /usr/include/c++/13/chrono /usr/include/c++/13/bits/chrono.h \
- /usr/include/c++/13/ratio /usr/include/c++/13/cstdint \
- /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/Ec_slave_ingenia_info.h

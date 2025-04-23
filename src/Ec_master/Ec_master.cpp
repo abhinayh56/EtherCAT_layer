@@ -88,53 +88,46 @@ void Ec_master::config()
 
 void Ec_master::cyclic_task()
 {
-    if (run)
-    {
-        // 1. Fetches received frames from the hardware and processes the datagrams
-        ecrt_master_receive(master);
+    // 1. Fetches received frames from the hardware and processes the datagrams
+    ecrt_master_receive(master);
 
-        // 2. Determines the states of the domain's datagrams
-        ecrt_domain_process(domain_i);
+    // 2. Determines the states of the domain's datagrams
+    ecrt_domain_process(domain_i);
 
-        // 3. Reads the state of a domain
-        ecrt_domain_state(domain_i, &domain_i_state);
+    // 3. Reads the state of a domain
+    ecrt_domain_state(domain_i, &domain_i_state);
 
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
-        monitor_status();
-        transfer_tx_pdo();
-        process_tx_pdo();
-        publish_data();
-        subscribe_data();
-        main_process();
-        process_rx_pdo();
-        transfer_rx_pdo();
+    monitor_status();
+    transfer_tx_pdo();
+    process_tx_pdo();
+    publish_data();
+    subscribe_data();
+    main_process();
+    process_rx_pdo();
+    transfer_rx_pdo();
 #endif // CYCLIC_SLAVE_CALL_PARALLEL
 
 #ifdef CYCLIC_SLAVE_CALL_SEQUENTIAL
-        for (int i = 0; i < num_slaves; i++)
-        {
-            slave_base_arr[i]->monitor_status();
-            slave_base_arr[i]->transfer_tx_pdo();
-            slave_base_arr[i]->process_tx_pdo();
-            slave_base_arr[i]->publish_data();
-            slave_base_arr[i]->subscribe_data();
-            slave_base_arr[i]->main_process();
-            slave_base_arr[i]->process_rx_pdo();
-            slave_base_arr[i]->transfer_rx_pdo();
-        }
+    for (int i = 0; i < num_slaves; i++)
+    {
+        slave_base_arr[i]->monitor_status();
+        slave_base_arr[i]->transfer_tx_pdo();
+        slave_base_arr[i]->process_tx_pdo();
+        slave_base_arr[i]->publish_data();
+        slave_base_arr[i]->subscribe_data();
+        slave_base_arr[i]->main_process();
+        slave_base_arr[i]->process_rx_pdo();
+        slave_base_arr[i]->transfer_rx_pdo();
+    }
 #endif // CYCLIC_SLAVE_CALL_SEQUENTIAL
 
-        // 11. Send process data
-        ecrt_domain_queue(domain_i);
-        ecrt_master_send(master);
+    // 11. Send process data
+    ecrt_domain_queue(domain_i);
+    ecrt_master_send(master);
 
-        // 9. Check master state
-        ecrt_master_state(master, &master_state);
-    }
-    else
-    {
-        stop();
-    }
+    // 9. Check master state
+    ecrt_master_state(master, &master_state);
 }
 
 bool Ec_master::is_running()
@@ -152,15 +145,27 @@ void Ec_master::monitor()
     if (ecrt_master_state(master, &master_state) == 0)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master state read successfully", 1);
-        
+
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Number of slaves responding: ", 0);
         LOG_CONSOLE(master_state.slaves_responding, 1);
 
         LOG_CONSOLE_SOURCE_INFO(master_ns, "AL states: ", 0);
-        if(master_state.al_states==0) {LOG_CONSOLE("INIT", 1);}
-        if(master_state.al_states==1) {LOG_CONSOLE("PREOP", 1);}
-        if(master_state.al_states==2) {LOG_CONSOLE("SAFEOP", 1);}
-        if(master_state.al_states==3) {LOG_CONSOLE("OP", 1);}
+        if (master_state.al_states == 0)
+        {
+            LOG_CONSOLE("INIT", 1);
+        }
+        if (master_state.al_states == 1)
+        {
+            LOG_CONSOLE("PREOP", 1);
+        }
+        if (master_state.al_states == 2)
+        {
+            LOG_CONSOLE("SAFEOP", 1);
+        }
+        if (master_state.al_states == 3)
+        {
+            LOG_CONSOLE("OP", 1);
+        }
 
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Link up status: ", 0);
         LOG_CONSOLE(master_state.link_up, 1);
