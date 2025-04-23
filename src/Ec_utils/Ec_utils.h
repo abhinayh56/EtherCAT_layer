@@ -18,12 +18,12 @@ struct Slave_info
 
 struct Slave_status
 {
-    bool is_connected = false;
-    bool is_online = false;
-    bool is_configured = false;
-    bool is_operational = false;
-    uint16_t slave_state = 0;
-    bool is_pdo_registered = false;
+    bool is_connected = false; // done
+    bool is_online = false; // done
+    bool is_configured = false; // done
+    bool is_operational = false; // done
+    uint16_t slave_state = 0; // done
+    bool is_pdo_registered = false; // done
 };
 
 enum Callback_status : uint16_t

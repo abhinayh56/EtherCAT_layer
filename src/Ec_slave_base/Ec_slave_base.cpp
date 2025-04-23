@@ -85,61 +85,39 @@ void Ec_slave_base::monitor_status()
     {
         slave_status.is_online = sc_state.online == 1;
         slave_status.is_operational = sc_state.operational == 1;
-
         slave_status.slave_state = sc_state.al_state;
 
-        // std::cout << slave_ns;
-        // if (slave_address <= 9)
-        // {
-        //     for (int i = slave_ns.length(); i <= 10; i++)
-        //     {
-        //         std::cout << " ";
-        //     }
-        // }
-        // else if ((10 <= slave_address) && (slave_address <= 99))
-        // {
-        //     for (int i = slave_ns.length(); i <= 9; i++)
-        //     {
-        //         std::cout << " ";
-        //     }
-        // }
-        // else
-        // {
-        //     for (int i = slave_ns.length(); i <= 8; i++)
-        //     {
-        //         std::cout << " ";
-        //     }
-        // }
-
-        // std::cout << slave_address;
-
-        // LOG_CONSOLE(" : Status -> online: ", 0);
-        // LOG_CONSOLE(sc_state.online, 0);
-
-        // LOG_CONSOLE(", operational: ", 0);
-        // LOG_CONSOLE(sc_state.operational, 0);
-
-        // LOG_CONSOLE(", al_state: ", 0);
-        // if (sc_state.al_state == 0)
-        // {
-        //     LOG_CONSOLE("UNKNOWN", 1);
-        // }
-        // if (sc_state.al_state == 1)
-        // {
-        //     LOG_CONSOLE("INIT", 1);
-        // }
-        // if (sc_state.al_state == 2)
-        // {
-        //     LOG_CONSOLE("PREOP", 1);
-        // }
-        // if (sc_state.al_state == 4)
-        // {
-        //     LOG_CONSOLE("SAFEOP", 1);
-        // }
-        // if (sc_state.al_state == 8)
-        // {
-        //     LOG_CONSOLE("OP", 1);
-        // }
+        if (!slave_status.is_online)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave not online", 1);
+        }
+        else
+        {
+            if (!slave_status.is_operational)
+            {
+                LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave not operational. Currently in ", 0);
+                if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_INIT)
+                {
+                    LOG_CONSOLE("INIT", 1);
+                }
+                else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_PREOP)
+                {
+                    LOG_CONSOLE("PREOP", 1);
+                }
+                else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_SAFEOP)
+                {
+                    LOG_CONSOLE("SAFEOP", 1);
+                }
+                else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_OP)
+                {
+                    LOG_CONSOLE("OP", 1);
+                }
+                else
+                {
+                    LOG_CONSOLE("UNKNOWN", 1);
+                }
+            }
+        }
     }
     else
     {
