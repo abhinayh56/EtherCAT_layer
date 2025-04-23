@@ -31,10 +31,6 @@ void Ec_slave_mact::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-// void Ec_slave_mact::monitor_status()
-// {
-// }
-
 void Ec_slave_mact::transfer_tx_pdo()
 {
     position_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_1);

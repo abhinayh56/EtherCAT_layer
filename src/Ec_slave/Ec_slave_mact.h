@@ -13,7 +13,6 @@ public:
 
     virtual void set_info();
     virtual void set_pdo();
-    // virtual void monitor_status();
     virtual void transfer_tx_pdo();
     virtual void transfer_rx_pdo();
     virtual void process_tx_pdo();

@@ -31,10 +31,6 @@ void Ec_slave_rfid::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-// void Ec_slave_rfid::monitor_status()
-// {
-// }
-
 void Ec_slave_rfid::transfer_tx_pdo()
 {
     uint16_t Device_ID = EC_READ_U16(domain_i_pd + off_tx_pdo_1);

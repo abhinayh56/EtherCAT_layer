@@ -31,10 +31,6 @@ void Ec_slave_ingenia::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-// void Ec_slave_ingenia::monitor_status()
-// {
-// }
-
 void Ec_slave_ingenia::transfer_tx_pdo()
 {
     status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_1);

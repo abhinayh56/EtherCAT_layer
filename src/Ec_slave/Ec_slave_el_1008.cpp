@@ -27,10 +27,6 @@ void Ec_slave_el_1008::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-// void Ec_slave_el_1008::monitor_status() 
-// {
-// }
-
 void Ec_slave_el_1008::transfer_tx_pdo()
 {
     uint16_t dig_input = EC_READ_U8(domain_i_pd + off_1);

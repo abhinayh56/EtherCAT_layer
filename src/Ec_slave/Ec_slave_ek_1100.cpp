@@ -27,10 +27,6 @@ void Ec_slave_ek_1100::set_pdo()
     domain_i_regs = domain_regs;
 }
 
-// void Ec_slave_ek_1100::monitor_status()
-// {
-// }
-
 void Ec_slave_ek_1100::transfer_tx_pdo()
 {
 }
