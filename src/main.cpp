@@ -51,7 +51,7 @@ int main()
     ec_master.add_slave(&mact_7);
     ec_master.add_slave(&mact_8);
 
-    usleep(1000000);
+    usleep(2000000);
 
     ec_master.start();
     ec_master.config();
