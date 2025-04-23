@@ -72,10 +72,20 @@ bool Ec_master::stop()
     }
     else
     {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Unable to stop master", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to deactivate master", 1);
     }
 
     run = false;
+
+    int result = system("sudo /etc/init.d/ethercat stop");
+    if (result == 0)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master stopped", 1);
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to stop master", 1);
+    }
 
     return true;
 }
@@ -160,7 +170,7 @@ void Ec_master::monitor()
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Number of slaves responding: ", 0);
         LOG_CONSOLE(master_state.slaves_responding, 1);
 
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "AL states: ", 0);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "AL states (at least one slave): ", 0);
         if (master_state.al_states == 0)
         {
             LOG_CONSOLE("INIT", 1);
