@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "../Ec_slave_base_motor_drive/Ec_slave_base_motor_drive.h"
+#include "../Ec_logger/Ec_logger_console/Ec_logger_console.h"
 
 class Ec_slave_mact : public Ec_slave_base_motor_drive
 {
