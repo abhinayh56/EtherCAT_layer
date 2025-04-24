@@ -181,5 +181,4 @@ src/Ec_master/CMakeFiles/Ec_master.dir/Ec_master.cpp.o: \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/Ec_slave_base.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/../Ec_utils/Ec_utils.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/../Common/Data_transfer.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/../Ec_logger/Ec_logger_console/Ec_logger_console.h \
- /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_logger/Ec_logger_console/Ec_logger_console.h
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/../Ec_slave_base/../Ec_logger/Ec_logger_console/Ec_logger_console.h
