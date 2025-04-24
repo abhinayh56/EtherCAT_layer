@@ -8,46 +8,57 @@ Ec_slave_base_rs232::~Ec_slave_base_rs232()
 {
 }
 
-void Ec_slave_base_rs232::set_info()
+uint16_t Ec_slave_base_rs232::set_info()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::set_pdo()
+uint16_t Ec_slave_base_rs232::set_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::monitor_status()
+uint16_t Ec_slave_base_rs232::monitor_status()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::transfer_tx_pdo()
+uint16_t Ec_slave_base_rs232::transfer_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::transfer_rx_pdo()
+uint16_t Ec_slave_base_rs232::transfer_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::process_tx_pdo()
+uint16_t Ec_slave_base_rs232::process_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::process_rx_pdo()
+uint16_t Ec_slave_base_rs232::process_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::config_data_transfer()
+uint16_t Ec_slave_base_rs232::config_data_transfer()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::publish_data()
+uint16_t Ec_slave_base_rs232::publish_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::subscribe_data()
+uint16_t Ec_slave_base_rs232::subscribe_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_rs232::main_process()
+uint16_t Ec_slave_base_rs232::main_process()
 {
+    return Ec_callback_status::SUCCESS;
 }

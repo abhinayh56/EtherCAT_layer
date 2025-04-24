@@ -10,7 +10,7 @@ Ec_slave_ingenia::~Ec_slave_ingenia()
 {
 }
 
-void Ec_slave_ingenia::set_info()
+uint16_t Ec_slave_ingenia::set_info()
 {
     slave_info.alias = alias;
     slave_info.position = slave_address;
@@ -20,18 +20,22 @@ void Ec_slave_ingenia::set_info()
     slave_info.slave_pdo_entries = slave_pdo_entries;
     slave_info.slave_pdos = slave_pdos;
     slave_info.slave_syncs = slave_syncs;
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::set_pdo()
+uint16_t Ec_slave_ingenia::set_pdo()
 {
     for (uint8_t i = 0; i < 9; i++)
     {
         domain_regs[i].position = slave_address;
     }
     domain_i_regs = domain_regs;
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::transfer_tx_pdo()
+uint16_t Ec_slave_ingenia::transfer_tx_pdo()
 {
     status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_1);
     position_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_2);
@@ -41,36 +45,45 @@ void Ec_slave_ingenia::transfer_tx_pdo()
     check_status();
 
     // std::cout << "INGENIA_TXPDO: " << slave_ns << " | " << status_word << ", " << position_actual_value << ", " << velocity_actual_value << ", " << uint16_t(mode_of_operation_display) << std::endl;
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::transfer_rx_pdo()
+uint16_t Ec_slave_ingenia::transfer_rx_pdo()
 {
     EC_WRITE_U16(domain_i_pd + off_rx_pdo_1, control_word);     // UINT16
     EC_WRITE_S32(domain_i_pd + off_rx_pdo_2, target_position);  // SINT32
     EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, mode_of_operation); // UIN8T
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::process_tx_pdo()
+uint16_t Ec_slave_ingenia::process_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::process_rx_pdo()
+uint16_t Ec_slave_ingenia::process_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::config_data_transfer()
+uint16_t Ec_slave_ingenia::config_data_transfer()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::publish_data()
+uint16_t Ec_slave_ingenia::publish_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::subscribe_data()
+uint16_t Ec_slave_ingenia::subscribe_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ingenia::main_process()
+uint16_t Ec_slave_ingenia::main_process()
 {
     t_stamp += 2;
 
@@ -89,4 +102,6 @@ void Ec_slave_ingenia::main_process()
         double t = ((double)t_stamp - 15000.0) * 0.001;
         target_position = A * std::sin(w * t);
     }
+
+    return Ec_callback_status::SUCCESS;
 }

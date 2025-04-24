@@ -10,7 +10,7 @@ Ec_slave_ek_1100::~Ec_slave_ek_1100()
 {
 }
 
-void Ec_slave_ek_1100::set_info()
+uint16_t Ec_slave_ek_1100::set_info()
 {
     slave_info.alias = alias;
     slave_info.position = slave_address;
@@ -20,41 +20,53 @@ void Ec_slave_ek_1100::set_info()
     // slave_info.slave_pdo_entries;
     // slave_info.slave_pdos;
     slave_info.slave_syncs = slave_syncs;
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::set_pdo()
+uint16_t Ec_slave_ek_1100::set_pdo()
 {
     domain_i_regs = domain_regs;
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::transfer_tx_pdo()
+uint16_t Ec_slave_ek_1100::transfer_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::transfer_rx_pdo()
+uint16_t Ec_slave_ek_1100::transfer_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::process_tx_pdo()
+uint16_t Ec_slave_ek_1100::process_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::process_rx_pdo()
+uint16_t Ec_slave_ek_1100::process_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::config_data_transfer()
+uint16_t Ec_slave_ek_1100::config_data_transfer()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::publish_data()
+uint16_t Ec_slave_ek_1100::publish_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::subscribe_data()
+uint16_t Ec_slave_ek_1100::subscribe_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_ek_1100::main_process()
+uint16_t Ec_slave_ek_1100::main_process()
 {
+    return Ec_callback_status::SUCCESS;
 }

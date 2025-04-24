@@ -10,7 +10,7 @@ Ec_slave_mact::~Ec_slave_mact()
 {
 }
 
-void Ec_slave_mact::set_info()
+uint16_t Ec_slave_mact::set_info()
 {
     slave_info.alias = alias;
     slave_info.position = slave_address;
@@ -20,18 +20,22 @@ void Ec_slave_mact::set_info()
     slave_info.slave_pdo_entries = slave_pdo_entries;
     slave_info.slave_pdos = slave_pdos;
     slave_info.slave_syncs = slave_syncs;
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::set_pdo()
+uint16_t Ec_slave_mact::set_pdo()
 {
     for (uint8_t i = 0; i < 15; i++)
     {
         domain_regs[i].position = slave_address;
     }
     domain_i_regs = domain_regs;
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::transfer_tx_pdo()
+uint16_t Ec_slave_mact::transfer_tx_pdo()
 {
     position_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_1);
     status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
@@ -49,38 +53,47 @@ void Ec_slave_mact::transfer_tx_pdo()
     }
 
     // std::cout << "MACT_TXPDO: " << slave_ns << " | " << position_actual_value << ", " << status_word << ", " << torque_actual_value << ", " << uint16_t(mode_of_operation_display) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << velocity_actual_value << ", " << ADC_VAL << std::endl;
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::transfer_rx_pdo()
+uint16_t Ec_slave_mact::transfer_rx_pdo()
 {
     EC_WRITE_S32(domain_i_pd + off_rx_pdo_1, target_position);
     EC_WRITE_U16(domain_i_pd + off_rx_pdo_2, control_word);
     EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, mode_of_operation);
+
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::process_tx_pdo()
+uint16_t Ec_slave_mact::process_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::process_rx_pdo()
+uint16_t Ec_slave_mact::process_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::config_data_transfer()
+uint16_t Ec_slave_mact::config_data_transfer()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::publish_data()
+uint16_t Ec_slave_mact::publish_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::subscribe_data()
+uint16_t Ec_slave_mact::subscribe_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_mact::main_process()
+uint16_t Ec_slave_mact::main_process()
 {
-    t_stamp += 1000/500;
+    t_stamp += 1000 / 500;
     Motor_drive::Enable_status enable_status = Motor_drive::Enable_status::DISABLE;
     // std::cout << ": " << t_stamp << " | " << enable_status;
     if (t_stamp <= 5000)
@@ -104,4 +117,6 @@ void Ec_slave_mact::main_process()
         double t = ((double)t_stamp - 10000.0) * 0.001;
         target_position = A * std::sin(w * t) - offset;
     }
+
+    return Ec_callback_status::SUCCESS;
 }

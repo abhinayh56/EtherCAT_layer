@@ -1,9 +1,7 @@
 #ifndef EC_SLAVE_MACT_H
 #define EC_SLAVE_MACT_H
 
-#include <stdint.h>
 #include "../Ec_slave_base_motor_drive/Ec_slave_base_motor_drive.h"
-#include "../Ec_logger/Ec_logger_console/Ec_logger_console.h"
 
 class Ec_slave_mact : public Ec_slave_base_motor_drive
 {
@@ -11,16 +9,16 @@ public:
     Ec_slave_mact(uint16_t slave_address_, const std::string &slave_ns_);
     ~Ec_slave_mact();
 
-    virtual void set_info();
-    virtual void set_pdo();
-    virtual void transfer_tx_pdo();
-    virtual void transfer_rx_pdo();
-    virtual void process_tx_pdo();
-    virtual void process_rx_pdo();
-    virtual void config_data_transfer();
-    virtual void publish_data();
-    virtual void subscribe_data();
-    virtual void main_process();
+    virtual uint16_t set_info();
+    virtual uint16_t set_pdo();
+    virtual uint16_t transfer_tx_pdo();
+    virtual uint16_t transfer_rx_pdo();
+    virtual uint16_t process_tx_pdo();
+    virtual uint16_t process_rx_pdo();
+    virtual uint16_t config_data_transfer();
+    virtual uint16_t publish_data();
+    virtual uint16_t subscribe_data();
+    virtual uint16_t main_process();
 
 private:
     #include "Ec_slave_mact_info.h"

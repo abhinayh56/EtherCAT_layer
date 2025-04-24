@@ -8,48 +8,54 @@ Ec_slave_base_motor_drive::~Ec_slave_base_motor_drive()
 {
 }
 
-void Ec_slave_base_motor_drive::set_info()
+uint16_t Ec_slave_base_motor_drive::set_info()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::set_pdo()
+uint16_t Ec_slave_base_motor_drive::set_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::monitor_status()
+uint16_t Ec_slave_base_motor_drive::transfer_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::transfer_tx_pdo()
+uint16_t Ec_slave_base_motor_drive::transfer_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::transfer_rx_pdo()
+uint16_t Ec_slave_base_motor_drive::process_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::process_tx_pdo()
+uint16_t Ec_slave_base_motor_drive::process_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::process_rx_pdo()
+uint16_t Ec_slave_base_motor_drive::config_data_transfer()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::config_data_transfer()
+uint16_t Ec_slave_base_motor_drive::publish_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::publish_data()
+uint16_t Ec_slave_base_motor_drive::subscribe_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::subscribe_data()
+uint16_t Ec_slave_base_motor_drive::main_process()
 {
-}
-
-void Ec_slave_base_motor_drive::main_process()
-{
+    return Ec_callback_status::SUCCESS;
 }
 
 void Ec_slave_base_motor_drive::init()
@@ -143,52 +149,82 @@ void Ec_slave_base_motor_drive::check_status()
     if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
     {
         current_status = Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": NOT_READY_TO_SWITCH_ON" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": NOT_READY_TO_SWITCH_ON" << std::endl;
+        }
     }
     else if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::SWITCH_ON_DISABLED)
     {
         current_status = Object::Status_word::Bit_flags::SWITCH_ON_DISABLED;
-        if(previoius_status != current_status) {std::cout <<slave_ns << ": SWITCH_ON_DISABLED" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": SWITCH_ON_DISABLED" << std::endl;
+        }
     }
     else if ((status_word & 0b1101111) == Object::Status_word::Bit_flags::READY_TO_SWITCH_ON)
     {
         current_status = Object::Status_word::Bit_flags::READY_TO_SWITCH_ON;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": READY_TO_SWITCH_ON" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": READY_TO_SWITCH_ON" << std::endl;
+        }
     }
     else if ((status_word & 0b1101111) == Object::Status_word::Bit_flags::SWITCHED_ON)
     {
         current_status = Object::Status_word::Bit_flags::SWITCHED_ON;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": SWITCHED_ON" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": SWITCHED_ON" << std::endl;
+        }
     }
     else if ((status_word & 0b1101111) == Object::Status_word::Bit_flags::OPERATION_ENABLED)
     {
         current_status = Object::Status_word::Bit_flags::OPERATION_ENABLED;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": OPERATION_ENABLED" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": OPERATION_ENABLED" << std::endl;
+        }
     }
     else if ((status_word & 0b1101111) == Object::Status_word::Bit_flags::QUICK_STOP_ACTIVE)
     {
         current_status = Object::Status_word::Bit_flags::QUICK_STOP_ACTIVE;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": QUICK_STOP_ACTIVE" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": QUICK_STOP_ACTIVE" << std::endl;
+        }
     }
     else if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
     {
         current_status = Object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": FAULT_REACTION_ACTIVE" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": FAULT_REACTION_ACTIVE" << std::endl;
+        }
     }
     else if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::FAULT)
     {
         current_status = Object::Status_word::Bit_flags::FAULT;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": FAULT" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": FAULT" << std::endl;
+        }
     }
-    else if ((status_word & (1<<13)) == Object::Status_word::Bit_flags::CSP_FOLLOWING_ERROR_BIT)
+    else if ((status_word & (1 << 13)) == Object::Status_word::Bit_flags::CSP_FOLLOWING_ERROR_BIT)
     {
         current_status = Object::Status_word::Bit_flags::CSP_FOLLOWING_ERROR_BIT;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": CSP_FOLLOWING_ERROR_BIT" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": CSP_FOLLOWING_ERROR_BIT" << std::endl;
+        }
     }
-    else if ((status_word & (1<<12)) == Object::Status_word::Bit_flags::CSP_TARGET_POSITION_IGNORED)
+    else if ((status_word & (1 << 12)) == Object::Status_word::Bit_flags::CSP_TARGET_POSITION_IGNORED)
     {
         current_status = Object::Status_word::Bit_flags::CSP_TARGET_POSITION_IGNORED;
-        if(previoius_status != current_status) {std::cout << slave_ns << ": CSP_TARGET_POSITION_IGNORED" << std::endl;}
+        if (previoius_status != current_status)
+        {
+            std::cout << slave_ns << ": CSP_TARGET_POSITION_IGNORED" << std::endl;
+        }
     }
     else
     {

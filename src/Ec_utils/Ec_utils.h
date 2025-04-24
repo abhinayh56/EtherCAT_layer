@@ -26,7 +26,7 @@ struct Slave_status
     bool is_pdo_registered = false; // done
 };
 
-enum Callback_status : uint16_t
+enum Ec_callback_status : uint16_t
 {
     SUCCESS = 0,
     FAILURE = 1,

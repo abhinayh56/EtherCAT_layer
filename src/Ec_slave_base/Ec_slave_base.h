@@ -18,25 +18,25 @@ public:
     void set_slave_address(uint16_t slave_address_);
     uint16_t get_slave_address();
 
-    virtual void set_info();
-    void config_slave(ec_master_t *master);
+    virtual uint16_t set_info();
+    uint16_t config_slave(ec_master_t *master);
     
-    virtual void set_pdo();
-    void register_pdo_to_domain(ec_domain_t *domain_i);
+    virtual uint16_t set_pdo();
+    uint16_t register_pdo_to_domain(ec_domain_t *domain_i);
     
-    void set_domain(uint8_t *domain_i_pd_);
+    uint16_t set_domain(uint8_t *domain_i_pd_);
 
-    void monitor_status();
-    virtual void transfer_tx_pdo();
-    virtual void transfer_rx_pdo();
-    virtual void process_tx_pdo();
-    virtual void process_rx_pdo();
+    uint16_t monitor_status();
+    virtual uint16_t transfer_tx_pdo();
+    virtual uint16_t transfer_rx_pdo();
+    virtual uint16_t process_tx_pdo();
+    virtual uint16_t process_rx_pdo();
 
-    virtual void config_data_transfer();
-    virtual void publish_data();
-    virtual void subscribe_data();
+    virtual uint16_t config_data_transfer();
+    virtual uint16_t publish_data();
+    virtual uint16_t subscribe_data();
 
-    virtual void main_process();
+    virtual uint16_t main_process();
 
 protected:
     std::string slave_ns;

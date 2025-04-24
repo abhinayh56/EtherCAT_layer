@@ -8,46 +8,57 @@ Ec_slave_base_coupler::~Ec_slave_base_coupler()
 {
 }
 
-void Ec_slave_base_coupler::set_info()
+uint16_t Ec_slave_base_coupler::set_info()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::set_pdo()
+uint16_t Ec_slave_base_coupler::set_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::monitor_status()
+uint16_t Ec_slave_base_coupler::monitor_status()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::transfer_tx_pdo()
+uint16_t Ec_slave_base_coupler::transfer_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::transfer_rx_pdo()
+uint16_t Ec_slave_base_coupler::transfer_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::process_tx_pdo()
+uint16_t Ec_slave_base_coupler::process_tx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::process_rx_pdo()
+uint16_t Ec_slave_base_coupler::process_rx_pdo()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::config_data_transfer()
+uint16_t Ec_slave_base_coupler::config_data_transfer()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::publish_data()
+uint16_t Ec_slave_base_coupler::publish_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::subscribe_data()
+uint16_t Ec_slave_base_coupler::subscribe_data()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_coupler::main_process()
+uint16_t Ec_slave_base_coupler::main_process()
 {
+    return Ec_callback_status::SUCCESS;
 }
