@@ -181,6 +181,8 @@ uint16_t Ec_slave_base::monitor_status()
         return_status |= Ec_callback_status::FAILURE;
         LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to read slave configuration", 1);
     }
+
+    return return_status;
 }
 
 uint16_t Ec_slave_base::transfer_tx_pdo()
