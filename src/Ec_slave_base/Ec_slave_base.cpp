@@ -119,7 +119,8 @@ void Ec_slave_base::monitor_status()
         {
             slave_status.slave_state = slave_status_temp.slave_state;
 
-            LOG_CONSOLE_SOURCE_WARNING(slave_ns, "Slave not operational. Currently in ", 0);
+            LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave currently in ", 0);
+
             if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_INIT)
             {
                 LOG_CONSOLE("INIT", 1);
@@ -141,10 +142,6 @@ void Ec_slave_base::monitor_status()
                 LOG_CONSOLE("UNKNOWN", 1);
             }
         }
-
-        slave_status.is_online = slave_status_temp.is_online;
-        slave_status.is_operational = slave_status_temp.is_operational;
-        slave_status.slave_state = slave_status_temp.slave_state;
     }
     else
     {
