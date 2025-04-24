@@ -18,19 +18,20 @@ struct Slave_info
 
 struct Slave_status
 {
-    bool is_connected = false; // done
-    bool is_online = false; // done
-    bool is_configured = false; // done
-    bool is_operational = false; // done
-    uint16_t slave_state = 0; // done
+    bool is_connected = false;      // done
+    bool is_online = false;         // done
+    bool is_configured = false;     // done
+    bool is_operational = false;    // done
+    uint16_t slave_state = 0;       // done
     bool is_pdo_registered = false; // done
 };
 
 enum Callback_status : uint16_t
 {
-    FAILURE = 0,
-    SUCCESS = 1,
-    IN_PROGRESS = 2
+    SUCCESS = 0,
+    FAILURE = 1,
+    IN_PROGRESS = 2,
+    UNKNOWN = 4
 };
 
 #endif // EC_UTILS_H
