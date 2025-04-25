@@ -43,6 +43,7 @@ private:
 
     bool health_master = true;
     bool health_slaves = true;
+    bool health_domain = true;
 
     bool create_instance();
     bool deactivate();

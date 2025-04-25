@@ -1,3 +1,9 @@
+// #define RESTRICT_PROGRAM_INTERRUPT
+
+#ifdef RESTRICT_PROGRAM_INTERRUPT
+#include <csignal>
+#endif // RESTRICT_PROGRAM_INTERRUPT
+
 #include <unistd.h>
 #include <iostream>
 #include "Ec_master/Ec_master.h"
@@ -9,8 +15,29 @@
 #include "Ec_slave/Ec_slave_mact.h"
 #include "Ec_slave/Ec_slave_ingenia.h"
 
+#ifdef RESTRICT_PROGRAM_INTERRUPT
+int num_signal = 0;
+
+void signalHandler(int signal)
+{
+    num_signal++;
+
+    if (num_signal <= 5)
+    {
+        if (signal == SIGINT)
+        {
+            std::cout << "Ctrl+C pressed, but ignoring it!" << std::endl;
+        }
+    }
+}
+#endif // RESTRICT_PROGRAM_INTERRUPT
+
 int main()
 {
+#ifdef RESTRICT_PROGRAM_INTERRUPT
+    std::signal(SIGINT, signalHandler);
+#endif // RESTRICT_PROGRAM_INTERRUPT
+
     Ec_master ec_master("Master");
 
     Ec_slave_ek_1100 ek_1100(0, "EK_1100");
@@ -60,7 +87,7 @@ int main()
     {
         ec_master.cyclic_task();
 
-        usleep(1000000/1000);
+        usleep(1000000 / 1000);
     }
 
     ec_master.stop();

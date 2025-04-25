@@ -40,8 +40,6 @@ bool Ec_master::start()
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to start master", 1);
     }
 
-    create_instance();
-    
     return true;
 }
 
@@ -114,6 +112,7 @@ bool Ec_master::create_instance()
 
 void Ec_master::config()
 {
+    create_instance();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves ...", 1);
     config_slaves_data_transfer();
     create_domain();
