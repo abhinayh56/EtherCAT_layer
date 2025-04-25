@@ -33,10 +33,12 @@ bool Ec_master::start()
     int result = system("sudo /etc/init.d/ethercat start");
     if (result == 0)
     {
+        master_running = true;
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started", 1);
     }
     else
     {
+        master_running = false;
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to start master", 1);
     }
 
@@ -81,10 +83,12 @@ bool Ec_master::stop()
     int result = system("sudo /etc/init.d/ethercat stop");
     if (result == 0)
     {
+        master_running = false;
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master stopped", 1);
     }
     else
     {
+        master_running = true;
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to stop master", 1);
     }
 

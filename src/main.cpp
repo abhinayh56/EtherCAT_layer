@@ -81,7 +81,11 @@ int main()
     usleep(2000000);
 
     ec_master.start();
-    ec_master.config();
+
+    if (ec_master.master_running)
+    {
+        ec_master.config();
+    }
 
     while (ec_master.is_running())
     {

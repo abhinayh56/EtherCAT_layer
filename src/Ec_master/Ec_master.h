@@ -27,6 +27,11 @@ public:
     uint16_t get_num_slaves();
     void monitor();
 
+    bool master_running = false;
+    bool health_master = false;
+    bool health_slaves = false;
+    bool health_domain = false;
+
 private:
     std::string master_ns;
     ec_master_t *master = nullptr;
@@ -40,10 +45,6 @@ private:
 
     uint16_t num_slaves = 0;
     std::vector<Ec_slave_base *> slave_base_arr;
-
-    bool health_master = true;
-    bool health_slaves = true;
-    bool health_domain = true;
 
     bool create_instance();
     bool deactivate();
