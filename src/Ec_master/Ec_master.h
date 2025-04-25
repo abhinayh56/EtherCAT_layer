@@ -19,6 +19,7 @@ public:
 
     void add_slave(Ec_slave_base *new_slave);
     bool start();
+    bool restart();
     bool stop();
     void config();
     void cyclic_task();
@@ -40,6 +41,11 @@ private:
     uint16_t num_slaves = 0;
     std::vector<Ec_slave_base *> slave_base_arr;
 
+    bool health_master = true;
+    bool health_slaves = true;
+
+    bool create_instance();
+    bool deactivate();
     void config_slaves_data_transfer();
     bool create_domain();
     void set_slave_info();

@@ -29,7 +29,7 @@ void Ec_master::add_slave(Ec_slave_base *new_slave)
 bool Ec_master::start()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Starting master ...", 1);
-    
+
     int result = system("sudo /etc/init.d/ethercat start");
     if (result == 0)
     {
@@ -40,24 +40,20 @@ bool Ec_master::start()
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to start master", 1);
     }
 
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Requesting master for realtime operation...", 1);
-
-    master = ecrt_request_master(0);
-    if (master)
-    {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master realtime operation started", 1);
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started successfully", 1);
-        return true;
-    }
-    else
-    {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master realtime operation failed", 1);
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Master failed to start", 1);
-        return false;
-    }
+    create_instance();
+    
+    return true;
 }
 
-bool Ec_master::stop()
+bool Ec_master::restart()
+{
+    stop();
+    start();
+
+    return true;
+}
+
+bool Ec_master::deactivate()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
     if (run)
@@ -77,6 +73,13 @@ bool Ec_master::stop()
 
     run = false;
 
+    return true;
+}
+
+bool Ec_master::stop()
+{
+    deactivate();
+
     int result = system("sudo /etc/init.d/ethercat stop");
     if (result == 0)
     {
@@ -88,6 +91,25 @@ bool Ec_master::stop()
     }
 
     return true;
+}
+
+bool Ec_master::create_instance()
+{
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Requesting master for realtime operation...", 1);
+
+    master = ecrt_request_master(0);
+    if (master)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master realtime operation started", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started successfully", 1);
+        return true;
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master realtime operation failed", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Master failed to start", 1);
+        return false;
+    }
 }
 
 void Ec_master::config()
