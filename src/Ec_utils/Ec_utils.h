@@ -28,10 +28,10 @@ struct Slave_status
 
 struct Master_status
 {
-    bool running = false;
-    bool domain_health = false;
-    bool master_health = false;
-    bool slaves_health = false;
+    bool running = true;
+    bool health = true;
+    bool domain_health = true;
+    bool slaves_health = true;
 };
 
 enum Ec_callback_status : uint16_t

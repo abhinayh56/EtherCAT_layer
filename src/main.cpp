@@ -38,7 +38,7 @@ int main()
     std::signal(SIGINT, signalHandler);
 #endif // RESTRICT_PROGRAM_INTERRUPT
 
-    Ec_app ec_app("Master");
+    Ec_app ec_app("EC_APP");
 
     Ec_slave_ek_1100 ek_1100(0, "EK_1100");
     Ec_slave_el_2008 el_2008(1, "EL_2008");

@@ -33,6 +33,7 @@ bool Ec_app::start()
     int result = system("sudo /etc/init.d/ethercat start");
     if (result == 0)
     {
+        master_status.running = true;
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started", 1);
     }
     else

@@ -4,7 +4,6 @@
 #include <ecrt.h>
 #include <string>
 #include <vector>
-#include <cstdlib>
 #include <iostream>
 #include "../Ec_slave_base/Ec_slave_base.h"
 
@@ -27,7 +26,7 @@ public:
     uint16_t get_num_slaves();
     void monitor();
 
-    Master_status status;
+    Master_status master_status;
 
 private:
     std::string master_ns;
