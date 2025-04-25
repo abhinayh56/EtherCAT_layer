@@ -6,6 +6,7 @@
 
 #include <unistd.h>
 #include <iostream>
+#include "Ec_app/Ec_master.h"
 #include "Ec_app/Ec_app.h"
 #include "Ec_slave/Ec_slave_ek_1100.h"
 #include "Ec_slave/Ec_slave_ek_1122.h"
@@ -37,6 +38,8 @@ int main()
 #ifdef RESTRICT_PROGRAM_INTERRUPT
     std::signal(SIGINT, signalHandler);
 #endif // RESTRICT_PROGRAM_INTERRUPT
+
+    Ec_master ec_master("EC_MASTER");
 
     Ec_app ec_app("EC_APP");
 
@@ -80,15 +83,18 @@ int main()
 
     usleep(2000000);
 
-    ec_app.start();
+    ec_master.start();
 
-    ec_app.config();
-
-    while (ec_app.is_running())
+    if (ec_master.is_running())
     {
-        ec_app.cyclic_task();
+        ec_app.config();
 
-        usleep(1000000 / 1000);
+        while (ec_app.is_running())
+        {
+            ec_app.cyclic_task();
+
+            usleep(1000000 / 1000);
+        }
     }
 
     ec_app.stop();

@@ -157,6 +157,8 @@ CMakeFiles/ethercat_layer.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_app/Ec_master.h \
+ /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_app/../Ec_logger/Ec_logger_console/Ec_logger_console.h \
  /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_app/Ec_app.h \
  /usr/local/etherlab/include/ecrt.h /usr/include/c++/13/stdlib.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \

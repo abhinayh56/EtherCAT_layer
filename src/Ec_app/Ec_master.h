@@ -1,14 +1,16 @@
 #ifndef EC_MASTER_H
 #define EC_MASTER_H
 
+#include <string>
 #include <cstdlib>
 #include "../Ec_logger/Ec_logger_console/Ec_logger_console.h"
 
 class Ec_master
 {
 public:
-    Ec_master()
+    Ec_master(const std::string &master_ns_)
     {
+        master_ns = master_ns_;
     }
 
     ~Ec_master()
@@ -17,16 +19,18 @@ public:
 
     bool start()
     {
-        LOG_CONSOLE_SOURCE_INFO("EC_MASTER", "Starting master ...", 1);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Starting master ...", 1);
 
         int result = system("sudo /etc/init.d/ethercat start");
         if (result == 0)
         {
-            LOG_CONSOLE_SOURCE_INFO("EC_MASTER", "Master started", 1);
+            running_status = true;
+            LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started", 1);
         }
         else
         {
-            LOG_CONSOLE_SOURCE_ERROR("EC_MASTER", "Failed to start master", 1);
+            running_status = false;
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to start master", 1);
         }
 
         return true;
@@ -37,15 +41,26 @@ public:
         int result = system("sudo /etc/init.d/ethercat stop");
         if (result == 0)
         {
-            LOG_CONSOLE_SOURCE_INFO("EC_MASTER", "Master stopped", 1);
+            running_status = false;
+            LOG_CONSOLE_SOURCE_INFO(master_ns, "Master stopped", 1);
         }
         else
         {
-            LOG_CONSOLE_SOURCE_ERROR("EC_MASTER", "Failed to stop master", 1);
+            running_status = true;
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to stop master", 1);
         }
 
         return true;
     }
+
+    bool is_running()
+    {
+        return running_status;
+    }
+
+private:
+    std::string master_ns;
+    bool running_status = false;
 };
 
 #endif // EC_MASTER_H
