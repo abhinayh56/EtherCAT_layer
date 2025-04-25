@@ -26,6 +26,14 @@ struct Slave_status
     bool is_pdo_registered = false; // done
 };
 
+struct Master_status
+{
+    bool running = false;
+    bool domain_health = false;
+    bool master_health = false;
+    bool slaves_health = false;
+};
+
 enum Ec_callback_status : uint16_t
 {
     SUCCESS = 0,

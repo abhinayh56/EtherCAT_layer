@@ -175,17 +175,17 @@ ethercat_layer/fast:
 .PHONY : ethercat_layer/fast
 
 #=============================================================================
-# Target rules for targets named Ec_master
+# Target rules for targets named Ec_app
 
 # Build rule for target.
-Ec_master: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_master
-.PHONY : Ec_master
+Ec_app: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_app
+.PHONY : Ec_app
 
 # fast build rule for target.
-Ec_master/fast:
-	$(MAKE) $(MAKESILENT) -f src/Ec_master/CMakeFiles/Ec_master.dir/build.make src/Ec_master/CMakeFiles/Ec_master.dir/build
-.PHONY : Ec_master/fast
+Ec_app/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_app/CMakeFiles/Ec_app.dir/build.make src/Ec_app/CMakeFiles/Ec_app.dir/build
+.PHONY : Ec_app/fast
 
 #=============================================================================
 # Target rules for targets named Ec_slave
@@ -327,7 +327,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... Ec_master"
+	@echo "... Ec_app"
 	@echo "... Ec_slave"
 	@echo "... Ec_slave_base_analog_in"
 	@echo "... Ec_slave_base_coupler"

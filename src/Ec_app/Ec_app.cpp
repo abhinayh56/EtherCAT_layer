@@ -1,6 +1,6 @@
-#include "Ec_master.h"
+#include "Ec_app.h"
 
-Ec_master::Ec_master(const std::string &master_ns_)
+Ec_app::Ec_app(const std::string &master_ns_)
 {
     master_ns = master_ns_;
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Using EtherCAT master IGH v", 0);
@@ -11,13 +11,13 @@ Ec_master::Ec_master(const std::string &master_ns_)
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Object of master created", 1);
 }
 
-Ec_master::~Ec_master()
+Ec_app::~Ec_app()
 {
     stop();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Object of master destroyed", 1);
 }
 
-void Ec_master::add_slave(Ec_slave_base *new_slave)
+void Ec_app::add_slave(Ec_slave_base *new_slave)
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Assigning new slave to master", 1);
     slave_base_arr.push_back(new_slave);
@@ -26,26 +26,24 @@ void Ec_master::add_slave(Ec_slave_base *new_slave)
     LOG_CONSOLE(num_slaves, 1);
 }
 
-bool Ec_master::start()
+bool Ec_app::start()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Starting master ...", 1);
 
     int result = system("sudo /etc/init.d/ethercat start");
     if (result == 0)
     {
-        master_running = true;
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started", 1);
     }
     else
     {
-        master_running = false;
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to start master", 1);
     }
 
     return true;
 }
 
-bool Ec_master::restart()
+bool Ec_app::restart()
 {
     stop();
     start();
@@ -53,7 +51,7 @@ bool Ec_master::restart()
     return true;
 }
 
-bool Ec_master::deactivate()
+bool Ec_app::deactivate()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
     if (run)
@@ -76,26 +74,24 @@ bool Ec_master::deactivate()
     return true;
 }
 
-bool Ec_master::stop()
+bool Ec_app::stop()
 {
     deactivate();
 
     int result = system("sudo /etc/init.d/ethercat stop");
     if (result == 0)
     {
-        master_running = false;
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master stopped", 1);
     }
     else
     {
-        master_running = true;
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to stop master", 1);
     }
 
     return true;
 }
 
-bool Ec_master::create_instance()
+bool Ec_app::create_instance()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Requesting master for realtime operation...", 1);
 
@@ -114,7 +110,7 @@ bool Ec_master::create_instance()
     }
 }
 
-void Ec_master::config()
+void Ec_app::config()
 {
     create_instance();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves ...", 1);
@@ -132,7 +128,7 @@ void Ec_master::config()
     run = true;
 }
 
-void Ec_master::cyclic_task()
+void Ec_app::cyclic_task()
 {
     // 1. Fetches received frames from the hardware and processes the datagrams
     ecrt_master_receive(master);
@@ -176,17 +172,17 @@ void Ec_master::cyclic_task()
     ecrt_master_state(master, &master_state);
 }
 
-bool Ec_master::is_running()
+bool Ec_app::is_running()
 {
     return run;
 }
 
-uint16_t Ec_master::get_num_slaves()
+uint16_t Ec_app::get_num_slaves()
 {
     return num_slaves;
 }
 
-void Ec_master::monitor()
+void Ec_app::monitor()
 {
     if (ecrt_master_state(master, &master_state) == 0)
     {
@@ -222,7 +218,7 @@ void Ec_master::monitor()
     }
 }
 
-void Ec_master::config_slaves_data_transfer()
+void Ec_app::config_slaves_data_transfer()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring data transfer of slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
@@ -236,7 +232,7 @@ void Ec_master::config_slaves_data_transfer()
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured data transfer of all slave ", 1);
 }
 
-bool Ec_master::create_domain()
+bool Ec_app::create_domain()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Creating domain...", 1);
     domain_i = ecrt_master_create_domain(master);
@@ -252,7 +248,7 @@ bool Ec_master::create_domain()
     }
 }
 
-void Ec_master::set_slave_info()
+void Ec_app::set_slave_info()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slaves info...", 1);
     for (int i = 0; i < num_slaves; i++)
@@ -266,7 +262,7 @@ void Ec_master::set_slave_info()
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Info of all slaves set", 1);
 }
 
-void Ec_master::config_slaves()
+void Ec_app::config_slaves()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
@@ -280,7 +276,7 @@ void Ec_master::config_slaves()
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configured all slaves", 1);
 }
 
-void Ec_master::register_slaves_pdo_to_domain()
+void Ec_app::register_slaves_pdo_to_domain()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering pdo of slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
@@ -298,7 +294,7 @@ void Ec_master::register_slaves_pdo_to_domain()
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Registered all pdos", 1);
 }
 
-bool Ec_master::activate()
+bool Ec_app::activate()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Activating master...", 1);
     if (!ecrt_master_activate(master))
@@ -313,7 +309,7 @@ bool Ec_master::activate()
     }
 }
 
-bool Ec_master::get_domain_process_data()
+bool Ec_app::get_domain_process_data()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Getting domain process data address ...", 1);
     domain_i_pd = ecrt_domain_data(domain_i);
@@ -329,7 +325,7 @@ bool Ec_master::get_domain_process_data()
     }
 }
 
-void Ec_master::set_domain_process_data()
+void Ec_app::set_domain_process_data()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain process data address to slaves...", 1);
     for (int i = 0; i < num_slaves; i++)
@@ -343,7 +339,7 @@ void Ec_master::set_domain_process_data()
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain process data address to slaves successful", 1);
 }
 
-void Ec_master::monitor_status()
+void Ec_app::monitor_status()
 {
     for (int i = 0; i < num_slaves; i++)
     {
@@ -351,7 +347,7 @@ void Ec_master::monitor_status()
     }
 }
 
-void Ec_master::transfer_tx_pdo()
+void Ec_app::transfer_tx_pdo()
 {
     for (int i = 0; i < num_slaves; i++)
     {
@@ -359,7 +355,7 @@ void Ec_master::transfer_tx_pdo()
     }
 }
 
-void Ec_master::process_tx_pdo()
+void Ec_app::process_tx_pdo()
 {
     for (int i = 0; i < num_slaves; i++)
     {
@@ -367,7 +363,7 @@ void Ec_master::process_tx_pdo()
     }
 }
 
-void Ec_master::publish_data()
+void Ec_app::publish_data()
 {
     for (int i = 0; i < num_slaves; i++)
     {
@@ -375,7 +371,7 @@ void Ec_master::publish_data()
     }
 }
 
-void Ec_master::subscribe_data()
+void Ec_app::subscribe_data()
 {
     for (int i = 0; i < num_slaves; i++)
     {
@@ -383,7 +379,7 @@ void Ec_master::subscribe_data()
     }
 }
 
-void Ec_master::main_process()
+void Ec_app::main_process()
 {
     for (int i = 0; i < num_slaves; i++)
     {
@@ -391,7 +387,7 @@ void Ec_master::main_process()
     }
 }
 
-void Ec_master::process_rx_pdo()
+void Ec_app::process_rx_pdo()
 {
     for (int i = 0; i < num_slaves; i++)
     {
@@ -399,7 +395,7 @@ void Ec_master::process_rx_pdo()
     }
 }
 
-void Ec_master::transfer_rx_pdo()
+void Ec_app::transfer_rx_pdo()
 {
     for (int i = 0; i < num_slaves; i++)
     {

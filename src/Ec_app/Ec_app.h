@@ -1,5 +1,5 @@
-#ifndef EC_MASTER_H
-#define EC_MASTER_H
+#ifndef EC_APP_H
+#define EC_APP_H
 
 #include <ecrt.h>
 #include <string>
@@ -11,11 +11,11 @@
 #define CYCLIC_SLAVE_CALL_PARALLEL
 // #define CYCLIC_SLAVE_CALL_SEQUENTIAL
 
-class Ec_master
+class Ec_app
 {
 public:
-    Ec_master(const std::string &master_ns_);
-    ~Ec_master();
+    Ec_app(const std::string &master_ns_);
+    ~Ec_app();
 
     void add_slave(Ec_slave_base *new_slave);
     bool start();
@@ -27,10 +27,7 @@ public:
     uint16_t get_num_slaves();
     void monitor();
 
-    bool master_running = false;
-    bool health_master = false;
-    bool health_slaves = false;
-    bool health_domain = false;
+    Master_status status;
 
 private:
     std::string master_ns;
@@ -67,4 +64,4 @@ private:
     void transfer_rx_pdo();
 };
 
-#endif // EC_MASTER_H
+#endif // EC_APP_H

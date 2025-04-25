@@ -92,7 +92,7 @@ ethercat_layer_EXTERNAL_OBJECTS =
 
 ethercat_layer: CMakeFiles/ethercat_layer.dir/src/main.cpp.o
 ethercat_layer: CMakeFiles/ethercat_layer.dir/build.make
-ethercat_layer: src/Ec_master/libEc_master.a
+ethercat_layer: src/Ec_app/libEc_app.a
 ethercat_layer: src/Ec_slave/libEc_slave.a
 ethercat_layer: src/Ec_slave_base_motor_drive/libEc_slave_base_motor_drive.a
 ethercat_layer: src/Ec_slave_base_digital_in/libEc_slave_base_digital_in.a

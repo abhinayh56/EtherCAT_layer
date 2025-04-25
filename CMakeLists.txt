@@ -12,7 +12,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(EtherCAT_LIB_PATH /usr/local/etherlab/lib/libethercat.a)
 
 # Add subdirectories
-add_subdirectory(src/Ec_master)
+add_subdirectory(src/Ec_app)
 add_subdirectory(src/Ec_slave)
 add_subdirectory(src/Ec_slave_base)
 add_subdirectory(src/Ec_slave_base_motor_drive)
@@ -28,7 +28,7 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-    Ec_master
+    Ec_app
     Ec_slave
     Ec_slave_base
     Ec_slave_base_motor_drive

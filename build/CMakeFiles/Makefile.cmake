@@ -10,7 +10,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/CMakeLists.txt"
   "CMakeFiles/3.28.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
-  "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_master/CMakeLists.txt"
+  "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_app/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_analog_in/CMakeLists.txt"
@@ -46,7 +46,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/Ec_master/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Ec_app/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave_base/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave_base_motor_drive/CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -61,7 +61,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ethercat_layer.dir/DependInfo.cmake"
-  "src/Ec_master/CMakeFiles/Ec_master.dir/DependInfo.cmake"
+  "src/Ec_app/CMakeFiles/Ec_app.dir/DependInfo.cmake"
   "src/Ec_slave/CMakeFiles/Ec_slave.dir/DependInfo.cmake"
   "src/Ec_slave_base_motor_drive/CMakeFiles/Ec_slave_base_motor_drive.dir/DependInfo.cmake"
   "src/Ec_slave_base_digital_in/CMakeFiles/Ec_slave_base_digital_in.dir/DependInfo.cmake"

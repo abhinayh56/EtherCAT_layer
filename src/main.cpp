@@ -6,7 +6,7 @@
 
 #include <unistd.h>
 #include <iostream>
-#include "Ec_master/Ec_master.h"
+#include "Ec_app/Ec_app.h"
 #include "Ec_slave/Ec_slave_ek_1100.h"
 #include "Ec_slave/Ec_slave_ek_1122.h"
 #include "Ec_slave/Ec_slave_el_2008.h"
@@ -38,7 +38,7 @@ int main()
     std::signal(SIGINT, signalHandler);
 #endif // RESTRICT_PROGRAM_INTERRUPT
 
-    Ec_master ec_master("Master");
+    Ec_app ec_app("Master");
 
     Ec_slave_ek_1100 ek_1100(0, "EK_1100");
     Ec_slave_el_2008 el_2008(1, "EL_2008");
@@ -59,42 +59,39 @@ int main()
     Ec_slave_mact mact_7(16, "MACT_7");
     Ec_slave_mact mact_8(17, "MACT_8");
 
-    ec_master.add_slave(&ek_1100);
-    ec_master.add_slave(&el_2008);
-    ec_master.add_slave(&el_1008);
-    ec_master.add_slave(&ek_1122_1);
-    ec_master.add_slave(&ek_1122_2);
-    ec_master.add_slave(&ek_1122_3);
-    ec_master.add_slave(&ingenia);
-    ec_master.add_slave(&ek_1122_4);
-    ec_master.add_slave(&rfid);
-    ec_master.add_slave(&mact_1);
-    ec_master.add_slave(&mact_2);
-    ec_master.add_slave(&mact_3);
-    ec_master.add_slave(&mact_4);
-    ec_master.add_slave(&rfid_2);
-    ec_master.add_slave(&mact_5);
-    ec_master.add_slave(&mact_6);
-    ec_master.add_slave(&mact_7);
-    ec_master.add_slave(&mact_8);
+    ec_app.add_slave(&ek_1100);
+    ec_app.add_slave(&el_2008);
+    ec_app.add_slave(&el_1008);
+    ec_app.add_slave(&ek_1122_1);
+    ec_app.add_slave(&ek_1122_2);
+    ec_app.add_slave(&ek_1122_3);
+    ec_app.add_slave(&ingenia);
+    ec_app.add_slave(&ek_1122_4);
+    ec_app.add_slave(&rfid);
+    ec_app.add_slave(&mact_1);
+    ec_app.add_slave(&mact_2);
+    ec_app.add_slave(&mact_3);
+    ec_app.add_slave(&mact_4);
+    ec_app.add_slave(&rfid_2);
+    ec_app.add_slave(&mact_5);
+    ec_app.add_slave(&mact_6);
+    ec_app.add_slave(&mact_7);
+    ec_app.add_slave(&mact_8);
 
     usleep(2000000);
 
-    ec_master.start();
+    ec_app.start();
 
-    if (ec_master.master_running)
-    {
-        ec_master.config();
-    }
+    ec_app.config();
 
-    while (ec_master.is_running())
+    while (ec_app.is_running())
     {
-        ec_master.cyclic_task();
+        ec_app.cyclic_task();
 
         usleep(1000000 / 1000);
     }
 
-    ec_master.stop();
+    ec_app.stop();
 
     return 0;
 }
