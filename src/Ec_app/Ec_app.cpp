@@ -103,6 +103,10 @@ void Ec_app::config()
     set_domain_process_data();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Slave configuration completed successfully", 1);
 
+    monitor_domain_i_status();
+    monitor_master_status();
+    monitor_slave_status();
+
     run = true;
 }
 
@@ -145,9 +149,6 @@ void Ec_app::cyclic_task()
     // 11. Send process data
     ecrt_domain_queue(domain_i);
     ecrt_master_send(master);
-
-    // 9. Check master state
-    ecrt_master_state(master, &master_state);
 }
 
 bool Ec_app::is_running()
