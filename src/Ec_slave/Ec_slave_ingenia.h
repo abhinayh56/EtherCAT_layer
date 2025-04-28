@@ -10,7 +10,7 @@ public:
     Ec_slave_ingenia(uint16_t slave_address_, const std::string &slave_ns_);
     ~Ec_slave_ingenia();
 
-    virtual uint16_t set_info();
+    virtual uint16_t set_info_from_eni();
     virtual uint16_t set_pdo();
     virtual uint16_t transfer_tx_pdo();
     virtual uint16_t transfer_rx_pdo();

@@ -18,7 +18,7 @@ public:
     void set_slave_address(uint16_t slave_address_);
     uint16_t get_slave_address();
 
-    virtual uint16_t set_info();
+    virtual uint16_t set_info_from_eni();
     uint16_t config_slave(ec_master_t *master);
     
     virtual uint16_t set_pdo();

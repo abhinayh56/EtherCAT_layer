@@ -10,7 +10,7 @@ Ec_slave_ingenia::~Ec_slave_ingenia()
 {
 }
 
-uint16_t Ec_slave_ingenia::set_info()
+uint16_t Ec_slave_ingenia::set_info_from_eni()
 {
     slave_info.alias = alias;
     slave_info.position = slave_address;

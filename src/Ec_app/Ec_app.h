@@ -46,7 +46,7 @@ private:
     bool deactivate();
     void config_slaves_data_transfer();
     bool create_domain();
-    void set_slave_info();
+    void set_slaves_info_from_eni();
     void config_slaves();
     void register_slaves_pdo_to_domain();
     bool activate();

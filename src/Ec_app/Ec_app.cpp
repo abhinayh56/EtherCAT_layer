@@ -94,8 +94,8 @@ void Ec_app::config()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves ...", 1);
     config_slaves_data_transfer();
+    set_slaves_info_from_eni();
     create_domain();
-    set_slave_info();
     config_slaves();
     register_slaves_pdo_to_domain();
     activate();
@@ -227,7 +227,7 @@ bool Ec_app::create_domain()
     }
 }
 
-void Ec_app::set_slave_info()
+void Ec_app::set_slaves_info_from_eni()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slaves info...", 1);
     for (int i = 0; i < num_slaves; i++)
@@ -236,7 +236,7 @@ void Ec_app::set_slave_info()
         LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
-        slave_base_arr[i]->set_info();
+        slave_base_arr[i]->set_info_from_eni();
     }
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Info of all slaves set", 1);
 }
@@ -264,9 +264,9 @@ void Ec_app::register_slaves_pdo_to_domain()
         LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave pdos", 1);
+        // LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave pdos", 1);
         slave_base_arr[i]->set_pdo();
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Pdo list is set", 1);
+        // LOG_CONSOLE_SOURCE_INFO(master_ns, "Pdo list is set", 1);
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering tx,rx_pdos to domain", 1);
         slave_base_arr[i]->register_pdo_to_domain(domain_i);
     }

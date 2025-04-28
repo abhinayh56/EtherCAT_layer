@@ -10,7 +10,7 @@ Ec_slave_ek_1100::~Ec_slave_ek_1100()
 {
 }
 
-uint16_t Ec_slave_ek_1100::set_info()
+uint16_t Ec_slave_ek_1100::set_info_from_eni()
 {
     slave_info.alias = alias;
     slave_info.position = slave_address;

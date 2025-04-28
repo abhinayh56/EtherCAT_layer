@@ -10,7 +10,7 @@ Ec_slave_rfid::~Ec_slave_rfid()
 {
 }
 
-uint16_t Ec_slave_rfid::set_info()
+uint16_t Ec_slave_rfid::set_info_from_eni()
 {
     slave_info.alias = alias;
     slave_info.position = slave_address;

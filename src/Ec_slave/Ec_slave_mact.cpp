@@ -10,7 +10,7 @@ Ec_slave_mact::~Ec_slave_mact()
 {
 }
 
-uint16_t Ec_slave_mact::set_info()
+uint16_t Ec_slave_mact::set_info_from_eni()
 {
     slave_info.alias = alias;
     slave_info.position = slave_address;

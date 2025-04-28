@@ -28,7 +28,7 @@ uint16_t Ec_slave_base::get_slave_address()
     return slave_address;
 }
 
-uint16_t Ec_slave_base::set_info()
+uint16_t Ec_slave_base::set_info_from_eni()
 {
     return Ec_callback_status::SUCCESS;
 }
