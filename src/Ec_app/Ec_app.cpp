@@ -28,18 +28,7 @@ void Ec_app::add_slave(Ec_slave_base *new_slave)
 
 bool Ec_app::start()
 {
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Starting master ...", 1);
-
-    int result = system("sudo /etc/init.d/ethercat start");
-    if (result == 0)
-    {
-        master_status.running = true;
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started", 1);
-    }
-    else
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to start master", 1);
-    }
+    create_instance();
 
     return true;
 }
@@ -78,17 +67,7 @@ bool Ec_app::deactivate()
 bool Ec_app::stop()
 {
     deactivate();
-
-    int result = system("sudo /etc/init.d/ethercat stop");
-    if (result == 0)
-    {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master stopped", 1);
-    }
-    else
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to stop master", 1);
-    }
-
+    
     return true;
 }
 
@@ -113,7 +92,6 @@ bool Ec_app::create_instance()
 
 void Ec_app::config()
 {
-    create_instance();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves ...", 1);
     config_slaves_data_transfer();
     create_domain();

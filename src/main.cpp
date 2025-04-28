@@ -83,31 +83,60 @@ int main()
 
     usleep(2000000);
 
-    ec_master.start();
-
     while (true)
     {
-        if (ec_master.is_running())
+        if (!ec_master.is_running())
         {
-            ec_app.config();
-
-            while (ec_app.is_running())
-            {
-                ec_app.cyclic_task();
-
-                usleep(1000000 / 1000);
-            }
+            ec_master.start();
+            usleep(5000000);
         }
         else
         {
-            ec_app.stop();
             ec_app.start();
-            LOG_CONSOLE_SOURCE_WARNING("MAIN", "Restarting Ec_app", 1);
-            usleep(2000000);
+            ec_app.config();
+
+            if (ec_app.is_running())
+            {
+                while (ec_app.is_running())
+                {
+                    ec_app.cyclic_task();
+
+                    usleep(1000000 / 1000);
+                }
+            }
+            else
+            {
+                ec_app.stop();
+                LOG_CONSOLE_SOURCE_WARNING("MAIN", "Restarting Ec_app", 1);
+                ec_master.stop();
+            }
         }
+
+        // if (ec_master.is_running())
+        // {
+        //     ec_app.start();
+
+        //     ec_app.config();
+
+        //     while (ec_app.is_running())
+        //     {
+        //         ec_app.cyclic_task();
+
+        //         usleep(1000000 / 1000);
+        //     }
+
+        //     ec_app.stop();
+        //     ec_master.stop();
+        // }
+        // else
+        // {
+        //     ec_app.stop();
+        //     ec_master.stop();
+        // }
     }
 
     ec_app.stop();
+    ec_master.stop();
 
     return 0;
 }
