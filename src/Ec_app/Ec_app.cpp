@@ -114,7 +114,7 @@ void Ec_app::cyclic_task()
     // 2. Determines the states of the domain's datagrams
     ecrt_domain_process(domain_i);
 
-    monitor_domain_i_state();
+    monitor_domain_i_status();
     monitor_master_status();
 
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
@@ -160,7 +160,7 @@ uint16_t Ec_app::get_num_slaves()
     return num_slaves;
 }
 
-void Ec_app::monitor_domain_i_state()
+void Ec_app::monitor_domain_i_status()
 {
     ec_domain_state_t ds;
 

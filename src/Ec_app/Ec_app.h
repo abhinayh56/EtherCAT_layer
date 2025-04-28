@@ -51,7 +51,7 @@ private:
     void set_domain_process_data();
 
     void monitor_master_status();
-    void monitor_domain_i_state();
+    void monitor_domain_i_status();
     void monitor_slave_status();
 
     void transfer_tx_pdo();
