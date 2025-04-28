@@ -67,7 +67,7 @@ bool Ec_app::deactivate()
 bool Ec_app::stop()
 {
     deactivate();
-    
+
     return true;
 }
 
@@ -163,6 +163,17 @@ uint16_t Ec_app::get_num_slaves()
 
 void Ec_app::monitor()
 {
+    monitor_domain_i_state();
+    monitor_master_state();
+    monitor_slave_state();
+}
+
+void Ec_app::monitor_domain_i_state()
+{
+}
+
+void Ec_app::monitor_master_state()
+{
     if (ecrt_master_state(master, &master_state) == 0)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master state read successfully", 1);
@@ -195,6 +206,10 @@ void Ec_app::monitor()
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to read master state", 1);
     }
+}
+
+void Ec_app::monitor_slave_state()
+{
 }
 
 void Ec_app::config_slaves_data_transfer()

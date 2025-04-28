@@ -53,6 +53,10 @@ private:
     bool get_domain_process_data();
     void set_domain_process_data();
 
+    void monitor_domain_i_state();
+    void monitor_master_state();
+    void monitor_slave_state();
+
     void monitor_status();
     void transfer_tx_pdo();
     void process_tx_pdo();
