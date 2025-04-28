@@ -170,6 +170,20 @@ void Ec_app::monitor()
 
 void Ec_app::monitor_domain_i_state()
 {
+    ec_domain_state_t ds;
+
+    ecrt_domain_state(domain_i, &ds);
+
+    if (ds.working_counter != domain_i_state.working_counter)
+    {
+        printf("Domain1: WC %u.\n", ds.working_counter);
+    }
+    if (ds.wc_state != domain_i_state.wc_state)
+    {
+        printf("Domain1: State %u.\n", ds.wc_state);
+    }
+
+    domain_i_state = ds;
 }
 
 void Ec_app::monitor_master_state()
