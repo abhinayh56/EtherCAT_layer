@@ -112,9 +112,6 @@ int main()
             }
         }
     }
-
-    ec_app.stop();
-    ec_master.stop();
-
+    
     return 0;
 }
