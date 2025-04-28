@@ -102,7 +102,6 @@ void Ec_app::config()
     get_domain_process_data();
     set_domain_process_data();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Slave configuration completed successfully", 1);
-    monitor();
 
     run = true;
 }
@@ -115,11 +114,11 @@ void Ec_app::cyclic_task()
     // 2. Determines the states of the domain's datagrams
     ecrt_domain_process(domain_i);
 
-    // 3. Reads the state of a domain
-    ecrt_domain_state(domain_i, &domain_i_state);
+    monitor_domain_i_state();
+    monitor_master_status();
 
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
-    monitor_status();
+    monitor_slave_status();
     transfer_tx_pdo();
     process_tx_pdo();
     publish_data();
@@ -161,13 +160,6 @@ uint16_t Ec_app::get_num_slaves()
     return num_slaves;
 }
 
-void Ec_app::monitor()
-{
-    monitor_domain_i_state();
-    monitor_master_state();
-    monitor_slave_state();
-}
-
 void Ec_app::monitor_domain_i_state()
 {
     ec_domain_state_t ds;
@@ -186,44 +178,34 @@ void Ec_app::monitor_domain_i_state()
     domain_i_state = ds;
 }
 
-void Ec_app::monitor_master_state()
+void Ec_app::monitor_master_status()
 {
-    if (ecrt_master_state(master, &master_state) == 0)
+    ec_master_state_t ms;
+
+    ecrt_master_state(master, &ms);
+
+    if (ms.slaves_responding != master_state.slaves_responding)
     {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master state read successfully", 1);
-
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Number of slaves responding: ", 0);
-        LOG_CONSOLE(master_state.slaves_responding, 1);
-
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "AL states (at least one slave): ", 0);
-        if (master_state.al_states == 0)
-        {
-            LOG_CONSOLE("INIT", 1);
-        }
-        if (master_state.al_states == 1)
-        {
-            LOG_CONSOLE("PREOP", 1);
-        }
-        if (master_state.al_states == 2)
-        {
-            LOG_CONSOLE("SAFEOP", 1);
-        }
-        if (master_state.al_states == 3)
-        {
-            LOG_CONSOLE("OP", 1);
-        }
-
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Link up status: ", 0);
-        LOG_CONSOLE(master_state.link_up, 1);
+        printf("%u slave(s).\n", ms.slaves_responding);
     }
-    else
+    if (ms.al_states != master_state.al_states)
     {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to read master state", 1);
+        printf("AL states: 0x%02X.\n", ms.al_states);
     }
+    if (ms.link_up != master_state.link_up)
+    {
+        printf("Link is %s.\n", ms.link_up ? "up" : "down");
+    }
+
+    master_state = ms;
 }
 
-void Ec_app::monitor_slave_state()
+void Ec_app::monitor_slave_status()
 {
+    for (int i = 0; i < num_slaves; i++)
+    {
+        slave_base_arr[i]->monitor_status();
+    }
 }
 
 void Ec_app::config_slaves_data_transfer()
@@ -345,14 +327,6 @@ void Ec_app::set_domain_process_data()
         slave_base_arr[i]->set_domain(domain_i_pd);
     }
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain process data address to slaves successful", 1);
-}
-
-void Ec_app::monitor_status()
-{
-    for (int i = 0; i < num_slaves; i++)
-    {
-        slave_base_arr[i]->monitor_status();
-    }
 }
 
 void Ec_app::transfer_tx_pdo()
