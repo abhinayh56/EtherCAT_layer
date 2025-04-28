@@ -20,10 +20,10 @@ public:
 
     virtual uint16_t set_info_from_eni();
     uint16_t config_slave(ec_master_t *master);
-    
+
     virtual uint16_t set_pdo();
     uint16_t register_pdo_to_domain(ec_domain_t *domain_i);
-    
+
     uint16_t set_domain(uint8_t *domain_i_pd_);
 
     uint16_t monitor_status();
@@ -42,7 +42,6 @@ protected:
     std::string slave_ns;
     uint16_t slave_address;
     Slave_info slave_info;
-    Slave_status slave_status;
 
     ec_slave_config_t *sc;
     ec_slave_config_state_t sc_state;

@@ -25,9 +25,7 @@ public:
     bool is_running();
     uint16_t get_num_slaves();
     void monitor();
-
-    Master_status master_status;
-
+    
 private:
     std::string master_ns;
     ec_master_t *master = nullptr;

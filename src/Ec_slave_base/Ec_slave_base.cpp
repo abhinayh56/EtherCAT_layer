@@ -41,13 +41,11 @@ uint16_t Ec_slave_base::config_slave(ec_master_t *master)
 
     if (sc)
     {
-        slave_status.is_connected = true;
         return_status |= Ec_callback_status::SUCCESS;
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave configuration fetch successful", 1);
     }
     else
     {
-        slave_status.is_connected = false;
         return_status |= Ec_callback_status::FAILURE;
         LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to fetch slave configuration", 1);
     }
@@ -55,13 +53,11 @@ uint16_t Ec_slave_base::config_slave(ec_master_t *master)
     int32_t slave_config_pdo = ecrt_slave_config_pdos(sc, EC_END, slave_info.slave_syncs);
     if (slave_config_pdo == 0)
     {
-        slave_status.is_configured = true;
         return_status |= Ec_callback_status::SUCCESS;
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave sync manager configuration successful", 1);
     }
     else
     {
-        slave_status.is_configured = false;
         return_status |= Ec_callback_status::FAILURE;
         LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to configure slave sync manager", 1);
     }
@@ -80,13 +76,11 @@ uint16_t Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
 
     if (ecrt_domain_reg_pdo_entry_list(domain_i, domain_i_regs))
     {
-        slave_status.is_pdo_registered = false;
         return_status |= Ec_callback_status::FAILURE;
         LOG_CONSOLE_SOURCE_ERROR(slave_ns, "PDO entry registration failed", 1);
     }
     else
     {
-        slave_status.is_pdo_registered = true;
         return_status |= Ec_callback_status::SUCCESS;
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "PDO entry registration successful", 1);
     }
@@ -105,82 +99,24 @@ uint16_t Ec_slave_base::monitor_status()
 {
     uint16_t return_status = Ec_callback_status::SUCCESS;
 
-    if (ecrt_slave_config_state(sc, &sc_state) == 0)
+    ec_slave_config_state_t s;
+
+    ecrt_slave_config_state(sc, &s);
+
+    if (s.al_state != sc_state.al_state)
     {
-        Slave_status slave_status_temp;
-        slave_status_temp.is_online = sc_state.online == 1;
-        slave_status_temp.is_operational = sc_state.operational == 1;
-        slave_status_temp.slave_state = sc_state.al_state;
-
-        if(slave_status.is_online != slave_status_temp.is_online)
-        {
-            slave_status.is_online = slave_status_temp.is_online;
-
-            if (slave_status.is_online)
-            {
-                return_status |= Ec_callback_status::SUCCESS;
-                LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave online", 1);
-            }
-            else
-            {
-                return_status |= Ec_callback_status::FAILURE;
-                LOG_CONSOLE_SOURCE_WARNING(slave_ns, "Slave not online", 1);
-            }
-        }
-
-        if(slave_status.is_operational != slave_status_temp.is_operational)
-        {
-            slave_status.is_operational = slave_status_temp.is_operational;
-            if (slave_status.is_operational)
-            {
-                return_status |= Ec_callback_status::SUCCESS;
-                LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave operational", 1);
-            }
-            else
-            {
-                return_status |= Ec_callback_status::FAILURE;
-                LOG_CONSOLE_SOURCE_WARNING(slave_ns, "Slave not operational", 1);
-            }
-        }
-
-        if(slave_status.slave_state != slave_status_temp.slave_state)
-        {
-            slave_status.slave_state = slave_status_temp.slave_state;
-
-            LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave currently in ", 0);
-
-            if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_INIT)
-            {
-                return_status |= Ec_callback_status::FAILURE;
-                LOG_CONSOLE("INIT", 1);
-            }
-            else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_PREOP)
-            {
-                return_status |= Ec_callback_status::FAILURE;
-                LOG_CONSOLE("PREOP", 1);
-            }
-            else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_SAFEOP)
-            {
-                return_status |= Ec_callback_status::FAILURE;
-                LOG_CONSOLE("SAFEOP", 1);
-            }
-            else if (slave_status.slave_state == ec_al_state_t::EC_AL_STATE_OP)
-            {
-                return_status |= Ec_callback_status::SUCCESS;
-                LOG_CONSOLE("OP", 1);
-            }
-            else
-            {
-                return_status |= Ec_callback_status::FAILURE;
-                LOG_CONSOLE("UNKNOWN", 1);
-            }
-        }
+        printf("AnaIn: State 0x%02X.\n", s.al_state);
     }
-    else
+    if (s.online != sc_state.online)
     {
-        return_status |= Ec_callback_status::FAILURE;
-        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to read slave configuration", 1);
+        printf("AnaIn: %s.\n", s.online ? "online" : "offline");
     }
+    if (s.operational != sc_state.operational)
+    {
+        printf("AnaIn: %soperational.\n", s.operational ? "" : "Not ");
+    }
+
+    sc_state = s;
 
     return return_status;
 }

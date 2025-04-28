@@ -16,24 +16,6 @@ struct Slave_info
     ec_sync_info_t *slave_syncs;
 };
 
-struct Slave_status
-{
-    bool is_connected = false;      // done
-    bool is_online = false;         // done
-    bool is_configured = false;     // done
-    bool is_operational = false;    // done
-    uint16_t slave_state = 0;       // done
-    bool is_pdo_registered = false; // done
-};
-
-struct Master_status
-{
-    bool running = true;
-    bool health = true;
-    bool domain_health = true;
-    bool slaves_health = true;
-};
-
 enum Ec_callback_status : uint16_t
 {
     SUCCESS = 0,
