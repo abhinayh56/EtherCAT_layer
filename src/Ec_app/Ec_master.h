@@ -53,6 +53,23 @@ public:
         return true;
     }
 
+    bool restart()
+    {
+        int result = system("sudo /etc/init.d/ethercat restart");
+        if (result == 0)
+        {
+            running_status = false;
+            LOG_CONSOLE_SOURCE_INFO(master_ns, "Master restarting...", 1);
+        }
+        else
+        {
+            running_status = true;
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to restart master", 1);
+        }
+
+        return true;
+    }
+
     bool is_running()
     {
         return running_status;

@@ -85,15 +85,25 @@ int main()
 
     ec_master.start();
 
-    if (ec_master.is_running())
+    while (true)
     {
-        ec_app.config();
-
-        while (ec_app.is_running())
+        if (ec_master.is_running())
         {
-            ec_app.cyclic_task();
+            ec_app.config();
 
-            usleep(1000000 / 1000);
+            while (ec_app.is_running())
+            {
+                ec_app.cyclic_task();
+
+                usleep(1000000 / 1000);
+            }
+        }
+        else
+        {
+            ec_app.stop();
+            ec_app.start();
+            LOG_CONSOLE_SOURCE_WARNING("MAIN", "Restarting Ec_app", 1);
+            usleep(2000000);
         }
     }
 
