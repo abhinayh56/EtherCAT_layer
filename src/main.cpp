@@ -90,7 +90,9 @@ int main()
     {
         ec_master.start();
         usleep(5000000);
-        ec_app.start();
+
+        ret_val |= ec_app.start();
+        
         ret_val |= ec_app.config();
 
         ec_app.set_running_status(ret_val);

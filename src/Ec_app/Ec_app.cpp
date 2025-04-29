@@ -34,46 +34,39 @@ uint16_t Ec_app::start()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
-    create_instance();
-
-    return ret_val;
-}
-
-uint16_t Ec_app::restart()
-{
-    uint16_t ret_val = Ec_callback_status::SUCCESS;
-
-    stop();
-    start();
+    ret_val |= create_instance();
+    if(ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to create instance of master", 1);
+    }
 
     return ret_val;
 }
 
 uint16_t Ec_app::deactivate()
 {
-    uint16_t ret_val = Ec_callback_status::SUCCESS;
-
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
-
     ecrt_release_master(master);
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
 
-    return ret_val;
+    return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_app::stop()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
-    deactivate();
+    ret_val |= deactivate();
+    if(ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to deactivate master", 1);
+    }
 
     return ret_val;
 }
 
 uint16_t Ec_app::create_instance()
 {
-    uint16_t ret_val = Ec_callback_status::SUCCESS;
-
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Requesting master for realtime operation...", 1);
 
     master = ecrt_request_master(0);
@@ -81,7 +74,7 @@ uint16_t Ec_app::create_instance()
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master realtime operation started", 1);
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master started successfully", 1);
-        return ret_val;
+        return Ec_callback_status::SUCCESS;
     }
     else
     {

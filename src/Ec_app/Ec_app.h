@@ -18,7 +18,6 @@ public:
 
     uint16_t add_slave(Ec_slave_base *new_slave);
     uint16_t start();
-    uint16_t restart();
     uint16_t stop();
     uint16_t config();
     uint16_t cyclic_task();
