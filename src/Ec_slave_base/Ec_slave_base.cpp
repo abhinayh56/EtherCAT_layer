@@ -105,15 +105,58 @@ uint16_t Ec_slave_base::monitor_status()
 
     if (s.al_state != sc_state.al_state)
     {
-        printf("AnaIn: State 0x%02X.\n", s.al_state);
+        LOG_CONSOLE_SOURCE_INFO(slave_ns, "AL status: ", 0);
+
+        if (s.al_state==1)
+        {
+            LOG_CONSOLE("INIT", 1);
+        }
+        else if (s.al_state==2)
+        {
+            LOG_CONSOLE("PREOP", 1);
+        }
+        else if (s.al_state==4)
+        {
+            LOG_CONSOLE("SAFEOP", 1);
+        }
+        else if (s.al_state==8)
+        {
+            LOG_CONSOLE("OP", 1);
+        }
+        else
+        {
+            LOG_CONSOLE("UNKNOWN", 1);
+        }
     }
+
     if (s.online != sc_state.online)
     {
-        printf("AnaIn: %s.\n", s.online ? "online" : "offline");
+        LOG_CONSOLE_SOURCE_INFO(slave_ns, "Online status: ", 0);
+        if (s.online)
+        {
+            // return_status |= Ec_callback_status::SUCCESS;
+            LOG_CONSOLE("online", 1);
+        }
+        else
+        {
+            // return_status |= Ec_callback_status::FAILURE;
+            LOG_CONSOLE("offline", 1);
+        }
     }
+
     if (s.operational != sc_state.operational)
     {
-        printf("AnaIn: %soperational.\n", s.operational ? "" : "Not ");
+        LOG_CONSOLE_SOURCE_INFO(slave_ns, "Operational status: ", 0);
+        if (s.operational)
+        {
+            // return_status |= Ec_callback_status::SUCCESS;
+            LOG_CONSOLE("true", 1);
+        }
+        else
+        {
+            // return_status |= Ec_callback_status::FAILURE;
+            LOG_CONSOLE("false", 1);
+        }
     }
 
     sc_state = s;

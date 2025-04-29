@@ -24,4 +24,10 @@ enum Ec_callback_status : uint16_t
     UNKNOWN = 4
 };
 
+enum Ec_run_status : uint16_t
+{
+    TRUE = 0,
+    FALSE = 1
+};
+
 #endif // EC_UTILS_H

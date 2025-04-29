@@ -83,35 +83,22 @@ int main()
 
     usleep(2000000);
 
-    while (true)
+    if (!ec_master.is_running())
     {
-        if (!ec_master.is_running())
-        {
-            ec_master.start();
-            usleep(5000000);
-        }
-        else
-        {
-            ec_app.start();
-            ec_app.config();
+        ec_master.start();
+        usleep(5000000);
+        ec_app.start();
+        ec_app.config();
 
-            if (ec_app.is_running())
-            {
-                while (ec_app.is_running())
-                {
-                    ec_app.cyclic_task();
-
-                    usleep(1000000 / 1000);
-                }
-            }
-            else
-            {
-                ec_app.stop();
-                LOG_CONSOLE_SOURCE_WARNING("MAIN", "Restarting Ec_app", 1);
-                ec_master.stop();
-            }
+        while (ec_app.is_running() == Ec_run_status::TRUE)
+        {
+            ec_app.cyclic_task();
+            usleep(1000000 / 1000);
         }
+
+        ec_app.stop();
+        ec_master.stop();
     }
-    
+
     return 0;
 }

@@ -13,7 +13,7 @@ Ec_app::Ec_app(const std::string &master_ns_)
 
 Ec_app::~Ec_app()
 {
-    stop();
+    // stop();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Object of master destroyed", 1);
 }
 
@@ -44,11 +44,9 @@ bool Ec_app::restart()
 bool Ec_app::deactivate()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
-    if (run)
-    {
-        ecrt_release_master(master);
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
-    }
+
+    ecrt_release_master(master);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
 
     if (ecrt_master_deactivate(master) == 0)
     {
@@ -59,7 +57,6 @@ bool Ec_app::deactivate()
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to deactivate master", 1);
     }
 
-    run = false;
 
     return true;
 }
@@ -103,10 +100,10 @@ void Ec_app::config()
     set_domain_process_data();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Slave configuration completed successfully", 1);
 
-    monitor_master_status();
-    monitor_slave_status();
+    run_status = Ec_run_status::TRUE;
 
-    run = true;
+    monitor_master_status();
+    // monitor_slave_status();
 }
 
 void Ec_app::cyclic_task()
@@ -119,30 +116,33 @@ void Ec_app::cyclic_task()
 
     monitor_master_status();
 
+    if (run_status == Ec_run_status::TRUE)
+    {
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
-    monitor_slave_status();
-    transfer_tx_pdo();
-    process_tx_pdo();
-    publish_data();
-    subscribe_data();
-    main_process();
-    process_rx_pdo();
-    transfer_rx_pdo();
+        // monitor_slave_status();
+        transfer_tx_pdo();
+        process_tx_pdo();
+        publish_data();
+        subscribe_data();
+        main_process();
+        process_rx_pdo();
+        transfer_rx_pdo();
 #endif // CYCLIC_SLAVE_CALL_PARALLEL
 
 #ifdef CYCLIC_SLAVE_CALL_SEQUENTIAL
-    for (int i = 0; i < num_slaves; i++)
-    {
-        slave_base_arr[i]->monitor_status();
-        slave_base_arr[i]->transfer_tx_pdo();
-        slave_base_arr[i]->process_tx_pdo();
-        slave_base_arr[i]->publish_data();
-        slave_base_arr[i]->subscribe_data();
-        slave_base_arr[i]->main_process();
-        slave_base_arr[i]->process_rx_pdo();
-        slave_base_arr[i]->transfer_rx_pdo();
-    }
+        for (int i = 0; i < num_slaves; i++)
+        {
+            run_status |= slave_base_arr[i]->monitor_status();
+            slave_base_arr[i]->transfer_tx_pdo();
+            slave_base_arr[i]->process_tx_pdo();
+            slave_base_arr[i]->publish_data();
+            slave_base_arr[i]->subscribe_data();
+            slave_base_arr[i]->main_process();
+            slave_base_arr[i]->process_rx_pdo();
+            slave_base_arr[i]->transfer_rx_pdo();
+        }
 #endif // CYCLIC_SLAVE_CALL_SEQUENTIAL
+    }
 
     // 11. Send process data
     ecrt_domain_queue(domain_i);
@@ -151,9 +151,9 @@ void Ec_app::cyclic_task()
     monitor_domain_i_status();
 }
 
-bool Ec_app::is_running()
+uint16_t Ec_app::is_running()
 {
-    return run;
+    return run_status;
 }
 
 uint16_t Ec_app::get_num_slaves()
@@ -167,14 +167,14 @@ void Ec_app::monitor_domain_i_status()
 
     ecrt_domain_state(domain_i, &ds);
 
-    if (ds.working_counter != domain_i_state.working_counter)
-    {
-        printf("Domain1: WC %u.\n", ds.working_counter);
-    }
-    if (ds.wc_state != domain_i_state.wc_state)
-    {
-        printf("Domain1: State %u.\n", ds.wc_state);
-    }
+    // if (ds.working_counter != domain_i_state.working_counter)
+    // {
+    //     printf("Domain1: WC %u.\n", ds.working_counter);
+    // }
+    // if (ds.wc_state != domain_i_state.wc_state)
+    // {
+    //     printf("Domain1: State %u.\n", ds.wc_state);
+    // }
 
     domain_i_state = ds;
 }
@@ -182,20 +182,43 @@ void Ec_app::monitor_domain_i_status()
 void Ec_app::monitor_master_status()
 {
     ec_master_state_t ms;
-
     ecrt_master_state(master, &ms);
 
     if (ms.slaves_responding != master_state.slaves_responding)
     {
-        printf("%u slave(s).\n", ms.slaves_responding);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Slaves responding: ", 0);
+        LOG_CONSOLE(ms.slaves_responding, 1);
+
+        if ((ms.slaves_responding >= num_slaves) || (ms.slaves_responding == 0))
+        {
+            run_status |= Ec_run_status::TRUE;
+        }
+        else
+        {
+            run_status |= Ec_run_status::FALSE;
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "All slaves not responding", 1);
+        }
     }
+
     if (ms.al_states != master_state.al_states)
     {
-        printf("AL states: 0x%02X.\n", ms.al_states);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "AL state: ", 0);
+        LOG_CONSOLE(ms.al_states, 1);
     }
+
     if (ms.link_up != master_state.link_up)
     {
-        printf("Link is %s.\n", ms.link_up ? "up" : "down");
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Link up status: ", 0);
+        if (ms.link_up)
+        {
+            // run_status |= Ec_run_status::TRUE;
+            LOG_CONSOLE("up", 1);
+        }
+        else
+        {
+            // run_status |= Ec_run_status::FALSE;
+            LOG_CONSOLE("down", 1);
+        }
     }
 
     master_state = ms;
@@ -205,7 +228,7 @@ void Ec_app::monitor_slave_status()
 {
     for (int i = 0; i < num_slaves; i++)
     {
-        slave_base_arr[i]->monitor_status();
+        /*run_status |=*/slave_base_arr[i]->monitor_status();
     }
 }
 
