@@ -16,10 +16,10 @@ public:
     Ec_app(const std::string &master_ns_);
     ~Ec_app();
 
-    void add_slave(Ec_slave_base *new_slave);
-    bool start();
-    bool restart();
-    bool stop();
+    uint16_t add_slave(Ec_slave_base *new_slave);
+    uint16_t start();
+    uint16_t restart();
+    uint16_t stop();
     uint16_t config();
     uint16_t cyclic_task();
     uint16_t is_running();
@@ -40,28 +40,28 @@ private:
     uint16_t num_slaves = 0;
     std::vector<Ec_slave_base *> slave_base_arr;
 
-    bool create_instance();
-    bool deactivate();
-    void config_slaves_data_transfer();
-    bool create_domain();
-    void set_slaves_info_from_eni();
-    void config_slaves();
-    void register_slaves_pdo_to_domain();
-    bool activate();
-    bool get_domain_process_data();
-    void set_domain_process_data();
+    uint16_t create_instance();
+    uint16_t deactivate();
+    uint16_t config_slaves_data_transfer();
+    uint16_t create_domain();
+    uint16_t set_slaves_info_from_eni();
+    uint16_t config_slaves();
+    uint16_t register_slaves_pdo_to_domain();
+    uint16_t activate();
+    uint16_t get_domain_process_data();
+    uint16_t set_domain_process_data();
 
     uint16_t monitor_master_status();
     uint16_t monitor_domain_i_status();
     uint16_t monitor_slave_status();
 
-    void transfer_tx_pdo();
-    void process_tx_pdo();
-    void publish_data();
-    void subscribe_data();
-    void main_process();
-    void process_rx_pdo();
-    void transfer_rx_pdo();
+    uint16_t transfer_tx_pdo();
+    uint16_t process_tx_pdo();
+    uint16_t publish_data();
+    uint16_t subscribe_data();
+    uint16_t main_process();
+    uint16_t process_rx_pdo();
+    uint16_t transfer_rx_pdo();
 };
 
 #endif // EC_APP_H
