@@ -35,7 +35,7 @@ void signalHandler(int signal)
 
 int main()
 {
-    
+
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
 #ifdef RESTRICT_PROGRAM_INTERRUPT
@@ -92,20 +92,39 @@ int main()
         usleep(5000000);
 
         ret_val |= ec_app.start();
-        
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to start EC_APP", 1);
+            return ret_val;
+        }
+
         ret_val |= ec_app.config();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform configuration of EC_APP", 1);
+        }
 
         ec_app.set_running_status(ret_val);
 
         while (ec_app.get_running_status() == Ec_callback_status::SUCCESS)
         {
             ret_val |= ec_app.cyclic_task();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform cyclic task of EC_APP", 1);
+            }
+
             ec_app.set_running_status(ret_val);
 
             usleep(1000000 / 1000);
         }
 
-        ec_app.stop();
+        ret_val |= ec_app.stop();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to stop EC_APP", 1);
+        }
+
         ec_master.stop();
     }
 
