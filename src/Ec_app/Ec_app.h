@@ -20,11 +20,12 @@ public:
     bool start();
     bool restart();
     bool stop();
-    void config();
-    void cyclic_task();
+    uint16_t config();
+    uint16_t cyclic_task();
     uint16_t is_running();
+    void is_running(uint16_t run_status_);
     uint16_t get_num_slaves();
-    
+
 private:
     std::string master_ns;
     ec_master_t *master = nullptr;
@@ -50,9 +51,9 @@ private:
     bool get_domain_process_data();
     void set_domain_process_data();
 
-    void monitor_master_status();
-    void monitor_domain_i_status();
-    void monitor_slave_status();
+    uint16_t monitor_master_status();
+    uint16_t monitor_domain_i_status();
+    uint16_t monitor_slave_status();
 
     void transfer_tx_pdo();
     void process_tx_pdo();

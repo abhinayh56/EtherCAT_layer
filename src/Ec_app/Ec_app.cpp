@@ -57,7 +57,6 @@ bool Ec_app::deactivate()
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to deactivate master", 1);
     }
 
-
     return true;
 }
 
@@ -87,8 +86,10 @@ bool Ec_app::create_instance()
     }
 }
 
-void Ec_app::config()
+uint16_t Ec_app::config()
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves ...", 1);
     config_slaves_data_transfer();
     set_slaves_info_from_eni();
@@ -100,55 +101,77 @@ void Ec_app::config()
     set_domain_process_data();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Slave configuration completed successfully", 1);
 
-    run_status = Ec_run_status::TRUE;
+    ret_val |= monitor_master_status();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master failed", 1);
+        return ret_val;
+    }
 
-    monitor_master_status();
-    // monitor_slave_status();
+    // ret_val |= monitor_slave_status();
+    // if(ret_val==Ec_callback_status::FAILURE)
+    // {
+        // LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor slave failed", 1);
+    //     return ret_val;
+    // }
+
+    return ret_val;
 }
 
-void Ec_app::cyclic_task()
+uint16_t Ec_app::cyclic_task()
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
     // 1. Fetches received frames from the hardware and processes the datagrams
     ecrt_master_receive(master);
 
     // 2. Determines the states of the domain's datagrams
     ecrt_domain_process(domain_i);
 
-    monitor_master_status();
-
-    if (run_status == Ec_run_status::TRUE)
+    ret_val |= monitor_master_status();
+    if (ret_val == Ec_callback_status::FAILURE)
     {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master failed", 1);
+        return ret_val;
+    }
+
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
-        // monitor_slave_status();
-        transfer_tx_pdo();
-        process_tx_pdo();
-        publish_data();
-        subscribe_data();
-        main_process();
-        process_rx_pdo();
-        transfer_rx_pdo();
+    // monitor_slave_status();
+    transfer_tx_pdo();
+    process_tx_pdo();
+    publish_data();
+    subscribe_data();
+    main_process();
+    process_rx_pdo();
+    transfer_rx_pdo();
 #endif // CYCLIC_SLAVE_CALL_PARALLEL
 
 #ifdef CYCLIC_SLAVE_CALL_SEQUENTIAL
-        for (int i = 0; i < num_slaves; i++)
-        {
-            run_status |= slave_base_arr[i]->monitor_status();
-            slave_base_arr[i]->transfer_tx_pdo();
-            slave_base_arr[i]->process_tx_pdo();
-            slave_base_arr[i]->publish_data();
-            slave_base_arr[i]->subscribe_data();
-            slave_base_arr[i]->main_process();
-            slave_base_arr[i]->process_rx_pdo();
-            slave_base_arr[i]->transfer_rx_pdo();
-        }
-#endif // CYCLIC_SLAVE_CALL_SEQUENTIAL
+    for (int i = 0; i < num_slaves; i++)
+    {
+        // slave_base_arr[i]->monitor_status();
+        slave_base_arr[i]->transfer_tx_pdo();
+        slave_base_arr[i]->process_tx_pdo();
+        slave_base_arr[i]->publish_data();
+        slave_base_arr[i]->subscribe_data();
+        slave_base_arr[i]->main_process();
+        slave_base_arr[i]->process_rx_pdo();
+        slave_base_arr[i]->transfer_rx_pdo();
     }
+#endif // CYCLIC_SLAVE_CALL_SEQUENTIAL
 
     // 11. Send process data
     ecrt_domain_queue(domain_i);
     ecrt_master_send(master);
 
-    monitor_domain_i_status();
+    ret_val |= monitor_domain_i_status();
+    if(ret_val==Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor domain failed", 1);
+        return ret_val;
+    }
+
+    return ret_val;
 }
 
 uint16_t Ec_app::is_running()
@@ -156,13 +179,20 @@ uint16_t Ec_app::is_running()
     return run_status;
 }
 
+void Ec_app::is_running(uint16_t run_status_)
+{
+    run_status = run_status_;
+}
+
 uint16_t Ec_app::get_num_slaves()
 {
     return num_slaves;
 }
 
-void Ec_app::monitor_domain_i_status()
+uint16_t Ec_app::monitor_domain_i_status()
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
     ec_domain_state_t ds;
 
     ecrt_domain_state(domain_i, &ds);
@@ -177,10 +207,14 @@ void Ec_app::monitor_domain_i_status()
     // }
 
     domain_i_state = ds;
+
+    return ret_val;
 }
 
-void Ec_app::monitor_master_status()
+uint16_t Ec_app::monitor_master_status()
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
     ec_master_state_t ms;
     ecrt_master_state(master, &ms);
 
@@ -191,12 +225,13 @@ void Ec_app::monitor_master_status()
 
         if ((ms.slaves_responding >= num_slaves) || (ms.slaves_responding == 0))
         {
-            run_status |= Ec_run_status::TRUE;
+            ret_val |= Ec_callback_status::SUCCESS;
         }
         else
         {
-            run_status |= Ec_run_status::FALSE;
             LOG_CONSOLE_SOURCE_ERROR(master_ns, "All slaves not responding", 1);
+            ret_val |= Ec_callback_status::FAILURE;
+            return ret_val;
         }
     }
 
@@ -211,25 +246,36 @@ void Ec_app::monitor_master_status()
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Link up status: ", 0);
         if (ms.link_up)
         {
-            // run_status |= Ec_run_status::TRUE;
             LOG_CONSOLE("up", 1);
         }
         else
         {
-            // run_status |= Ec_run_status::FALSE;
             LOG_CONSOLE("down", 1);
+            ret_val |= Ec_callback_status::FAILURE;
+            return ret_val;
         }
     }
 
     master_state = ms;
+
+    return ret_val;
 }
 
-void Ec_app::monitor_slave_status()
+uint16_t Ec_app::monitor_slave_status()
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
     for (int i = 0; i < num_slaves; i++)
     {
-        /*run_status |=*/slave_base_arr[i]->monitor_status();
+        ret_val |= slave_base_arr[i]->monitor_status();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor slave failed", 1);
+            return ret_val;
+        }
     }
+
+    return ret_val;
 }
 
 void Ec_app::config_slaves_data_transfer()

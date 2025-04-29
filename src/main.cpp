@@ -35,6 +35,9 @@ void signalHandler(int signal)
 
 int main()
 {
+    
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
 #ifdef RESTRICT_PROGRAM_INTERRUPT
     std::signal(SIGINT, signalHandler);
 #endif // RESTRICT_PROGRAM_INTERRUPT
@@ -88,11 +91,14 @@ int main()
         ec_master.start();
         usleep(5000000);
         ec_app.start();
-        ec_app.config();
+        ret_val |= ec_app.config();
 
-        while (ec_app.is_running() == Ec_run_status::TRUE)
+        ec_app.is_running(ret_val);
+
+        while (ec_app.is_running() == Ec_callback_status::SUCCESS)
         {
-            ec_app.cyclic_task();
+            ret_val = ec_app.cyclic_task();
+            ec_app.is_running(ret_val);
             usleep(1000000 / 1000);
         }
 
