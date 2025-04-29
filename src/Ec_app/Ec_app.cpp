@@ -13,7 +13,6 @@ Ec_app::Ec_app(const std::string &master_ns_)
 
 Ec_app::~Ec_app()
 {
-    // stop();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Object of master destroyed", 1);
 }
 
@@ -35,7 +34,7 @@ uint16_t Ec_app::start()
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     ret_val |= create_instance();
-    if(ret_val == Ec_callback_status::FAILURE)
+    if (ret_val == Ec_callback_status::FAILURE)
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to create instance of master", 1);
     }
@@ -57,7 +56,7 @@ uint16_t Ec_app::stop()
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     ret_val |= deactivate();
-    if(ret_val == Ec_callback_status::FAILURE)
+    if (ret_val == Ec_callback_status::FAILURE)
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to deactivate master", 1);
     }
@@ -155,12 +154,12 @@ uint16_t Ec_app::config()
         return ret_val;
     }
 
-    // ret_val |= monitor_slave_status();
-    // if(ret_val==Ec_callback_status::FAILURE)
-    // {
-        // LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor slave status failed", 1);
-    //     return ret_val;
-    // }
+    ret_val |= monitor_slave_status();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor slave status failed", 1);
+        return ret_val;
+    }
 
     return ret_val;
 }
@@ -212,7 +211,7 @@ uint16_t Ec_app::cyclic_task()
     ecrt_master_send(master);
 
     ret_val |= monitor_domain_i_status();
-    if(ret_val==Ec_callback_status::FAILURE)
+    if (ret_val == Ec_callback_status::FAILURE)
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor domain failed", 1);
         return ret_val;
@@ -317,7 +316,8 @@ uint16_t Ec_app::monitor_slave_status()
         ret_val |= slave_base_arr[i]->monitor_status();
         if (ret_val == Ec_callback_status::FAILURE)
         {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor slave failed", 1);
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor slave failed for slave number ", 0);
+            LOG_CONSOLE(slave_base_arr[i]->get_slave_address(), 1)
             return ret_val;
         }
     }
@@ -372,10 +372,10 @@ uint16_t Ec_app::set_slaves_info_from_eni()
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         ret_val |= slave_base_arr[i]->set_info_from_eni();
-        if(ret_val == Ec_callback_status::FAILURE)
+        if (ret_val == Ec_callback_status::FAILURE)
         {
             LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to set info from eni for slave number ", 0);
-            LOG_CONSOLE(i+1, 0);
+            LOG_CONSOLE(i + 1, 0);
             LOG_CONSOLE(", ", 0);
             LOG_CONSOLE(slave_base_arr[i]->get_slave_address(), 1);
             return ret_val;
@@ -398,7 +398,7 @@ uint16_t Ec_app::config_slaves()
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
         ret_val |= slave_base_arr[i]->config_slave(master);
-        if(ret_val == Ec_callback_status::FAILURE)
+        if (ret_val == Ec_callback_status::FAILURE)
         {
             LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to configure slave", 1);
             return ret_val;

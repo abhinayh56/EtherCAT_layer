@@ -35,34 +35,34 @@ uint16_t Ec_slave_base::set_info_from_eni()
 
 uint16_t Ec_slave_base::config_slave(ec_master_t *master)
 {
-    uint16_t return_status = Ec_callback_status::SUCCESS;
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     sc = ecrt_master_slave_config(master, slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code);
 
     if (sc)
     {
-        return_status |= Ec_callback_status::SUCCESS;
+        ret_val |= Ec_callback_status::SUCCESS;
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave configuration fetch successful", 1);
     }
     else
     {
-        return_status |= Ec_callback_status::FAILURE;
+        ret_val |= Ec_callback_status::FAILURE;
         LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to fetch slave configuration", 1);
     }
 
     int32_t slave_config_pdo = ecrt_slave_config_pdos(sc, EC_END, slave_info.slave_syncs);
     if (slave_config_pdo == 0)
     {
-        return_status |= Ec_callback_status::SUCCESS;
+        ret_val |= Ec_callback_status::SUCCESS;
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "Slave sync manager configuration successful", 1);
     }
     else
     {
-        return_status |= Ec_callback_status::FAILURE;
+        ret_val |= Ec_callback_status::FAILURE;
         LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to configure slave sync manager", 1);
     }
 
-    return return_status;
+    return ret_val;
 }
 
 uint16_t Ec_slave_base::set_pdo()
@@ -72,20 +72,20 @@ uint16_t Ec_slave_base::set_pdo()
 
 uint16_t Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
 {
-    uint16_t return_status = Ec_callback_status::SUCCESS;
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     if (ecrt_domain_reg_pdo_entry_list(domain_i, domain_i_regs))
     {
-        return_status |= Ec_callback_status::FAILURE;
+        ret_val |= Ec_callback_status::FAILURE;
         LOG_CONSOLE_SOURCE_ERROR(slave_ns, "PDO entry registration failed", 1);
     }
     else
     {
-        return_status |= Ec_callback_status::SUCCESS;
+        ret_val |= Ec_callback_status::SUCCESS;
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "PDO entry registration successful", 1);
     }
 
-    return return_status;
+    return ret_val;
 }
 
 uint16_t Ec_slave_base::set_domain(uint8_t *domain_i_pd_)
@@ -97,7 +97,7 @@ uint16_t Ec_slave_base::set_domain(uint8_t *domain_i_pd_)
 
 uint16_t Ec_slave_base::monitor_status()
 {
-    uint16_t return_status = Ec_callback_status::SUCCESS;
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     ec_slave_config_state_t s;
 
@@ -107,19 +107,19 @@ uint16_t Ec_slave_base::monitor_status()
     {
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "AL status: ", 0);
 
-        if (s.al_state==1)
+        if (s.al_state == 1)
         {
             LOG_CONSOLE("INIT", 1);
         }
-        else if (s.al_state==2)
+        else if (s.al_state == 2)
         {
             LOG_CONSOLE("PREOP", 1);
         }
-        else if (s.al_state==4)
+        else if (s.al_state == 4)
         {
             LOG_CONSOLE("SAFEOP", 1);
         }
-        else if (s.al_state==8)
+        else if (s.al_state == 8)
         {
             LOG_CONSOLE("OP", 1);
         }
@@ -134,13 +134,15 @@ uint16_t Ec_slave_base::monitor_status()
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "Online status: ", 0);
         if (s.online)
         {
-            // return_status |= Ec_callback_status::SUCCESS;
             LOG_CONSOLE("online", 1);
+            ret_val |= Ec_callback_status::SUCCESS;
         }
         else
         {
-            // return_status |= Ec_callback_status::FAILURE;
             LOG_CONSOLE("offline", 1);
+            ret_val |= Ec_callback_status::FAILURE;
+            LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave is offline. Slave address is ", 0);
+            LOG_CONSOLE(slave_address, 1);
         }
     }
 
@@ -149,19 +151,19 @@ uint16_t Ec_slave_base::monitor_status()
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "Operational status: ", 0);
         if (s.operational)
         {
-            // return_status |= Ec_callback_status::SUCCESS;
+            // ret_val |= Ec_callback_status::SUCCESS;
             LOG_CONSOLE("true", 1);
         }
         else
         {
-            // return_status |= Ec_callback_status::FAILURE;
+            // ret_val |= Ec_callback_status::FAILURE;
             LOG_CONSOLE("false", 1);
         }
     }
 
     sc_state = s;
 
-    return return_status;
+    return ret_val;
 }
 
 uint16_t Ec_slave_base::transfer_tx_pdo()
