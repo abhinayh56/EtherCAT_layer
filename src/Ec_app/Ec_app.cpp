@@ -182,7 +182,7 @@ uint16_t Ec_app::cyclic_task()
     }
 
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
-    // ret_val |= monitor_slave_status();
+    ret_val |= monitor_slave_status();
     ret_val |= transfer_tx_pdo();
     ret_val |= process_tx_pdo();
     ret_val |= publish_data();
@@ -195,7 +195,7 @@ uint16_t Ec_app::cyclic_task()
 #ifdef CYCLIC_SLAVE_CALL_SEQUENTIAL
     for (int i = 0; i < num_slaves; i++)
     {
-        // ret_val |= slave_base_arr[i]->monitor_status();
+        ret_val |= slave_base_arr[i]->monitor_status();
         ret_val |= slave_base_arr[i]->transfer_tx_pdo();
         ret_val |= slave_base_arr[i]->process_tx_pdo();
         ret_val |= slave_base_arr[i]->publish_data();
