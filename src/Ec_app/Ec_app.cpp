@@ -151,7 +151,7 @@ uint16_t Ec_app::config()
     ret_val |= monitor_master_status();
     if (ret_val == Ec_callback_status::FAILURE)
     {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed-1", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed", 1);
         return ret_val;
     }
 
@@ -178,7 +178,7 @@ uint16_t Ec_app::cyclic_task()
     ret_val |= monitor_master_status();
     if (ret_val == Ec_callback_status::FAILURE)
     {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed-2", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed", 1);
         return ret_val;
     }
 
