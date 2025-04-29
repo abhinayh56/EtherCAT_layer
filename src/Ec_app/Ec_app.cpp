@@ -103,8 +103,8 @@ void Ec_app::config()
     set_domain_process_data();
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Slave configuration completed successfully", 1);
 
-    // monitor_master_status();
-    // monitor_slave_status();
+    monitor_master_status();
+    monitor_slave_status();
 
     run = true;
 }
