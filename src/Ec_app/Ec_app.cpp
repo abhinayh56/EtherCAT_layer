@@ -58,15 +58,6 @@ uint16_t Ec_app::deactivate()
     ecrt_release_master(master);
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
 
-    if (ecrt_master_deactivate(master) == 0)
-    {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Master deactivated", 1);
-    }
-    else
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to deactivate master", 1);
-    }
-
     return ret_val;
 }
 
@@ -167,7 +158,7 @@ uint16_t Ec_app::config()
     ret_val |= monitor_master_status();
     if (ret_val == Ec_callback_status::FAILURE)
     {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed-1", 1);
         return ret_val;
     }
 
@@ -194,7 +185,7 @@ uint16_t Ec_app::cyclic_task()
     ret_val |= monitor_master_status();
     if (ret_val == Ec_callback_status::FAILURE)
     {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master failed", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed-2", 1);
         return ret_val;
     }
 
