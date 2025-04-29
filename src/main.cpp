@@ -93,12 +93,13 @@ int main()
         ec_app.start();
         ret_val |= ec_app.config();
 
-        ec_app.is_running(ret_val);
+        ec_app.set_running_status(ret_val);
 
-        while (ec_app.is_running() == Ec_callback_status::SUCCESS)
+        while (ec_app.get_running_status() == Ec_callback_status::SUCCESS)
         {
-            ret_val = ec_app.cyclic_task();
-            ec_app.is_running(ret_val);
+            ret_val |= ec_app.cyclic_task();
+            ec_app.set_running_status(ret_val);
+
             usleep(1000000 / 1000);
         }
 

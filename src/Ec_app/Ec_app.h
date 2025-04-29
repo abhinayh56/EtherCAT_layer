@@ -22,8 +22,8 @@ public:
     uint16_t stop();
     uint16_t config();
     uint16_t cyclic_task();
-    uint16_t is_running();
-    void is_running(uint16_t run_status_);
+    uint16_t get_running_status();
+    void set_running_status(uint16_t run_status_);
     uint16_t get_num_slaves();
 
 private:

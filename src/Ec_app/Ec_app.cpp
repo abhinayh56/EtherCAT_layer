@@ -190,27 +190,27 @@ uint16_t Ec_app::cyclic_task()
     }
 
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
-    // monitor_slave_status();
-    transfer_tx_pdo();
-    process_tx_pdo();
-    publish_data();
-    subscribe_data();
-    main_process();
-    process_rx_pdo();
-    transfer_rx_pdo();
+    // ret_val |= monitor_slave_status();
+    ret_val |= transfer_tx_pdo();
+    ret_val |= process_tx_pdo();
+    ret_val |= publish_data();
+    ret_val |= subscribe_data();
+    ret_val |= main_process();
+    ret_val |= process_rx_pdo();
+    ret_val |= transfer_rx_pdo();
 #endif // CYCLIC_SLAVE_CALL_PARALLEL
 
 #ifdef CYCLIC_SLAVE_CALL_SEQUENTIAL
     for (int i = 0; i < num_slaves; i++)
     {
-        // slave_base_arr[i]->monitor_status();
-        slave_base_arr[i]->transfer_tx_pdo();
-        slave_base_arr[i]->process_tx_pdo();
-        slave_base_arr[i]->publish_data();
-        slave_base_arr[i]->subscribe_data();
-        slave_base_arr[i]->main_process();
-        slave_base_arr[i]->process_rx_pdo();
-        slave_base_arr[i]->transfer_rx_pdo();
+        // ret_val |= slave_base_arr[i]->monitor_status();
+        ret_val |= slave_base_arr[i]->transfer_tx_pdo();
+        ret_val |= slave_base_arr[i]->process_tx_pdo();
+        ret_val |= slave_base_arr[i]->publish_data();
+        ret_val |= slave_base_arr[i]->subscribe_data();
+        ret_val |= slave_base_arr[i]->main_process();
+        ret_val |= slave_base_arr[i]->process_rx_pdo();
+        ret_val |= slave_base_arr[i]->transfer_rx_pdo();
     }
 #endif // CYCLIC_SLAVE_CALL_SEQUENTIAL
 
@@ -228,12 +228,12 @@ uint16_t Ec_app::cyclic_task()
     return ret_val;
 }
 
-uint16_t Ec_app::is_running()
+uint16_t Ec_app::get_running_status()
 {
     return run_status;
 }
 
-void Ec_app::is_running(uint16_t run_status_)
+void Ec_app::set_running_status(uint16_t run_status_)
 {
     run_status = run_status_;
 }
