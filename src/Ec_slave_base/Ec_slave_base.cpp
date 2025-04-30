@@ -172,6 +172,18 @@ uint16_t Ec_slave_base::monitor_status()
     return ret_val;
 }
 
+bool Ec_slave_base::is_operational()
+{
+    if (sc_state.operational == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return true;
+    }
+}
+
 uint16_t Ec_slave_base::transfer_tx_pdo()
 {
     return Ec_callback_status::SUCCESS;

@@ -36,6 +36,8 @@ private:
     uint16_t num_slaves = 0;
     std::vector<Ec_slave_base *> slave_base_arr;
 
+    bool all_slaves_operational = false;
+
     uint16_t config_slaves_data_transfer();
     uint16_t create_domain();
     uint16_t set_slaves_info_from_eni();

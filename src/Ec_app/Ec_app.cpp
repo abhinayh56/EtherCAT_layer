@@ -437,6 +437,7 @@ uint16_t Ec_app::monitor_master_status()
 uint16_t Ec_app::monitor_slave_status()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
+    all_slaves_operational = true;
 
     for (int i = 0; i < num_slaves; i++)
     {
@@ -446,6 +447,13 @@ uint16_t Ec_app::monitor_slave_status()
             LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor slave failed for slave number ", 0);
             LOG_CONSOLE(slave_base_arr[i]->get_slave_address(), 1)
             return ret_val;
+        }
+
+        all_slaves_operational = (all_slaves_operational && slave_base_arr[i]->is_operational());
+        if (all_slaves_operational == false)
+        {
+            LOG_CONSOLE_SOURCE_WARNING(master_ns, "All slave not operational. Slave address: ", 0);
+            LOG_CONSOLE(slave_base_arr[i]->get_slave_address(), 1);
         }
     }
 

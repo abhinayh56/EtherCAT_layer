@@ -27,6 +27,8 @@ public:
     uint16_t set_domain(uint8_t *domain_i_pd_);
 
     uint16_t monitor_status();
+    bool is_operational();
+
     virtual uint16_t transfer_tx_pdo();
     virtual uint16_t transfer_rx_pdo();
     virtual uint16_t process_tx_pdo();
