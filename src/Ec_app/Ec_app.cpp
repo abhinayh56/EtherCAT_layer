@@ -344,13 +344,27 @@ uint16_t Ec_app::monitor_domain_i_status()
         return ret_val;
     }
 
-    // if (ds.working_counter != domain_i_state.working_counter)
+    if (ds.working_counter != domain_i_state.working_counter)
+    {
+        printf("Domain1: WC %u.\n", ds.working_counter);
+    }
+
+    if (ds.wc_state != domain_i_state.wc_state)
+    {
+        printf("Domain1: State %u.\n", ds.wc_state);
+    }
+
+    if (ds.wc_state == EC_WC_ZERO)
+    {
+        LOG_CONSOLE_SOURCE_WARNING(master_ns, "No registered process data were exchanged", 1);
+    }
+    else if (ds.wc_state == EC_WC_INCOMPLETE)
+    {
+        LOG_CONSOLE_SOURCE_WARNING(master_ns, "Some of the registered process data were exchanged", 1);
+    }
+    // else if (ds.wc_state == EC_WC_COMPLETE)
     // {
-    //     printf("Domain1: WC %u.\n", ds.working_counter);
-    // }
-    // if (ds.wc_state != domain_i_state.wc_state)
-    // {
-    //     printf("Domain1: State %u.\n", ds.wc_state);
+    //     LOG_CONSOLE_SOURCE_INFO(master_ns, "All registered process data were exchanged", 1);
     // }
 
     domain_i_state = ds;
