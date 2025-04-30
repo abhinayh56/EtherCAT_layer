@@ -13,7 +13,6 @@
 
 int main()
 {
-
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     Ec_master ec_master("EC_MASTER");
