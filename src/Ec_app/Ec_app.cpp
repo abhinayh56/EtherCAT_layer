@@ -235,29 +235,6 @@ uint16_t Ec_app::monitor_master_status()
     ec_master_state_t ms;
     ecrt_master_state(master, &ms);
 
-    if (ms.slaves_responding != master_state.slaves_responding)
-    {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Slaves responding: ", 0);
-        LOG_CONSOLE(ms.slaves_responding, 1);
-
-        if ((ms.slaves_responding >= num_slaves) || (ms.slaves_responding == 0))
-        {
-            ret_val |= Ec_callback_status::SUCCESS;
-        }
-        else
-        {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "All slaves not responding", 1);
-            ret_val |= Ec_callback_status::FAILURE;
-            return ret_val;
-        }
-    }
-
-    if (ms.al_states != master_state.al_states)
-    {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "AL state: ", 0);
-        LOG_CONSOLE(ms.al_states, 1);
-    }
-
     if (ms.link_up != master_state.link_up)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Link up status: ", 0);
@@ -268,10 +245,40 @@ uint16_t Ec_app::monitor_master_status()
         else
         {
             LOG_CONSOLE("down", 1);
-            ret_val |= Ec_callback_status::FAILURE;
-            return ret_val;
         }
     }
+
+    if (!ms.link_up)
+    {
+        ret_val |= Ec_callback_status::FAILURE;
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Link is down", 1);
+        return ret_val;
+    }
+
+    if (ms.slaves_responding != master_state.slaves_responding)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Slaves responding: ", 0);
+        LOG_CONSOLE(ms.slaves_responding, 1);
+    }
+
+    if (ms.slaves_responding < num_slaves)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "All slaves not responding", 1);
+        ret_val |= Ec_callback_status::FAILURE;
+        return ret_val;
+    }
+
+    if (ms.al_states != master_state.al_states)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "AL state: ", 0);
+        LOG_CONSOLE(ms.al_states, 1);
+    }
+    
+    // if (ms.al_states != EC_AL_STATE_OP)
+    // {
+    //     LOG_CONSOLE_SOURCE_INFO(master_ns, "AL state: ", 0);
+    //     LOG_CONSOLE(ms.al_states, 1);
+    // }
 
     master_state = ms;
 
