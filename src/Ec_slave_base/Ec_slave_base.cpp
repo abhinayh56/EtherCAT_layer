@@ -38,7 +38,7 @@ uint16_t Ec_slave_base::config_slave(ec_master_t *master)
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     sc = ecrt_master_slave_config(master, slave_info.alias, slave_info.position, slave_info.vendor_id, slave_info.product_code);
-    
+
     if (sc)
     {
         ret_val |= Ec_callback_status::SUCCESS;
@@ -103,6 +103,26 @@ uint16_t Ec_slave_base::monitor_status()
 
     ecrt_slave_config_state(sc, &s);
 
+    if (s.online != sc_state.online)
+    {
+        LOG_CONSOLE_SOURCE_INFO(slave_ns, "Online status: ", 0);
+        if (s.online)
+        {
+            LOG_CONSOLE("online", 1);
+        }
+        else
+        {
+            LOG_CONSOLE("offline", 1);
+        }
+    }
+
+    if (!s.online)
+    {
+        ret_val |= Ec_callback_status::FAILURE;
+        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave is offline. Slave address is ", 0);
+        LOG_CONSOLE(slave_address, 1);
+    }
+
     if (s.al_state != sc_state.al_state)
     {
         LOG_CONSOLE_SOURCE_INFO(slave_ns, "AL status: ", 0);
@@ -126,23 +146,6 @@ uint16_t Ec_slave_base::monitor_status()
         else
         {
             LOG_CONSOLE("UNKNOWN", 1);
-        }
-    }
-
-    if (s.online != sc_state.online)
-    {
-        LOG_CONSOLE_SOURCE_INFO(slave_ns, "Online status: ", 0);
-        if (s.online)
-        {
-            LOG_CONSOLE("online", 1);
-            ret_val |= Ec_callback_status::SUCCESS;
-        }
-        else
-        {
-            LOG_CONSOLE("offline", 1);
-            ret_val |= Ec_callback_status::FAILURE;
-            LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Slave is offline. Slave address is ", 0);
-            LOG_CONSOLE(slave_address, 1);
         }
     }
 
