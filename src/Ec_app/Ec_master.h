@@ -38,6 +38,7 @@ public:
 
     bool stop()
     {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
         int result = system("sudo /etc/init.d/ethercat stop");
         if (result == 0)
         {

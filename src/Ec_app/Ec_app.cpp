@@ -57,9 +57,10 @@ uint16_t Ec_app::stop()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping app...", 1);
     ecrt_release_master(master);
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "App stopped", 1);
 
     return ret_val;
 }
