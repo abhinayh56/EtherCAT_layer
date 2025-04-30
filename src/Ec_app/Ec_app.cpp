@@ -153,11 +153,7 @@ uint16_t Ec_app::cyclic_task()
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     // 1. Fetches received frames from the hardware and processes the datagrams
-    if (ecrt_master_receive(master) == 0)
-    {
-        ret_val |= Ec_callback_status::SUCCESS;
-    }
-    else
+    if (ecrt_master_receive(master) != 0)
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to receive frame from hardware", 1);
         ret_val |= Ec_callback_status::FAILURE;
@@ -165,11 +161,7 @@ uint16_t Ec_app::cyclic_task()
     }
 
     // 2. Determines the states of the domain's datagrams
-    if (ecrt_domain_process(domain_i) == 0)
-    {
-        ret_val |= Ec_callback_status::SUCCESS;
-    }
-    else
+    if (ecrt_domain_process(domain_i) != 0)
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to return result of last process data exchange", 1);
         ret_val |= Ec_callback_status::FAILURE;
@@ -310,24 +302,16 @@ uint16_t Ec_app::cyclic_task()
 #endif // CYCLIC_SLAVE_CALL_SEQUENTIAL
 
     // 11. Send process data
-    if (ecrt_domain_queue(domain_i) == 0)
-    {
-        ret_val |= Ec_callback_status::SUCCESS;
-    }
-    else
+    if (ecrt_domain_queue(domain_i) != 0)
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to queue all domain datagrams in the master's datagram queue", 1);
         ret_val |= Ec_callback_status::FAILURE;
         return ret_val;
     }
 
-    if (ecrt_master_send(master) == 0)
+    if (ecrt_master_send(master) != 0)
     {
-        ret_val |= Ec_callback_status::SUCCESS;
-    }
-    else
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to put al datagrams into frames and / or pass them to the Ethernet device for sending", 1);
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to put all datagrams into frames and / or pass them to the Ethernet device for sending", 1);
         ret_val |= Ec_callback_status::FAILURE;
         return ret_val;
     }
