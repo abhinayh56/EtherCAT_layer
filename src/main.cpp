@@ -78,17 +78,13 @@ int main()
             LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform configuration of EC_APP", 1);
         }
 
-        ec_app.set_running_status(ret_val);
-
-        while (ec_app.get_running_status() == Ec_callback_status::SUCCESS)
+        while (ret_val == Ec_callback_status::SUCCESS)
         {
             ret_val |= ec_app.cyclic_task();
             if (ret_val == Ec_callback_status::FAILURE)
             {
                 LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform cyclic task of EC_APP", 1);
             }
-
-            ec_app.set_running_status(ret_val);
 
             usleep(1000000 / 1000);
         }

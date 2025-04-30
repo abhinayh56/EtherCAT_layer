@@ -201,16 +201,6 @@ uint16_t Ec_app::cyclic_task()
     return ret_val;
 }
 
-uint16_t Ec_app::get_running_status()
-{
-    return run_status;
-}
-
-void Ec_app::set_running_status(uint16_t run_status_)
-{
-    run_status = run_status_;
-}
-
 uint16_t Ec_app::get_num_slaves()
 {
     return num_slaves;

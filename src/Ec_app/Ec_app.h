@@ -21,8 +21,6 @@ public:
     uint16_t stop();
     uint16_t config();
     uint16_t cyclic_task();
-    uint16_t get_running_status();
-    void set_running_status(uint16_t run_status_);
     uint16_t get_num_slaves();
 
 private:
@@ -34,7 +32,6 @@ private:
     ec_domain_state_t domain_i_state = {};
 
     uint8_t *domain_i_pd = nullptr;
-    uint16_t run_status = Ec_run_status::FALSE;
 
     uint16_t num_slaves = 0;
     std::vector<Ec_slave_base *> slave_base_arr;
