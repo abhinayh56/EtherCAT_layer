@@ -40,7 +40,6 @@ private:
     std::vector<Ec_slave_base *> slave_base_arr;
 
     uint16_t create_instance();
-    uint16_t deactivate();
     uint16_t config_slaves_data_transfer();
     uint16_t create_domain();
     uint16_t set_slaves_info_from_eni();

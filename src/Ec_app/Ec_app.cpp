@@ -42,24 +42,13 @@ uint16_t Ec_app::start()
     return ret_val;
 }
 
-uint16_t Ec_app::deactivate()
-{
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
-    ecrt_release_master(master);
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
-
-    return Ec_callback_status::SUCCESS;
-}
-
 uint16_t Ec_app::stop()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
-    ret_val |= deactivate();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to deactivate master", 1);
-    }
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping master...", 1);
+    ecrt_release_master(master);
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
 
     return ret_val;
 }
