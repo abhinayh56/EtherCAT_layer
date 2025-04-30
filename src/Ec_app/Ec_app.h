@@ -37,6 +37,8 @@ private:
     std::vector<Ec_slave_base *> slave_base_arr;
 
     bool all_slaves_operational = false;
+    bool process_data_exchange_complete = false;
+    uint32_t num_process_data_exchange_error = 0;
 
     uint16_t config_slaves_data_transfer();
     uint16_t create_domain();
@@ -50,6 +52,9 @@ private:
     uint16_t monitor_master_status();
     uint16_t monitor_domain_i_status();
     uint16_t monitor_slave_status();
+    uint16_t is_process_data_exchange_complete();
+    uint16_t is_all_slaves_operational();
+    uint16_t get_num_process_data_exchange_error();
 
     uint16_t transfer_tx_pdo();
     uint16_t process_tx_pdo();

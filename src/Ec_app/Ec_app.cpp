@@ -189,118 +189,120 @@ uint16_t Ec_app::cyclic_task()
 
     ret_val |= ret_val_monitor;
 
+    if (process_data_exchange_complete)
+    {
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
-    ret_val |= transfer_tx_pdo();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer tx_pdo", 1);
-        return ret_val;
-    }
+        ret_val |= transfer_tx_pdo();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer tx_pdo", 1);
+            return ret_val;
+        }
 
-    ret_val |= process_tx_pdo();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to process tx_pdo", 1);
-        return ret_val;
-    }
+        ret_val |= process_tx_pdo();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to process tx_pdo", 1);
+            return ret_val;
+        }
 
-    ret_val |= publish_data();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to publish data", 1);
-        return ret_val;
-    }
+        ret_val |= publish_data();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to publish data", 1);
+            return ret_val;
+        }
 
-    ret_val |= subscribe_data();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to subscribe data", 1);
-        return ret_val;
-    }
+        ret_val |= subscribe_data();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to subscribe data", 1);
+            return ret_val;
+        }
 
-    ret_val |= main_process();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to run main process", 1);
-        return ret_val;
-    }
+        ret_val |= main_process();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to run main process", 1);
+            return ret_val;
+        }
 
-    ret_val |= process_rx_pdo();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to process rx_pdo", 1);
-        return ret_val;
-    }
+        ret_val |= process_rx_pdo();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to process rx_pdo", 1);
+            return ret_val;
+        }
 
-    ret_val |= transfer_rx_pdo();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer rx_pdo", 1);
-        return ret_val;
-    }
+        ret_val |= transfer_rx_pdo();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer rx_pdo", 1);
+            return ret_val;
+        }
 #endif // CYCLIC_SLAVE_CALL_PARALLEL
 
 #ifdef CYCLIC_SLAVE_CALL_SEQUENTIAL
-    for (int i = 0; i < num_slaves; i++)
-    {
-        ret_val |= slave_base_arr[i]->transfer_tx_pdo();
-        if (ret_val == Ec_callback_status::FAILURE)
+        for (int i = 0; i < num_slaves; i++)
         {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer tx_pdo of slave address ", 0);
-            LOG_CONSOLE(i + 1, 1);
-            return ret_val;
-        }
+            ret_val |= slave_base_arr[i]->transfer_tx_pdo();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer tx_pdo of slave address ", 0);
+                LOG_CONSOLE(i + 1, 1);
+                return ret_val;
+            }
 
-        ret_val |= slave_base_arr[i]->process_tx_pdo();
-        if (ret_val == Ec_callback_status::FAILURE)
-        {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to process tx_pdo of slave address ", 0);
-            LOG_CONSOLE(i + 1, 1);
-            return ret_val;
-        }
+            ret_val |= slave_base_arr[i]->process_tx_pdo();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to process tx_pdo of slave address ", 0);
+                LOG_CONSOLE(i + 1, 1);
+                return ret_val;
+            }
 
-        ret_val |= slave_base_arr[i]->publish_data();
-        if (ret_val == Ec_callback_status::FAILURE)
-        {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to publish data of slave address ", 0);
-            LOG_CONSOLE(i + 1, 1);
-            return ret_val;
-        }
+            ret_val |= slave_base_arr[i]->publish_data();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to publish data of slave address ", 0);
+                LOG_CONSOLE(i + 1, 1);
+                return ret_val;
+            }
 
-        ret_val |= slave_base_arr[i]->subscribe_data();
-        if (ret_val == Ec_callback_status::FAILURE)
-        {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to subscribe data of slave address ", 0);
-            LOG_CONSOLE(i + 1, 1);
-            return ret_val;
-        }
+            ret_val |= slave_base_arr[i]->subscribe_data();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to subscribe data of slave address ", 0);
+                LOG_CONSOLE(i + 1, 1);
+                return ret_val;
+            }
 
-        ret_val |= slave_base_arr[i]->main_process();
-        if (ret_val == Ec_callback_status::FAILURE)
-        {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to run main of slave address ", 0);
-            LOG_CONSOLE(i + 1, 1);
-            return ret_val;
-        }
+            ret_val |= slave_base_arr[i]->main_process();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to run main of slave address ", 0);
+                LOG_CONSOLE(i + 1, 1);
+                return ret_val;
+            }
 
-        ret_val |= slave_base_arr[i]->process_rx_pdo();
-        if (ret_val == Ec_callback_status::FAILURE)
-        {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to process rx_pdo of slave address ", 0);
-            LOG_CONSOLE(i + 1, 1);
-            return ret_val;
-        }
+            ret_val |= slave_base_arr[i]->process_rx_pdo();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to process rx_pdo of slave address ", 0);
+                LOG_CONSOLE(i + 1, 1);
+                return ret_val;
+            }
 
-        ret_val |= slave_base_arr[i]->transfer_rx_pdo();
-        if (ret_val == Ec_callback_status::FAILURE)
-        {
-            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer rx_pdo of slave address ", 0);
-            LOG_CONSOLE(i + 1, 1);
-            return ret_val;
+            ret_val |= slave_base_arr[i]->transfer_rx_pdo();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer rx_pdo of slave address ", 0);
+                LOG_CONSOLE(i + 1, 1);
+                return ret_val;
+            }
         }
-    }
 #endif // CYCLIC_SLAVE_CALL_SEQUENTIAL
-
+    }
     // 11. Send process data
     if (ecrt_domain_queue(domain_i) != 0)
     {
@@ -367,6 +369,16 @@ uint16_t Ec_app::monitor_domain_i_status()
     //     LOG_CONSOLE_SOURCE_INFO(master_ns, "All registered process data were exchanged", 1);
     // }
 
+    if (ds.wc_state != EC_WC_COMPLETE)
+    {
+        process_data_exchange_complete = false;
+        num_process_data_exchange_error++;
+    }
+    else
+    {
+        process_data_exchange_complete = true;
+    }
+
     domain_i_state = ds;
 
     return ret_val;
@@ -422,12 +434,6 @@ uint16_t Ec_app::monitor_master_status()
         LOG_CONSOLE_SOURCE_INFO(master_ns, "AL state: ", 0);
         LOG_CONSOLE(ms.al_states, 1);
     }
-
-    // if (ms.al_states != EC_AL_STATE_OP)
-    // {
-    //     LOG_CONSOLE_SOURCE_INFO(master_ns, "AL state: ", 0);
-    //     LOG_CONSOLE(ms.al_states, 1);
-    // }
 
     master_state = ms;
 
