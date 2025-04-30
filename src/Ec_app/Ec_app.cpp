@@ -303,6 +303,12 @@ uint16_t Ec_app::cyclic_task()
         }
 #endif // CYCLIC_SLAVE_CALL_SEQUENTIAL
     }
+    else
+    {
+        LOG_CONSOLE_SOURCE_WARNING(master_ns, "num_process_data_exchange_error: ", 0);
+        LOG_CONSOLE(num_process_data_exchange_error, 1);
+    }
+    
     // 11. Send process data
     if (ecrt_domain_queue(domain_i) != 0)
     {
