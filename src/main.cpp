@@ -106,7 +106,7 @@ int main()
         }
 
         num_retries++;
-        LOG_CONSOLE_SOURCE_INFO("MAIN", "Retrying to initiate the program", 1);
+        LOG_CONSOLE_SOURCE_INFO("MAIN", "Retrying to initiate the program...", 1);
         usleep(500000);
     }
 
