@@ -72,20 +72,18 @@ uint16_t Ec_slave_base::set_pdo()
 
 uint16_t Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
 {
-    uint16_t ret_val = Ec_callback_status::SUCCESS;
-
     if (ecrt_domain_reg_pdo_entry_list(domain_i, domain_i_regs))
     {
-        ret_val |= Ec_callback_status::FAILURE;
-        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "PDO entry registration failed", 1);
+        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "PDO entry registration failed for slave address ", 0);
+        LOG_CONSOLE(slave_address, 1);
+        return Ec_callback_status::FAILURE;
     }
     else
     {
-        ret_val |= Ec_callback_status::SUCCESS;
-        LOG_CONSOLE_SOURCE_INFO(slave_ns, "PDO entry registration successful", 1);
+        LOG_CONSOLE_SOURCE_INFO(slave_ns, "PDO entry registration successful for slave address ", 0);
+        LOG_CONSOLE(slave_address, 1);
+        return Ec_callback_status::SUCCESS;
     }
-
-    return ret_val;
 }
 
 uint16_t Ec_slave_base::set_domain(uint8_t *domain_i_pd_)
