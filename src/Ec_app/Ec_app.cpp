@@ -337,7 +337,12 @@ uint16_t Ec_app::monitor_domain_i_status()
 
     ec_domain_state_t ds;
 
-    ecrt_domain_state(domain_i, &ds);
+    if (ecrt_domain_state(domain_i, &ds) != 0)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to monitor process data exchange", 1);
+        ret_val |= Ec_callback_status::FAILURE;
+        return ret_val;
+    }
 
     // if (ds.working_counter != domain_i_state.working_counter)
     // {
@@ -358,7 +363,12 @@ uint16_t Ec_app::monitor_master_status()
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
     ec_master_state_t ms;
-    ecrt_master_state(master, &ms);
+    if (ecrt_master_state(master, &ms) != 0)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to monitor master state", 1);
+        ret_val |= Ec_callback_status::FAILURE;
+        return ret_val;
+    }
 
     if (ms.link_up != master_state.link_up)
     {

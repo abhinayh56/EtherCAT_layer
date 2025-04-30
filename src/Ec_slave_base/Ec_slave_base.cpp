@@ -99,7 +99,12 @@ uint16_t Ec_slave_base::monitor_status()
 
     ec_slave_config_state_t s;
 
-    ecrt_slave_config_state(sc, &s);
+    if (ecrt_slave_config_state(sc, &s) != 0)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "Failed to monitor slave state of address", 0);
+        LOG_CONSOLE(slave_address, 1);
+        return Ec_callback_status::FAILURE;
+    }
 
     if (s.online != sc_state.online)
     {
