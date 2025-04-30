@@ -59,45 +59,56 @@ int main()
 
     usleep(2000000);
 
-    if (!ec_master.is_running())
+    uint64_t max_retries = 10000000000;
+    uint64_t num_retries = 0;
+
+    while (num_retries < max_retries)
     {
-        ec_master.start();
-        usleep(5000000);
 
-        ret_val |= ec_app.start();
-        if (ret_val == Ec_callback_status::FAILURE)
+        if (!ec_master.is_running())
         {
-            LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to start EC_APP", 1);
-            return ret_val;
-        }
+            ec_master.start();
+            usleep(5000000);
 
-        ret_val |= ec_app.config();
-        if (ret_val == Ec_callback_status::FAILURE)
-        {
-            LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform configuration of EC_APP", 1);
-        }
-        else
-        {
-            while (ret_val == Ec_callback_status::SUCCESS)
+            ret_val |= ec_app.start();
+            if (ret_val == Ec_callback_status::FAILURE)
             {
-                ret_val |= ec_app.cyclic_task();
-                if (ret_val == Ec_callback_status::FAILURE)
-                {
-                    LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform cyclic task of EC_APP", 1);
-                    break;
-                }
-
-                usleep(1000000 / 1000);
+                LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to start EC_APP", 1);
+                return ret_val;
             }
+
+            ret_val |= ec_app.config();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform configuration of EC_APP", 1);
+            }
+            else
+            {
+                while (ret_val == Ec_callback_status::SUCCESS)
+                {
+                    ret_val |= ec_app.cyclic_task();
+                    if (ret_val == Ec_callback_status::FAILURE)
+                    {
+                        LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform cyclic task of EC_APP", 1);
+                        break;
+                    }
+
+                    usleep(1000000 / 1000);
+                }
+            }
+
+            ret_val = ec_app.stop();
+            if (ret_val == Ec_callback_status::FAILURE)
+            {
+                LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to stop EC_APP", 1);
+            }
+
+            ec_master.stop();
         }
 
-        ret_val = ec_app.stop();
-        if (ret_val == Ec_callback_status::FAILURE)
-        {
-            LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to stop EC_APP", 1);
-        }
-
-        ec_master.stop();
+        num_retries++;
+        std::cout << "retrying------------------------------------------->\n";
+        usleep(1000000);
     }
 
     return 0;
