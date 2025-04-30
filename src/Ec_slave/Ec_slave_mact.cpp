@@ -108,6 +108,7 @@ uint16_t Ec_slave_mact::main_process()
     }
     else
     {
+        enable();
         // std::cout << ", " << "outside enable" << std::endl;
         mode_of_operation = 8;
         double A = 8192.0;
