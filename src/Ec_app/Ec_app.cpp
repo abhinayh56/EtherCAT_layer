@@ -354,14 +354,19 @@ uint16_t Ec_app::monitor_domain_i_status()
     //     printf("Domain1: State %u.\n", ds.wc_state);
     // }
 
-    // if (ds.wc_state == EC_WC_ZERO)
+    // if (ds.redundancy_active != domain_i_state.redundancy_active)
     // {
-    //     LOG_CONSOLE_SOURCE_WARNING(master_ns, "No registered process data were exchanged", 1);
+    //     printf("Domain1: Redundancy %u.\n", ds.redundancy_active);
     // }
-    // else if (ds.wc_state == EC_WC_INCOMPLETE)
-    // {
-    //     LOG_CONSOLE_SOURCE_WARNING(master_ns, "Some of the registered process data were exchanged", 1);
-    // }
+
+    if (ds.wc_state == EC_WC_ZERO)
+    {
+        LOG_CONSOLE_SOURCE_WARNING(master_ns, "No registered process data were exchanged", 1);
+    }
+    else if (ds.wc_state == EC_WC_INCOMPLETE)
+    {
+        LOG_CONSOLE_SOURCE_WARNING(master_ns, "Some of the registered process data were exchanged", 1);
+    }
     // else if (ds.wc_state == EC_WC_COMPLETE)
     // {
     //     LOG_CONSOLE_SOURCE_INFO(master_ns, "All registered process data were exchanged", 1);
