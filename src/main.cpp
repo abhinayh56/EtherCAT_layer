@@ -91,7 +91,7 @@ int main()
                             break;
                         }
 
-                        usleep(1000000 / 250);
+                        usleep(1000000 / 400);
                     }
                 }
 
