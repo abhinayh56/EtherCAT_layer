@@ -87,7 +87,11 @@ uint16_t Ec_slave_ingenia::main_process()
 {
     t_stamp += 2;
 
-    if (t_stamp <= 10000)
+    if (t_stamp <= 3000)
+    {
+        mode_of_operation = 8;
+    }
+    if ((t_stamp>3000) && (t_stamp <= 10000))
     {
         mode_of_operation = 10;
         enable();
@@ -96,10 +100,10 @@ uint16_t Ec_slave_ingenia::main_process()
     {
         enable();
         double A = 200000.0;
-        double T = 10.0;
+        double T = 5.0;
         double f = 1.0 / T;
         double w = 2.0 * 3.1417 * f;
-        double t = ((double)t_stamp - 15000.0) * 0.001;
+        double t = ((double)t_stamp - 10000.0) * 0.001;
         target_position = A * std::sin(w * t);
     }
 
