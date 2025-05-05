@@ -34,14 +34,14 @@ public:
     uint64_t current_time_d();
 
 private:
-    uint64_t cycle_time_ns = 0;
-    uint64_t t_now_ns = 0;
-    uint64_t t_now_us = 0;
-    uint64_t t_now_ms = 0;
-    uint64_t t_now_s = 0;
-    uint64_t t_now_m = 0;
-    uint64_t t_now_h = 0;
-    uint64_t t_now_d = 0;
+    uint64_t cycle_time_ns;
+    static uint64_t t_now_ns;
+    static uint64_t t_now_us;
+    static uint64_t t_now_ms;
+    static uint64_t t_now_s;
+    static uint64_t t_now_m;
+    static uint64_t t_now_h;
+    static uint64_t t_now_d;
 };
 
 #endif // EC_TIME_H
