@@ -52,7 +52,7 @@ void Ec_time::reset()
 
 void Ec_time::update()
 {
-    t_now_ns = cycle_time_ns;
+    t_now_ns += cycle_time_ns;
     t_now_us = t_now_ns / 1000;
     t_now_ms = t_now_ns / 1000000;
     t_now_s = t_now_ns / 1000000000;
