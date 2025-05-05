@@ -62,3 +62,13 @@ uint16_t Ec_slave_base_digital_in::main_process()
 {
     return Ec_callback_status::SUCCESS;
 }
+
+uint16_t Ec_slave_base_digital_in::reset()
+{
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_base_digital_in::init()
+{
+    return Ec_callback_status::SUCCESS;
+}

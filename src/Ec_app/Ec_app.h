@@ -63,6 +63,9 @@ private:
     uint16_t main_process();
     uint16_t process_rx_pdo();
     uint16_t transfer_rx_pdo();
+
+    uint16_t reset();
+    uint16_t init();
 };
 
 #endif // EC_APP_H

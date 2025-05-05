@@ -57,6 +57,17 @@ uint16_t Ec_app::stop()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Executing reset function of all slaves...", 1);
+    ret_val |= reset();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to execute reset function of all slaves", 1);
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Reset function of all slaves executed successfully", 1);
+    }
+
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping app...", 1);
     ecrt_release_master(master);
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Master released", 1);
@@ -144,6 +155,17 @@ uint16_t Ec_app::config()
     }
 
     ret_val |= ret_val_monitor;
+
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Executing init function of all slaves...", 1);
+    ret_val |= init();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to execute init function of all slaves", 1);
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Init function of all slaves executed successfully", 1);
+    }
 
     return ret_val;
 }
@@ -742,6 +764,42 @@ uint16_t Ec_app::transfer_rx_pdo()
         if (ret_val == Ec_callback_status::FAILURE)
         {
             LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to transfer rx_pdo of slave address ", 0);
+            LOG_CONSOLE(i + 1, 1);
+            return ret_val;
+        }
+    }
+
+    return ret_val;
+}
+
+uint16_t Ec_app::reset()
+{
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
+    for (int i = 0; i < num_slaves; i++)
+    {
+        ret_val |= slave_base_arr[i]->reset();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to execute reset function of slave address ", 0);
+            LOG_CONSOLE(i + 1, 1);
+            return ret_val;
+        }
+    }
+
+    return ret_val;
+}
+
+uint16_t Ec_app::init()
+{
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
+    for (int i = 0; i < num_slaves; i++)
+    {
+        ret_val |= slave_base_arr[i]->init();
+        if (ret_val == Ec_callback_status::FAILURE)
+        {
+            LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to execute initialization function of slave address ", 0);
             LOG_CONSOLE(i + 1, 1);
             return ret_val;
         }

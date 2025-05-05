@@ -62,3 +62,13 @@ uint16_t Ec_slave_base_rs232::main_process()
 {
     return Ec_callback_status::SUCCESS;
 }
+
+uint16_t Ec_slave_base_rs232::reset()
+{
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_base_rs232::init()
+{
+    return Ec_callback_status::SUCCESS;
+}

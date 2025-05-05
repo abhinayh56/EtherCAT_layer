@@ -62,3 +62,13 @@ uint16_t Ec_slave_base_coupler::main_process()
 {
     return Ec_callback_status::SUCCESS;
 }
+
+uint16_t Ec_slave_base_coupler::reset()
+{
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_base_coupler::init()
+{
+    return Ec_callback_status::SUCCESS;
+}

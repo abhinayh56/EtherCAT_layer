@@ -223,3 +223,13 @@ uint16_t Ec_slave_base::main_process()
 {
     return Ec_callback_status::SUCCESS;
 }
+
+uint16_t Ec_slave_base::reset()
+{
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_base::init()
+{
+    return Ec_callback_status::SUCCESS;
+}

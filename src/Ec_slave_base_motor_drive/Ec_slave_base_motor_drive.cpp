@@ -58,7 +58,17 @@ uint16_t Ec_slave_base_motor_drive::main_process()
     return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::init()
+uint16_t Ec_slave_base_motor_drive::reset()
+{
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_base_motor_drive::init()
+{
+    return Ec_callback_status::SUCCESS;
+}
+
+void Ec_slave_base_motor_drive::init_motor_drive()
 {
 }
 

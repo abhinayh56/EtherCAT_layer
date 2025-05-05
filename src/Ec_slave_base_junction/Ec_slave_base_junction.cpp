@@ -62,3 +62,13 @@ uint16_t Ec_slave_base_junction::main_process()
 {
     return Ec_callback_status::SUCCESS;
 }
+
+uint16_t Ec_slave_base_junction::reset()
+{
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_base_junction::init()
+{
+    return Ec_callback_status::SUCCESS;
+}

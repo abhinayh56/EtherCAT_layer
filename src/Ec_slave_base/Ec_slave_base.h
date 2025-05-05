@@ -39,6 +39,8 @@ public:
     virtual uint16_t subscribe_data();
 
     virtual uint16_t main_process();
+    virtual uint16_t reset();
+    virtual uint16_t init();
 
 protected:
     std::string slave_ns;
