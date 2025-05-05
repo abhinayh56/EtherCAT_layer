@@ -9,4 +9,5 @@ add_subdirectory(
     Ec_slave_base_rs232
     Ec_slave_base_coupler
     Ec_slave_base_junction
+    Ec_time
     )

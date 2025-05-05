@@ -1,0 +1,2 @@
+/usr/bin/ar qc libEc_time.a CMakeFiles/Ec_time.dir/Ec_time.cpp.o
+/usr/bin/ranlib libEc_time.a

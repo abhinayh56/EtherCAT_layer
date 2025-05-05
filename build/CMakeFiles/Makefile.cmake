@@ -20,6 +20,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_junction/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_motor_drive/CMakeLists.txt"
   "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_rs232/CMakeLists.txt"
+  "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_time/CMakeLists.txt"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake"
@@ -56,6 +57,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/Ec_slave_base_rs232/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave_base_coupler/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Ec_slave_base_junction/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Ec_time/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -70,4 +72,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/DependInfo.cmake"
   "src/Ec_slave_base_coupler/CMakeFiles/Ec_slave_base_coupler.dir/DependInfo.cmake"
   "src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/DependInfo.cmake"
+  "src/Ec_time/CMakeFiles/Ec_time.dir/DependInfo.cmake"
   )

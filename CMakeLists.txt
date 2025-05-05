@@ -22,6 +22,7 @@ add_subdirectory(src/Ec_slave_base_analog_in)
 add_subdirectory(src/Ec_slave_base_rs232)
 add_subdirectory(src/Ec_slave_base_coupler)
 add_subdirectory(src/Ec_slave_base_junction)
+add_subdirectory(src/Ec_time)
 
 # Main executable
 add_executable(${PROJECT_NAME} src/main.cpp)
@@ -38,6 +39,7 @@ target_link_libraries(${PROJECT_NAME}
     Ec_slave_base_rs232
     Ec_slave_base_coupler
     Ec_slave_base_junction
+    Ec_time
     )
 
 # Installation targets

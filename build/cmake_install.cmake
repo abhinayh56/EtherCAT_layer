@@ -92,6 +92,11 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_slave_base_junction/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/src/Ec_time/cmake_install.cmake")
+endif()
+
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ethercat_layer" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ethercat_layer")

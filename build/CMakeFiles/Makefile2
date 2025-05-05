@@ -74,6 +74,7 @@ all: src/Ec_slave_base_analog_in/all
 all: src/Ec_slave_base_rs232/all
 all: src/Ec_slave_base_coupler/all
 all: src/Ec_slave_base_junction/all
+all: src/Ec_time/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -87,6 +88,7 @@ preinstall: src/Ec_slave_base_analog_in/preinstall
 preinstall: src/Ec_slave_base_rs232/preinstall
 preinstall: src/Ec_slave_base_coupler/preinstall
 preinstall: src/Ec_slave_base_junction/preinstall
+preinstall: src/Ec_time/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -101,6 +103,7 @@ clean: src/Ec_slave_base_analog_in/clean
 clean: src/Ec_slave_base_rs232/clean
 clean: src/Ec_slave_base_coupler/clean
 clean: src/Ec_slave_base_junction/clean
+clean: src/Ec_time/clean
 .PHONY : clean
 
 #=============================================================================
@@ -254,6 +257,21 @@ src/Ec_slave_base_rs232/clean: src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_
 .PHONY : src/Ec_slave_base_rs232/clean
 
 #=============================================================================
+# Directory level rules for directory src/Ec_time
+
+# Recursive "all" directory target.
+src/Ec_time/all: src/Ec_time/CMakeFiles/Ec_time.dir/all
+.PHONY : src/Ec_time/all
+
+# Recursive "preinstall" directory target.
+src/Ec_time/preinstall:
+.PHONY : src/Ec_time/preinstall
+
+# Recursive "clean" directory target.
+src/Ec_time/clean: src/Ec_time/CMakeFiles/Ec_time.dir/clean
+.PHONY : src/Ec_time/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ethercat_layer.dir
 
 # All Build rule for target.
@@ -266,14 +284,15 @@ CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_analog_in/CMakeFiles/Ec_sla
 CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_rs232/CMakeFiles/Ec_slave_base_rs232.dir/all
 CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_coupler/CMakeFiles/Ec_slave_base_coupler.dir/all
 CMakeFiles/ethercat_layer.dir/all: src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/all
+CMakeFiles/ethercat_layer.dir/all: src/Ec_time/CMakeFiles/Ec_time.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ethercat_layer.dir/build.make CMakeFiles/ethercat_layer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=26,27 "Built target ethercat_layer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=28,29 "Built target ethercat_layer"
 .PHONY : CMakeFiles/ethercat_layer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ethercat_layer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 27
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 29
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ethercat_layer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
 .PHONY : CMakeFiles/ethercat_layer.dir/rule
@@ -520,6 +539,32 @@ Ec_slave_base_junction: src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junc
 src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/build.make src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/clean
 .PHONY : src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/clean
+
+#=============================================================================
+# Target rules for target src/Ec_time/CMakeFiles/Ec_time.dir
+
+# All Build rule for target.
+src/Ec_time/CMakeFiles/Ec_time.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/Ec_time/CMakeFiles/Ec_time.dir/build.make src/Ec_time/CMakeFiles/Ec_time.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/Ec_time/CMakeFiles/Ec_time.dir/build.make src/Ec_time/CMakeFiles/Ec_time.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles --progress-num=26,27 "Built target Ec_time"
+.PHONY : src/Ec_time/CMakeFiles/Ec_time.dir/all
+
+# Build rule for subdir invocation for target.
+src/Ec_time/CMakeFiles/Ec_time.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/Ec_time/CMakeFiles/Ec_time.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/build/CMakeFiles 0
+.PHONY : src/Ec_time/CMakeFiles/Ec_time.dir/rule
+
+# Convenience name for target.
+Ec_time: src/Ec_time/CMakeFiles/Ec_time.dir/rule
+.PHONY : Ec_time
+
+# clean rule for target.
+src/Ec_time/CMakeFiles/Ec_time.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/Ec_time/CMakeFiles/Ec_time.dir/build.make src/Ec_time/CMakeFiles/Ec_time.dir/clean
+.PHONY : src/Ec_time/CMakeFiles/Ec_time.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

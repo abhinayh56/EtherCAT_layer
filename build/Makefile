@@ -291,6 +291,19 @@ Ec_slave_base_junction/fast:
 	$(MAKE) $(MAKESILENT) -f src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/build.make src/Ec_slave_base_junction/CMakeFiles/Ec_slave_base_junction.dir/build
 .PHONY : Ec_slave_base_junction/fast
 
+#=============================================================================
+# Target rules for targets named Ec_time
+
+# Build rule for target.
+Ec_time: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Ec_time
+.PHONY : Ec_time
+
+# fast build rule for target.
+Ec_time/fast:
+	$(MAKE) $(MAKESILENT) -f src/Ec_time/CMakeFiles/Ec_time.dir/build.make src/Ec_time/CMakeFiles/Ec_time.dir/build
+.PHONY : Ec_time/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -336,6 +349,7 @@ help:
 	@echo "... Ec_slave_base_junction"
 	@echo "... Ec_slave_base_motor_drive"
 	@echo "... Ec_slave_base_rs232"
+	@echo "... Ec_time"
 	@echo "... ethercat_layer"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
