@@ -23,11 +23,8 @@ public:
 private:
     #include "Ec_slave_ek_1122_info.h"
 
-    unsigned int off_1;
     ec_pdo_entry_reg_t domain_regs[1] = {
         {}};
-    
-    unsigned long time_stamp = 0;
 };
 
 #endif // EC_SLAVE_EK_1122_H

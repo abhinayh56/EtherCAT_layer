@@ -33,12 +33,6 @@ uint16_t Ec_slave_ek_1122::set_pdo()
 
 uint16_t Ec_slave_ek_1122::transfer_tx_pdo()
 {
-    time_stamp += 4;
-    if (time_stamp >= 2000)
-    {
-        time_stamp = 0;
-    }
-
     return Ec_callback_status::SUCCESS;
 }
 

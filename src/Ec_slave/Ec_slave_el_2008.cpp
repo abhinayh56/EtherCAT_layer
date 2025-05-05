@@ -38,7 +38,7 @@ uint16_t Ec_slave_el_2008::transfer_tx_pdo()
 
 uint16_t Ec_slave_el_2008::transfer_rx_pdo()
 {
-    time_stamp += 2;
+    time_stamp += 1;
     if (time_stamp >= 2000)
     {
         time_stamp = 0;
