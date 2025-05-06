@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <vector>
 
-
 struct Way_point
 {
     double th_1 = 0;
