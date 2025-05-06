@@ -68,20 +68,28 @@ uint16_t Ec_slave_base_motor_drive::init()
     return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::init_motor_drive()
+uint16_t Ec_slave_base_motor_drive::init_motor_drive()
 {
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::stop()
+uint16_t Ec_slave_base_motor_drive::stop()
 {
-    disable();
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
+    ret_val |= disable();
+
+    return ret_val;
 }
 
-void Ec_slave_base_motor_drive::enable()
+uint16_t Ec_slave_base_motor_drive::enable()
 {
+    uint16_t ret_val = Ec_callback_status::IN_PROGRESS;
+
     // std::cout << "enable called " ;
     if (current_status == Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
     {
+        ret_val = Ec_callback_status::IN_PROGRESS;
         // std::cout << ",  NOT_READY_TO_SWITCH_ON " << std::endl;
         // transition 1
     }
@@ -90,23 +98,27 @@ void Ec_slave_base_motor_drive::enable()
         // std::cout << ",  SWITCH_ON_DISABLED " << std::endl;
         // transition 2
         control_word = Object::Control_word::Bit_flags::SHUTDOWN;
+        ret_val = Ec_callback_status::IN_PROGRESS;
     }
     else if (current_status == Object::Status_word::Bit_flags::READY_TO_SWITCH_ON)
     {
         // std::cout << ",  READY_TO_SWITCH_ON " << std::endl;
         // transition 3
         control_word = Object::Control_word::Bit_flags::SWITCH_ON;
+        ret_val = Ec_callback_status::IN_PROGRESS;
     }
     else if (current_status == Object::Status_word::Bit_flags::SWITCHED_ON)
     {
         // std::cout << ",  SWITCHED_ON " << std::endl;
         // transition 4
         control_word = Object::Control_word::Bit_flags::ENABLE_OPERATION;
+        ret_val = Ec_callback_status::IN_PROGRESS;
     }
     else if (current_status == Object::Status_word::Bit_flags::OPERATION_ENABLED)
     {
         // std::cout << ",  OPERATION_ENABLED " << std::endl;
         enable_status = Motor_drive::Enable_status::ENABLE;
+        ret_val = Ec_callback_status::SUCCESS;
     }
     else if (current_status == Object::Status_word::Bit_flags::QUICK_STOP_ACTIVE)
     {
@@ -114,27 +126,38 @@ void Ec_slave_base_motor_drive::enable()
         // transition 16 or 12
         // control_word = Object::Control_word::Bit_flags::ENABLE_OPERATION;
         control_word = Object::Control_word::Bit_flags::DISABLE_VOLTAGE;
+        ret_val = Ec_callback_status::IN_PROGRESS;
     }
     else if (current_status == Object::Status_word::Bit_flags::FAULT_REACTION_ACTIVE)
     {
         // std::cout << ",  FAULT_REACTION_ACTIVE " << std::endl;
         // transition 14
+        ret_val = Ec_callback_status::IN_PROGRESS;
     }
     else if (current_status == Object::Status_word::Bit_flags::FAULT)
     {
         // std::cout << ",  FAULT " << std::endl;
         // transition 15
         control_word = Object::Control_word::Bit_flags::FAULT_RESET;
+        ret_val = Ec_callback_status::FAILURE;
     }
+
+    return ret_val;
 }
 
-void Ec_slave_base_motor_drive::disable()
+uint16_t Ec_slave_base_motor_drive::disable()
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
     control_word = Object::Control_word::Bit_flags::DISABLE_VOLTAGE;
+    
+    return Ec_callback_status::SUCCESS;
 }
 
-void Ec_slave_base_motor_drive::set_operating_mode(Motor_drive::OP_mode mode_)
+uint16_t Ec_slave_base_motor_drive::set_operating_mode(Motor_drive::OP_mode mode_)
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
     if (mode_ == Motor_drive::OP_mode::POSITION)
     {
         mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_POSITION_MODE;
@@ -151,10 +174,14 @@ void Ec_slave_base_motor_drive::set_operating_mode(Motor_drive::OP_mode mode_)
     {
         mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
     }
+
+    return ret_val;
 }
 
-void Ec_slave_base_motor_drive::check_status()
+uint16_t Ec_slave_base_motor_drive::check_status()
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
     uint16_t previoius_status = current_status;
     if ((status_word & 0b1001111) == Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON)
     {
@@ -240,11 +267,17 @@ void Ec_slave_base_motor_drive::check_status()
     {
         std::cout << "INFO   : " << slave_ns << ": UNKNOWN_STATE" << std::endl;
     }
+
+    return ret_val;
 }
 
-void Ec_slave_base_motor_drive::clear_fault()
+uint16_t Ec_slave_base_motor_drive::clear_fault()
 {
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+    
     mode_of_operation = Object::Control_word::Bit_flags::FAULT_RESET;
+
+    return ret_val;
 }
 
 void Ec_slave_base_motor_drive::set_position(double position_command_)

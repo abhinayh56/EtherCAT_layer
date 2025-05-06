@@ -151,13 +151,13 @@ public:
     virtual uint16_t reset();
     virtual uint16_t init();
 
-    void init_motor_drive();
-    void stop();
-    void enable();
-    void disable();
-    void set_operating_mode(Motor_drive::OP_mode mode_);
-    void check_status();
-    void clear_fault();
+    uint16_t init_motor_drive();
+    uint16_t stop();
+    uint16_t enable();
+    uint16_t disable();
+    uint16_t set_operating_mode(Motor_drive::OP_mode mode_);
+    uint16_t check_status();
+    uint16_t clear_fault();
     void set_position(double position_command_);
     void set_velocity(double velocity_comman_);
     void set_torque(double torque_command_);

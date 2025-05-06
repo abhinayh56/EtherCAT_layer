@@ -50,8 +50,11 @@ private:
     uint16_t set_domain_process_data();
 
     uint16_t monitor_master_status();
+    bool is_link_up();
+    uint32_t num_slaves_responding();
     uint16_t monitor_domain_i_status();
     uint16_t monitor_slave_status();
+
     uint16_t is_process_data_exchange_complete();
     uint16_t is_all_slaves_operational();
     uint16_t get_num_process_data_exchange_error();

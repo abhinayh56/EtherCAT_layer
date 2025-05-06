@@ -465,6 +465,23 @@ uint16_t Ec_app::monitor_master_status()
     return ret_val;
 }
 
+bool Ec_app::is_link_up()
+{
+    if (master_state.link_up)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+uint32_t Ec_app::num_slaves_responding()
+{
+    return master_state.slaves_responding;
+}
+
 uint16_t Ec_app::monitor_slave_status()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
