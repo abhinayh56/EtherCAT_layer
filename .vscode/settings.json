@@ -54,6 +54,8 @@
         "variant": "cpp",
         "numbers": "cpp",
         "*.h__": "cpp",
-        "core": "cpp"
+        "core": "cpp",
+        "cstdarg": "cpp",
+        "numeric": "cpp"
     }
 }
