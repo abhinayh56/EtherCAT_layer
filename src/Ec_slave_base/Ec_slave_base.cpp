@@ -184,6 +184,23 @@ bool Ec_slave_base::is_operational()
     }
 }
 
+bool Ec_slave_base::is_online()
+{
+    if (sc_state.online == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+uint16_t Ec_slave_base::get_current_state()
+{
+    return sc_state.al_state;
+}
+
 uint16_t Ec_slave_base::transfer_tx_pdo()
 {
     return Ec_callback_status::SUCCESS;

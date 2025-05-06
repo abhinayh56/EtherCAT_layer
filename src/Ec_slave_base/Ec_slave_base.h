@@ -28,6 +28,8 @@ public:
 
     uint16_t monitor_status();
     bool is_operational();
+    bool is_online();
+    uint16_t get_current_state();
 
     virtual uint16_t transfer_tx_pdo();
     virtual uint16_t transfer_rx_pdo();
