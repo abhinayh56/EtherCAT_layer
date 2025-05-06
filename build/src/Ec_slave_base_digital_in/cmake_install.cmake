@@ -1,4 +1,4 @@
-# Install script for directory: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_digital_in
+# Install script for directory: /home/ahinay/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base_digital_in
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
