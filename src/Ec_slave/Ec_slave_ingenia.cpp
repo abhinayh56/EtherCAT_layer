@@ -85,7 +85,7 @@ uint16_t Ec_slave_ingenia::subscribe_data()
 
 uint16_t Ec_slave_ingenia::main_process()
 {
-    t_stamp += 2;
+    t_stamp += 1;
 
     if (t_stamp <= 3000)
     {
