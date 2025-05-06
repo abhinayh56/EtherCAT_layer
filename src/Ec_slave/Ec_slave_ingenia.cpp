@@ -90,10 +90,12 @@ uint16_t Ec_slave_ingenia::main_process()
     if (t_stamp <= 3000)
     {
         mode_of_operation = 8;
+        target_position = offset;
     }
     if ((t_stamp > 3000) && (t_stamp <= 10000))
     {
         mode_of_operation = 8;
+        target_position = offset;
         enable();
     }
     else
@@ -104,8 +106,27 @@ uint16_t Ec_slave_ingenia::main_process()
         double f = 1.0 / T;
         double w = 2.0 * 3.1417 * f;
         double t = ((double)t_stamp - 10000.0) * 0.001;
-        target_position = A * std::sin(w * t);
+        target_position = A * std::sin(w * t) + offset;
     }
+
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_ingenia::reset()
+{
+    offset = position_actual_value;
+    t_stamp = 0;
+
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_ingenia::init()
+{
+    // sync_position();
+    // sync_velocity();
+    // sync_torque();
+    offset = position_actual_value;
+    t_stamp = 0;
 
     return Ec_callback_status::SUCCESS;
 }

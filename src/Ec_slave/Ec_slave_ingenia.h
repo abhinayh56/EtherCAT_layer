@@ -20,6 +20,8 @@ public:
     virtual uint16_t publish_data();
     virtual uint16_t subscribe_data();
     virtual uint16_t main_process();
+    virtual uint16_t reset();
+    virtual uint16_t init();
 
 private:
     #include "Ec_slave_ingenia_info.h"
@@ -46,6 +48,7 @@ private:
         {}};
 
     unsigned long t_stamp = 0;
+    int32_t offset = 0;
 };
 
 #endif // EC_SLAVE_INGENIA_H
