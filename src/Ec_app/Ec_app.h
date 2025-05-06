@@ -47,6 +47,7 @@ private:
     uint16_t register_slaves_pdo_to_domain();
     uint16_t activate();
     uint16_t get_domain_process_data();
+    uint16_t set_domain();
     uint16_t set_domain_process_data();
 
     uint16_t monitor_master_status();

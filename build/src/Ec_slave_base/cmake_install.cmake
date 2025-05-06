@@ -1,4 +1,4 @@
-# Install script for directory: /home/ahinay/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base
+# Install script for directory: /home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -42,10 +42,10 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xDevelopmentx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Development" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ethercat_layer" TYPE FILE FILES
-    "/home/ahinay/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base/Ec_slave_base.h"
-    "/home/ahinay/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base/Ec_slave_base.cpp"
+    "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base/Ec_slave_base.h"
+    "/home/abhinayh56/Abhinay/Ethercat_IGH/EtherCAT_layer/src/Ec_slave_base/Ec_slave_base.cpp"
     )
 endif()
 
