@@ -91,7 +91,7 @@ uint16_t Ec_slave_ingenia::main_process()
     {
         mode_of_operation = 8;
     }
-    if ((t_stamp>3000) && (t_stamp <= 10000))
+    if ((t_stamp > 3000) && (t_stamp <= 10000))
     {
         mode_of_operation = 10;
         enable();
