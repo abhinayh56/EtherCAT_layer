@@ -42,6 +42,8 @@ uint16_t Ec_slave_ingenia::transfer_tx_pdo()
     velocity_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_3);
     mode_of_operation_display = EC_READ_U8(domain_i_pd + off_tx_pdo_4);
 
+    check_status();
+
     // std::cout << "INGENIA_TXPDO: " << slave_ns << " | " << status_word << ", " << position_actual_value << ", " << velocity_actual_value << ", " << uint16_t(mode_of_operation_display) << std::endl;
 
     return Ec_callback_status::SUCCESS;
@@ -58,13 +60,6 @@ uint16_t Ec_slave_ingenia::transfer_rx_pdo()
 
 uint16_t Ec_slave_ingenia::process_tx_pdo()
 {
-    check_status();
-
-    // if (enable_status == Motor_drive::Enable_status::DISABLE)
-    // {
-    //     offset = position_actual_value;
-    // }
-    
     return Ec_callback_status::SUCCESS;
 }
 

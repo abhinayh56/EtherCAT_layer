@@ -103,13 +103,6 @@ uint16_t Ec_app::config()
         return ret_val;
     }
 
-    ret_val = set_domain();
-    if (ret_val == Ec_callback_status::FAILURE)
-    {
-        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to set domain to slaves", 1);
-        return ret_val;
-    }
-
     ret_val |= config_slaves();
     if (ret_val == Ec_callback_status::FAILURE)
     {
@@ -613,8 +606,8 @@ uint16_t Ec_app::register_slaves_pdo_to_domain()
         // LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave pdos", 1);
         ret_val |= slave_base_arr[i]->set_pdo();
         // LOG_CONSOLE_SOURCE_INFO(master_ns, "Pdo list is set", 1);
-        // LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering tx,rx_pdos to domain", 1);
-        // ret_val |= slave_base_arr[i]->register_pdo_to_domain(domain_i);
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering tx,rx_pdos to domain", 1);
+        ret_val |= slave_base_arr[i]->register_pdo_to_domain(domain_i);
     }
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Registered all pdos", 1);
 
@@ -652,24 +645,6 @@ uint16_t Ec_app::get_domain_process_data()
     }
 }
 
-uint16_t Ec_app::set_domain()
-{
-    uint16_t ret_val = Ec_callback_status::SUCCESS;
-
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain to slaves...", 1);
-    for (int i = 0; i < num_slaves; i++)
-    {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Providing domain to slave ", 0);
-        LOG_CONSOLE(i + 1, 0);
-        LOG_CONSOLE(" of ", 0);
-        LOG_CONSOLE(num_slaves, 1);
-        ret_val |= slave_base_arr[i]->set_domain(domain_i);
-    }
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain to slaves successful", 1);
-
-    return ret_val;
-}
-
 uint16_t Ec_app::set_domain_process_data()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
@@ -681,7 +656,7 @@ uint16_t Ec_app::set_domain_process_data()
         LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
-        ret_val |= slave_base_arr[i]->set_domain_ptr(domain_i_pd);
+        ret_val |= slave_base_arr[i]->set_domain(domain_i_pd);
     }
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain process data address to slaves successful", 1);
 
