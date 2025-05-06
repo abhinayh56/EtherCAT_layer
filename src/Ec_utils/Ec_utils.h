@@ -24,4 +24,24 @@ enum Ec_callback_status : uint16_t
     UNKNOWN = 4
 };
 
+template <typename T>
+T SET_BIT(T value, uint16_t bit_index)
+{
+    value = value | (1 << bit_index);
+}
+
+template <typename T>
+uint16_t GET_BIT(T value, uint16_t bit_index)
+{
+    value = value & (1 << bit_index);
+    if (value == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 #endif // EC_UTILS_H
