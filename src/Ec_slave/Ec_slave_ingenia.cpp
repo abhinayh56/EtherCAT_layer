@@ -93,12 +93,12 @@ uint16_t Ec_slave_ingenia::main_process()
     }
     if ((t_stamp > 3000) && (t_stamp <= 10000))
     {
-        mode_of_operation = 10;
+        mode_of_operation = 8;
         enable();
     }
     else
     {
-        enable();
+        // enable();
         double A = 200000.0;
         double T = 5.0;
         double f = 1.0 / T;
