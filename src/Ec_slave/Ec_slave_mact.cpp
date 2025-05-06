@@ -96,7 +96,7 @@ uint16_t Ec_slave_mact::main_process()
     t_stamp += 1;
     Motor_drive::Enable_status enable_status = Motor_drive::Enable_status::DISABLE;
     // std::cout << ": " << t_stamp << " | " << enable_status;
-    if (t_stamp <= 5000)
+    if (t_stamp <= 10000)
     {
         if (enable_status == Motor_drive::Enable_status::DISABLE)
         {
@@ -111,13 +111,32 @@ uint16_t Ec_slave_mact::main_process()
         enable();
         // std::cout << ", " << "outside enable" << std::endl;
         mode_of_operation = 8;
-        double A = 8192.0;
-        double T = 2.0;
+        double A = 8191.0*0.5;
+        double T = 3.0;
         double f = 1.0 / T;
         double w = 2.0 * 3.1417 * f;
         double t = ((double)t_stamp - 10000.0) * 0.001;
-        target_position = A * std::sin(w * t) - offset;
+        target_position = A * std::sin(w * t) + offset;
     }
+
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_mact::reset()
+{
+    offset = position_actual_value;
+    t_stamp = 0;
+
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_mact::init()
+{
+    // sync_position();
+    // sync_velocity();
+    // sync_torque();
+    offset = position_actual_value;
+    t_stamp = 0;
 
     return Ec_callback_status::SUCCESS;
 }

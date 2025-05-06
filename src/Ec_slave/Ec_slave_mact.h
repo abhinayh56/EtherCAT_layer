@@ -19,6 +19,8 @@ public:
     virtual uint16_t publish_data();
     virtual uint16_t subscribe_data();
     virtual uint16_t main_process();
+    virtual uint16_t reset();
+    virtual uint16_t init();
 
 private:
     #include "Ec_slave_mact_info.h"
