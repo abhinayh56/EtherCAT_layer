@@ -613,8 +613,8 @@ uint16_t Ec_app::register_slaves_pdo_to_domain()
         // LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave pdos", 1);
         ret_val |= slave_base_arr[i]->set_pdo();
         // LOG_CONSOLE_SOURCE_INFO(master_ns, "Pdo list is set", 1);
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering tx,rx_pdos to domain", 1);
-        ret_val |= slave_base_arr[i]->register_pdo_to_domain(domain_i);
+        // LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering tx,rx_pdos to domain", 1);
+        // ret_val |= slave_base_arr[i]->register_pdo_to_domain(domain_i);
     }
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Registered all pdos", 1);
 
