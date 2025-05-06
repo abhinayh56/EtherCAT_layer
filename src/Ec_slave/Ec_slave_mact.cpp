@@ -45,12 +45,6 @@ uint16_t Ec_slave_mact::transfer_tx_pdo()
     uint8_t DIG_IN = EC_READ_U8(domain_i_pd + off_tx_pdo_6);
     velocity_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_7);
     int16_t ADC_VAL = EC_READ_S16(domain_i_pd + off_tx_pdo_8);
-    // check_status();
-
-    if (enable_status == Motor_drive::Enable_status::DISABLE)
-    {
-        offset = position_actual_value;
-    }
 
     // std::cout << "MACT_TXPDO: " << slave_ns << " | " << position_actual_value << ", " << status_word << ", " << torque_actual_value << ", " << uint16_t(mode_of_operation_display) << ", " << ERROR_CODE << ", " << uint16_t(DIG_IN) << ", " << velocity_actual_value << ", " << ADC_VAL << std::endl;
 
@@ -69,6 +63,12 @@ uint16_t Ec_slave_mact::transfer_rx_pdo()
 uint16_t Ec_slave_mact::process_tx_pdo()
 {
     check_status();
+
+    // if (enable_status == Motor_drive::Enable_status::DISABLE)
+    // {
+    //     offset = position_actual_value;
+    // }
+
     return Ec_callback_status::SUCCESS;
 }
 
