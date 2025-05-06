@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28.3)
+cmake_minimum_required(VERSION 3.22.1)
 project(ethercat_layer VERSION 1.0.0 LANGUAGES CXX)
 
 # Global compiler settings
