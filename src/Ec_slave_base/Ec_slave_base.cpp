@@ -86,9 +86,16 @@ uint16_t Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
     }
 }
 
-uint16_t Ec_slave_base::set_domain(uint8_t *domain_i_pd_)
+uint16_t Ec_slave_base::set_domain_ptr(uint8_t *domain_i_pd_)
 {
     domain_i_pd = domain_i_pd_;
+
+    return Ec_callback_status::SUCCESS;
+}
+
+uint16_t Ec_slave_base::set_domain(ec_domain_t *domain_i_)
+{
+    domain_i = domain_i_;
 
     return Ec_callback_status::SUCCESS;
 }

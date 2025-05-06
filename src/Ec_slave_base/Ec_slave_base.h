@@ -24,7 +24,8 @@ public:
     virtual uint16_t set_pdo();
     uint16_t register_pdo_to_domain(ec_domain_t *domain_i);
 
-    uint16_t set_domain(uint8_t *domain_i_pd_);
+    uint16_t set_domain_ptr(uint8_t *domain_i_pd_);
+    uint16_t set_domain(ec_domain_t *domain_i_);
 
     uint16_t monitor_status();
     bool is_operational();
@@ -54,6 +55,21 @@ protected:
     uint8_t *domain_i_pd = NULL;
 
     ec_pdo_entry_reg_t *domain_i_regs;
+    ec_domain_t *domain_i = NULL;
+
+    template <typename T>
+    void register_pdo(Pdo_variable<T> pdo_variable)
+    {
+        pdo_variable.offset = ecrt_slave_config_reg_pdo_entry(sc, pdo_variable.index, pdo_variable.subindex, domain_i);
+        if(pdo_variable.offset >= 0)
+        {
+            pdo_variable.is_supported = true;
+        }
+        else
+        {
+            pdo_variable.is_supported = false;
+        }
+    }
 };
 
 #endif // EC_SLAVE_BASE_H
