@@ -102,7 +102,7 @@ uint16_t Ec_slave_ingenia::main_process()
     {
         // enable();
         double A = 200000.0;
-        double T = 5.0;
+        double T = 4.0;
         double f = 1.0 / T;
         double w = 2.0 * 3.1417 * f;
         double t = ((double)t_stamp - 10000.0) * 0.001;

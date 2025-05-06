@@ -366,20 +366,20 @@ uint16_t Ec_app::monitor_domain_i_status()
         return ret_val;
     }
 
-    // if (ds.working_counter != domain_i_state.working_counter)
-    // {
-    //     printf("Domain1: WC %u.\n", ds.working_counter);
-    // }
+    if (ds.working_counter != domain_i_state.working_counter)
+    {
+        printf("Domain1: WC %u.\n", ds.working_counter);
+    }
 
-    // if (ds.wc_state != domain_i_state.wc_state)
-    // {
-    //     printf("Domain1: State %u.\n", ds.wc_state);
-    // }
+    if (ds.wc_state != domain_i_state.wc_state)
+    {
+        printf("Domain1: State %u.\n", ds.wc_state);
+    }
 
-    // if (ds.redundancy_active != domain_i_state.redundancy_active)
-    // {
-    //     printf("Domain1: Redundancy %u.\n", ds.redundancy_active);
-    // }
+    if (ds.redundancy_active != domain_i_state.redundancy_active)
+    {
+        printf("Domain1: Redundancy %u.\n", ds.redundancy_active);
+    }
 
     if (ds.wc_state == EC_WC_ZERO)
     {
