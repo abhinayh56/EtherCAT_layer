@@ -45,7 +45,7 @@ uint16_t Ec_slave_mact::transfer_tx_pdo()
     uint8_t DIG_IN = EC_READ_U8(domain_i_pd + off_tx_pdo_6);
     velocity_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_7);
     int16_t ADC_VAL = EC_READ_S16(domain_i_pd + off_tx_pdo_8);
-    check_status();
+    // check_status();
 
     if (enable_status == Motor_drive::Enable_status::DISABLE)
     {
@@ -68,6 +68,7 @@ uint16_t Ec_slave_mact::transfer_rx_pdo()
 
 uint16_t Ec_slave_mact::process_tx_pdo()
 {
+    check_status();
     return Ec_callback_status::SUCCESS;
 }
 
