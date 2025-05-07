@@ -70,32 +70,25 @@ uint16_t Ec_slave_base::set_pdo()
     return Ec_callback_status::SUCCESS;
 }
 
-// uint16_t Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
-// {
-//     if (ecrt_domain_reg_pdo_entry_list(domain_i, domain_i_regs))
-//     {
-//         LOG_CONSOLE_SOURCE_ERROR(slave_ns, "PDO entry registration failed for slave address ", 0);
-//         LOG_CONSOLE(slave_address, 1);
-//         return Ec_callback_status::FAILURE;
-//     }
-//     else
-//     {
-//         LOG_CONSOLE_SOURCE_INFO(slave_ns, "PDO entry registration successful for slave address ", 0);
-//         LOG_CONSOLE(slave_address, 1);
-//         return Ec_callback_status::SUCCESS;
-//     }
-// }
-
-uint16_t Ec_slave_base::set_domain_ptr(uint8_t *domain_i_pd_)
+uint16_t Ec_slave_base::register_pdo_to_domain(ec_domain_t *domain_i)
 {
-    domain_i_pd = domain_i_pd_;
-
-    return Ec_callback_status::SUCCESS;
+    if (ecrt_domain_reg_pdo_entry_list(domain_i, domain_i_regs))
+    {
+        LOG_CONSOLE_SOURCE_ERROR(slave_ns, "PDO entry registration failed for slave address ", 0);
+        LOG_CONSOLE(slave_address, 1);
+        return Ec_callback_status::FAILURE;
+    }
+    else
+    {
+        LOG_CONSOLE_SOURCE_INFO(slave_ns, "PDO entry registration successful for slave address ", 0);
+        LOG_CONSOLE(slave_address, 1);
+        return Ec_callback_status::SUCCESS;
+    }
 }
 
-uint16_t Ec_slave_base::set_domain(ec_domain_t *domain_i_)
+uint16_t Ec_slave_base::set_domain(uint8_t *domain_i_pd_)
 {
-    domain_i = domain_i_;
+    domain_i_pd = domain_i_pd_;
 
     return Ec_callback_status::SUCCESS;
 }
