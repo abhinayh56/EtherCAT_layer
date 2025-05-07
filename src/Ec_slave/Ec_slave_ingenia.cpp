@@ -26,34 +26,41 @@ uint16_t Ec_slave_ingenia::set_info_from_eni()
 
 uint16_t Ec_slave_ingenia::set_pdo()
 {
-    for (uint8_t i = 0; i < 9; i++)
-    {
-        domain_regs[i].position = slave_address;
-    }
-    domain_i_regs = domain_regs;
+    register_pdo(&m_tx_pdo.Status_Word);
+    register_pdo(&m_tx_pdo.Actual_position);
+    register_pdo(&m_tx_pdo.Actual_velocity);
+    register_pdo(&m_tx_pdo.Operation_mode_display);
+
+    register_pdo(&m_rx_pdo.CONTROL_WD);
+    register_pdo(&m_rx_pdo.TARGET_POS);
+    register_pdo(&m_rx_pdo.TARGET_VEL);
+    register_pdo(&m_rx_pdo.OP_MODE);
 
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_ingenia::transfer_tx_pdo()
 {
-    // status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_1);
-    // position_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_2);
-    // velocity_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_3);
-    // mode_of_operation_display = EC_READ_U8(domain_i_pd + off_tx_pdo_4);
+    m_tx_pdo.Status_Word.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Status_Word.offset);
+    m_tx_pdo.Actual_position.value = EC_READ_S32(domain_i_pd + m_tx_pdo.Actual_position.offset);
+    m_tx_pdo.Actual_velocity.value = EC_READ_S32(domain_i_pd + m_tx_pdo.Actual_velocity.offset);
+    m_tx_pdo.Operation_mode_display.value = EC_READ_U8(domain_i_pd + m_tx_pdo.Operation_mode_display.offset);
+
+    b_tx_pdo_value.status_word = m_tx_pdo.Status_Word.value;
+    b_tx_pdo_value.position_actual_value = m_tx_pdo.Actual_position.value;
+    b_tx_pdo_value.velocity_actual_value = m_tx_pdo.Actual_velocity.value;
+    b_tx_pdo_value.mode_of_operation_display = m_tx_pdo.Operation_mode_display.value;
 
     check_status();
-
-    // std::cout << "INGENIA_TXPDO: " << slave_ns << " | " << status_word << ", " << position_actual_value << ", " << velocity_actual_value << ", " << uint16_t(mode_of_operation_display) << std::endl;
 
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_ingenia::transfer_rx_pdo()
 {
-    // EC_WRITE_U16(domain_i_pd + off_rx_pdo_1, control_word);     // UINT16
-    // EC_WRITE_S32(domain_i_pd + off_rx_pdo_2, target_position);  // SINT32
-    // EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, mode_of_operation); // UIN8T
+    EC_WRITE_U16(domain_i_pd + m_rx_pdo.CONTROL_WD.offset, b_rx_pdo_value.control_word);     // UINT16
+    EC_WRITE_S32(domain_i_pd + m_rx_pdo.TARGET_POS.offset, b_rx_pdo_value.target_position);  // SINT32
+    EC_WRITE_U8(domain_i_pd + m_rx_pdo.OP_MODE.offset, b_rx_pdo_value.mode_of_operation); // UIN8T
 
     return Ec_callback_status::SUCCESS;
 }
