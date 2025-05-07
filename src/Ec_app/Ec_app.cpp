@@ -656,7 +656,7 @@ uint16_t Ec_app::set_domain_process_data()
         LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
-        ret_val |= slave_base_arr[i]->set_domain(domain_i_pd);
+        ret_val |= slave_base_arr[i]->set_domain_ptr(domain_i_pd);
     }
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain process data address to slaves successful", 1);
 
