@@ -26,11 +26,6 @@ uint16_t Ec_slave_rfid::set_info_from_eni()
 
 uint16_t Ec_slave_rfid::set_pdo()
 {
-    for (uint8_t i = 0; i < 41; i++)
-    {
-        domain_regs[i].position = slave_address;
-    }
-    domain_i_regs = domain_regs;
 
     register_pdo(m_tx_pdo.Device_ID);
     register_pdo(m_tx_pdo.Second);
