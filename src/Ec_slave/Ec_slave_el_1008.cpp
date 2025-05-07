@@ -34,7 +34,7 @@ uint16_t Ec_slave_el_1008::set_pdo()
 uint16_t Ec_slave_el_1008::transfer_tx_pdo()
 {
     m_tx_pdo.Input.value = EC_READ_U8(domain_i_pd + m_tx_pdo.Input.offset);
-    std::cout << "dig_input: " << (uint16_t)m_tx_pdo.Input.value <<  std::endl;
+    // std::cout << "dig_input: " << (uint16_t)m_tx_pdo.Input.value <<  std::endl;
 
     return Ec_callback_status::SUCCESS;
 }
