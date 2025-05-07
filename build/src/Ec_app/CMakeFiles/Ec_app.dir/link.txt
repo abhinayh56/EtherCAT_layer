@@ -1,2 +1,0 @@
-/usr/bin/ar qc libEc_app.a CMakeFiles/Ec_app.dir/Ec_app.cpp.o
-/usr/bin/ranlib libEc_app.a

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libEc_slave_base_rs232.a CMakeFiles/Ec_slave_base_rs232.dir/Ec_slave_base_rs232.cpp.o
-/usr/bin/ranlib libEc_slave_base_rs232.a
