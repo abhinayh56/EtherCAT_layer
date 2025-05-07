@@ -103,12 +103,12 @@ uint16_t Ec_app::config()
         return ret_val;
     }
 
-    // ret_val = set_domain();
-    // if (ret_val == Ec_callback_status::FAILURE)
-    // {
-    //     LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to set domain to slaves", 1);
-    //     return ret_val;
-    // }
+    ret_val = set_domain();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to set domain to slaves", 1);
+        return ret_val;
+    }
 
     ret_val |= config_slaves();
     if (ret_val == Ec_callback_status::FAILURE)
