@@ -58,7 +58,7 @@ protected:
     ec_domain_t *domain_i = NULL;
 
     template <typename T>
-    void register_pdo(Pdo_variable<T> pdo_variable)
+    uint32_t register_pdo(Pdo_variable<T> pdo_variable)
     {
         pdo_variable.offset = ecrt_slave_config_reg_pdo_entry(sc, pdo_variable.index, pdo_variable.subindex, domain_i, NULL);        
 
@@ -73,6 +73,8 @@ protected:
             pdo_variable.is_supported = false;
             std::cout << "FAILURE\n";
         }
+
+        return pdo_variable.offset;
     }
 };
 
