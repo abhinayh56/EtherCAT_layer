@@ -59,7 +59,7 @@ uint16_t Ec_slave_rfid::transfer_tx_pdo()
     m_tx_pdo.MFG_Month = EC_READ_U16(domain_i_pd + off_tx_pdo_20);
     m_tx_pdo.MFG_Year = EC_READ_U16(domain_i_pd + off_tx_pdo_21);
 
-    // std::cout << "RFID_TXPDO: " << m_tx_pdo.Device_ID << ", " << m_tx_pdo.Second << ", " << m_tx_pdo.Minute << ", " << m_tx_pdo.Hour << ", " << m_tx_pdo.Day << ", " << m_tx_pdo.Month << ", " << m_tx_pdo.Year << ", " << m_tx_pdo.Roll_Offset << ", " << m_tx_pdo.Pitch_Offset << ", " << m_tx_pdo.Yaw_Offset << ", " << m_tx_pdo.Grip_Offset << ", " << m_tx_pdo.No_of_Usages << ", " << m_tx_pdo.Max_Usages << ", " << m_tx_pdo.Digital_Inputs << ", " << m_tx_pdo.Grip_Counts << ", " << m_tx_pdo.System_Number << ", " << m_tx_pdo.Device_UID << ", " << m_tx_pdo.Spare_Bytes << ", " << m_tx_pdo.MFG_Day << ", " << m_tx_pdo.MFG_Month << ", " << m_tx_pdo.MFG_Year << std::endl;
+    std::cout << slave_ns << ": " << m_tx_pdo.Device_ID << ", " << m_tx_pdo.Second << ", " << m_tx_pdo.Minute << ", " << m_tx_pdo.Hour << ", " << m_tx_pdo.Day << ", " << m_tx_pdo.Month << ", " << m_tx_pdo.Year << ", " << m_tx_pdo.Roll_Offset << ", " << m_tx_pdo.Pitch_Offset << ", " << m_tx_pdo.Yaw_Offset << ", " << m_tx_pdo.Grip_Offset << ", " << m_tx_pdo.No_of_Usages << ", " << m_tx_pdo.Max_Usages << ", " << m_tx_pdo.Digital_Inputs << ", " << m_tx_pdo.Grip_Counts << ", " << m_tx_pdo.System_Number << ", " << m_tx_pdo.Device_UID << ", " << m_tx_pdo.Spare_Bytes << ", " << m_tx_pdo.MFG_Day << ", " << m_tx_pdo.MFG_Month << ", " << m_tx_pdo.MFG_Year << std::endl;
 
     return Ec_callback_status::SUCCESS;
 }
