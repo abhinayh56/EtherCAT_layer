@@ -49,9 +49,9 @@ struct Pdo_variable
 {
     uint16_t index;
     uint8_t subindex;
-    uint32_t offset;
+    uint32_t *offset;
     T value;
-    bool is_supported = false;
+    bool is_supported;
 };
 
 #endif // EC_UTILS_H
