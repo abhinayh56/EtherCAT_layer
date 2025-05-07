@@ -4,7 +4,7 @@
 #include "Ec_app/Ec_app.h"
 // #include "Ec_slave/Ec_slave_ek_1100.h"
 // #include "Ec_slave/Ec_slave_ek_1122.h"
-// #include "Ec_slave/Ec_slave_el_2008.h"
+#include "Ec_slave/Ec_slave_el_2008.h"
 #include "Ec_slave/Ec_slave_el_1008.h"
 #include "Ec_slave/Ec_slave_rfid.h"
 #include "Ec_slave/Ec_slave_mact.h"
@@ -19,7 +19,7 @@ int main()
     Ec_app ec_app("EC_APP");
 
     // Ec_slave_ek_1100 ek_1100(0, "EK_1100");
-    // Ec_slave_el_2008 el_2008(1, "EL_2008");
+    Ec_slave_el_2008 el_2008(1, "EL_2008");
     Ec_slave_el_1008 el_1008(2, "EL_1008");
     // Ec_slave_ek_1122 ek_1122_1(3, "EK_1122_1");
     // Ec_slave_ek_1122 ek_1122_2(4, "EK_1122_2");
@@ -38,7 +38,7 @@ int main()
     Ec_slave_mact mact_8(17, "MACT_8");
 
     // ec_app.add_slave(&ek_1100);
-    // ec_app.add_slave(&el_2008);
+    ec_app.add_slave(&el_2008);
     ec_app.add_slave(&el_1008);
     // ec_app.add_slave(&ek_1122_1);
     // ec_app.add_slave(&ek_1122_2);
