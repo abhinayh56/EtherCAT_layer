@@ -27,73 +27,74 @@ uint16_t Ec_slave_rfid::set_info_from_eni()
 uint16_t Ec_slave_rfid::set_pdo()
 {
 
-    register_pdo(m_tx_pdo.Device_ID);
-    register_pdo(m_tx_pdo.Second);
-    register_pdo(m_tx_pdo.Minute);
-    register_pdo(m_tx_pdo.Hour);
-    register_pdo(m_tx_pdo.Day);
-    register_pdo(m_tx_pdo.Month);
-    register_pdo(m_tx_pdo.Year);
-    register_pdo(m_tx_pdo.Roll_Offset);
-    register_pdo(m_tx_pdo.Pitch_Offset);
-    register_pdo(m_tx_pdo.Yaw_Offset);
-    register_pdo(m_tx_pdo.Grip_Offset);
-    register_pdo(m_tx_pdo.No_of_Usages);
-    register_pdo(m_tx_pdo.Max_Usages);
-    register_pdo(m_tx_pdo.Digital_Inputs);
-    register_pdo(m_tx_pdo.Grip_Counts);
-    register_pdo(m_tx_pdo.System_Number);
-    register_pdo(m_tx_pdo.Device_UID);
-    register_pdo(m_tx_pdo.Spare_Bytes);
-    register_pdo(m_tx_pdo.MFG_Day);
-    register_pdo(m_tx_pdo.MFG_Month);
-    register_pdo(m_tx_pdo.MFG_Year);
-    register_pdo(m_rx_pdo.Acknowledge);
-    register_pdo(m_rx_pdo.Second);
-    register_pdo(m_rx_pdo.Minute);
-    register_pdo(m_rx_pdo.Hour);
-    register_pdo(m_rx_pdo.Day);
-    register_pdo(m_rx_pdo.Month);
-    register_pdo(m_rx_pdo.Year);
-    register_pdo(m_rx_pdo.No_of_Usages);
-    register_pdo(m_rx_pdo.Digital_Outputs);
-    register_pdo(m_rx_pdo.Grip_Counts);
-    register_pdo(m_rx_pdo.System_Number);
-    register_pdo(m_rx_pdo.Led_Red);
-    register_pdo(m_rx_pdo.Led_Green);
-    register_pdo(m_rx_pdo.Led_Blue);
-    register_pdo(m_rx_pdo.Spare_Bytes);
-    register_pdo(m_rx_pdo.Roll_Offset);
-    register_pdo(m_rx_pdo.Pitch_Offset);
-    register_pdo(m_rx_pdo.Yaw_Offset);
-    register_pdo(m_rx_pdo.Grip_Offset);
+    register_pdo(&m_tx_pdo.Device_ID);
+    register_pdo(&m_tx_pdo.Second);
+    register_pdo(&m_tx_pdo.Minute);
+    register_pdo(&m_tx_pdo.Hour);
+    register_pdo(&m_tx_pdo.Day);
+    register_pdo(&m_tx_pdo.Month);
+    register_pdo(&m_tx_pdo.Year);
+    register_pdo(&m_tx_pdo.Roll_Offset);
+    register_pdo(&m_tx_pdo.Pitch_Offset);
+    register_pdo(&m_tx_pdo.Yaw_Offset);
+    register_pdo(&m_tx_pdo.Grip_Offset);
+    register_pdo(&m_tx_pdo.No_of_Usages);
+    register_pdo(&m_tx_pdo.Max_Usages);
+    register_pdo(&m_tx_pdo.Digital_Inputs);
+    register_pdo(&m_tx_pdo.Grip_Counts);
+    register_pdo(&m_tx_pdo.System_Number);
+    register_pdo(&m_tx_pdo.Device_UID);
+    register_pdo(&m_tx_pdo.Spare_Bytes);
+    register_pdo(&m_tx_pdo.MFG_Day);
+    register_pdo(&m_tx_pdo.MFG_Month);
+    register_pdo(&m_tx_pdo.MFG_Year);
+
+    register_pdo(&m_rx_pdo.Acknowledge);
+    register_pdo(&m_rx_pdo.Second);
+    register_pdo(&m_rx_pdo.Minute);
+    register_pdo(&m_rx_pdo.Hour);
+    register_pdo(&m_rx_pdo.Day);
+    register_pdo(&m_rx_pdo.Month);
+    register_pdo(&m_rx_pdo.Year);
+    register_pdo(&m_rx_pdo.No_of_Usages);
+    register_pdo(&m_rx_pdo.Digital_Outputs);
+    register_pdo(&m_rx_pdo.Grip_Counts);
+    register_pdo(&m_rx_pdo.System_Number);
+    register_pdo(&m_rx_pdo.Led_Red);
+    register_pdo(&m_rx_pdo.Led_Green);
+    register_pdo(&m_rx_pdo.Led_Blue);
+    register_pdo(&m_rx_pdo.Spare_Bytes);
+    register_pdo(&m_rx_pdo.Roll_Offset);
+    register_pdo(&m_rx_pdo.Pitch_Offset);
+    register_pdo(&m_rx_pdo.Yaw_Offset);
+    register_pdo(&m_rx_pdo.Grip_Offset);
 
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_rfid::transfer_tx_pdo()
 {
-    m_tx_pdo.Device_ID.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Device_ID.offset);
-    m_tx_pdo.Second.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Second.offset);
-    m_tx_pdo.Minute.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Minute.offset);
-    m_tx_pdo.Hour.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Hour.offset);
-    m_tx_pdo.Day.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Day.offset);
-    m_tx_pdo.Month.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Month.offset);
-    m_tx_pdo.Year.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Year.offset);
-    m_tx_pdo.Roll_Offset.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Roll_Offset.offset);
-    m_tx_pdo.Pitch_Offset.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Pitch_Offset.offset);
-    m_tx_pdo.Yaw_Offset.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Yaw_Offset.offset);
-    m_tx_pdo.Grip_Offset.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Grip_Offset.offset);
-    m_tx_pdo.No_of_Usages.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.No_of_Usages.offset);
-    m_tx_pdo.Max_Usages.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Max_Usages.offset);
-    m_tx_pdo.Digital_Inputs.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Digital_Inputs.offset);
-    m_tx_pdo.Grip_Counts.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Grip_Counts.offset);
-    m_tx_pdo.System_Number.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.System_Number.offset);
-    m_tx_pdo.Device_UID.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Device_UID.offset);
-    m_tx_pdo.Spare_Bytes.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.Spare_Bytes.offset);
-    m_tx_pdo.MFG_Day.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.MFG_Day.offset);
-    m_tx_pdo.MFG_Month.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.MFG_Month.offset);
-    m_tx_pdo.MFG_Year.value = EC_READ_U16(domain_i_pd + *m_tx_pdo.MFG_Year.offset);
+    m_tx_pdo.Device_ID.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Device_ID.offset);
+    m_tx_pdo.Second.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Second.offset);
+    m_tx_pdo.Minute.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Minute.offset);
+    m_tx_pdo.Hour.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Hour.offset);
+    m_tx_pdo.Day.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Day.offset);
+    m_tx_pdo.Month.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Month.offset);
+    m_tx_pdo.Year.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Year.offset);
+    m_tx_pdo.Roll_Offset.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Roll_Offset.offset);
+    m_tx_pdo.Pitch_Offset.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Pitch_Offset.offset);
+    m_tx_pdo.Yaw_Offset.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Yaw_Offset.offset);
+    m_tx_pdo.Grip_Offset.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Grip_Offset.offset);
+    m_tx_pdo.No_of_Usages.value = EC_READ_U16(domain_i_pd + m_tx_pdo.No_of_Usages.offset);
+    m_tx_pdo.Max_Usages.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Max_Usages.offset);
+    m_tx_pdo.Digital_Inputs.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Digital_Inputs.offset);
+    m_tx_pdo.Grip_Counts.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Grip_Counts.offset);
+    m_tx_pdo.System_Number.value = EC_READ_U16(domain_i_pd + m_tx_pdo.System_Number.offset);
+    m_tx_pdo.Device_UID.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Device_UID.offset);
+    m_tx_pdo.Spare_Bytes.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Spare_Bytes.offset);
+    m_tx_pdo.MFG_Day.value = EC_READ_U16(domain_i_pd + m_tx_pdo.MFG_Day.offset);
+    m_tx_pdo.MFG_Month.value = EC_READ_U16(domain_i_pd + m_tx_pdo.MFG_Month.offset);
+    m_tx_pdo.MFG_Year.value = EC_READ_U16(domain_i_pd + m_tx_pdo.MFG_Year.offset);
 
     std::cout << slave_ns << ": " << 
         m_tx_pdo.Device_ID.value << ", " <<
@@ -124,9 +125,9 @@ uint16_t Ec_slave_rfid::transfer_tx_pdo()
 
 uint16_t Ec_slave_rfid::transfer_rx_pdo()
 {
-    EC_WRITE_U16(domain_i_pd + *m_rx_pdo.Led_Red.offset, m_rx_pdo.Led_Red.value);
-    EC_WRITE_U16(domain_i_pd + *m_rx_pdo.Led_Green.offset, m_rx_pdo.Led_Green.value);
-    EC_WRITE_U16(domain_i_pd + *m_rx_pdo.Led_Blue.offset, m_rx_pdo.Led_Blue.value);
+    EC_WRITE_U16(domain_i_pd + m_rx_pdo.Led_Red.offset, m_rx_pdo.Led_Red.value);
+    EC_WRITE_U16(domain_i_pd + m_rx_pdo.Led_Green.offset, m_rx_pdo.Led_Green.value);
+    EC_WRITE_U16(domain_i_pd + m_rx_pdo.Led_Blue.offset, m_rx_pdo.Led_Blue.value);
 
     return Ec_callback_status::SUCCESS;
 }
