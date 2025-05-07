@@ -26,15 +26,15 @@ uint16_t Ec_slave_el_1008::set_info_from_eni()
 
 uint16_t Ec_slave_el_1008::set_pdo()
 {
-    domain_i_regs = domain_regs;
+    register_pdo(&m_tx_pdo.Input);
 
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_el_1008::transfer_tx_pdo()
 {
-    uint16_t dig_input = EC_READ_U8(domain_i_pd + off_1);
-    // std::cout << "dig_input: " << dig_input <<  ",     |               ";
+    m_tx_pdo.Input.value = EC_READ_U8(domain_i_pd + m_tx_pdo.Input.offset);
+    std::cout << "dig_input: " << m_tx_pdo.Input.value <<  std::endl;
 
     return Ec_callback_status::SUCCESS;
 }

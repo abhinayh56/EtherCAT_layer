@@ -27,13 +27,13 @@ private:
 
     struct Rx_pdo
     {
-        Pdo_variable<int32_t> TARGET_POS  = {0x607a, 0x00};
-        Pdo_variable<uint16_t> CONTROL_WD = {0x6040, 0x00};
-        Pdo_variable<int> TARGET_TORQ     = {0x6071, 0x00};
-        Pdo_variable<uint8_t> OP_MODE     = {0x6060, 0x00};
-        Pdo_variable<int> ERROR_CLEAR     = {0x3004, 0x00};
-        Pdo_variable<int> DIG_OUT         = {0x3001, 0x00};
-        Pdo_variable<int> TARGET_VEL      = {0x60ff, 0x00};
+        Pdo_variable<int32_t>  TARGET_POS  = {0x607a, 0x00};
+        Pdo_variable<uint16_t> CONTROL_WD  = {0x6040, 0x00};
+        Pdo_variable<int16_t>  TARGET_TORQ = {0x6071, 0x00};
+        Pdo_variable<uint8_t>  OP_MODE     = {0x6060, 0x00};
+        Pdo_variable<uint16_t> ERROR_CLEAR = {0x3004, 0x00};
+        Pdo_variable<uint8_t>  DIG_OUT     = {0x3001, 0x00};
+        Pdo_variable<int32_t>  TARGET_VEL  = {0x60ff, 0x00};
     } m_rx_pdo;
 
     struct Tx_pdo
