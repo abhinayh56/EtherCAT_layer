@@ -37,10 +37,10 @@ uint16_t Ec_slave_ingenia::set_pdo()
 
 uint16_t Ec_slave_ingenia::transfer_tx_pdo()
 {
-    status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_1);
-    position_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_2);
-    velocity_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_3);
-    mode_of_operation_display = EC_READ_U8(domain_i_pd + off_tx_pdo_4);
+    // status_word = EC_READ_U16(domain_i_pd + off_tx_pdo_1);
+    // position_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_2);
+    // velocity_actual_value = EC_READ_S32(domain_i_pd + off_tx_pdo_3);
+    // mode_of_operation_display = EC_READ_U8(domain_i_pd + off_tx_pdo_4);
 
     check_status();
 
@@ -51,9 +51,9 @@ uint16_t Ec_slave_ingenia::transfer_tx_pdo()
 
 uint16_t Ec_slave_ingenia::transfer_rx_pdo()
 {
-    EC_WRITE_U16(domain_i_pd + off_rx_pdo_1, control_word);     // UINT16
-    EC_WRITE_S32(domain_i_pd + off_rx_pdo_2, target_position);  // SINT32
-    EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, mode_of_operation); // UIN8T
+    // EC_WRITE_U16(domain_i_pd + off_rx_pdo_1, control_word);     // UINT16
+    // EC_WRITE_S32(domain_i_pd + off_rx_pdo_2, target_position);  // SINT32
+    // EC_WRITE_U8(domain_i_pd + off_rx_pdo_4, mode_of_operation); // UIN8T
 
     return Ec_callback_status::SUCCESS;
 }
@@ -89,13 +89,13 @@ uint16_t Ec_slave_ingenia::main_process()
 
     if (t_stamp <= 3000)
     {
-        mode_of_operation = 8;
-        target_position = offset;
+        b_rx_pdo_value.mode_of_operation = 8;
+        b_rx_pdo_value.target_position = offset;
     }
     if ((t_stamp > 3000) && (t_stamp <= 10000))
     {
-        mode_of_operation = 8;
-        target_position = offset;
+        b_rx_pdo_value.mode_of_operation = 8;
+        b_rx_pdo_value.target_position = offset;
         enable();
     }
     else
@@ -106,7 +106,7 @@ uint16_t Ec_slave_ingenia::main_process()
         double f = 1.0 / T;
         double w = 2.0 * 3.1417 * f;
         double t = ((double)t_stamp - 10000.0) * 0.001;
-        target_position = A * std::sin(w * t) + offset;
+        b_rx_pdo_value.target_position = A * std::sin(w * t) + offset;
     }
 
     return Ec_callback_status::SUCCESS;
@@ -114,7 +114,7 @@ uint16_t Ec_slave_ingenia::main_process()
 
 uint16_t Ec_slave_ingenia::reset()
 {
-    offset = position_actual_value;
+    offset = b_tx_pdo_value.position_actual_value;
     t_stamp = 0;
 
     return Ec_callback_status::SUCCESS;
@@ -125,7 +125,7 @@ uint16_t Ec_slave_ingenia::init()
     // sync_position();
     // sync_velocity();
     // sync_torque();
-    offset = position_actual_value;
+    offset = b_tx_pdo_value.position_actual_value;
     t_stamp = 0;
 
     return Ec_callback_status::SUCCESS;
