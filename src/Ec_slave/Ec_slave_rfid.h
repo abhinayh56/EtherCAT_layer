@@ -107,53 +107,53 @@ private:
         {0, 7, 0x00006000, 0x00004000, 0x0006, 0x15, &off_tx_pdo_21}, /* MFG_Year */
         {}};
 
-    struct Tx_pdo_value
-    {
-        uint16_t Device_ID;
-        uint16_t Second;
-        uint16_t Minute;
-        uint16_t Hour;
-        uint16_t Day;
-        uint16_t Month;
-        uint16_t Year;
-        uint16_t Roll_Offset;
-        uint16_t Pitch_Offset;
-        uint16_t Yaw_Offset;
-        uint16_t Grip_Offset;
-        uint16_t No_of_Usages;
-        uint16_t Max_Usages;
-        uint16_t Digital_Inputs;
-        uint16_t Grip_Counts;
-        uint16_t System_Number;
-        uint16_t Device_UID;
-        uint16_t Spare_Bytes;
-        uint16_t MFG_Day;
-        uint16_t MFG_Month;
-        uint16_t MFG_Year;
-    } m_tx_pdo_value;
+    // struct Tx_pdo_value
+    // {
+    //     uint16_t Device_ID;
+    //     uint16_t Second;
+    //     uint16_t Minute;
+    //     uint16_t Hour;
+    //     uint16_t Day;
+    //     uint16_t Month;
+    //     uint16_t Year;
+    //     uint16_t Roll_Offset;
+    //     uint16_t Pitch_Offset;
+    //     uint16_t Yaw_Offset;
+    //     uint16_t Grip_Offset;
+    //     uint16_t No_of_Usages;
+    //     uint16_t Max_Usages;
+    //     uint16_t Digital_Inputs;
+    //     uint16_t Grip_Counts;
+    //     uint16_t System_Number;
+    //     uint16_t Device_UID;
+    //     uint16_t Spare_Bytes;
+    //     uint16_t MFG_Day;
+    //     uint16_t MFG_Month;
+    //     uint16_t MFG_Year;
+    // } m_tx_pdo_value;
 
-    struct Rx_pdo_value
-    {
-        uint16_t Acknowledge;
-        uint16_t Second;
-        uint16_t Minute;
-        uint16_t Hour;
-        uint16_t Day;
-        uint16_t Month;
-        uint16_t Year;
-        uint16_t No_of_Usages;
-        uint16_t Digital_Outputs;
-        uint16_t Grip_Counts;
-        uint16_t System_Number;
-        uint16_t Led_Red;
-        uint16_t Led_Green;
-        uint16_t Led_Blue;
-        uint16_t Spare_Bytes;
-        uint16_t Roll_Offset;
-        uint16_t Pitch_Offset;
-        uint16_t Yaw_Offset;
-        uint16_t Grip_Offset;
-    } m_rx_pdo_value;
+    // struct Rx_pdo_value
+    // {
+    //     uint16_t Acknowledge;
+    //     uint16_t Second;
+    //     uint16_t Minute;
+    //     uint16_t Hour;
+    //     uint16_t Day;
+    //     uint16_t Month;
+    //     uint16_t Year;
+    //     uint16_t No_of_Usages;
+    //     uint16_t Digital_Outputs;
+    //     uint16_t Grip_Counts;
+    //     uint16_t System_Number;
+    //     uint16_t Led_Red;
+    //     uint16_t Led_Green;
+    //     uint16_t Led_Blue;
+    //     uint16_t Spare_Bytes;
+    //     uint16_t Roll_Offset;
+    //     uint16_t Pitch_Offset;
+    //     uint16_t Yaw_Offset;
+    //     uint16_t Grip_Offset;
+    // } m_rx_pdo_value;
 
     struct Tx_pdo
     {
