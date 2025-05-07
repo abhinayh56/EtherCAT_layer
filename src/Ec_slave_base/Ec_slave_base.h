@@ -61,13 +61,16 @@ protected:
     void register_pdo(Pdo_variable<T> pdo_variable)
     {
         pdo_variable.offset = ecrt_slave_config_reg_pdo_entry(sc, pdo_variable.index, pdo_variable.subindex, domain_i, NULL);
+        std::cout << "---------------------------> " <<  pdo_variable.index << ", " << pdo_variable.subindex << ", " << pdo_variable.offset << ", ";
         if(pdo_variable.offset >= 0)
         {
             pdo_variable.is_supported = true;
+            std::cout << "SUCCESS\n";
         }
         else
         {
             pdo_variable.is_supported = false;
+            std::cout << "FAILURE\n";
         }
     }
 };

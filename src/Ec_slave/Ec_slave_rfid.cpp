@@ -101,29 +101,29 @@ uint16_t Ec_slave_rfid::transfer_tx_pdo()
     m_tx_pdo.MFG_Month.value = EC_READ_U16(domain_i_pd + m_tx_pdo.MFG_Month.offset);
     m_tx_pdo.MFG_Year.value = EC_READ_U16(domain_i_pd + m_tx_pdo.MFG_Year.offset);
 
-    std::cout << slave_ns << ": " << 
-        m_tx_pdo.Device_ID.value << ", " <<
-        m_tx_pdo.Second.value << ", " <<
-        m_tx_pdo.Minute.value << ", " <<
-        m_tx_pdo.Hour.value << ", " <<
-        m_tx_pdo.Day.value << ", " <<
-        m_tx_pdo.Month.value << ", " <<
-        m_tx_pdo.Year.value << ", " <<
-        m_tx_pdo.Roll_Offset.value << ", " <<
-        m_tx_pdo.Pitch_Offset.value << ", " <<
-        m_tx_pdo.Yaw_Offset.value << ", " <<
-        m_tx_pdo.Grip_Offset.value << ", " <<
-        m_tx_pdo.No_of_Usages.value << ", " <<
-        m_tx_pdo.Max_Usages.value << ", " <<
-        m_tx_pdo.Digital_Inputs.value << ", " <<
-        m_tx_pdo.Grip_Counts.value << ", " <<
-        m_tx_pdo.System_Number.value << ", " <<
-        m_tx_pdo.Device_UID.value << ", " <<
-        m_tx_pdo.Spare_Bytes.value << ", " <<
-        m_tx_pdo.MFG_Day.value << ", " <<
-        m_tx_pdo.MFG_Month.value << ", " <<
-        m_tx_pdo.MFG_Year.value << ", " <<
-        std::endl;
+    // std::cout << slave_ns << ": " << 
+    //     m_tx_pdo.Device_ID.value << ", " <<
+    //     m_tx_pdo.Second.value << ", " <<
+    //     m_tx_pdo.Minute.value << ", " <<
+    //     m_tx_pdo.Hour.value << ", " <<
+    //     m_tx_pdo.Day.value << ", " <<
+    //     m_tx_pdo.Month.value << ", " <<
+    //     m_tx_pdo.Year.value << ", " <<
+    //     m_tx_pdo.Roll_Offset.value << ", " <<
+    //     m_tx_pdo.Pitch_Offset.value << ", " <<
+    //     m_tx_pdo.Yaw_Offset.value << ", " <<
+    //     m_tx_pdo.Grip_Offset.value << ", " <<
+    //     m_tx_pdo.No_of_Usages.value << ", " <<
+    //     m_tx_pdo.Max_Usages.value << ", " <<
+    //     m_tx_pdo.Digital_Inputs.value << ", " <<
+    //     m_tx_pdo.Grip_Counts.value << ", " <<
+    //     m_tx_pdo.System_Number.value << ", " <<
+    //     m_tx_pdo.Device_UID.value << ", " <<
+    //     m_tx_pdo.Spare_Bytes.value << ", " <<
+    //     m_tx_pdo.MFG_Day.value << ", " <<
+    //     m_tx_pdo.MFG_Month.value << ", " <<
+    //     m_tx_pdo.MFG_Year.value << ", " <<
+    //     std::endl;
 
     return Ec_callback_status::SUCCESS;
 }
