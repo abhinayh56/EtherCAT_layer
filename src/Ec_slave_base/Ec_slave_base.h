@@ -60,7 +60,7 @@ protected:
     template <typename T>
     bool register_pdo(Pdo_variable<T> * pdo_variable)
     {
-        pdo_variable->offset = ecrt_slave_config_reg_pdo_entry(sc, pdo_variable->index, pdo_variable->subindex, domain_i, NULL);        
+        pdo_variable->offset = ecrt_slave_config_reg_pdo_entry(sc, pdo_variable->index, pdo_variable->subindex, domain_i, NULL);
 
         std::cout << "---------------------------> " <<  pdo_variable->index << ", " << (uint16_t)pdo_variable->subindex << ", " << pdo_variable->offset << ", ";
         if(pdo_variable->offset >= 0)
@@ -75,6 +75,45 @@ protected:
         }
 
         return pdo_variable->is_supported;
+    }
+    inline void transfer_tx_pdo_U8(Pdo_variable<uint8_t> *pdo_variable)
+    {
+        pdo_variable->value = EC_READ_U8(domain_i_pd + pdo_variable->offset);
+    }
+
+    inline void transfer_tx_pdo_U16(Pdo_variable<uint16_t> *pdo_variable)
+    {
+        pdo_variable->value = EC_READ_U16(domain_i_pd + pdo_variable->offset);
+    }
+
+    inline void transfer_tx_pdo_U32(Pdo_variable<uint32_t> *pdo_variable)
+    {
+        pdo_variable->value = EC_READ_U32(domain_i_pd + pdo_variable->offset);
+    }
+
+    inline void transfer_tx_pdo_U64(Pdo_variable<uint64_t> *pdo_variable)
+    {
+        pdo_variable->value = EC_READ_U64(domain_i_pd + pdo_variable->offset);
+    }
+
+    inline void transfer_tx_pdo_S8(Pdo_variable<int8_t> *pdo_variable)
+    {
+        pdo_variable->value = EC_READ_S8(domain_i_pd + pdo_variable->offset);
+    }
+
+    inline void transfer_tx_pdo_S16(Pdo_variable<int16_t> *pdo_variable)
+    {
+        pdo_variable->value = EC_READ_S16(domain_i_pd + pdo_variable->offset);
+    }
+
+    inline void transfer_tx_pdo_S32(Pdo_variable<int32_t> *pdo_variable)
+    {
+        pdo_variable->value = EC_READ_S32(domain_i_pd + pdo_variable->offset);
+    }
+
+    inline void transfer_tx_pdo_S64(Pdo_variable<int64_t> *pdo_variable)
+    {
+        pdo_variable->value = EC_READ_S64(domain_i_pd + pdo_variable->offset);
     }
 };
 
