@@ -46,20 +46,11 @@ uint16_t Ec_slave_ingenia::transfer_tx_pdo()
     transfer_tx_pdo_S32(&m_tx_pdo.Actual_velocity);
     transfer_tx_pdo_U8(&m_tx_pdo.Operation_mode_display);
 
-    b_tx_pdo_value.status_word = m_tx_pdo.Status_Word.value;
-    b_tx_pdo_value.position_actual_value = m_tx_pdo.Actual_position.value;
-    b_tx_pdo_value.velocity_actual_value = m_tx_pdo.Actual_velocity.value;
-    b_tx_pdo_value.mode_of_operation_display = m_tx_pdo.Operation_mode_display.value;
-
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_ingenia::transfer_rx_pdo()
 {
-    m_rx_pdo.CONTROL_WD.value = b_rx_pdo_value.control_word;
-    m_rx_pdo.TARGET_POS.value = b_rx_pdo_value.target_position;
-    m_rx_pdo.OP_MODE.value = b_rx_pdo_value.mode_of_operation;
-
     transfer_rx_pdo_U16(&m_rx_pdo.CONTROL_WD);
     transfer_rx_pdo_S32(&m_rx_pdo.TARGET_POS);
     transfer_rx_pdo_U8(&m_rx_pdo.OP_MODE);
@@ -69,6 +60,11 @@ uint16_t Ec_slave_ingenia::transfer_rx_pdo()
 
 uint16_t Ec_slave_ingenia::process_tx_pdo()
 {
+    b_tx_pdo_value.status_word = m_tx_pdo.Status_Word.value;
+    b_tx_pdo_value.position_actual_value = m_tx_pdo.Actual_position.value;
+    b_tx_pdo_value.velocity_actual_value = m_tx_pdo.Actual_velocity.value;
+    b_tx_pdo_value.mode_of_operation_display = m_tx_pdo.Operation_mode_display.value;
+
     check_status();
 
     return Ec_callback_status::SUCCESS;
@@ -76,6 +72,10 @@ uint16_t Ec_slave_ingenia::process_tx_pdo()
 
 uint16_t Ec_slave_ingenia::process_rx_pdo()
 {
+    m_rx_pdo.CONTROL_WD.value = b_rx_pdo_value.control_word;
+    m_rx_pdo.TARGET_POS.value = b_rx_pdo_value.target_position;
+    m_rx_pdo.OP_MODE.value = b_rx_pdo_value.mode_of_operation;
+    
     return Ec_callback_status::SUCCESS;
 }
 

@@ -48,47 +48,46 @@ uint16_t Ec_slave_mact::set_pdo()
 
 uint16_t Ec_slave_mact::transfer_tx_pdo()
 {
-    m_tx_pdo.ACT_POS.value = EC_READ_S32(domain_i_pd + m_tx_pdo.ACT_POS.offset);
-    m_tx_pdo.STATUS_WD.value = EC_READ_U16(domain_i_pd + m_tx_pdo.STATUS_WD.offset);
-    m_tx_pdo.ACT_TOR.value = EC_READ_S16(domain_i_pd + m_tx_pdo.ACT_TOR.offset);
-    m_tx_pdo.OPMODE_DISP.value = EC_READ_U8(domain_i_pd + m_tx_pdo.OPMODE_DISP.offset);
-    m_tx_pdo.ERROR_CODE.value = EC_READ_U16(domain_i_pd + m_tx_pdo.ERROR_CODE.offset);
-    m_tx_pdo.DIG_IN.value = EC_READ_U8(domain_i_pd + m_tx_pdo.DIG_IN.offset);
-    m_tx_pdo.ACT_VEL.value = EC_READ_S32(domain_i_pd + m_tx_pdo.ACT_VEL.offset);
-    m_tx_pdo.ADC_VAL.value = EC_READ_S16(domain_i_pd + m_tx_pdo.ADC_VAL.offset);
-
-    b_tx_pdo_value.status_word = m_tx_pdo.STATUS_WD.value;
-    b_tx_pdo_value.mode_of_operation_display = m_tx_pdo.OPMODE_DISP.value;
-    b_tx_pdo_value.position_actual_value = m_tx_pdo.ACT_POS.value;
-    b_tx_pdo_value.velocity_actual_value = m_tx_pdo.ACT_VEL.value;
-    b_tx_pdo_value.torque_actual_value = m_tx_pdo.ACT_TOR.value;
-
-    if (enable_status == Motor_drive::Enable_status::DISABLE)
-    {
-        offset = b_tx_pdo_value.position_actual_value;
-    }
+    transfer_tx_pdo_S32(&m_tx_pdo.ACT_POS);
+    transfer_tx_pdo_U16(&m_tx_pdo.STATUS_WD);
+    transfer_tx_pdo_S16(&m_tx_pdo.ACT_TOR);
+    transfer_tx_pdo_U8(&m_tx_pdo.OPMODE_DISP);
+    transfer_tx_pdo_U16(&m_tx_pdo.ERROR_CODE);
+    transfer_tx_pdo_U8(&m_tx_pdo.DIG_IN);
+    transfer_tx_pdo_S32(&m_tx_pdo.ACT_VEL);
+    transfer_tx_pdo_S16(&m_tx_pdo.ADC_VAL);
 
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_mact::transfer_rx_pdo()
 {
-    EC_WRITE_S32(domain_i_pd + m_rx_pdo.TARGET_POS.offset, b_rx_pdo_value.target_position);
-    EC_WRITE_U16(domain_i_pd + m_rx_pdo.CONTROL_WD.offset, b_rx_pdo_value.control_word);
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.OP_MODE.offset, b_rx_pdo_value.mode_of_operation);
+    transfer_rx_pdo_S32(&m_rx_pdo.TARGET_POS);
+    transfer_rx_pdo_U16(&m_rx_pdo.CONTROL_WD);
+    transfer_rx_pdo_U8(&m_rx_pdo.OP_MODE);
 
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_mact::process_tx_pdo()
 {
+    b_tx_pdo_value.status_word = m_tx_pdo.STATUS_WD.value;
+    b_tx_pdo_value.mode_of_operation_display = m_tx_pdo.OPMODE_DISP.value;
+    b_tx_pdo_value.position_actual_value = m_tx_pdo.ACT_POS.value;
+    b_tx_pdo_value.velocity_actual_value = m_tx_pdo.ACT_VEL.value;
+    b_tx_pdo_value.torque_actual_value = m_tx_pdo.ACT_TOR.value;
+
     check_status();
-    
+
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_mact::process_rx_pdo()
 {
+    m_rx_pdo.TARGET_POS.value = b_rx_pdo_value.target_position;
+    m_rx_pdo.CONTROL_WD.value = b_rx_pdo_value.control_word;
+    m_rx_pdo.OP_MODE.value = b_rx_pdo_value.mode_of_operation;
+
     return Ec_callback_status::SUCCESS;
 }
 
@@ -109,7 +108,14 @@ uint16_t Ec_slave_mact::subscribe_data()
 
 uint16_t Ec_slave_mact::main_process()
 {
+
+    if (enable_status == Motor_drive::Enable_status::DISABLE)
+    {
+        offset = b_tx_pdo_value.position_actual_value;
+    }
+
     t_stamp += 1;
+
     Motor_drive::Enable_status enable_status = Motor_drive::Enable_status::DISABLE;
     // std::cout << ": " << t_stamp << " | " << enable_status;
     if (t_stamp <= 10000)
@@ -127,7 +133,7 @@ uint16_t Ec_slave_mact::main_process()
         enable();
         // std::cout << ", " << "outside enable" << std::endl;
         b_rx_pdo_value.mode_of_operation = 8;
-        double A = 8191.0*0.5;
+        double A = 8191.0 * 0.5;
         double T = 3.0;
         double f = 1.0 / T;
         double w = 2.0 * 3.1417 * f;

@@ -26,8 +26,6 @@ uint16_t Ec_slave_ek_1122::set_info_from_eni()
 
 uint16_t Ec_slave_ek_1122::set_pdo()
 {
-    // domain_i_regs = domain_regs;
-
     return Ec_callback_status::SUCCESS;
 }
 

@@ -38,7 +38,7 @@ uint16_t Ec_slave_el_2008::transfer_tx_pdo()
 
 uint16_t Ec_slave_el_2008::transfer_rx_pdo()
 {
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output.offset, m_rx_pdo.Output.value);
+    transfer_rx_pdo_U8(&m_rx_pdo.Output);
 
     return Ec_callback_status::SUCCESS;
 }
@@ -71,7 +71,7 @@ uint16_t Ec_slave_el_2008::subscribe_data()
 uint16_t Ec_slave_el_2008::main_process()
 {
     time_stamp += 1;
-    
+
     if (time_stamp >= 2000)
     {
         time_stamp = 0;
