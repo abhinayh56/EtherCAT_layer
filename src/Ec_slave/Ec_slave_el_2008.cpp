@@ -26,14 +26,7 @@ uint16_t Ec_slave_el_2008::set_info_from_eni()
 
 uint16_t Ec_slave_el_2008::set_pdo()
 {
-    register_pdo(&m_rx_pdo.Output_ch_1);
-    register_pdo(&m_rx_pdo.Output_ch_2);
-    register_pdo(&m_rx_pdo.Output_ch_3);
-    register_pdo(&m_rx_pdo.Output_ch_4);
-    register_pdo(&m_rx_pdo.Output_ch_5);
-    register_pdo(&m_rx_pdo.Output_ch_6);
-    register_pdo(&m_rx_pdo.Output_ch_7);
-    register_pdo(&m_rx_pdo.Output_ch_8);
+    register_pdo(&m_rx_pdo.Output);
 
     return Ec_callback_status::SUCCESS;
 }
@@ -45,14 +38,7 @@ uint16_t Ec_slave_el_2008::transfer_tx_pdo()
 
 uint16_t Ec_slave_el_2008::transfer_rx_pdo()
 {
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output_ch_1.offset, m_rx_pdo.Output_ch_1.value);
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output_ch_2.offset, m_rx_pdo.Output_ch_2.value);
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output_ch_3.offset, m_rx_pdo.Output_ch_3.value);
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output_ch_4.offset, m_rx_pdo.Output_ch_4.value);
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output_ch_5.offset, m_rx_pdo.Output_ch_5.value);
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output_ch_6.offset, m_rx_pdo.Output_ch_6.value);
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output_ch_7.offset, m_rx_pdo.Output_ch_7.value);
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output_ch_8.offset, m_rx_pdo.Output_ch_8.value);
+    EC_WRITE_U8(domain_i_pd + m_rx_pdo.Output.offset, m_rx_pdo.Output.value);
 
     return Ec_callback_status::SUCCESS;
 }
@@ -93,27 +79,11 @@ uint16_t Ec_slave_el_2008::main_process()
 
     if (time_stamp <= 1000)
     {
-        // m_rx_pdo.Output.value = 0xAA;
-        m_rx_pdo.Output_ch_1.value = 0;
-        m_rx_pdo.Output_ch_2.value = 1;
-        m_rx_pdo.Output_ch_3.value = 0;
-        m_rx_pdo.Output_ch_4.value = 1;
-        m_rx_pdo.Output_ch_5.value = 0;
-        m_rx_pdo.Output_ch_6.value = 1;
-        m_rx_pdo.Output_ch_7.value = 0;
-        m_rx_pdo.Output_ch_8.value = 1;
+        m_rx_pdo.Output.value = 0xAA;
     }
     else
     {
-        // m_rx_pdo.Output.value = 0x55;
-        m_rx_pdo.Output_ch_1.value = 1;
-        m_rx_pdo.Output_ch_2.value = 0;
-        m_rx_pdo.Output_ch_3.value = 1;
-        m_rx_pdo.Output_ch_4.value = 0;
-        m_rx_pdo.Output_ch_5.value = 1;
-        m_rx_pdo.Output_ch_6.value = 0;
-        m_rx_pdo.Output_ch_7.value = 1;
-        m_rx_pdo.Output_ch_8.value = 0;
+        m_rx_pdo.Output.value = 0x55;
     }
 
     return Ec_callback_status::SUCCESS;
