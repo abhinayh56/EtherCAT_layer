@@ -46,11 +46,6 @@ uint16_t Ec_slave_ingenia::transfer_tx_pdo()
     transfer_tx_pdo_S32(&m_tx_pdo.Actual_velocity);
     transfer_tx_pdo_U8(&m_tx_pdo.Operation_mode_display);
 
-    // m_tx_pdo.Status_Word.value = EC_READ_U16(domain_i_pd + m_tx_pdo.Status_Word.offset);
-    // m_tx_pdo.Actual_position.value = EC_READ_S32(domain_i_pd + m_tx_pdo.Actual_position.offset);
-    // m_tx_pdo.Actual_velocity.value = EC_READ_S32(domain_i_pd + m_tx_pdo.Actual_velocity.offset);
-    // m_tx_pdo.Operation_mode_display.value = EC_READ_U8(domain_i_pd + m_tx_pdo.Operation_mode_display.offset);
-
     b_tx_pdo_value.status_word = m_tx_pdo.Status_Word.value;
     b_tx_pdo_value.position_actual_value = m_tx_pdo.Actual_position.value;
     b_tx_pdo_value.velocity_actual_value = m_tx_pdo.Actual_velocity.value;
@@ -61,9 +56,13 @@ uint16_t Ec_slave_ingenia::transfer_tx_pdo()
 
 uint16_t Ec_slave_ingenia::transfer_rx_pdo()
 {
-    EC_WRITE_U16(domain_i_pd + m_rx_pdo.CONTROL_WD.offset, b_rx_pdo_value.control_word);    // UINT16
-    EC_WRITE_S32(domain_i_pd + m_rx_pdo.TARGET_POS.offset, b_rx_pdo_value.target_position); // SINT32
-    EC_WRITE_U8(domain_i_pd + m_rx_pdo.OP_MODE.offset, b_rx_pdo_value.mode_of_operation);   // UIN8T
+    m_rx_pdo.CONTROL_WD.value = b_rx_pdo_value.control_word;
+    m_rx_pdo.TARGET_POS.value = b_rx_pdo_value.target_position;
+    m_rx_pdo.OP_MODE.value = b_rx_pdo_value.mode_of_operation;
+
+    transfer_rx_pdo_U16(&m_rx_pdo.CONTROL_WD);
+    transfer_rx_pdo_S32(&m_rx_pdo.TARGET_POS);
+    transfer_rx_pdo_U8(&m_rx_pdo.OP_MODE);
 
     return Ec_callback_status::SUCCESS;
 }
