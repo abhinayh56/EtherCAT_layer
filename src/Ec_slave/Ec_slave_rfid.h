@@ -23,7 +23,6 @@ public:
 private:
 #include "Ec_slave_rfid_info.h"
 
-
     struct Tx_pdo
     {
         Pdo_variable<uint16_t> Device_ID      = {0x0006, 0x01};
