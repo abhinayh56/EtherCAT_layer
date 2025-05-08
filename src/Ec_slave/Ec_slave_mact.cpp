@@ -64,7 +64,11 @@ uint16_t Ec_slave_mact::transfer_rx_pdo()
 {
     transfer_rx_pdo_S32(&m_rx_pdo.TARGET_POS);
     transfer_rx_pdo_U16(&m_rx_pdo.CONTROL_WD);
+    transfer_rx_pdo_S16(&m_rx_pdo.TARGET_TORQ);
     transfer_rx_pdo_U8(&m_rx_pdo.OP_MODE);
+    transfer_rx_pdo_U16(&m_rx_pdo.ERROR_CLEAR);
+    transfer_rx_pdo_U8(&m_rx_pdo.DIG_OUT);
+    transfer_rx_pdo_S32(&m_rx_pdo.TARGET_VEL);
 
     return Ec_callback_status::SUCCESS;
 }

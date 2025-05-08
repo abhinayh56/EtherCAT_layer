@@ -95,15 +95,31 @@ uint16_t Ec_slave_rfid::transfer_tx_pdo()
     transfer_tx_pdo_U16(&m_tx_pdo.MFG_Day);
     transfer_tx_pdo_U16(&m_tx_pdo.MFG_Month);
     transfer_tx_pdo_U16(&m_tx_pdo.MFG_Year);
-    
+
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_rfid::transfer_rx_pdo()
 {
+    transfer_rx_pdo_U16(&m_rx_pdo.Acknowledge);
+    transfer_rx_pdo_U16(&m_rx_pdo.Second);
+    transfer_rx_pdo_U16(&m_rx_pdo.Minute);
+    transfer_rx_pdo_U16(&m_rx_pdo.Hour);
+    transfer_rx_pdo_U16(&m_rx_pdo.Day);
+    transfer_rx_pdo_U16(&m_rx_pdo.Month);
+    transfer_rx_pdo_U16(&m_rx_pdo.Year);
+    transfer_rx_pdo_U16(&m_rx_pdo.No_of_Usages);
+    transfer_rx_pdo_U16(&m_rx_pdo.Digital_Outputs);
+    transfer_rx_pdo_U16(&m_rx_pdo.Grip_Counts);
+    transfer_rx_pdo_U16(&m_rx_pdo.System_Number);
     transfer_rx_pdo_U16(&m_rx_pdo.Led_Red);
     transfer_rx_pdo_U16(&m_rx_pdo.Led_Green);
     transfer_rx_pdo_U16(&m_rx_pdo.Led_Blue);
+    transfer_rx_pdo_U16(&m_rx_pdo.Spare_Bytes);
+    transfer_rx_pdo_U16(&m_rx_pdo.Roll_Offset);
+    transfer_rx_pdo_U16(&m_rx_pdo.Pitch_Offset);
+    transfer_rx_pdo_U16(&m_rx_pdo.Yaw_Offset);
+    transfer_rx_pdo_U16(&m_rx_pdo.Grip_Offset);
 
     return Ec_callback_status::SUCCESS;
 }
