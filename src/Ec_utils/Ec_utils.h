@@ -47,11 +47,11 @@ uint16_t GET_BIT(T value, uint16_t bit_index)
 template <typename T>
 struct Pdo_variable
 {
-    uint16_t index;
-    uint8_t subindex;
-    int32_t offset;
-    T value;
-    bool is_supported;
+    uint16_t index = 0;
+    uint8_t subindex = 0;
+    int32_t offset = 0;
+    T value = 0;
+    bool is_supported = false;
 };
 
 #endif // EC_UTILS_H

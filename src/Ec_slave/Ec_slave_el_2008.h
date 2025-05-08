@@ -25,7 +25,14 @@ private:
 
     struct Rx_pdo
     {
-        Pdo_variable<uint8_t> Output = {0x7000, 0x01};
+        Pdo_variable<uint8_t> Output_ch_1 = {0x7000, 0x01};
+        Pdo_variable<uint8_t> Output_ch_2 = {0x7010, 0x01};
+        Pdo_variable<uint8_t> Output_ch_3 = {0x7020, 0x01};
+        Pdo_variable<uint8_t> Output_ch_4 = {0x7030, 0x01};
+        Pdo_variable<uint8_t> Output_ch_5 = {0x7040, 0x01};
+        Pdo_variable<uint8_t> Output_ch_6 = {0x7050, 0x01};
+        Pdo_variable<uint8_t> Output_ch_7 = {0x7060, 0x01};
+        Pdo_variable<uint8_t> Output_ch_8 = {0x7070, 0x01};
     } m_rx_pdo;
 
     unsigned long time_stamp = 0;
