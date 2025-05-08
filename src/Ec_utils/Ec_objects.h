@@ -30,15 +30,6 @@ namespace Object
         uint32_t offset;
     };
 
-    template<uint16_t object_index, uint8_t object_sub_index, typename T_value>
-    struct Pdo_object
-    {
-        uint16_t index = object_index;
-        uint8_t sub_index = object_sub_index;
-        T_value value = 0;
-        bool is_supported = false;
-    };
-
     namespace Control_word
     {
         extern uint16_t index;
