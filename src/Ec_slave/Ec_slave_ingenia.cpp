@@ -51,8 +51,6 @@ uint16_t Ec_slave_ingenia::transfer_tx_pdo()
     b_tx_pdo_value.velocity_actual_value = m_tx_pdo.Actual_velocity.value;
     b_tx_pdo_value.mode_of_operation_display = m_tx_pdo.Operation_mode_display.value;
 
-    check_status();
-
     return Ec_callback_status::SUCCESS;
 }
 
@@ -67,6 +65,8 @@ uint16_t Ec_slave_ingenia::transfer_rx_pdo()
 
 uint16_t Ec_slave_ingenia::process_tx_pdo()
 {
+    check_status();
+    
     return Ec_callback_status::SUCCESS;
 }
 
