@@ -63,8 +63,6 @@ uint16_t Ec_slave_mact::transfer_tx_pdo()
     b_tx_pdo_value.velocity_actual_value = m_tx_pdo.ACT_VEL.value;
     b_tx_pdo_value.torque_actual_value = m_tx_pdo.ACT_TOR.value;
 
-    check_status();
-
     if (enable_status == Motor_drive::Enable_status::DISABLE)
     {
         offset = b_tx_pdo_value.position_actual_value;
@@ -84,6 +82,8 @@ uint16_t Ec_slave_mact::transfer_rx_pdo()
 
 uint16_t Ec_slave_mact::process_tx_pdo()
 {
+    check_status();
+    
     return Ec_callback_status::SUCCESS;
 }
 
