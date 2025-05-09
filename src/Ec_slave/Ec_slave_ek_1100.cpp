@@ -16,9 +16,6 @@ uint16_t Ec_slave_ek_1100::set_info_from_eni()
     slave_info.position = slave_address;
     slave_info.vendor_id = vendor_id;
     slave_info.product_code = product_code;
-
-    // slave_info.slave_pdo_entries;
-    // slave_info.slave_pdos;
     slave_info.slave_syncs = slave_syncs;
 
     return Ec_callback_status::SUCCESS;
@@ -26,8 +23,6 @@ uint16_t Ec_slave_ek_1100::set_info_from_eni()
 
 uint16_t Ec_slave_ek_1100::set_pdo()
 {
-    domain_i_regs = domain_regs;
-
     return Ec_callback_status::SUCCESS;
 }
 

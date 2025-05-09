@@ -25,27 +25,22 @@ public:
 
 private:
     #include "Ec_slave_ingenia_info.h"
+
+    struct Tx_pdo
+    {
+        Pdo_variable<uint16_t> Status_Word            = {0x6041, 0x00};
+        Pdo_variable<int32_t>  Actual_position        = {0x6064, 0x00};
+        Pdo_variable<int32_t>  Actual_velocity        = {0x606c, 0x00};
+        Pdo_variable<uint8_t>  Operation_mode_display = {0x6061, 0x00};
+    } m_tx_pdo;
     
-    unsigned int off_rx_pdo_1;
-    unsigned int off_rx_pdo_2;
-    unsigned int off_rx_pdo_3;
-    unsigned int off_rx_pdo_4;
-
-    unsigned int off_tx_pdo_1;
-    unsigned int off_tx_pdo_2;
-    unsigned int off_tx_pdo_3;
-    unsigned int off_tx_pdo_4;
-
-    ec_pdo_entry_reg_t domain_regs[9] = {
-        {0, 12, 0x0000029c, 0x03811002, 0x6040, 0x00, &off_rx_pdo_1}, /* CONTROL_WD */  // UINT16
-        {0, 12, 0x0000029c, 0x03811002, 0x607a, 0x00, &off_rx_pdo_2}, /* TARGET_POS */  // SINT32
-        {0, 12, 0x0000029c, 0x03811002, 0x60ff, 0x00, &off_rx_pdo_3}, /* TARGET_VEL */  // SINT32
-        {0, 12, 0x0000029c, 0x03811002, 0x6060, 0x00, &off_rx_pdo_4}, /* OP_MODE */     // UIN8T
-        {0, 12, 0x0000029c, 0x03811002, 0x6041, 0x00, &off_tx_pdo_1}, /* Status Word */ // UINT16
-        {0, 12, 0x0000029c, 0x03811002, 0x6064, 0x00, &off_tx_pdo_2}, /* Actual position */ // SINT32
-        {0, 12, 0x0000029c, 0x03811002, 0x606c, 0x00, &off_tx_pdo_3}, /* Actual velocity */ // SINT32
-        {0, 12, 0x0000029c, 0x03811002, 0x6061, 0x00, &off_tx_pdo_4}, /* Operation mode display */ // UINT8
-        {}};
+    struct Rx_pdo
+    {
+        Pdo_variable<uint16_t> CONTROL_WD  = {0x6040, 0x00};
+        Pdo_variable<int32_t>  TARGET_POS  = {0x607a, 0x00};
+        Pdo_variable<int32_t>  TARGET_VEL  = {0x60ff, 0x00};
+        Pdo_variable<uint8_t>  OP_MODE     = {0x6060, 0x00};
+    } m_rx_pdo;
 
     unsigned long t_stamp = 0;
     int32_t offset = 0;

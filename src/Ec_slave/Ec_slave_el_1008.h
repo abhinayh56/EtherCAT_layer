@@ -23,10 +23,10 @@ public:
 private:
     #include "Ec_slave_el_1008_info.h"
 
-    unsigned int off_1;
-    ec_pdo_entry_reg_t domain_regs[2] = {
-        {0, 2, 0x00000002, 0x03f03052, 0x6000, 0x01, &off_1},
-        {}};
+    struct Tx_pdo
+    {
+        Pdo_variable<uint8_t> Input = {0x6000, 0x01};
+    } m_tx_pdo;
 };
 
 #endif // EC_SLAVE_EL_1008_H

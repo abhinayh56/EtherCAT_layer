@@ -12,8 +12,6 @@
 
 int main()
 {
-    uint16_t ret_val = Ec_callback_status::SUCCESS;
-
     Ec_master ec_master("EC_MASTER");
 
     Ec_app ec_app("EC_APP");
@@ -26,12 +24,12 @@ int main()
     Ec_slave_ek_1122 ek_1122_3(5, "EK_1122_3");
     Ec_slave_ingenia ingenia(6, "INGENIA");
     Ec_slave_ek_1122 ek_1122_4(7, "EK_1122_4");
-    Ec_slave_rfid rfid(8, "RFID");
+    Ec_slave_rfid rfid(8, "RFID_1");
     Ec_slave_mact mact_1(9, "MACT_1");
     Ec_slave_mact mact_2(10, "MACT_2");
     Ec_slave_mact mact_3(11, "MACT_3");
     Ec_slave_mact mact_4(12, "MACT_4");
-    Ec_slave_rfid rfid_2(13, "RFID");
+    Ec_slave_rfid rfid_2(13, "RFID_2");
     Ec_slave_mact mact_5(14, "MACT_5");
     Ec_slave_mact mact_6(15, "MACT_6");
     Ec_slave_mact mact_7(16, "MACT_7");
@@ -63,6 +61,9 @@ int main()
 
     while (num_retries < max_retries)
     {
+        LOG_CONSOLE("\n\n-----------------------\nSTARTING ETHERCAT LAYER\n-----------------------\n\n", 1);
+        uint16_t ret_val = Ec_callback_status::SUCCESS;
+
         if (!ec_master.is_running())
         {
             ec_master.start();
@@ -82,12 +83,14 @@ int main()
                 }
                 else
                 {
+                    LOG_CONSOLE_SOURCE_INFO("MAIN", "Cyclic task started", 1);
                     while (ret_val == Ec_callback_status::SUCCESS)
                     {
                         ret_val |= ec_app.cyclic_task();
                         if (ret_val == Ec_callback_status::FAILURE)
                         {
                             LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform cyclic task of EC_APP", 1);
+                            LOG_CONSOLE_SOURCE_ERROR("MAIN", "Cyclic task stopped", 1);
                             break;
                         }
 

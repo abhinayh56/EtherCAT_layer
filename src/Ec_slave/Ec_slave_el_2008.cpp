@@ -16,9 +16,6 @@ uint16_t Ec_slave_el_2008::set_info_from_eni()
     slave_info.position = slave_address;
     slave_info.vendor_id = vendor_id;
     slave_info.product_code = product_code;
-
-    slave_info.slave_pdo_entries = slave_pdo_entries;
-    slave_info.slave_pdos = slave_pdos;
     slave_info.slave_syncs = slave_syncs;
 
     return Ec_callback_status::SUCCESS;
@@ -26,7 +23,7 @@ uint16_t Ec_slave_el_2008::set_info_from_eni()
 
 uint16_t Ec_slave_el_2008::set_pdo()
 {
-    domain_i_regs = domain_regs;
+    register_pdo(&m_rx_pdo.Output);
 
     return Ec_callback_status::SUCCESS;
 }
@@ -38,22 +35,7 @@ uint16_t Ec_slave_el_2008::transfer_tx_pdo()
 
 uint16_t Ec_slave_el_2008::transfer_rx_pdo()
 {
-    time_stamp += 1;
-    if (time_stamp >= 2000)
-    {
-        time_stamp = 0;
-    }
-
-    if (time_stamp <= 1000)
-    {
-        // led on
-        EC_WRITE_U8(domain_i_pd + off_1, 0xAA);
-    }
-    else
-    {
-        // led off
-        EC_WRITE_U8(domain_i_pd + off_1, 0x55);
-    }
+    transfer_rx_pdo_U8(&m_rx_pdo.Output);
 
     return Ec_callback_status::SUCCESS;
 }
@@ -85,5 +67,21 @@ uint16_t Ec_slave_el_2008::subscribe_data()
 
 uint16_t Ec_slave_el_2008::main_process()
 {
+    time_stamp += 1;
+
+    if (time_stamp >= 2000)
+    {
+        time_stamp = 0;
+    }
+
+    if (time_stamp <= 1000)
+    {
+        m_rx_pdo.Output.value = 0xAA;
+    }
+    else
+    {
+        m_rx_pdo.Output.value = 0x55;
+    }
+
     return Ec_callback_status::SUCCESS;
 }

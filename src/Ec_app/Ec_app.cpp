@@ -80,6 +80,13 @@ uint16_t Ec_app::config()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
+    ret_val |= monitor_master_status();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed", 1);
+        return ret_val;
+    }
+
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves ...", 1);
 
     ret_val |= config_slaves_data_transfer();
@@ -100,6 +107,13 @@ uint16_t Ec_app::config()
     if (ret_val == Ec_callback_status::FAILURE)
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to create domain", 1);
+        return ret_val;
+    }
+
+    ret_val = set_domain();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to set domain to slaves", 1);
         return ret_val;
     }
 
@@ -485,7 +499,7 @@ uint32_t Ec_app::num_slaves_responding()
 uint16_t Ec_app::monitor_slave_status()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
-    all_slaves_operational = true;
+    bool all_slaves_operational_flag = true;
 
     for (int i = 0; i < num_slaves; i++)
     {
@@ -497,13 +511,14 @@ uint16_t Ec_app::monitor_slave_status()
             return ret_val;
         }
 
-        all_slaves_operational = (all_slaves_operational && slave_base_arr[i]->is_operational());
-        if (all_slaves_operational == false)
+        all_slaves_operational_flag = (all_slaves_operational_flag && slave_base_arr[i]->is_operational());
+        if (all_slaves_operational_flag == false)
         {
             LOG_CONSOLE_SOURCE_WARNING(master_ns, "All slave not operational. Slave address: ", 0);
             LOG_CONSOLE(slave_base_arr[i]->get_slave_address(), 1);
         }
     }
+    all_slaves_operational = all_slaves_operational_flag;
 
     return ret_val;
 }
@@ -606,8 +621,8 @@ uint16_t Ec_app::register_slaves_pdo_to_domain()
         // LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting slave pdos", 1);
         ret_val |= slave_base_arr[i]->set_pdo();
         // LOG_CONSOLE_SOURCE_INFO(master_ns, "Pdo list is set", 1);
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering tx,rx_pdos to domain", 1);
-        ret_val |= slave_base_arr[i]->register_pdo_to_domain(domain_i);
+        // LOG_CONSOLE_SOURCE_INFO(master_ns, "Registering tx,rx_pdos to domain", 1);
+        // ret_val |= slave_base_arr[i]->register_pdo_to_domain(domain_i);
     }
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Registered all pdos", 1);
 
@@ -617,7 +632,7 @@ uint16_t Ec_app::register_slaves_pdo_to_domain()
 uint16_t Ec_app::activate()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Activating master...", 1);
-    if (!ecrt_master_activate(master))
+    if (ecrt_master_activate(master) == 0)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master activation successful", 1);
         return Ec_callback_status::SUCCESS;
@@ -656,9 +671,27 @@ uint16_t Ec_app::set_domain_process_data()
         LOG_CONSOLE(i + 1, 0);
         LOG_CONSOLE(" of ", 0);
         LOG_CONSOLE(num_slaves, 1);
-        ret_val |= slave_base_arr[i]->set_domain(domain_i_pd);
+        ret_val |= slave_base_arr[i]->set_domain_ptr(domain_i_pd);
     }
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain process data address to slaves successful", 1);
+
+    return ret_val;
+}
+
+uint16_t Ec_app::set_domain()
+{
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain to slaves...", 1);
+    for (int i = 0; i < num_slaves; i++)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Providing domain to slave ", 0);
+        LOG_CONSOLE(i + 1, 0);
+        LOG_CONSOLE(" of ", 0);
+        LOG_CONSOLE(num_slaves, 1);
+        ret_val |= slave_base_arr[i]->set_domain(domain_i);
+    }
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Setting domain to slaves successful", 1);
 
     return ret_val;
 }

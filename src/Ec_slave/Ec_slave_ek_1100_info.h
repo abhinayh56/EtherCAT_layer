@@ -9,6 +9,10 @@ uint16_t position = 100;
 uint32_t vendor_id = 0x00000002;
 uint32_t product_code = 0x044c2c52;
 
+ec_pdo_entry_info_t slave_pdo_entries[0] = {};
+
+ec_pdo_info_t slave_pdos[0] = {};
+
 ec_sync_info_t slave_syncs[1] = {
     {0xff}};
 

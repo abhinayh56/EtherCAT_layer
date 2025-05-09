@@ -11,8 +11,8 @@ struct Slave_info
     uint32_t vendor_id;
     uint32_t product_code;
 
-    ec_pdo_entry_info_t *slave_pdo_entries;
-    ec_pdo_info_t *slave_pdos;
+    // ec_pdo_entry_info_t *slave_pdo_entries;
+    // ec_pdo_info_t *slave_pdos;
     ec_sync_info_t *slave_syncs;
 };
 
@@ -47,10 +47,10 @@ uint16_t GET_BIT(T value, uint16_t bit_index)
 template <typename T>
 struct Pdo_variable
 {
-    uint16_t index;
-    uint8_t subindex;
-    uint32_t offset;
-    T value;
+    uint16_t index = 0;
+    uint8_t subindex = 0;
+    int32_t offset = 0;
+    T value = 0;
     bool is_supported = false;
 };
 

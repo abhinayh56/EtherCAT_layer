@@ -16,9 +16,6 @@ uint16_t Ec_slave_rfid::set_info_from_eni()
     slave_info.position = slave_address;
     slave_info.vendor_id = vendor_id;
     slave_info.product_code = product_code;
-
-    slave_info.slave_pdo_entries = slave_pdo_entries;
-    slave_info.slave_pdos = slave_pdos;
     slave_info.slave_syncs = slave_syncs;
 
     return Ec_callback_status::SUCCESS;
@@ -26,49 +23,100 @@ uint16_t Ec_slave_rfid::set_info_from_eni()
 
 uint16_t Ec_slave_rfid::set_pdo()
 {
-    for (uint8_t i = 0; i < 41; i++)
-    {
-        domain_regs[i].position = slave_address;
-    }
-    domain_i_regs = domain_regs;
+
+    register_pdo(&m_tx_pdo.Device_ID);
+    register_pdo(&m_tx_pdo.Second);
+    register_pdo(&m_tx_pdo.Minute);
+    register_pdo(&m_tx_pdo.Hour);
+    register_pdo(&m_tx_pdo.Day);
+    register_pdo(&m_tx_pdo.Month);
+    register_pdo(&m_tx_pdo.Year);
+    register_pdo(&m_tx_pdo.Roll_Offset);
+    register_pdo(&m_tx_pdo.Pitch_Offset);
+    register_pdo(&m_tx_pdo.Yaw_Offset);
+    register_pdo(&m_tx_pdo.Grip_Offset);
+    register_pdo(&m_tx_pdo.No_of_Usages);
+    register_pdo(&m_tx_pdo.Max_Usages);
+    register_pdo(&m_tx_pdo.Digital_Inputs);
+    register_pdo(&m_tx_pdo.Grip_Counts);
+    register_pdo(&m_tx_pdo.System_Number);
+    register_pdo(&m_tx_pdo.Device_UID);
+    register_pdo(&m_tx_pdo.Spare_Bytes);
+    register_pdo(&m_tx_pdo.MFG_Day);
+    register_pdo(&m_tx_pdo.MFG_Month);
+    register_pdo(&m_tx_pdo.MFG_Year);
+
+    register_pdo(&m_rx_pdo.Acknowledge);
+    register_pdo(&m_rx_pdo.Second);
+    register_pdo(&m_rx_pdo.Minute);
+    register_pdo(&m_rx_pdo.Hour);
+    register_pdo(&m_rx_pdo.Day);
+    register_pdo(&m_rx_pdo.Month);
+    register_pdo(&m_rx_pdo.Year);
+    register_pdo(&m_rx_pdo.No_of_Usages);
+    register_pdo(&m_rx_pdo.Digital_Outputs);
+    register_pdo(&m_rx_pdo.Grip_Counts);
+    register_pdo(&m_rx_pdo.System_Number);
+    register_pdo(&m_rx_pdo.Led_Red);
+    register_pdo(&m_rx_pdo.Led_Green);
+    register_pdo(&m_rx_pdo.Led_Blue);
+    register_pdo(&m_rx_pdo.Spare_Bytes);
+    register_pdo(&m_rx_pdo.Roll_Offset);
+    register_pdo(&m_rx_pdo.Pitch_Offset);
+    register_pdo(&m_rx_pdo.Yaw_Offset);
+    register_pdo(&m_rx_pdo.Grip_Offset);
 
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_rfid::transfer_tx_pdo()
 {
-    m_tx_pdo.Device_ID = EC_READ_U16(domain_i_pd + off_tx_pdo_1);
-    m_tx_pdo.Second = EC_READ_U16(domain_i_pd + off_tx_pdo_2);
-    m_tx_pdo.Minute = EC_READ_U16(domain_i_pd + off_tx_pdo_3);
-    m_tx_pdo.Hour = EC_READ_U16(domain_i_pd + off_tx_pdo_4);
-    m_tx_pdo.Day = EC_READ_U16(domain_i_pd + off_tx_pdo_5);
-    m_tx_pdo.Month = EC_READ_U16(domain_i_pd + off_tx_pdo_6);
-    m_tx_pdo.Year = EC_READ_U16(domain_i_pd + off_tx_pdo_7);
-    m_tx_pdo.Roll_Offset = EC_READ_U16(domain_i_pd + off_tx_pdo_8);
-    m_tx_pdo.Pitch_Offset = EC_READ_U16(domain_i_pd + off_tx_pdo_9);
-    m_tx_pdo.Yaw_Offset = EC_READ_U16(domain_i_pd + off_tx_pdo_10);
-    m_tx_pdo.Grip_Offset = EC_READ_U16(domain_i_pd + off_tx_pdo_11);
-    m_tx_pdo.No_of_Usages = EC_READ_U16(domain_i_pd + off_tx_pdo_12);
-    m_tx_pdo.Max_Usages = EC_READ_U16(domain_i_pd + off_tx_pdo_13);
-    m_tx_pdo.Digital_Inputs = EC_READ_U16(domain_i_pd + off_tx_pdo_14);
-    m_tx_pdo.Grip_Counts = EC_READ_U16(domain_i_pd + off_tx_pdo_15);
-    m_tx_pdo.System_Number = EC_READ_U16(domain_i_pd + off_tx_pdo_16);
-    m_tx_pdo.Device_UID = EC_READ_U16(domain_i_pd + off_tx_pdo_17);
-    m_tx_pdo.Spare_Bytes = EC_READ_U16(domain_i_pd + off_tx_pdo_18);
-    m_tx_pdo.MFG_Day = EC_READ_U16(domain_i_pd + off_tx_pdo_19);
-    m_tx_pdo.MFG_Month = EC_READ_U16(domain_i_pd + off_tx_pdo_20);
-    m_tx_pdo.MFG_Year = EC_READ_U16(domain_i_pd + off_tx_pdo_21);
-
-    // std::cout << "RFID_TXPDO: " << m_tx_pdo.Device_ID << ", " << m_tx_pdo.Second << ", " << m_tx_pdo.Minute << ", " << m_tx_pdo.Hour << ", " << m_tx_pdo.Day << ", " << m_tx_pdo.Month << ", " << m_tx_pdo.Year << ", " << m_tx_pdo.Roll_Offset << ", " << m_tx_pdo.Pitch_Offset << ", " << m_tx_pdo.Yaw_Offset << ", " << m_tx_pdo.Grip_Offset << ", " << m_tx_pdo.No_of_Usages << ", " << m_tx_pdo.Max_Usages << ", " << m_tx_pdo.Digital_Inputs << ", " << m_tx_pdo.Grip_Counts << ", " << m_tx_pdo.System_Number << ", " << m_tx_pdo.Device_UID << ", " << m_tx_pdo.Spare_Bytes << ", " << m_tx_pdo.MFG_Day << ", " << m_tx_pdo.MFG_Month << ", " << m_tx_pdo.MFG_Year << std::endl;
+    transfer_tx_pdo_U16(&m_tx_pdo.Device_ID);
+    transfer_tx_pdo_U16(&m_tx_pdo.Second);
+    transfer_tx_pdo_U16(&m_tx_pdo.Minute);
+    transfer_tx_pdo_U16(&m_tx_pdo.Hour);
+    transfer_tx_pdo_U16(&m_tx_pdo.Day);
+    transfer_tx_pdo_U16(&m_tx_pdo.Month);
+    transfer_tx_pdo_U16(&m_tx_pdo.Year);
+    transfer_tx_pdo_U16(&m_tx_pdo.Roll_Offset);
+    transfer_tx_pdo_U16(&m_tx_pdo.Pitch_Offset);
+    transfer_tx_pdo_U16(&m_tx_pdo.Yaw_Offset);
+    transfer_tx_pdo_U16(&m_tx_pdo.Grip_Offset);
+    transfer_tx_pdo_U16(&m_tx_pdo.No_of_Usages);
+    transfer_tx_pdo_U16(&m_tx_pdo.Max_Usages);
+    transfer_tx_pdo_U16(&m_tx_pdo.Digital_Inputs);
+    transfer_tx_pdo_U16(&m_tx_pdo.Grip_Counts);
+    transfer_tx_pdo_U16(&m_tx_pdo.System_Number);
+    transfer_tx_pdo_U16(&m_tx_pdo.Device_UID);
+    transfer_tx_pdo_U16(&m_tx_pdo.Spare_Bytes);
+    transfer_tx_pdo_U16(&m_tx_pdo.MFG_Day);
+    transfer_tx_pdo_U16(&m_tx_pdo.MFG_Month);
+    transfer_tx_pdo_U16(&m_tx_pdo.MFG_Year);
 
     return Ec_callback_status::SUCCESS;
 }
 
 uint16_t Ec_slave_rfid::transfer_rx_pdo()
 {
-    EC_WRITE_U16(domain_i_pd + off_rx_pdo_12, m_rx_pdo.Led_Red);
-    EC_WRITE_U16(domain_i_pd + off_rx_pdo_13, m_rx_pdo.Led_Green);
-    EC_WRITE_U16(domain_i_pd + off_rx_pdo_14, m_rx_pdo.Led_Blue);
+    transfer_rx_pdo_U16(&m_rx_pdo.Acknowledge);
+    transfer_rx_pdo_U16(&m_rx_pdo.Second);
+    transfer_rx_pdo_U16(&m_rx_pdo.Minute);
+    transfer_rx_pdo_U16(&m_rx_pdo.Hour);
+    transfer_rx_pdo_U16(&m_rx_pdo.Day);
+    transfer_rx_pdo_U16(&m_rx_pdo.Month);
+    transfer_rx_pdo_U16(&m_rx_pdo.Year);
+    transfer_rx_pdo_U16(&m_rx_pdo.No_of_Usages);
+    transfer_rx_pdo_U16(&m_rx_pdo.Digital_Outputs);
+    transfer_rx_pdo_U16(&m_rx_pdo.Grip_Counts);
+    transfer_rx_pdo_U16(&m_rx_pdo.System_Number);
+    transfer_rx_pdo_U16(&m_rx_pdo.Led_Red);
+    transfer_rx_pdo_U16(&m_rx_pdo.Led_Green);
+    transfer_rx_pdo_U16(&m_rx_pdo.Led_Blue);
+    transfer_rx_pdo_U16(&m_rx_pdo.Spare_Bytes);
+    transfer_rx_pdo_U16(&m_rx_pdo.Roll_Offset);
+    transfer_rx_pdo_U16(&m_rx_pdo.Pitch_Offset);
+    transfer_rx_pdo_U16(&m_rx_pdo.Yaw_Offset);
+    transfer_rx_pdo_U16(&m_rx_pdo.Grip_Offset);
 
     return Ec_callback_status::SUCCESS;
 }
@@ -108,51 +156,51 @@ uint16_t Ec_slave_rfid::main_process()
 
     if (t_stamp <= 1000)
     {
-        m_rx_pdo.Led_Red = 1;
-        m_rx_pdo.Led_Green = 0;
-        m_rx_pdo.Led_Blue = 0;
+        m_rx_pdo.Led_Red.value = 1;
+        m_rx_pdo.Led_Green.value = 0;
+        m_rx_pdo.Led_Blue.value = 0;
     }
     else if ((1000 <= t_stamp) && (t_stamp <= 2000))
     {
-        m_rx_pdo.Led_Red = 0;
-        m_rx_pdo.Led_Green = 1;
-        m_rx_pdo.Led_Blue = 0;
+        m_rx_pdo.Led_Red.value = 0;
+        m_rx_pdo.Led_Green.value = 1;
+        m_rx_pdo.Led_Blue.value = 0;
     }
     else if ((2000 <= t_stamp) && (t_stamp <= 3000))
     {
-        m_rx_pdo.Led_Red = 0;
-        m_rx_pdo.Led_Green = 0;
-        m_rx_pdo.Led_Blue = 1;
+        m_rx_pdo.Led_Red.value = 0;
+        m_rx_pdo.Led_Green.value = 0;
+        m_rx_pdo.Led_Blue.value = 1;
     }
     else if ((3000 <= t_stamp) && (t_stamp <= 4000))
     {
-        m_rx_pdo.Led_Red = 1;
-        m_rx_pdo.Led_Green = 1;
-        m_rx_pdo.Led_Blue = 0;
+        m_rx_pdo.Led_Red.value = 1;
+        m_rx_pdo.Led_Green.value = 1;
+        m_rx_pdo.Led_Blue.value = 0;
     }
     else if ((4000 <= t_stamp) && (t_stamp <= 5000))
     {
-        m_rx_pdo.Led_Red = 1;
-        m_rx_pdo.Led_Green = 0;
-        m_rx_pdo.Led_Blue = 1;
+        m_rx_pdo.Led_Red.value = 1;
+        m_rx_pdo.Led_Green.value = 0;
+        m_rx_pdo.Led_Blue.value = 1;
     }
     else if ((5000 <= t_stamp) && (t_stamp <= 6000))
     {
-        m_rx_pdo.Led_Red = 0;
-        m_rx_pdo.Led_Green = 1;
-        m_rx_pdo.Led_Blue = 1;
+        m_rx_pdo.Led_Red.value = 0;
+        m_rx_pdo.Led_Green.value = 1;
+        m_rx_pdo.Led_Blue.value = 1;
     }
     else if ((6000 <= t_stamp) && (t_stamp <= 7000))
     {
-        m_rx_pdo.Led_Red = 1;
-        m_rx_pdo.Led_Green = 1;
-        m_rx_pdo.Led_Blue = 1;
+        m_rx_pdo.Led_Red.value = 1;
+        m_rx_pdo.Led_Green.value = 1;
+        m_rx_pdo.Led_Blue.value = 1;
     }
     else if (7000 <= t_stamp)
     {
-        m_rx_pdo.Led_Red = 0;
-        m_rx_pdo.Led_Green = 0;
-        m_rx_pdo.Led_Blue = 0;
+        m_rx_pdo.Led_Red.value = 0;
+        m_rx_pdo.Led_Green.value = 0;
+        m_rx_pdo.Led_Blue.value = 0;
     }
 
     return Ec_callback_status::SUCCESS;

@@ -183,17 +183,23 @@ protected:
     double velocity_command = 0;
     double torque_command = 0;
 
-    uint16_t status_word;
-    uint8_t mode_of_operation_display;
-    int32_t position_actual_value = 0;
-    int32_t velocity_actual_value = 0;
-    int16_t torque_actual_value = 0;
+    struct Tx_pdo_value
+    {
+        uint16_t status_word;
+        uint8_t mode_of_operation_display;
+        int32_t position_actual_value = 0;
+        int32_t velocity_actual_value = 0;
+        int16_t torque_actual_value = 0;
+    } b_tx_pdo_value;
 
-    uint16_t control_word;
-    uint8_t mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
-    int32_t target_position = 0;
-    int32_t target_velocity = 0;
-    int16_t target_torque = 0;
+    struct Rx_pdo_value
+    {
+        uint16_t control_word;
+        uint8_t mode_of_operation = Object::Modes_of_operation::Bit_flags::CYCLIC_SYNC_TORQUE_MODE;
+        int32_t target_position = 0;
+        int32_t target_velocity = 0;
+        int16_t target_torque = 0;
+    } b_rx_pdo_value;
 
 private:
     uint16_t current_status = Object::Status_word::Bit_flags::NOT_READY_TO_SWITCH_ON;
