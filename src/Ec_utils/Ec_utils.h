@@ -11,8 +11,8 @@ struct Slave_info
     uint32_t vendor_id;
     uint32_t product_code;
 
-    ec_pdo_entry_info_t *slave_pdo_entries;
-    ec_pdo_info_t *slave_pdos;
+    // ec_pdo_entry_info_t *slave_pdo_entries;
+    // ec_pdo_info_t *slave_pdos;
     ec_sync_info_t *slave_syncs;
 };
 
