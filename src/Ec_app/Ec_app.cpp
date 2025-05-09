@@ -80,6 +80,13 @@ uint16_t Ec_app::config()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
+    ret_val |= monitor_master_status();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed", 1);
+        return ret_val;
+    }
+
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Configuring slaves ...", 1);
 
     ret_val |= config_slaves_data_transfer();
