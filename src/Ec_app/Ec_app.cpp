@@ -624,7 +624,7 @@ uint16_t Ec_app::register_slaves_pdo_to_domain()
 uint16_t Ec_app::activate()
 {
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Activating master...", 1);
-    if (!ecrt_master_activate(master))
+    if (ecrt_master_activate(master) == 0)
     {
         LOG_CONSOLE_SOURCE_INFO(master_ns, "Master activation successful", 1);
         return Ec_callback_status::SUCCESS;
