@@ -12,8 +12,6 @@
 
 int main()
 {
-    uint16_t ret_val = Ec_callback_status::SUCCESS;
-
     Ec_master ec_master("EC_MASTER");
 
     Ec_app ec_app("EC_APP");
@@ -63,6 +61,9 @@ int main()
 
     while (num_retries < max_retries)
     {
+        LOG_CONSOLE("\n\n-----------------------\nSTARTING ETHERCAT LAYER\n-----------------------\n\n", 1);
+        uint16_t ret_val = Ec_callback_status::SUCCESS;
+
         if (!ec_master.is_running())
         {
             ec_master.start();
@@ -82,12 +83,14 @@ int main()
                 }
                 else
                 {
+                    LOG_CONSOLE_SOURCE_INFO("MAIN", "Cyclic task started", 1);
                     while (ret_val == Ec_callback_status::SUCCESS)
                     {
                         ret_val |= ec_app.cyclic_task();
                         if (ret_val == Ec_callback_status::FAILURE)
                         {
                             LOG_CONSOLE_SOURCE_ERROR("MAIN", "Failed to perform cyclic task of EC_APP", 1);
+                            LOG_CONSOLE_SOURCE_ERROR("MAIN", "Cyclic task stopped", 1);
                             break;
                         }
 

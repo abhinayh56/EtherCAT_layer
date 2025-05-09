@@ -499,7 +499,7 @@ uint32_t Ec_app::num_slaves_responding()
 uint16_t Ec_app::monitor_slave_status()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
-    all_slaves_operational = true;
+    bool all_slaves_operational_flag = true;
 
     for (int i = 0; i < num_slaves; i++)
     {
@@ -511,13 +511,14 @@ uint16_t Ec_app::monitor_slave_status()
             return ret_val;
         }
 
-        all_slaves_operational = (all_slaves_operational && slave_base_arr[i]->is_operational());
-        if (all_slaves_operational == false)
+        all_slaves_operational_flag = (all_slaves_operational_flag && slave_base_arr[i]->is_operational());
+        if (all_slaves_operational_flag == false)
         {
             LOG_CONSOLE_SOURCE_WARNING(master_ns, "All slave not operational. Slave address: ", 0);
             LOG_CONSOLE(slave_base_arr[i]->get_slave_address(), 1);
         }
     }
+    all_slaves_operational = all_slaves_operational_flag;
 
     return ret_val;
 }
