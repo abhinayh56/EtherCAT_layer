@@ -56,7 +56,7 @@ int main()
 
     usleep(2000000);
 
-    uint64_t max_retries = 10000000000;
+    uint64_t max_retries = 100000;
     uint64_t num_retries = 0;
     bool run_ethercat_layer = true;
 
@@ -84,6 +84,7 @@ int main()
                 }
                 else
                 {
+                    num_retries = 0;
                     LOG_CONSOLE_SOURCE_INFO("MAIN", "Cyclic task started", 1);
                     while (ret_val == Ec_callback_status::SUCCESS)
                     {
@@ -111,6 +112,7 @@ int main()
 
         num_retries++;
         run_ethercat_layer = ec_app.get_run_status();
+        std::cout << "num_retries: " << num_retries << std::endl;
         if ((run_ethercat_layer == false) || (num_retries >= max_retries))
         {
             break;
