@@ -67,6 +67,8 @@ int main()
 
         if (!ec_master.is_running())
         {
+            num_retries = 0;
+            
             ec_master.start();
             usleep(5000000);
 
@@ -84,7 +86,6 @@ int main()
                 }
                 else
                 {
-                    num_retries = 0;
                     LOG_CONSOLE_SOURCE_INFO("MAIN", "Cyclic task started", 1);
                     while (ret_val == Ec_callback_status::SUCCESS)
                     {
