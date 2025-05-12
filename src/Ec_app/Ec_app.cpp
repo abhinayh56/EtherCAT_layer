@@ -164,6 +164,10 @@ uint16_t Ec_app::config()
     }
 
     ret_val |= ret_val_monitor;
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to monitor master and slaves", 1);
+    }
 
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Executing init function of all slaves...", 1);
     ret_val |= init();
@@ -219,13 +223,12 @@ uint16_t Ec_app::cyclic_task()
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Monitor master status failed", 1);
     }
-
-    if (ret_val_monitor == Ec_callback_status::FAILURE)
-    {
-        return ret_val_monitor;
-    }
-
+    
     ret_val |= ret_val_monitor;
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to monitor master and slaves", 1);
+    }
 
 #ifdef CYCLIC_SLAVE_CALL_PARALLEL
     ret_val |= transfer_tx_pdo();
