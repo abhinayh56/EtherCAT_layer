@@ -22,6 +22,7 @@ public:
     uint16_t config();
     uint16_t cyclic_task();
     uint16_t get_num_slaves();
+    bool get_run_status();
 
 private:
     std::string master_ns;
@@ -39,6 +40,7 @@ private:
     bool all_slaves_operational = false;
     bool process_data_exchange_complete = false;
     uint32_t num_process_data_exchange_error = 0;
+    bool run_ethercat_layer = true;
 
     uint16_t config_slaves_data_transfer();
     uint16_t create_domain();
@@ -49,6 +51,7 @@ private:
     uint16_t get_domain_process_data();
     uint16_t set_domain_process_data();
     uint16_t set_domain();
+    uint16_t main_process_app();
 
     uint16_t monitor_master_status();
     bool is_link_up();

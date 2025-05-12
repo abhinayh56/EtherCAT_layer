@@ -58,8 +58,9 @@ int main()
 
     uint64_t max_retries = 10000000000;
     uint64_t num_retries = 0;
+    bool run_ethercat_layer = true;
 
-    while (num_retries < max_retries)
+    while (run_ethercat_layer && (num_retries < max_retries))
     {
         LOG_CONSOLE("\n\n-----------------------\nSTARTING ETHERCAT LAYER\n-----------------------\n\n", 1);
         uint16_t ret_val = Ec_callback_status::SUCCESS;
@@ -109,8 +110,16 @@ int main()
         }
 
         num_retries++;
-        LOG_CONSOLE_SOURCE_INFO("MAIN", "Retrying to initiate the main program...", 1);
-        usleep(500000);
+        run_ethercat_layer = ec_app.get_run_status();
+        if ((run_ethercat_layer == false) || (num_retries >= max_retries))
+        {
+            break;
+        }
+        else
+        {
+            LOG_CONSOLE_SOURCE_INFO("MAIN", "Retrying to initiate the main program...", 1);
+            usleep(500000);
+        }
     }
 
     return 0;

@@ -57,15 +57,10 @@ uint16_t Ec_app::stop()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
 
-    LOG_CONSOLE_SOURCE_INFO(master_ns, "Executing reset function of all slaves...", 1);
-    ret_val |= reset();
+    ret_val = reset();
     if (ret_val == Ec_callback_status::FAILURE)
     {
         LOG_CONSOLE_SOURCE_ERROR(master_ns, "Failed to execute reset function of all slaves", 1);
-    }
-    else
-    {
-        LOG_CONSOLE_SOURCE_INFO(master_ns, "Reset function of all slaves executed successfully", 1);
     }
 
     LOG_CONSOLE_SOURCE_INFO(master_ns, "Stopping app...", 1);
@@ -187,6 +182,13 @@ uint16_t Ec_app::config()
 uint16_t Ec_app::cyclic_task()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
+
+    ret_val |= main_process_app();
+    if (ret_val == Ec_callback_status::FAILURE)
+    {
+        LOG_CONSOLE_SOURCE_INFO(master_ns, "Failed to execute main process of app", 1);
+        return ret_val;
+    }
 
     // 1. Fetches received frames from the hardware and processes the datagrams
     if (ecrt_master_receive(master) != 0)
@@ -365,6 +367,11 @@ uint16_t Ec_app::cyclic_task()
 uint16_t Ec_app::get_num_slaves()
 {
     return num_slaves;
+}
+
+bool Ec_app::get_run_status()
+{
+    return run_ethercat_layer;
 }
 
 uint16_t Ec_app::monitor_domain_i_status()
@@ -696,6 +703,21 @@ uint16_t Ec_app::set_domain()
     return ret_val;
 }
 
+uint16_t Ec_app::main_process_app()
+{
+    uint16_t ret_val = Ec_callback_status::SUCCESS;
+
+    run_ethercat_layer = true;
+
+    if (run_ethercat_layer == false)
+    {
+        LOG_CONSOLE_SOURCE_INFO("MAIN", "Requested to stop main program", 1);
+        ret_val |= Ec_callback_status::FAILURE;
+    }
+
+    return ret_val;
+}
+
 uint16_t Ec_app::transfer_tx_pdo()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
@@ -825,6 +847,8 @@ uint16_t Ec_app::transfer_rx_pdo()
 uint16_t Ec_app::reset()
 {
     uint16_t ret_val = Ec_callback_status::SUCCESS;
+
+    LOG_CONSOLE_SOURCE_INFO(master_ns, "Executing reset function of all slaves...", 1);
 
     for (int i = 0; i < num_slaves; i++)
     {
