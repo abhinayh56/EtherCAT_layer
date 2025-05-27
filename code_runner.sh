@@ -11,7 +11,7 @@ echo "---"
 read -p "Enter your option: " usr_input
 echo "---"
 
-cd ~/Abhinay/Ethercat_IGH/EtherCAT_layer/build
+cd ./build
 
 if [[ $usr_input -eq 1 ]]
 then
